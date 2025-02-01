@@ -22,6 +22,20 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Linking\include\glad\glad.h" />
+    <ClInclude Include="Linking\include\GLFW\glfw3.h" />
+    <ClInclude Include="Linking\include\GLFW\glfw3native.h" />
+    <ClInclude Include="Linking\include\KHR\khrplatform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Linking\lib\GLFW\glfw3.lib" />
+    <Library Include="Linking\lib\GLFW\glfw3dll.lib" />
+    <Library Include="Linking\lib\GLFW\glfw3_mt.lib" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -112,6 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
