@@ -30,8 +30,7 @@
               "RelativeToolTip": "src\\glad.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-02-01T11:22:27.913Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-01T11:22:27.913Z"
             },
             {
               "$type": "Document",
@@ -39,9 +38,9 @@
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp",
               "RelativeDocumentMoniker": "src\\main.cpp",
-              "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp",
-              "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAABQAAAAAAAAAAAAswCIAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp*",
+              "RelativeToolTip": "src\\main.cpp*",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
               "EditorCaption": ""
