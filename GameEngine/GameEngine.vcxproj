@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="lib\glad.c" />
+    <ClCompile Include="lib\stb.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\fragment_core.glsl" />
+    <None Include="Assets\vertex_core.glsl" />
     <None Include="glfw3.dll" />
   </ItemGroup>
   <ItemGroup>

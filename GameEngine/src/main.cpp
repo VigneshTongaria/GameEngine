@@ -4,15 +4,20 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <fstream>
+#include <sstream>
+#include <streambuf>
+#include <string>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
+void Run_Shaders();
+std::string loadShaderSRC(const char* filename);
 
 int main()
 {
-	Mat_Calculations();
-
+    
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -34,6 +39,8 @@ int main()
 	
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+	Run_Shaders();
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -73,5 +80,81 @@ void Mat_Calculations()
 
 	vec = scale*rot*trans * vec;
 	std::cout << vec.x << " "<< vec.y << " "<<vec.z << std::endl;
+}
+
+void Run_Shaders()
+{
+	//Vertex shader
+	 int success;
+	 char Infolog;
+     unsigned int vertexShader;
+	 vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	 std::string vertexShaderSRC = loadShaderSRC("Assets/vertex_core.glsl");
+	 const GLchar* vertShaderChar = vertexShaderSRC.c_str();
+	 glShaderSource(vertexShader,1,&vertShaderChar,NULL);
+
+	 glCompileShader(vertexShader);
+
+	 glGetShaderiv(vertexShader,GL_COMPILE_STATUS,&success);
+	 if(!success)
+	 {
+		glGetShaderInfoLog(vertexShader,512,NULL,&Infolog);
+		std::cout<<"Error with vertex shader complilaton "<<Infolog;
+	 }
+
+	 //Fragment shader
+     unsigned int fragment_shader;
+	 fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
+	 std::string fragment_shader_SRC = loadShaderSRC("Assets/fragment_core.glsl");
+	 const GLchar* fragShaderChar = fragment_shader_SRC.c_str();
+	 glShaderSource(fragment_shader,1,&fragShaderChar,NULL);
+
+	 glCompileShader(fragment_shader);
+
+	 glGetShaderiv(fragment_shader,GL_COMPILE_STATUS,&success);
+	 if(!success)
+	 {
+		glGetShaderInfoLog(fragment_shader,512,NULL,&Infolog);
+		std::cout<<"Error with fragment shader complilaton "<<Infolog;
+	 }
+
+	 //running shader program
+	 unsigned int shader_program = glCreateProgram();
+	 glAttachShader(shader_program,vertexShader);
+	 glAttachShader(shader_program,fragment_shader);
+	 glLinkProgram(shader_program);
+
+	 glGetProgramiv(shader_program,GL_LINK_STATUS,&success);
+	 if(!success)
+	 {
+       glGetProgramInfoLog(shader_program,512,NULL,&Infolog);
+		std::cout<<"Error with shader program complilaton "<<Infolog;
+	 }
+
+	 glUseProgram(shader_program);
+
+	 glDeleteShader(vertexShader);
+	 glDeleteShader(fragment_shader);
+
+}
+std::string loadShaderSRC(const char* filename)
+{
+    std::ifstream file;
+	std::stringstream buf;
+	std::string ret= "";
+
+	file.open(filename);
+	if(file.is_open())
+	{
+        buf << file.rdbuf();
+		ret = buf.str();
+	}
+	else
+	{
+       std::cout<<"Could not open "<<filename<< std::endl;
+
+	}
+	file.close();
+    return ret;
 }
 
