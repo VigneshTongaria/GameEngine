@@ -40,7 +40,74 @@ int main()
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	Run_Shaders();
+	//Run_Shaders();
+	//Vertex shader
+	int success;
+	char Infolog[512];
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	std::string vertexShaderSRC = loadShaderSRC("Assets/vertex_core.glsl");
+	const GLchar* vertShaderChar = vertexShaderSRC.c_str();
+	glShaderSource(vertexShader, 1, &vertShaderChar, NULL);
+
+	glCompileShader(vertexShader);
+
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(vertexShader, 512, NULL, Infolog);
+		std::cout << "Error with vertex shader complilaton " << Infolog;
+	}
+
+	//Fragment shader
+	unsigned int fragment_shader;
+	fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
+	std::string fragment_shader_SRC = loadShaderSRC("Assets/fragment_core.glsl");
+	const GLchar* fragShaderChar = fragment_shader_SRC.c_str();
+	glShaderSource(fragment_shader, 1, &fragShaderChar, NULL);
+
+	glCompileShader(fragment_shader);
+
+	glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(fragment_shader, 512, NULL, Infolog);
+		std::cout << "Error with fragment shader complilaton " << Infolog;
+	}
+
+	//running shader program
+	unsigned int shader_program = glCreateProgram();
+	glAttachShader(shader_program, vertexShader);
+	glAttachShader(shader_program, fragment_shader);
+	glLinkProgram(shader_program);
+
+	glGetProgramiv(shader_program, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		glGetProgramInfoLog(shader_program, 512, NULL, Infolog);
+		std::cout << "Error with shader program complilaton " << Infolog;
+	}
+
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragment_shader);
+
+	float vertices[] = {
+	-0.5f, -0.5f, 0.0f,
+	 0.5f, -0.5f, 0.0f,
+	 0.0f,  0.5f, 0.0f
+	};
+	unsigned int VBO, VAO;
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindVertexArray(VAO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -50,10 +117,17 @@ int main()
 		//rendering
 		glClearColor(0.2f, 0.3f, 0.3f, 0.6f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		//draw shapes
+		glBindVertexArray(VAO);
+		glUseProgram(shader_program);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
 		//Check for all events and swaps buffers
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 	glfwTerminate();
 	return 0;
@@ -135,6 +209,22 @@ void Run_Shaders()
 
 	 glDeleteShader(vertexShader);
 	 glDeleteShader(fragment_shader);
+
+	 float vertices[] = {-0.5f,0.5f,0.0f,0.5f,-0.5f,0.0f,0.0f,0.5f,0.0f};
+	 unsigned int VBO,VAO;
+     glGenVertexArrays(1,&VAO);
+	 glBindVertexArray(VAO);
+	 glGenBuffers(1,&VBO);
+
+	 glBindBuffer(GL_ARRAY_BUFFER,VBO);
+
+	 glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW);
+
+	 glVertexAttribPointer(0,3,GL_FLOAT,false,3*sizeof(float),(void*)0);
+	 glEnableVertexAttribArray(0);
+
+	 glDrawArrays(GL_TRIANGLES,0,3);
+
 
 }
 std::string loadShaderSRC(const char* filename)
