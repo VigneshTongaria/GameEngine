@@ -8,6 +8,7 @@
 #include <sstream>
 #include <streambuf>
 #include <string>
+#include "Shader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -41,79 +42,9 @@ int main()
 
 	//Run_Shaders();
 	//Vertex shader
-	int success;
-	char Infolog[512];
-	unsigned int vertexShader;
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	std::string vertexShaderSRC = loadShaderSRC("Assets/vertex_core.glsl");
-	const GLchar* vertShaderChar = vertexShaderSRC.c_str();
-	glShaderSource(vertexShader, 1, &vertShaderChar, NULL);
-
-	glCompileShader(vertexShader);
-
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		glGetShaderInfoLog(vertexShader, 512, NULL, Infolog);
-		std::cout << "Error with vertex shader complilaton " << Infolog;
-	}
-
-	//Fragment shader
-	unsigned int fragment_shader,fragment_shader_1;
-	fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-
-	std::string fragment_shader_SRC = loadShaderSRC("Assets/fragment_core.glsl");
-	const GLchar* fragShaderChar = fragment_shader_SRC.c_str();
-	glShaderSource(fragment_shader, 1, &fragShaderChar, NULL);
-
-	glCompileShader(fragment_shader);
-
-	glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		glGetShaderInfoLog(fragment_shader, 512, NULL, Infolog);
-		std::cout << "Error with fragment shader[0] complilaton " << Infolog;
-	}
-
-	unsigned int shader_program = glCreateProgram();
-
-	glAttachShader(shader_program, vertexShader);
-	glAttachShader(shader_program, fragment_shader);
-	glLinkProgram(shader_program);
-
-	//running shader program
-
-	glGetProgramiv(shader_program, GL_LINK_STATUS, &success);
-	if (!success)
-	{
-		glGetProgramInfoLog(shader_program, 512, NULL, Infolog);
-		std::cout << "Error with shader program complilaton " << Infolog;
-	}
-
-	fragment_shader_1 = glCreateShader(GL_FRAGMENT_SHADER);
-
-    std::string fragment_shader_SRC_1 = loadShaderSRC("Assets/fragment_core_1.glsl");
-	const GLchar* fragShaderChar_1 = fragment_shader_SRC_1.c_str();
-
-	glShaderSource(fragment_shader_1, 1, &fragShaderChar_1, NULL);
-
-	glCompileShader(fragment_shader_1);
-
-	glGetShaderiv(fragment_shader_1, GL_COMPILE_STATUS, &success);
-	if (!success)
-	{
-		glGetShaderInfoLog(fragment_shader_1, 512, NULL, Infolog);
-		std::cout << "Error with fragment shader[1] complilaton " << Infolog;
-	}
-
-	unsigned int shader_program_1 = glCreateProgram();
-    glAttachShader(shader_program_1, vertexShader);
-	glAttachShader(shader_program_1, fragment_shader_1);
-	glLinkProgram(shader_program_1);
-
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragment_shader);
-	glDeleteShader(fragment_shader_1);
+	Shader Shader_program("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
+	Shader Shader_program_1("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
+	
 
 	float vertices[] = {
 		// positions    //colors
@@ -149,6 +80,14 @@ int main()
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 
+	
+
+	/*glm::mat4 Rot_0 = glm::mat4(1.0);
+	Rot_0 = glm::rotate(Rot_0, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	Shader_program_1.UseShaderProgram();
+
+	Shader_program_1.setTransformation("mat_Rotation", Rot_0);*/
+
 	while (!glfwWindowShouldClose(window))
 	{
 		//process inputs
@@ -160,11 +99,20 @@ int main()
 
 		//draw shapes
 		glBindVertexArray(VAO);
-		glUseProgram(shader_program);
+		Shader_program.UseShaderProgram();
+
+		float time = glfwGetTime();
+		glm::mat4 Rot_45 = glm::mat4(1.0);
+		Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		Shader_program.setTransformation("mat_Rotation", Rot_45);
+	
+		Shader_program.setFloat("x_Offset",0.0f);
 		//glDrawArrays(GL_TRIANGLES,0,3);
 		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,0);
 
-		glUseProgram(shader_program_1);
+		Shader_program_1.UseShaderProgram();
+		Shader_program_1.setFloat("x_Offset",0.0f);
 		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,(void*)(3*sizeof(unsigned int)));
 		//glDrawArrays(GL_TRIANGLES,3,3);
 

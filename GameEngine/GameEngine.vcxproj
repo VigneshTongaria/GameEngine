@@ -22,6 +22,7 @@
     <ClCompile Include="lib\glad.c" />
     <ClCompile Include="lib\stb.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\fragment_core.glsl" />
@@ -34,6 +35,7 @@
     <ClInclude Include="Linking\include\GLFW\glfw3.h" />
     <ClInclude Include="Linking\include\GLFW\glfw3native.h" />
     <ClInclude Include="Linking\include\KHR\khrplatform.h" />
+    <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Linking\lib\GLFW\glfw3.lib" />
