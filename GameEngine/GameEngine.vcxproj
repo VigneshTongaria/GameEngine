@@ -42,6 +42,11 @@
     <Library Include="Linking\lib\GLFW\glfw3dll.lib" />
     <Library Include="Linking\lib\GLFW\glfw3_mt.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Images\image_1.jpg" />
+    <Image Include="Assets\Images\image_2.jpg" />
+    <Image Include="Assets\Images\wall.jpg" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

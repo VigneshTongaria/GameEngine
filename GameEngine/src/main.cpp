@@ -9,6 +9,7 @@
 #include <streambuf>
 #include <string>
 #include "Shader.h"
+#include <stb/stb_image.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -40,22 +41,40 @@ int main()
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+	//LoadTextures
+	int width,height,nrChannels;
+	unsigned char *data = stbi_load("Assets/Images/image_1.jpg",&width,&height,&nrChannels,0);
+
+	unsigned int texture;
+	glGenTextures(1,&texture);
+	glBindTexture(GL_TEXTURE_2D,texture);
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+
+	if (data)
+    {
+       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+       glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+       std::cout << "Failed to load texture" << std::endl;
+    }
+	stbi_image_free(data);
+
 	//Run_Shaders();
 	//Vertex shader
 	Shader Shader_program("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
 	Shader Shader_program_1("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	
-
-	float vertices[] = {
-		// positions    //colors
-	 -0.3f,-0.1f,0.0f, 0.4f,0.6f,0.4f,
-	 -0.1f,0.7f,0.0f,  0.3f,0.8f,0.9f,
-	 0.8f,-0.8f,0.0f,  0.3f,0.8f,0.9f,
-	 0.4f,0.3f,0.0f,    0.4f,0.6f,0.4f,
-	};
 	unsigned int indices[] = 
 	{
-		0,1,2, //first traingle
+		0,1,3, //first traingle
 		1,2,3
 	};
 	//Initializng buffers
@@ -71,15 +90,24 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
 
+	float vertices[] = {
+    // positions          // colors           // texture coords
+     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+    -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+};
+
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), (void*)0);
-	glVertexAttribPointer(1,3,GL_FLOAT,false,6 * sizeof(float),(void*)(3*(sizeof(float))));
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(1,3,GL_FLOAT,false,8 * sizeof(float),(void*)(3*(sizeof(float))));
+	glVertexAttribPointer(2,2,GL_FLOAT,false,8 * sizeof(float),(void*)(6*sizeof(float)));
 
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
-
+    glEnableVertexAttribArray(2);
 	
 
 	/*glm::mat4 Rot_0 = glm::mat4(1.0);
@@ -109,11 +137,11 @@ int main()
 	
 		Shader_program.setFloat("x_Offset",0.0f);
 		//glDrawArrays(GL_TRIANGLES,0,3);
-		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,0);
+		glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
 
-		Shader_program_1.UseShaderProgram();
+		/*Shader_program_1.UseShaderProgram();
 		Shader_program_1.setFloat("x_Offset",0.0f);
-		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,(void*)(3*sizeof(unsigned int)));
+		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,(void*)(3*sizeof(unsigned int)));*/
 		//glDrawArrays(GL_TRIANGLES,3,3);
 
 

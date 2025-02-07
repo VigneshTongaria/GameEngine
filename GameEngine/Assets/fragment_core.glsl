@@ -2,7 +2,9 @@
 out vec4 FragColor;
 in vec4 color;
 in vec4 pos;
+in vec2 TextCord;
+uniform sampler2D ourTexture;
 void main()
 {
-    FragColor = pos;
+    FragColor = texture(ourTexture,TextCord);
 }

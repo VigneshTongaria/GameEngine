@@ -24,9 +24,6 @@
     <ClCompile Include="lib\stb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,5 +55,16 @@
     <Library Include="Linking\lib\GLFW\glfw3.lib" />
     <Library Include="Linking\lib\GLFW\glfw3_mt.lib" />
     <Library Include="Linking\lib\GLFW\glfw3dll.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Images\wall.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\image_2.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\image_1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
