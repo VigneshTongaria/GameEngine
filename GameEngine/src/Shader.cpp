@@ -17,6 +17,7 @@ private:
 public:
     unsigned int m_ID;
     void UseShaderProgram();
+	void setInt(const std::string &name, int value) const;
 	void setFloat(const std::string &name, float value) const;
 	void setTransformation(const std::string &name, glm::mat4 Trans) const;
     Shader(const char* VertexShaderPath,const char* FragmentShaderPath);
@@ -76,6 +77,10 @@ Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath)
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragment_shader);
+}
+void Shader::setInt(const std::string &name, int value) const
+{
+	glUniform1i(glGetUniformLocation(m_ID,name.c_str()), value);
 }
 void Shader::setFloat(const std::string &name, float value) const
 {

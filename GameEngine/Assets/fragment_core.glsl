@@ -3,8 +3,11 @@ out vec4 FragColor;
 in vec4 color;
 in vec4 pos;
 in vec2 TextCord;
-uniform sampler2D ourTexture;
+uniform sampler2D Texture1;
+uniform sampler2D Texture2;
+uniform float mix;
 void main()
 {
-    FragColor = texture(ourTexture,TextCord);
+    //FragColor = texture(Texture1,TextCord)*color;
+    FragColor = mix(texture(Texture1, -TextCord), texture(Texture2, TextCord), mix);
 }

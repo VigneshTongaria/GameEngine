@@ -15,6 +15,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
 std::string loadShaderSRC(const char* filename);
+float Arrow_vertical_Input = 0.0f;
 
 int main()
 {
@@ -41,16 +42,17 @@ int main()
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	//LoadTextures
+	//LoadTextures - 1
 	int width,height,nrChannels;
 	unsigned char *data = stbi_load("Assets/Images/image_1.jpg",&width,&height,&nrChannels,0);
 
-	unsigned int texture;
-	glGenTextures(1,&texture);
-	glBindTexture(GL_TEXTURE_2D,texture);
-
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
+	unsigned int texture_1;
+	glGenTextures(1,&texture_1);
+	glBindTexture(GL_TEXTURE_2D,texture_1);
+    
+	//GENERATING MIPMAPS and setting interpolations
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
@@ -63,9 +65,35 @@ int main()
     }
     else
     {
-       std::cout << "Failed to load texture" << std::endl;
+       std::cout << "Failed to load texture - 1" << std::endl;
     }
 	stbi_image_free(data);
+    
+	//Texture 2
+	unsigned char* data1 = stbi_load("Assets/Images/image_2.jpg",&width,&height,&nrChannels,0);
+
+	unsigned int texture_2;
+	glGenTextures(1,&texture_2);
+	glBindTexture(GL_TEXTURE_2D,texture_2);
+    
+	//GENERATING MIPMAPS and setting interpolations
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+
+	if (data1)
+    {
+       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
+       glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+       std::cout << "Failed to load texture - 2" << std::endl;
+    }
+	stbi_image_free(data1);
 
 	//Run_Shaders();
 	//Vertex shader
@@ -101,13 +129,20 @@ int main()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
 
+    //vertex attrbitue pointer assigning all types of data
 	glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), (void*)0);
 	glVertexAttribPointer(1,3,GL_FLOAT,false,8 * sizeof(float),(void*)(3*(sizeof(float))));
 	glVertexAttribPointer(2,2,GL_FLOAT,false,8 * sizeof(float),(void*)(6*sizeof(float)));
 
+	//enabling all the attribute array
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
+
+	//Assigning textures ID'S
+	Shader_program.UseShaderProgram();
+	Shader_program.setInt("Texture1",0);
+	Shader_program.setInt("Texture2",1);
 	
 
 	/*glm::mat4 Rot_0 = glm::mat4(1.0);
@@ -125,6 +160,13 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 0.6f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//Assigning texture
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D,texture_1);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D,texture_2);
+
+
 		//draw shapes
 		glBindVertexArray(VAO);
 		Shader_program.UseShaderProgram();
@@ -136,6 +178,7 @@ int main()
 		Shader_program.setTransformation("mat_Rotation", Rot_45);
 	
 		Shader_program.setFloat("x_Offset",0.0f);
+		Shader_program.setFloat("mix",Arrow_vertical_Input);
 		//glDrawArrays(GL_TRIANGLES,0,3);
 		glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
 
@@ -163,6 +206,17 @@ void process_inputs(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_1) == 1)
 	{
 		glfwSetWindowShouldClose(window, 1);
+	}
+
+	if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		Arrow_vertical_Input += 0.01f;
+		if(Arrow_vertical_Input >= 1.0f) Arrow_vertical_Input = 1.0f;
+	}
+	if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		Arrow_vertical_Input -= 0.01f;
+		if(Arrow_vertical_Input <= 0.0f) Arrow_vertical_Input = 0.0f;
 	}
 }
 
