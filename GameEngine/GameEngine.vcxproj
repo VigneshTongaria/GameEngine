@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="lib\glad.c" />
     <ClCompile Include="lib\stb.cpp" />
+    <ClCompile Include="src\io\KeyBoard.cpp" />
+    <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
@@ -35,6 +37,8 @@
     <ClInclude Include="Linking\include\GLFW\glfw3.h" />
     <ClInclude Include="Linking\include\GLFW\glfw3native.h" />
     <ClInclude Include="Linking\include\KHR\khrplatform.h" />
+    <ClInclude Include="src\io\KeyBoard.h" />
+    <ClInclude Include="src\io\Mouse.h" />
     <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +49,7 @@
   <ItemGroup>
     <Image Include="Assets\Images\image_1.jpg" />
     <Image Include="Assets\Images\image_2.jpg" />
+    <Image Include="Assets\Images\image_2.png" />
     <Image Include="Assets\Images\wall.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

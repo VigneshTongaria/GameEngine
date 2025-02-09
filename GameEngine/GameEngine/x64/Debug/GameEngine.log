@@ -1,3 +1,4 @@
 ﻿  main.cpp
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(174,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(185,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(262,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

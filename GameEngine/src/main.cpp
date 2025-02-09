@@ -10,12 +10,19 @@
 #include <string>
 #include "Shader.h"
 #include <stb/stb_image.h>
+#include "io/KeyBoard.h"
+#include "io/Mouse.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
 std::string loadShaderSRC(const char* filename);
 float Arrow_vertical_Input = 0.0f;
+
+glm::mat4 Translation = glm::mat4(1.0f);
+glm::mat4 mouseTransform = glm::mat4(1.0f);
+glm::mat4 mouseScroll = glm::mat4(1.0f);
+glm::mat4 Scale = glm::mat4(1.0f);
 
 int main()
 {
@@ -41,6 +48,10 @@ int main()
 	
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetKeyCallback(window,KeyBoard::KeyCallback);
+	glfwSetMouseButtonCallback(window,Mouse::MouseButtonCallback);
+	glfwSetCursorPosCallback(window,Mouse::CursorButtonCallback);
+	glfwSetScrollCallback(window,Mouse::MouseScrollCallback);
 
 	//LoadTextures - 1
 	int width,height,nrChannels;
@@ -70,7 +81,7 @@ int main()
 	stbi_image_free(data);
     
 	//Texture 2
-	unsigned char* data1 = stbi_load("Assets/Images/image_2.jpg",&width,&height,&nrChannels,0);
+	unsigned char* data1 = stbi_load("Assets/Images/image_2.png",&width,&height,&nrChannels,0);
 
 	unsigned int texture_2;
 	glGenTextures(1,&texture_2);
@@ -86,7 +97,7 @@ int main()
 
 	if (data1)
     {
-       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
+       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data1);
        glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
@@ -175,7 +186,9 @@ int main()
 		glm::mat4 Rot_45 = glm::mat4(1.0);
 		Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
+        Shader_program.setTransformation("mat_Translation",Translation);
 		Shader_program.setTransformation("mat_Rotation", Rot_45);
+		Shader_program.setTransformation("mat_Scale",Scale);
 	
 		Shader_program.setFloat("x_Offset",0.0f);
 		Shader_program.setFloat("mix",Arrow_vertical_Input);
@@ -203,21 +216,54 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 }
 void process_inputs(GLFWwindow* window)
 {
-	if (glfwGetKey(window, GLFW_KEY_1) == 1)
+	if (KeyBoard::KeyWentDown(GLFW_KEY_1))
 	{
 		glfwSetWindowShouldClose(window, 1);
 	}
 
-	if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS)
+	if(KeyBoard::KeyWentDown(GLFW_KEY_UP))
 	{
 		Arrow_vertical_Input += 0.01f;
 		if(Arrow_vertical_Input >= 1.0f) Arrow_vertical_Input = 1.0f;
 	}
-	if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS)
+	if(KeyBoard::KeyWentDown(GLFW_KEY_DOWN))
 	{
 		Arrow_vertical_Input -= 0.01f;
 		if(Arrow_vertical_Input <= 0.0f) Arrow_vertical_Input = 0.0f;
 	}
+	if(KeyBoard::Key(GLFW_KEY_W))
+	{
+		Translation = glm::translate(Translation,glm::vec3(0.0f,0.01f,0.0f));
+	}
+	if(KeyBoard::Key(GLFW_KEY_S))
+	{
+		Translation = glm::translate(Translation,glm::vec3(0.0f,-0.01f,0.0f));
+	}
+	if(KeyBoard::Key(GLFW_KEY_A))
+	{
+		Translation = glm::translate(Translation,glm::vec3(-0.01f,0.0f,0.0f));
+	}
+	if(KeyBoard::Key(GLFW_KEY_D))
+	{
+		Translation = glm::translate(Translation,glm::vec3(0.01f,0.0f,0.0f));
+	}
+	if(Mouse::MouseButton(GLFW_MOUSE_BUTTON_1))
+	{
+		Translation = glm::translate(Translation,glm::vec3(0.01f* Mouse::getMouseDX(),0.01f*Mouse::getMouseDY(),0.0f));
+	}
+	// Extract current scale from Scale matrix
+	glm::vec3 currentScale = glm::vec3(
+		glm::length(glm::vec3(Scale[0])), // X scale
+		glm::length(glm::vec3(Scale[1])), // Y scale
+		glm::length(glm::vec3(Scale[2]))  // Z scale
+	);
+
+	// Modify scale based on mouse wheel input
+	float scaleFactor = 1.0f + (0.01f * Mouse::getMouseWheelY()); // Scaling factor
+	currentScale *= scaleFactor;								  // Uniform scaling
+
+	// Apply new scale (create a fresh scale matrix)
+	Scale = glm::scale(glm::mat4(1.0f), currentScale);
 }
 
 void Mat_Calculations()
