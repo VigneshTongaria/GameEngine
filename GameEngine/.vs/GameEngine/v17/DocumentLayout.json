@@ -56,7 +56,7 @@
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAAAAkBAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAPwAAAAAAAAAAAAAABEBAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
               "IsPinned": true,
@@ -72,8 +72,7 @@
               "RelativeToolTip": "src\\io\\KeyBoard.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-09T14:04:34.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T14:04:34.471Z"
             },
             {
               "$type": "Document",
@@ -85,8 +84,7 @@
               "RelativeToolTip": "src\\io\\KeyBoard.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-09T14:03:52.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T14:03:52.062Z"
             },
             {
               "$type": "Document",
@@ -98,8 +96,7 @@
               "RelativeToolTip": "src\\Shader.h",
               "ViewState": "AgIAAAEAAAAAAAAAAAAWwBAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-06T15:32:56.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T15:32:56.076Z"
             },
             {
               "$type": "Document",
@@ -123,8 +120,7 @@
               "RelativeToolTip": "Assets\\vertex_core.glsl",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-05T17:02:57.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T17:02:57.374Z"
             },
             {
               "$type": "Document",

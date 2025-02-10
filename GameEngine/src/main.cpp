@@ -19,10 +19,12 @@ void Mat_Calculations();
 std::string loadShaderSRC(const char* filename);
 float Arrow_vertical_Input = 0.0f;
 
-glm::mat4 Translation = glm::mat4(1.0f);
 glm::mat4 mouseTransform = glm::mat4(1.0f);
 glm::mat4 mouseScroll = glm::mat4(1.0f);
 glm::mat4 Scale = glm::mat4(1.0f);
+glm::mat4 Model = glm::mat4(1.0f);
+glm::mat4 View = glm::mat4(1.0f);
+glm::mat4 Projection = glm::mat4(1.0f); 
 
 int main()
 {
@@ -161,6 +163,12 @@ int main()
 	Shader_program_1.UseShaderProgram();
 
 	Shader_program_1.setTransformation("mat_Rotation", Rot_0);*/
+	Model = glm::rotate(Model,glm::radians(-45.0f), glm::vec3(1.0f,0.0f,0.0f));
+	View = glm::translate(View,glm::vec3(0.0f,0.0f,-3.0f));
+	Projection = glm::perspective(glm::radians(60.0f),800.0f/600.0f,0.1f,100.0f);
+	Shader_program.setTransformation("mat_Model",Model);
+	Shader_program.setTransformation("mat_View",View);
+	Shader_program.setTransformation("mat_Projection",Projection);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -184,9 +192,10 @@ int main()
 
 		float time = glfwGetTime();
 		glm::mat4 Rot_45 = glm::mat4(1.0);
-		Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		//Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-        Shader_program.setTransformation("mat_Translation",Translation);
+
+        Shader_program.setTransformation("mat_View",View);
 		Shader_program.setTransformation("mat_Rotation", Rot_45);
 		Shader_program.setTransformation("mat_Scale",Scale);
 	
@@ -233,27 +242,27 @@ void process_inputs(GLFWwindow* window)
 	}
 	if(KeyBoard::Key(GLFW_KEY_W))
 	{
-		Translation = glm::translate(Translation,glm::vec3(0.0f,0.01f,0.0f));
+		View = glm::translate(View,glm::vec3(0.0f,0.0f,0.01f));
 	}
 	if(KeyBoard::Key(GLFW_KEY_S))
 	{
-		Translation = glm::translate(Translation,glm::vec3(0.0f,-0.01f,0.0f));
+		View = glm::translate(View,glm::vec3(0.0f,0.0f,-0.01f));
 	}
 	if(KeyBoard::Key(GLFW_KEY_A))
 	{
-		Translation = glm::translate(Translation,glm::vec3(-0.01f,0.0f,0.0f));
+		View = glm::translate(View,glm::vec3(0.01f,0.0f,0.0f));
 	}
 	if(KeyBoard::Key(GLFW_KEY_D))
 	{
-		Translation = glm::translate(Translation,glm::vec3(0.01f,0.0f,0.0f));
+		View = glm::translate(View,glm::vec3(-0.01f,0.0f,0.0f));
 	}
 	if(Mouse::MouseButton(GLFW_MOUSE_BUTTON_1))
 	{
-		Translation = glm::translate(Translation,glm::vec3(0.01f* Mouse::getMouseDX(),0.01f*Mouse::getMouseDY(),0.0f));
+		View = glm::translate(View,glm::vec3(0.01f* Mouse::getMouseDX(),0.01f*Mouse::getMouseDY(),0.0f));
 	}
 	// Extract current scale from Scale matrix
 	glm::vec3 currentScale = glm::vec3(
-		glm::length(glm::vec3(Scale[0])), // X scale
+		glm::length(glm::vec3(Scale[0])), // X scaleth
 		glm::length(glm::vec3(Scale[1])), // Y scale
 		glm::length(glm::vec3(Scale[2]))  // Z scale
 	);
