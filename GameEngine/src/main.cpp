@@ -25,6 +25,12 @@ glm::mat4 Scale = glm::mat4(1.0f);
 glm::mat4 Model = glm::mat4(1.0f);
 glm::mat4 View = glm::mat4(1.0f);
 glm::mat4 Projection = glm::mat4(1.0f); 
+glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
+float cameraSpeed = 0.1f;
+float deltaTime = 0.0f;	// Time between current frame and last frame
+float lastFrame = 0.0f; // Time of last frame
 
 int main()
 {
@@ -132,25 +138,72 @@ int main()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
 
 	float vertices[] = {
-    // positions          // colors           // texture coords
-     0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-     0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-    -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-    -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
-};
+		//vertices            //textCords
+		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	
+		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	
+		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	
+		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	};
+	glm::vec3 cubePositions[] = {
+		glm::vec3( 0.0f,  0.0f,  0.0f), 
+		glm::vec3( 2.0f,  5.0f, -15.0f), 
+		glm::vec3(-1.5f, -2.2f, -2.5f),  
+		glm::vec3(-3.8f, -2.0f, -12.3f),  
+		glm::vec3( 2.4f, -0.4f, -3.5f),  
+		glm::vec3(-1.7f,  3.0f, -7.5f),  
+		glm::vec3( 1.3f, -2.0f, -2.5f),  
+		glm::vec3( 1.5f,  2.0f, -2.5f), 
+		glm::vec3( 1.5f,  0.2f, -1.5f), 
+		glm::vec3(-1.3f,  1.0f, -1.5f)  
+	};
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
 
     //vertex attrbitue pointer assigning all types of data
-	glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), (void*)0);
-	glVertexAttribPointer(1,3,GL_FLOAT,false,8 * sizeof(float),(void*)(3*(sizeof(float))));
-	glVertexAttribPointer(2,2,GL_FLOAT,false,8 * sizeof(float),(void*)(6*sizeof(float)));
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(1,2,GL_FLOAT,false,5 * sizeof(float),(void*)(3*(sizeof(float))));
 
 	//enabling all the attribute array
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
 
 	//Assigning textures ID'S
 	Shader_program.UseShaderProgram();
@@ -164,7 +217,7 @@ int main()
 
 	Shader_program_1.setTransformation("mat_Rotation", Rot_0);*/
 	Model = glm::rotate(Model,glm::radians(-45.0f), glm::vec3(1.0f,0.0f,0.0f));
-	View = glm::translate(View,glm::vec3(0.0f,0.0f,-3.0f));
+
 	Projection = glm::perspective(glm::radians(60.0f),800.0f/600.0f,0.1f,100.0f);
 	Shader_program.setTransformation("mat_Model",Model);
 	Shader_program.setTransformation("mat_View",View);
@@ -172,12 +225,17 @@ int main()
 
 	while (!glfwWindowShouldClose(window))
 	{
+		//calculate deltaTime
+		float currentTime = glfwGetTime();
+		deltaTime = currentTime - lastFrame;
+		lastFrame = currentTime;
 		//process inputs
 		process_inputs(window);
 
 		//rendering
+		glEnable(GL_DEPTH_TEST);
 		glClearColor(0.2f, 0.3f, 0.3f, 0.6f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//Assigning texture
 		glActiveTexture(GL_TEXTURE0);
@@ -193,7 +251,8 @@ int main()
 		float time = glfwGetTime();
 		glm::mat4 Rot_45 = glm::mat4(1.0);
 		//Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-
+        //Model = glm::rotate(Model, glm::radians(time*10.0f)*0.001f, glm::vec3(0.5f, 1.0f, 0.0f));
+		View = glm::lookAt(cameraPos,cameraPos + cameraFront,cameraUp);
 
         Shader_program.setTransformation("mat_View",View);
 		Shader_program.setTransformation("mat_Rotation", Rot_45);
@@ -201,8 +260,16 @@ int main()
 	
 		Shader_program.setFloat("x_Offset",0.0f);
 		Shader_program.setFloat("mix",Arrow_vertical_Input);
-		//glDrawArrays(GL_TRIANGLES,0,3);
-		glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
+		
+		for(unsigned int i = 0 ; i<10 ; i++)
+		{
+			glm::mat4 _model = glm::mat4(1.0f);
+			_model = glm::translate(_model,cubePositions[i]);
+        	Shader_program.setTransformation("mat_Model",_model);
+			glDrawArrays(GL_TRIANGLES,0,36);
+		}
+
+		//glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
 
 		/*Shader_program_1.UseShaderProgram();
 		Shader_program_1.setFloat("x_Offset",0.0f);
@@ -225,6 +292,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 }
 void process_inputs(GLFWwindow* window)
 {
+	cameraSpeed = 3.5f* deltaTime;
 	if (KeyBoard::KeyWentDown(GLFW_KEY_1))
 	{
 		glfwSetWindowShouldClose(window, 1);
@@ -242,19 +310,19 @@ void process_inputs(GLFWwindow* window)
 	}
 	if(KeyBoard::Key(GLFW_KEY_W))
 	{
-		View = glm::translate(View,glm::vec3(0.0f,0.0f,0.01f));
+		cameraPos += glm::normalize(cameraFront) * cameraSpeed;
 	}
 	if(KeyBoard::Key(GLFW_KEY_S))
 	{
-		View = glm::translate(View,glm::vec3(0.0f,0.0f,-0.01f));
+		cameraPos += -glm::normalize(cameraFront) * cameraSpeed;
 	}
 	if(KeyBoard::Key(GLFW_KEY_A))
 	{
-		View = glm::translate(View,glm::vec3(0.01f,0.0f,0.0f));
+		cameraPos += -glm::normalize(glm::cross(cameraFront,cameraUp))*cameraSpeed;
 	}
 	if(KeyBoard::Key(GLFW_KEY_D))
 	{
-		View = glm::translate(View,glm::vec3(-0.01f,0.0f,0.0f));
+		cameraPos += glm::normalize(glm::cross(cameraFront,cameraUp))*cameraSpeed;
 	}
 	if(Mouse::MouseButton(GLFW_MOUSE_BUTTON_1))
 	{
