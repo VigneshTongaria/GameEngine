@@ -12,6 +12,7 @@
 #include <stb/stb_image.h>
 #include "io/KeyBoard.h"
 #include "io/Mouse.h"
+#include "Camera.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -32,9 +33,11 @@ float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 
+Camera MainCamera;
+
+
 int main()
 {
-    
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -223,10 +226,12 @@ int main()
 	Shader_program.setTransformation("mat_View",View);
 	Shader_program.setTransformation("mat_Projection",Projection);
 
+	//camera
+
 	while (!glfwWindowShouldClose(window))
 	{
 		//calculate deltaTime
-		float currentTime = glfwGetTime();
+		float currentTime = float(glfwGetTime());
 		deltaTime = currentTime - lastFrame;
 		lastFrame = currentTime;
 		//process inputs
@@ -248,11 +253,12 @@ int main()
 		glBindVertexArray(VAO);
 		Shader_program.UseShaderProgram();
 
-		float time = glfwGetTime();
+		float time = float(glfwGetTime());
 		glm::mat4 Rot_45 = glm::mat4(1.0);
 		//Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         //Model = glm::rotate(Model, glm::radians(time*10.0f)*0.001f, glm::vec3(0.5f, 1.0f, 0.0f));
-		View = glm::lookAt(cameraPos,cameraPos + cameraFront,cameraUp);
+		View = MainCamera.GetViewMatrix();
+		//View = glm::lookAt(cameraPos,cameraFront,cameraUp);
 
         Shader_program.setTransformation("mat_View",View);
 		Shader_program.setTransformation("mat_Rotation", Rot_45);
@@ -310,24 +316,25 @@ void process_inputs(GLFWwindow* window)
 	}
 	if(KeyBoard::Key(GLFW_KEY_W))
 	{
-		cameraPos += glm::normalize(cameraFront) * cameraSpeed;
+		MainCamera.ProcessWASD(CAMERA_FORWARD,deltaTime);
 	}
 	if(KeyBoard::Key(GLFW_KEY_S))
 	{
-		cameraPos += -glm::normalize(cameraFront) * cameraSpeed;
+		MainCamera.ProcessWASD(CAMERA_BACKWARD,deltaTime);
 	}
 	if(KeyBoard::Key(GLFW_KEY_A))
 	{
-		cameraPos += -glm::normalize(glm::cross(cameraFront,cameraUp))*cameraSpeed;
+		MainCamera.ProcessWASD(CAMERA_LEFT,deltaTime);
 	}
 	if(KeyBoard::Key(GLFW_KEY_D))
 	{
-		cameraPos += glm::normalize(glm::cross(cameraFront,cameraUp))*cameraSpeed;
+		MainCamera.ProcessWASD(CAMERA_RIGHT,deltaTime);
 	}
 	if(Mouse::MouseButton(GLFW_MOUSE_BUTTON_1))
 	{
-		View = glm::translate(View,glm::vec3(0.01f* Mouse::getMouseDX(),0.01f*Mouse::getMouseDY(),0.0f));
+		MainCamera.ProcessMouse(float(Mouse::getMouseDX()),float(Mouse::getMouseDY()));
 	}
+	MainCamera.SetZoom(float(Mouse::getMouseWheelY()));
 	// Extract current scale from Scale matrix
 	glm::vec3 currentScale = glm::vec3(
 		glm::length(glm::vec3(Scale[0])), // X scaleth
@@ -336,7 +343,7 @@ void process_inputs(GLFWwindow* window)
 	);
 
 	// Modify scale based on mouse wheel input
-	float scaleFactor = 1.0f + (0.01f * Mouse::getMouseWheelY()); // Scaling factor
+	float scaleFactor = 1.0f + (0.01f * float(Mouse::getMouseWheelY())); // Scaling factor
 	currentScale *= scaleFactor;								  // Uniform scaling
 
 	// Apply new scale (create a fresh scale matrix)
