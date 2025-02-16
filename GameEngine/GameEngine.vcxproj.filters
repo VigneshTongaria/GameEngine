@@ -42,6 +42,7 @@
     <None Include="Assets\fragment_core.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\fragment_core_1.glsl" />
+    <None Include="Assets\fragment_core_lightSource.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">

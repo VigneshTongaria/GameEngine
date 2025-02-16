@@ -5,7 +5,9 @@ in vec2 TextCord;
 uniform sampler2D Texture1;
 uniform sampler2D Texture2;
 uniform float mix;
+uniform vec3 lightColor;
+uniform vec3 objectColor;
 void main()
 {
-    FragColor = mix(texture(Texture1, -TextCord), texture(Texture2, TextCord), mix);
+    FragColor = vec4(lightColor*objectColor,1.0);
 }

@@ -19,6 +19,7 @@ public:
     void UseShaderProgram();
 	void setInt(const std::string &name, int value) const;
 	void setFloat(const std::string &name, float value) const;
+	void setVec3(const std::string &name, glm::vec3 vec) const;
 	void setTransformation(const std::string &name, glm::mat4 Trans) const;
     Shader(const char* VertexShaderPath,const char* FragmentShaderPath);
     ~Shader();
@@ -85,6 +86,10 @@ void Shader::setInt(const std::string &name, int value) const
 void Shader::setFloat(const std::string &name, float value) const
 {
     glUniform1f(glGetUniformLocation(m_ID,name.c_str()), value);
+}
+void Shader::setVec3(const std::string &name, glm::vec3 value) const
+{
+    glUniform3f(glGetUniformLocation(m_ID,name.c_str()),value.x,value.y,value.z);
 }
 void Shader::setTransformation(const std::string &name, glm::mat4 Trans) const
 {

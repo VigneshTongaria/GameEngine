@@ -119,26 +119,8 @@ int main()
 
 	//Run_Shaders();
 	//Vertex shader
-	Shader Shader_program("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
-	Shader Shader_program_1("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
-	
-	unsigned int indices[] = 
-	{
-		0,1,3, //first traingle
-		1,2,3
-	};
-	//Initializng buffers
-	unsigned int VBO, VBO_1,VAO,VAO_1,EBO;
-	glGenVertexArrays(1, &VAO);
-	glGenVertexArrays(1, &VAO_1);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &VBO_1);
-	glGenBuffers(1,&EBO);
-    
-	//Binding buffers
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
+	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
+	Shader LightnigSourceShader("Assets/vertex_core.glsl", "Assets/fragment_core_lightSource.glsl");
 
 	float vertices[] = {
 		//vertices            //textCords
@@ -197,6 +179,28 @@ int main()
 		glm::vec3(-1.3f,  1.0f, -1.5f)  
 	};
 
+	glm::vec3 LightPositions[] = {
+		glm::vec3(1.2f, 1.0f, 2.0f)
+	};
+	
+	unsigned int indices[] = 
+	{
+		0,1,3, //first traingle
+		1,2,3
+	};
+	//Initializng buffers
+	unsigned int VBO, VBO_1,VAO,VAO_1,EBO;
+	glGenVertexArrays(1, &VAO);
+	glGenVertexArrays(1, &VAO_1);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &VBO_1);
+	glGenBuffers(1,&EBO);
+    
+	//Binding buffers
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
+
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
 
@@ -209,22 +213,33 @@ int main()
 	glEnableVertexAttribArray(1);
 
 	//Assigning textures ID'S
-	Shader_program.UseShaderProgram();
-	Shader_program.setInt("Texture1",0);
-	Shader_program.setInt("Texture2",1);
-	
+	LightingShader.UseShaderProgram();
+	LightingShader.setInt("Texture1",0);
+	LightingShader.setInt("Texture2",1);
+
+	//Lighting VAO
+
+	unsigned int lightVAO;
+	glGenVertexArrays(1, &lightVAO);
+	glBindVertexArray(lightVAO);
+	// we only need to bind to the VBO, the container's VBO's data already contains the data.
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	// set the vertex attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
+	glEnableVertexAttribArray(0);
 
 	/*glm::mat4 Rot_0 = glm::mat4(1.0);
 	Rot_0 = glm::rotate(Rot_0, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	Shader_program_1.UseShaderProgram();
+	LightnigShader_1.UseShaderProgram();
 
-	Shader_program_1.setTransformation("mat_Rotation", Rot_0);*/
+	LightnigShader_1.setTransformation("mat_Rotation", Rot_0);*/
 	Model = glm::rotate(Model,glm::radians(-45.0f), glm::vec3(1.0f,0.0f,0.0f));
 
 	Projection = glm::perspective(glm::radians(60.0f),800.0f/600.0f,0.1f,100.0f);
-	Shader_program.setTransformation("mat_Model",Model);
-	Shader_program.setTransformation("mat_View",View);
-	Shader_program.setTransformation("mat_Projection",Projection);
+	LightingShader.setTransformation("mat_Projection",Projection);
+
+	LightnigSourceShader.UseShaderProgram();
+	LightnigSourceShader.setTransformation("mat_Projection",Projection);
 
 	//camera
 
@@ -251,7 +266,7 @@ int main()
 
 		//draw shapes
 		glBindVertexArray(VAO);
-		Shader_program.UseShaderProgram();
+		LightingShader.UseShaderProgram();
 
 		float time = float(glfwGetTime());
 		glm::mat4 Rot_45 = glm::mat4(1.0);
@@ -260,25 +275,38 @@ int main()
 		View = MainCamera.GetViewMatrix();
 		//View = glm::lookAt(cameraPos,cameraFront,cameraUp);
 
-        Shader_program.setTransformation("mat_View",View);
-		Shader_program.setTransformation("mat_Rotation", Rot_45);
-		Shader_program.setTransformation("mat_Scale",Scale);
+        LightingShader.setTransformation("mat_View",View);
+		LightingShader.setTransformation("mat_Rotation", Rot_45);
+		LightingShader.setTransformation("mat_Scale",Scale);
 	
-		Shader_program.setFloat("x_Offset",0.0f);
-		Shader_program.setFloat("mix",Arrow_vertical_Input);
+		LightingShader.setFloat("x_Offset",0.0f);
+		LightingShader.setFloat("mix",Arrow_vertical_Input);
+		LightingShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
+        LightingShader.setVec3("lightColor",  glm::vec3(1.0f, 1.0f, 1.0f));
 		
 		for(unsigned int i = 0 ; i<10 ; i++)
 		{
 			glm::mat4 _model = glm::mat4(1.0f);
 			_model = glm::translate(_model,cubePositions[i]);
-        	Shader_program.setTransformation("mat_Model",_model);
+        	LightingShader.setTransformation("mat_Model",_model);
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
 
+		glBindVertexArray(lightVAO);
+
+		LightnigSourceShader.UseShaderProgram();
+		glm::mat4 _model = glm::mat4(1.0f);
+		_model = glm::translate(_model, LightPositions[0]);
+		_model = glm::scale(_model,glm::vec3(0.3f,0.3f,0.3f));
+		LightnigSourceShader.setTransformation("mat_Model", _model);
+		LightnigSourceShader.setTransformation("mat_View",View);
+
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		//glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
 
-		/*Shader_program_1.UseShaderProgram();
-		Shader_program_1.setFloat("x_Offset",0.0f);
+		/*LightnigShader_1.UseShaderProgram();
+		LightnigShader_1.setFloat("x_Offset",0.0f);
 		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,(void*)(3*sizeof(unsigned int)));*/
 		//glDrawArrays(GL_TRIANGLES,3,3);
 
