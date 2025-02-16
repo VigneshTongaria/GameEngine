@@ -1,20 +1,18 @@
 #version 460 core
 layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec2 aTextCord;
+layout (location = 1) in vec3 aNormal;
 
-out vec4 pos;
+out vec3 FragPos;
 out vec2 TextCord;
-uniform float x_Offset;
+out vec3 normal;
 uniform mat4 mat_View;
-uniform mat4 mat_Rotation;
-uniform mat4 mat_Scale;
 uniform mat4 mat_Model;
 uniform mat4 mat_Projection;
 
 void main()
 {
-    gl_Position = mat_Projection*mat_View* mat_Model * vec4(aPos.x + x_Offset,aPos.y, aPos.z, 1.0);
-    pos = gl_Position;
+    gl_Position = mat_Projection*mat_View* mat_Model * vec4(aPos.x,aPos.y, aPos.z, 1.0);
+    FragPos = vec3(mat_Model * vec4(aPos,1.0));
 
-    TextCord = aTextCord;
+    normal = mat3(transpose(inverse(mat_Model))) * aNormal;
 }

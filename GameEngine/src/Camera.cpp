@@ -21,6 +21,14 @@ glm::mat4 Camera :: GetViewMatrix()
 {
     return glm::lookAt(Position,Position + Front,Up);
 }
+glm::vec3 Camera :: GetCameraPos()
+{
+    return Position;
+}
+glm::vec3 Camera :: GetCameraFront()
+{
+    return Front;
+}
 void Camera::ProcessWASD(CAMERA_MOVEMENT mov, float deltaTime)
 {
     float cameraSpeed = MovementSpeed*deltaTime;

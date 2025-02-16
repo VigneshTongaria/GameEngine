@@ -30,6 +30,8 @@ public:
   glm::vec3 CameraFront = glm::vec3(0.0f,0.0f,1.0f),float yaw = 0.0f,float pitch = 89.0f);
 
   glm::mat4 GetViewMatrix();
+  glm::vec3 GetCameraPos();
+  glm::vec3 GetCameraFront();
   void ProcessWASD(CAMERA_MOVEMENT mov, float deltaTime);
   void ProcessMouse(float dx, float dy);
   void SetZoom(float scrolldy);
