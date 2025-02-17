@@ -272,12 +272,15 @@ int main()
         //Model = glm::rotate(Model, glm::radians(time*10.0f)*0.001f, glm::vec3(0.5f, 1.0f, 0.0f));
 		View = MainCamera.GetViewMatrix();
 		//View = glm::lookAt(cameraPos,cameraFront,cameraUp);
+		
+		LightPositions[0].x = 10.0f*glm::sin(glm::radians(time*10.0f));
+		LightPositions[0].z = 10.0f*glm::cos(glm::radians(time*10.0f));
 
         LightingShader.setTransformation("mat_View",View);
 		// LightingShader.setFloat("mix",Arrow_vertical_Input);
 		LightingShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
         LightingShader.setVec3("lightColor",  glm::vec3(1.0f, 1.0f, 1.0f));
-		LightingShader.setVec3("lightPos",LightPositions[0]);
+		LightingShader.setVec3("lightPosition",LightPositions[0]);
 		LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
 		for(unsigned int i = 0 ; i<10 ; i++)
@@ -291,6 +294,7 @@ int main()
 		glBindVertexArray(lightVAO);
 
 		LightnigSourceShader.UseShaderProgram();
+
 		glm::mat4 _model = glm::mat4(1.0f);
 		_model = glm::translate(_model, LightPositions[0]);
 		_model = glm::scale(_model,glm::vec3(0.3f,0.3f,0.3f));
