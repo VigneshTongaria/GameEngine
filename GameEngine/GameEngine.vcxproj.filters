@@ -43,6 +43,7 @@
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\fragment_core_1.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
+    <None Include="Assets\vertex_core_lightSource.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">
@@ -86,6 +87,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\Images\image_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\container2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\container2_specular.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

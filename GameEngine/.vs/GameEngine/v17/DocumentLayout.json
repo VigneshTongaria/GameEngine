@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\fragment_core.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:Assets\\fragment_core.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\fragment_core_1.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:Assets\\fragment_core_1.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -35,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\io\\KeyBoard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\fragment_core.glsl||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:Assets\\fragment_core.glsl||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -64,7 +64,7 @@
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAswHoAAABhAAAAAAAAAA==",
+              "ViewState": "AgIAAHsBAAAAAAAAAAAAAIYBAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
               "IsPinned": true,
@@ -72,19 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Camera.cpp",
-              "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Camera.cpp",
-              "RelativeDocumentMoniker": "src\\Camera.cpp",
-              "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Camera.cpp",
-              "RelativeToolTip": "src\\Camera.cpp",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAAD8AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-13T16:49:41.689Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Camera.h",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Camera.h",
               "RelativeDocumentMoniker": "src\\Camera.h",
@@ -96,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "KeyBoard.h",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\io\\KeyBoard.h",
               "RelativeDocumentMoniker": "src\\io\\KeyBoard.h",
@@ -108,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "KeyBoard.cpp",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\io\\KeyBoard.cpp",
               "RelativeDocumentMoniker": "src\\io\\KeyBoard.cpp",
@@ -120,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Shader.h",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Shader.h",
               "RelativeDocumentMoniker": "src\\Shader.h",
@@ -144,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "vertex_core.glsl",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\vertex_core.glsl",
               "RelativeDocumentMoniker": "Assets\\vertex_core.glsl",
@@ -156,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "fragment_core_1.glsl",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\fragment_core_1.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_core_1.glsl",
@@ -168,15 +156,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "fragment_core.glsl",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\fragment_core.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_core.glsl",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\Assets\\fragment_core.glsl",
               "RelativeToolTip": "Assets\\fragment_core.glsl",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-02-03T17:27:12.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Camera.cpp",
+              "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Camera.cpp",
+              "RelativeDocumentMoniker": "src\\Camera.cpp",
+              "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Camera.cpp",
+              "RelativeToolTip": "src\\Camera.cpp",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAAD8AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-13T16:49:41.689Z"
             },
             {
               "$type": "Document",

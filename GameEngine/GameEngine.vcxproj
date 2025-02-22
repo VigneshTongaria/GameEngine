@@ -32,6 +32,7 @@
     <None Include="Assets\fragment_core_1.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
     <None Include="Assets\vertex_core.glsl" />
+    <None Include="Assets\vertex_core_lightSource.glsl" />
     <None Include="glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,8 @@
     <Library Include="Linking\lib\GLFW\glfw3_mt.lib" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\Images\container2.png" />
+    <Image Include="Assets\Images\container2_specular.png" />
     <Image Include="Assets\Images\image_1.jpg" />
     <Image Include="Assets\Images\image_2.jpg" />
     <Image Include="Assets\Images\image_2.png" />
