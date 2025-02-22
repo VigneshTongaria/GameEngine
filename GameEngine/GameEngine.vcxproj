@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\container2.png" />
+    <Image Include="Assets\Images\container2_emissive.jpg" />
     <Image Include="Assets\Images\container2_specular.png" />
     <Image Include="Assets\Images\image_1.jpg" />
     <Image Include="Assets\Images\image_2.jpg" />

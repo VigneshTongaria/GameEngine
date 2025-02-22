@@ -18,6 +18,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
 std::string loadShaderSRC(const char* filename);
+unsigned int loadTexture(const char* filename);
 float Arrow_vertical_Input = 0.0f;
 
 glm::mat4 mouseTransform = glm::mat4(1.0f);
@@ -64,83 +65,11 @@ int main()
 	glfwSetCursorPosCallback(window,Mouse::CursorButtonCallback);
 	glfwSetScrollCallback(window,Mouse::MouseScrollCallback);
 
-	//LoadTextures - 1
-	int width,height,nrChannels;
-	unsigned char *data = stbi_load("Assets/Images/container2.png",&width,&height,&nrChannels,0);
-
-	unsigned int texture_1;
-	glGenTextures(1,&texture_1);
-	glBindTexture(GL_TEXTURE_2D,texture_1);
-    
-	//GENERATING MIPMAPS and setting interpolations
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-
-	if (data)
-    {
-       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-       glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-       std::cout << "Failed to load texture - 1" << std::endl;
-    }
-	stbi_image_free(data);
-    
-	//Texture 2
-	unsigned char* data1 = stbi_load("Assets/Images/container2_specular.png",&width,&height,&nrChannels,0);
-
-	unsigned int texture_2;
-	glGenTextures(1,&texture_2);
-	glBindTexture(GL_TEXTURE_2D,texture_2);
-    
-	//GENERATING MIPMAPS and setting interpolations
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-
-	if (data1)
-    {
-       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data1);
-       glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-       std::cout << "Failed to load texture - 2" << std::endl;
-    }
-	stbi_image_free(data1);
-
-	unsigned char* data2 = stbi_load("Assets/Images/container2_emissive.jpg",&width,&height,&nrChannels,0);
-
-	unsigned int texture_3;
-	glGenTextures(1,&texture_3);
-	glBindTexture(GL_TEXTURE_2D,texture_3);
-    
-	//GENERATING MIPMAPS and setting interpolations
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-
-	if (data2)
-    {
-       glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data2);
-       glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-       std::cout << "Failed to load texture - 3" << std::endl;
-    }
-	stbi_image_free(data2);
+	//LoadTextures
+	unsigned int texture_1 = loadTexture("Assets/Images/container2.png");
+	unsigned int texture_2 = loadTexture("Assets/Images/container2_specular.png");
+	unsigned int texture_3 = loadTexture("Assets/Images/container2_emissive.jpg");
+	
 
 	//Run_Shaders();
 	//Vertex shader
@@ -268,9 +197,15 @@ int main()
 	LightingShader.setInt("material.emissiveMap",2);
 	LightingShader.setFloat("material.shininess",64.0f);
 
-	LightingShader.setVec3("light.ambient",glm::vec3(0.1f));
-	LightingShader.setVec3("light.diffuse",glm::vec3(0.5f));
+	LightingShader.setVec3("light.ambient",glm::vec3(0.2f));
+	LightingShader.setVec3("light.diffuse",glm::vec3(1.0f));
 	LightingShader.setVec3("light.specular",glm::vec3(1.0f));
+
+	LightingShader.setFloat("light.constant", 1.0f);
+	LightingShader.setFloat("light.linear", 0.09f);
+	LightingShader.setFloat("light.quadratic", 0.032f);
+	LightingShader.setFloat("light.cosTheta", glm::cos(glm::radians(12.5f)));
+	LightingShader.setFloat("light.cosThetaOuter", glm::cos(glm::radians(17.5f)));
 
 	LightnigSourceShader.UseShaderProgram();
 	LightnigSourceShader.setTransformation("mat_Projection",Projection);
@@ -308,19 +243,18 @@ int main()
 
 		float time = float(glfwGetTime());
 		glm::mat4 Rot_45 = glm::mat4(1.0);
-		//Rot_45 = glm::rotate(Rot_45, glm::radians(time*10.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        //Model = glm::rotate(Model, glm::radians(time*10.0f)*0.001f, glm::vec3(0.5f, 1.0f, 0.0f));
 		View = MainCamera.GetViewMatrix();
-		//View = glm::lookAt(cameraPos,cameraFront,cameraUp);
 		
-		LightPositions[0].x = 10.0f*glm::sin(glm::radians(time*10.0f));
-		LightPositions[0].z = 10.0f*glm::cos(glm::radians(time*10.0f));
+		//  LightPositions[0].x = 1.0f*glm::sin(glm::radians(time*10.0f));
+		//  LightPositions[0].z = 1.0f*glm::cos(glm::radians(time*10.0f));
+		LightingShader.setVec3("light.position", MainCamera.GetCameraPos());
+		LightingShader.setVec3("light.direction",MainCamera.GetCameraFront());
 
         LightingShader.setTransformation("mat_View",View);
 		// LightingShader.setFloat("mix",Arrow_vertical_Input);
 		LightingShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
         LightingShader.setVec3("lightColor",  glm::vec3(1.0f, 1.0f, 1.0f));
-		LightingShader.setVec3("lightPosition",LightPositions[0]);
+		//LightingShader.setVec3("lightPosition",LightPositions[0]);
 		LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
 		for(unsigned int i = 0 ; i<10 ; i++)
@@ -450,5 +384,43 @@ std::string loadShaderSRC(const char* filename)
 	}
 	file.close();
     return ret;
+}
+
+unsigned int loadTexture(const char* filename)
+{
+	unsigned int textureID = -1;
+	int width,height,nrChannels;
+	unsigned char *data = stbi_load(filename,&width,&height,&nrChannels,0);
+
+	if (data)
+    {
+		GLenum format;
+        if (nrChannels == 1)
+            format = GL_RED;
+        else if (nrChannels == 3)
+            format = GL_RGB;
+        else if (nrChannels == 4)
+            format = GL_RGBA;
+
+		glGenTextures(1, &textureID);
+		glBindTexture(GL_TEXTURE_2D, textureID);
+
+		// GENERATING MIPMAPS and setting interpolations
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+       std::cout << "Failed to load texture - " << filename << std::endl;
+    }
+	stbi_image_free(data);
+    
+	return textureID;
 }
 

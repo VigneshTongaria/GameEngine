@@ -95,5 +95,8 @@
     <Image Include="Assets\Images\container2_specular.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\Images\container2_emissive.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
