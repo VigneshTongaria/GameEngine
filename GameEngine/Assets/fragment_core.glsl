@@ -8,7 +8,33 @@ struct Material {
 }; 
 in vec2 TextCords;
 
-struct Light {
+struct DirLight {
+    vec3 direction;
+  
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};  
+uniform DirLight dirLight;
+vec3 CalcDirLight(DirLight light); 
+
+struct PointLight {
+    vec3 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+
+    float constant;
+    float linear;
+    float quadratic;
+};
+
+#define NR_POINT_LIGHTS 4  
+uniform PointLight pointLights[NR_POINT_LIGHTS];
+
+vec3 CalcPointLight(PointLight light); 
+
+struct SpotLight {
     vec3 position;
     vec3 direction;
     vec3 ambient;
@@ -22,7 +48,8 @@ struct Light {
     float cosThetaOuter;
 };
 
-uniform Light light; 
+uniform SpotLight spotLight;
+vec3 CalcSpotLight(SpotLight light); 
   
 uniform Material material;
 
@@ -37,9 +64,38 @@ uniform vec3 objectColor;
 uniform vec3 viewPos;
 void main()
 {
+    vec3 result = CalcDirLight(dirLight);
+
+    for(int i = 0; i < NR_POINT_LIGHTS; i++)
+        result += CalcPointLight(pointLights[i]);
+    result += CalcSpotLight(spotLight);
+
+    FragColor = vec4(result,1.0);
+}
+
+vec3 CalcDirLight(DirLight light)
+{
+    
+    vec3 normalSurface = normalize(normal);
+    vec3 lightRay = normalize(-light.direction);
+    vec3 reflectRay = reflect(-lightRay,normal);
+    vec3 viewDirection = normalize(viewPos - FragPos);
+
+    float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
+    float diff = max(dot(normalSurface,lightRay),0.0);
+
+    vec3 diffusion = light.diffuse * diff* texture(material.diffuseMap,TextCords).rgb;
+    vec3 specular = light.specular * spec* texture(material.specularMap,TextCords).rgb;
+    vec3 ambientLight = light.ambient *  texture(material.diffuseMap,TextCords).rgb;
+    //vec3 emissive = texture(material.emissiveMap,TextCords).rgb;
+
+    return (diffusion + specular + ambientLight);
+}
+
+vec3 CalcPointLight(PointLight light)
+{
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(light.position - FragPos);
-    //lightRay = normalize(lightRay - light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);
     vec3 viewDirection = normalize(viewPos - FragPos);
 
@@ -57,7 +113,35 @@ void main()
     float fragToLightDist = length(light.position - FragPos);
     float attenuation = 1.0 / (light.constant + light.linear*fragToLightDist + light.quadratic * fragToLightDist*fragToLightDist);
 
-    float fragCosTheta = dot(lightRay,normalize(-light.direction));
+    specular *= attenuation;
+    diffusion *= attenuation;
+    ambientLight *= attenuation;
+
+    return (specular + diffusion + ambientLight);
+}
+
+vec3 CalcSpotLight(SpotLight light)
+{
+    vec3 normalSurface = normalize(normal);
+    vec3 lightRay = normalize(light.position - FragPos);
+    vec3 reflectRay = reflect(-lightRay,normal);
+    vec3 viewDirection = normalize(viewPos - FragPos);
+
+    float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
+    float diff = max(dot(normalSurface,lightRay),0.0);
+
+    vec3 diffusion = light.diffuse * diff* texture(material.diffuseMap,TextCords).rgb;
+    vec3 specular = light.specular * spec* texture(material.specularMap,TextCords).rgb;
+    vec3 ambientLight = light.ambient *  texture(material.diffuseMap,TextCords).rgb;
+    vec3 emissive = texture(material.emissiveMap,TextCords).rgb;
+    emissive = vec3(0.0);
+
+    if (texture(material.specularMap, TextCords).r != 0.0) emissive = vec3(0.0);
+    
+    float fragToLightDist = length(light.position - FragPos);
+    float attenuation = 1.0 / (light.constant + light.linear*fragToLightDist + light.quadratic * fragToLightDist*fragToLightDist);
+
+    float fragCosTheta = dot(lightRay,normalize(-1.0 * light.direction));
     float spotlight = 0.0;
 
     if(fragCosTheta > light.cosTheta) 
@@ -72,7 +156,5 @@ void main()
     specular *= attenuation*spotlight;
     diffusion *= attenuation*spotlight;
 
-    vec3 result = (diffusion +  specular + ambientLight + emissive);
-
-    FragColor = vec4(result,1.0);
+    return (specular + diffusion + ambientLight);
 }
