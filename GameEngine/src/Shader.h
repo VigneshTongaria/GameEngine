@@ -1,9 +1,11 @@
+#ifndef SHADER_H
 #define SHADER_H
-
-#include <glad/glad.h>  // Include OpenGL headers
+#include <glad/glad.h> // Include OpenGL headers
 #include <string>
 #include <iostream>
-
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 class Shader
 {
 private:
@@ -16,5 +18,5 @@ public:
     void setTransformation(const std::string &name, glm::mat4 Trans) const;
     Shader(const char* VertexShaderPath, const char* FragmentShaderPath);
     void UseShaderProgram();
-    ~Shader();
 };
+#endif

@@ -26,6 +26,7 @@
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -34,7 +35,9 @@
     <None Include="Assets\fragment_core_lightSource.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
+    <None Include="assimp-vc143-mtd.dll" />
     <None Include="glfw3.dll" />
+    <None Include="src\.gitattributes" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h" />
@@ -45,6 +48,7 @@
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
     <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>

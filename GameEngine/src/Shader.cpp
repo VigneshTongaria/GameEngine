@@ -1,29 +1,10 @@
 #include <string>
-#include<glad/glad.h>
-#include<GLFW/glfw3.h>
-#include <glm/glm.hpp>
+#include "Shader.h"
 #include <fstream>
 #include <sstream>
 #include <streambuf>
 #include <iostream>
 #include <glm/gtc/type_ptr.hpp>
-
-
-class Shader
-{
-private:
-    /* data */
-    std::string loadShaderSRC(const char* filename);
-public:
-    unsigned int m_ID;
-    void UseShaderProgram();
-	void setInt(const std::string &name, int value) const;
-	void setFloat(const std::string &name, float value) const;
-	void setVec3(const std::string &name, glm::vec3 vec) const;
-	void setTransformation(const std::string &name, glm::mat4 Trans) const;
-    Shader(const char* VertexShaderPath,const char* FragmentShaderPath);
-    ~Shader();
-};
 
 Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath)
 {
@@ -115,11 +96,6 @@ std::string Shader::loadShaderSRC(const char* filename)
 	}
 	file.close();
 	return ret;
-}
-
-Shader::~Shader()
-{
-
 }
 
 void Shader::UseShaderProgram()

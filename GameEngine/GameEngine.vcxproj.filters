@@ -39,6 +39,9 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw3.dll" />
@@ -47,6 +50,8 @@
     <None Include="Assets\fragment_core_1.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
+    <None Include="assimp-vc143-mtd.dll" />
+    <None Include="src\.gitattributes" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">
@@ -74,6 +79,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
