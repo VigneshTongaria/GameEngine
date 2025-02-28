@@ -18,8 +18,8 @@ struct Texture
 {
     unsigned int id;
     std::string type;
+    aiString path;
 };
-
 
 class Mesh
 {
