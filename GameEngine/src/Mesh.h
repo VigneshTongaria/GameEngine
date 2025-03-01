@@ -6,6 +6,7 @@
 #include<iostream>
 #include <vector>
 #include "Shader.h"
+#include <assimp/Importer.hpp>
 
 struct Vertex
 {

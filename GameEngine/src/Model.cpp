@@ -1,7 +1,7 @@
 #include "Model.h"
-#include <stb_image.h>
+#include "stb/stb_image.h"
 
- Model::Model(char *path)
+ Model::Model(const char *path)
 {
      loadModel(path);
 }
@@ -25,6 +25,7 @@ void Model::loadModel(std::string path)
         std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() <<std::endl;
         return;
     }
+    std::cout << "SUCCESS::ASSIMP::Scene loaded succesfully"<<std::endl;
     directory = path.substr(0,path.find_last_of('/'));
 
     processNode(scene->mRootNode,scene);
@@ -62,7 +63,6 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
             vertex.textcords = glm::vec2(mesh->mTextureCoords[0][i].x,mesh->mTextureCoords[0][i].y);
         }
         else vertex.textcords = glm::vec2(0.0f,0.0f);
-        
         vertices.push_back(vertex);
     }
     
@@ -87,6 +87,8 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
         std::vector<Texture> specular_maps = loadMaterialsTextures(material,aiTextureType_SPECULAR,"texture_specular");
         textures.insert(textures.end(),specular_maps.begin(),specular_maps.end());
     }
+
+    return Mesh(vertices, textures, indices);
 }
 
 std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType type,std::string typeName)
@@ -112,7 +114,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
         if(!tex_already_loaded)
         {
             Texture texture;
-            texture.id = loadTexture(path.C_Str());
+            texture.id = loadTexture(path.C_Str(),directory);
             texture.type = typeName;
             texture.path = path;
 
@@ -124,11 +126,15 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
     return textures;
 }
 
-unsigned int loadTexture(const char* filename)
+unsigned int Model::loadTexture(const char* filename,const std::string &directory)
 {
 	unsigned int textureID = -1;
 	int width,height,nrChannels;
-	unsigned char *data = stbi_load(filename,&width,&height,&nrChannels,0);
+
+    std::string path = std::string(filename);
+    path = directory + "/" + path;
+
+	unsigned char *data = stbi_load(path.c_str(),&width,&height,&nrChannels,0);
 
 	if (data)
     {
@@ -155,7 +161,8 @@ unsigned int loadTexture(const char* filename)
     }
     else
     {
-       std::cout << "Failed to load texture - " << filename << std::endl;
+        std::cout << "Failed to load texture: " << path << "\n";
+        std::cout << "Reason: " << stbi_failure_reason() << std::endl;
     }
 	stbi_image_free(data);
     

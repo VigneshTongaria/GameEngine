@@ -1,3 +1,6 @@
-﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-Model.obj : error LNK2019: unresolved external symbol "private: class Mesh __cdecl Model::processMesh(struct aiMesh *,struct aiScene const *)" (?processMesh@Model@@AEAA?AVMesh@@PEAUaiMesh@@PEBUaiScene@@@Z) referenced in function "private: void __cdecl Model::processNode(struct aiNode *,struct aiScene const *)" (?processNode@Model@@AEAAXPEAUaiNode@@PEBUaiScene@@@Z)
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Model.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(55,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(70,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(73,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(98,19): warning C4018: '<': signed/unsigned mismatch
+  GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

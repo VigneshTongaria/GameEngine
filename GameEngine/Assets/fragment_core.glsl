@@ -1,8 +1,8 @@
 #version 460 core
 
 struct Material {
-    sampler2D diffuseMap;
-    sampler2D specularMap;
+    sampler2D texture_diffuse1;
+    sampler2D texture_specular1;
     sampler2D emissiveMap;
     float shininess;
 }; 
@@ -84,10 +84,9 @@ vec3 CalcDirLight(DirLight light)
     float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
     float diff = max(dot(normalSurface,lightRay),0.0);
 
-    vec3 diffusion = light.diffuse * diff* texture(material.diffuseMap,TextCords).rgb;
-    vec3 specular = light.specular * spec* texture(material.specularMap,TextCords).rgb;
-    vec3 ambientLight = light.ambient *  texture(material.diffuseMap,TextCords).rgb;
-    //vec3 emissive = texture(material.emissiveMap,TextCords).rgb;
+    vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
+    vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).rgb;
+    vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
 
     return (diffusion + specular + ambientLight);
 }
@@ -102,13 +101,9 @@ vec3 CalcPointLight(PointLight light)
     float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
     float diff = max(dot(normalSurface,lightRay),0.0);
 
-    vec3 diffusion = light.diffuse * diff* texture(material.diffuseMap,TextCords).rgb;
-    vec3 specular = light.specular * spec* texture(material.specularMap,TextCords).rgb;
-    vec3 ambientLight = light.ambient *  texture(material.diffuseMap,TextCords).rgb;
-    vec3 emissive = texture(material.emissiveMap,TextCords).rgb;
-    emissive = vec3(0.0);
-
-    if (texture(material.specularMap, TextCords).r != 0.0) emissive = vec3(0.0);
+    vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
+    vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).rgb;
+    vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
     
     float fragToLightDist = length(light.position - FragPos);
     float attenuation = 1.0 / (light.constant + light.linear*fragToLightDist + light.quadratic * fragToLightDist*fragToLightDist);
@@ -130,13 +125,9 @@ vec3 CalcSpotLight(SpotLight light)
     float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
     float diff = max(dot(normalSurface,lightRay),0.0);
 
-    vec3 diffusion = light.diffuse * diff* texture(material.diffuseMap,TextCords).rgb;
-    vec3 specular = light.specular * spec* texture(material.specularMap,TextCords).rgb;
-    vec3 ambientLight = light.ambient *  texture(material.diffuseMap,TextCords).rgb;
-    vec3 emissive = texture(material.emissiveMap,TextCords).rgb;
-    emissive = vec3(0.0);
-
-    if (texture(material.specularMap, TextCords).r != 0.0) emissive = vec3(0.0);
+    vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
+    vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).rgb;
+    vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
     
     float fragToLightDist = length(light.position - FragPos);
     float attenuation = 1.0 / (light.constant + light.linear*fragToLightDist + light.quadratic * fragToLightDist*fragToLightDist);

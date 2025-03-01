@@ -12,7 +12,7 @@
 class Model
 {
 public :
-   Model(char* path);
+   Model(const char* path);
    void Draw(Shader &shader);
 
 private:
@@ -23,6 +23,6 @@ private:
    void processNode(aiNode* node,const aiScene *scene );
    Mesh processMesh(aiMesh* mesh,const aiScene *scene);
    std::vector<Texture> loadMaterialsTextures(aiMaterial *mat,aiTextureType type,std::string typeName);
-
+   unsigned int loadTexture(const char* filename,const std::string &directory);
 };
 #endif

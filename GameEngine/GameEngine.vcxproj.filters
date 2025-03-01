@@ -112,5 +112,29 @@
     <Image Include="Assets\Images\container2_emissive.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\resources\textures\container2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\container2_emissive.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\container2_specular.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\image_1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\image_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\T_M_bagpack_diffuse.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\T_M_bagpack_specular.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\textures\wall.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -4,4 +4,6 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Camera.cpp;C:\Users\vigne\G
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\KeyBoard.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\KeyBoard.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\Mouse.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mouse.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\main.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Mesh.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mesh.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Model.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Shader.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Shader.obj

@@ -13,18 +13,18 @@
 #include "io/KeyBoard.h"
 #include "io/Mouse.h"
 #include "Camera.h"
+#include "Model.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
 std::string loadShaderSRC(const char* filename);
-unsigned int loadTexture(const char* filename);
 float Arrow_vertical_Input = 0.0f;
 
 glm::mat4 mouseTransform = glm::mat4(1.0f);
 glm::mat4 mouseScroll = glm::mat4(1.0f);
 glm::mat4 Scale = glm::mat4(1.0f);
-glm::mat4 Model = glm::mat4(1.0f);
+glm::mat4 m_Model = glm::mat4(1.0f);
 glm::mat4 View = glm::mat4(1.0f);
 glm::mat4 Projection = glm::mat4(1.0f); 
 glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
@@ -57,6 +57,8 @@ int main()
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
+
+	stbi_set_flip_vertically_on_load(true);
 	
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -66,9 +68,9 @@ int main()
 	glfwSetScrollCallback(window,Mouse::MouseScrollCallback);
 
 	//LoadTextures
-	unsigned int texture_1 = loadTexture("Assets/Images/container2.png");
-	unsigned int texture_2 = loadTexture("Assets/Images/container2_specular.png");
-	unsigned int texture_3 = loadTexture("Assets/Images/container2_emissive.jpg");
+	// unsigned int texture_1 = loadTexture("Assets/Images/container2.png");
+	// unsigned int texture_2 = loadTexture("Assets/Images/container2_specular.png");
+	// unsigned int texture_3 = loadTexture("Assets/Images/container2_emissive.jpg");
 	
 
 	//Run_Shaders();
@@ -191,15 +193,12 @@ int main()
 
 	LightnigShader_1.setTransformation("mat_Rotation", Rot_0);*/
 	//setting LightingShader values
-	Model = glm::rotate(Model,glm::radians(-45.0f), glm::vec3(1.0f,0.0f,0.0f));
+	m_Model = glm::rotate(m_Model,glm::radians(-45.0f), glm::vec3(1.0f,0.0f,0.0f));
 
 	Projection = glm::perspective(glm::radians(60.0f),800.0f/600.0f,0.1f,100.0f);
 	LightingShader.setTransformation("mat_Projection",Projection);
-
-	LightingShader.setInt("material.diffuseMap",0);
-	LightingShader.setInt("material.specularMap",1);
-	LightingShader.setInt("material.emissiveMap",2);
-	LightingShader.setFloat("material.shininess",64.0f);
+    
+	Model ourModel("C:/Users/vigne/Downloads/backpack/backpack.obj");
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -267,24 +266,15 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 0.6f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//Assigning texture
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D,texture_1);
-
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D,texture_2);
-
-		glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_2D,texture_3);
-
-
 		//draw shapes
-		glBindVertexArray(VAO);
 		LightingShader.UseShaderProgram();
 
-		float time = float(glfwGetTime());
-		glm::mat4 Rot_45 = glm::mat4(1.0);
+		float time = static_cast<float>(glfwGetTime());
 		View = MainCamera.GetViewMatrix();
+
+		glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
 		
 		//  LightPositions[0].x = 1.0f*glm::sin(glm::radians(time*10.0f));
 		//  LightPositions[0].z = 1.0f*glm::cos(glm::radians(time*10.0f));
@@ -292,19 +282,17 @@ int main()
 		LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
         LightingShader.setTransformation("mat_View",View);
-		// LightingShader.setFloat("mix",Arrow_vertical_Input);
-		LightingShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
-        LightingShader.setVec3("lightColor",  glm::vec3(glm::vec3(1.0f, 1.0f, 1.0f)));
-		//LightingShader.setVec3("lightPosition",LightPositions[0]);
+		LightingShader.setTransformation("mat_Model",model);
 		LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
-		for(unsigned int i = 0 ; i<10 ; i++)
-		{
-			glm::mat4 _model = glm::mat4(1.0f);
-			_model = glm::translate(_model,cubePositions[i]);
-        	LightingShader.setTransformation("mat_Model",_model);
-			glDrawArrays(GL_TRIANGLES,0,36);
-		}
+		// for(unsigned int i = 0 ; i<10 ; i++)
+		// {
+		// 	glm::mat4 _model = glm::mat4(1.0f);
+		// 	_model = glm::translate(_model,cubePositions[i]);
+        // 	LightingShader.setTransformation("mat_Model",_model);
+		// 	glDrawArrays(GL_TRIANGLES,0,36);
+		// }
+		ourModel.Draw(LightingShader);
 
 		glBindVertexArray(lightVAO);
 
@@ -427,41 +415,4 @@ std::string loadShaderSRC(const char* filename)
     return ret;
 }
 
-unsigned int loadTexture(const char* filename)
-{
-	unsigned int textureID = -1;
-	int width,height,nrChannels;
-	unsigned char *data = stbi_load(filename,&width,&height,&nrChannels,0);
-
-	if (data)
-    {
-		GLenum format;
-        if (nrChannels == 1)
-            format = GL_RED;
-        else if (nrChannels == 3)
-            format = GL_RGB;
-        else if (nrChannels == 4)
-            format = GL_RGBA;
-
-		glGenTextures(1, &textureID);
-		glBindTexture(GL_TEXTURE_2D, textureID);
-
-		// GENERATING MIPMAPS and setting interpolations
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-       std::cout << "Failed to load texture - " << filename << std::endl;
-    }
-	stbi_image_free(data);
-    
-	return textureID;
-}
 

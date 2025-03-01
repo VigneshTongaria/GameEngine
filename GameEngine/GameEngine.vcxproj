@@ -64,6 +64,14 @@
     <Image Include="Assets\Images\image_2.jpg" />
     <Image Include="Assets\Images\image_2.png" />
     <Image Include="Assets\Images\wall.jpg" />
+    <Image Include="Assets\resources\textures\container2.png" />
+    <Image Include="Assets\resources\textures\container2_emissive.jpg" />
+    <Image Include="Assets\resources\textures\container2_specular.png" />
+    <Image Include="Assets\resources\textures\image_1.jpg" />
+    <Image Include="Assets\resources\textures\image_2.png" />
+    <Image Include="Assets\resources\textures\T_M_bagpack_diffuse.jpg" />
+    <Image Include="Assets\resources\textures\T_M_bagpack_specular.jpg" />
+    <Image Include="Assets\resources\textures\wall.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
