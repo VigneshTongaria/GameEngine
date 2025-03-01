@@ -5,6 +5,13 @@
 {
      loadModel(path);
 }
+Model::~Model()
+{
+    for(int i=0; i<textures_Loaded.size(); i++)
+    {
+        glDeleteTextures(1,&textures_Loaded[i].id);
+    }
+}
 
 void Model::Draw(Shader &shader)
 {
@@ -33,12 +40,13 @@ void Model::loadModel(std::string path)
 
 void Model::processNode(aiNode* node,const aiScene* scene)
 {
+    std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh,scene));
     }
-
+    std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
     for(unsigned int i=0; i<node->mNumChildren; i++)
     {
         processNode(node->mChildren[i],scene);
@@ -100,18 +108,20 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
         aiString path;
         bool tex_already_loaded = false;
         mat->GetTexture(type,i,&path);
+        std::cout << "Texture - " << typeName << "path - "<< path.C_Str() << std::endl;
 
-        for(int i=0; i< textures_Loaded.size(); i++)
+        for(int j=0; j< textures_Loaded.size(); j++)
         {
-            if(std::strcmp(textures_Loaded[i].path.C_Str(),path.C_Str()))
+            if(std::string(textures_Loaded[j].path.C_Str()) == std::string(path.C_Str()))
             {
+               std::cout<<textures_Loaded[j].path.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
                tex_already_loaded = true;
-               textures.push_back(textures_Loaded[i]);
+               textures.push_back(textures_Loaded[j]);
                break;
             }
         }
 
-        if(!tex_already_loaded)
+        if(tex_already_loaded == false)
         {
             Texture texture;
             texture.id = loadTexture(path.C_Str(),directory);
@@ -120,6 +130,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 
             textures.push_back(texture);
             textures_Loaded.push_back(texture);
+            std::cout << "Texture - " << typeName << "Loaded"<<std::endl;
         }
     }
 
@@ -131,7 +142,7 @@ unsigned int Model::loadTexture(const char* filename,const std::string &director
 	unsigned int textureID = -1;
 	int width,height,nrChannels;
 
-    std::string path = std::string(filename);
+    std::string path = static_cast<std::string>(filename);
     path = directory + "/" + path;
 
 	unsigned char *data = stbi_load(path.c_str(),&width,&height,&nrChannels,0);

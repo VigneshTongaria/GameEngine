@@ -13,6 +13,7 @@ class Model
 {
 public :
    Model(const char* path);
+   ~Model();
    void Draw(Shader &shader);
 
 private:

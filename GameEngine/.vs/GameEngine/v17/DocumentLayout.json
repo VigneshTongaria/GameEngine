@@ -83,8 +83,7 @@
               "ViewState": "AgIAALcAAAAAAAAAAAAowM0AAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "src\\Model.cpp",
               "ViewState": "AgIAAEQAAAAAAAAAAAAtwFoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-01T09:31:57.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T09:31:57.925Z"
             },
             {
               "$type": "Document",
@@ -107,7 +105,7 @@
               "RelativeDocumentMoniker": "src\\Model.h",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Model.h",
               "RelativeToolTip": "src\\Model.h",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAtwBkAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAABwAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-03-01T09:28:42.484Z",
               "EditorCaption": ""
@@ -122,8 +120,7 @@
               "RelativeToolTip": "src\\io\\KeyBoard.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-09T14:03:52.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-09T14:03:52.062Z"
             },
             {
               "$type": "Document",
@@ -135,8 +132,7 @@
               "RelativeToolTip": "src\\Shader.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-06T15:32:56.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-06T15:32:56.076Z"
             },
             {
               "$type": "Document",
@@ -148,8 +144,7 @@
               "RelativeToolTip": "Assets\\fragment_core_1.glsl",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-05T15:51:12.285Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T15:51:12.285Z"
             },
             {
               "$type": "Document",
@@ -161,8 +156,7 @@
               "RelativeToolTip": "src\\Mesh.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-02-26T15:54:49.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T15:54:49.16Z"
             },
             {
               "$type": "Document",
@@ -174,8 +168,7 @@
               "RelativeToolTip": "src\\Mesh.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-27T18:28:52.453Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T18:28:52.453Z"
             },
             {
               "$type": "Document",
@@ -211,8 +204,7 @@
               "RelativeToolTip": "Assets\\fragment_core.glsl",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-03T17:27:12.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-03T17:27:12.827Z"
             },
             {
               "$type": "Document",

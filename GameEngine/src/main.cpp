@@ -197,8 +197,9 @@ int main()
 
 	Projection = glm::perspective(glm::radians(60.0f),800.0f/600.0f,0.1f,100.0f);
 	LightingShader.setTransformation("mat_Projection",Projection);
+	LightingShader.setFloat("material.shininess",32.0f);
     
-	Model ourModel("C:/Users/vigne/Downloads/backpack/backpack.obj");
+	Model ourModel("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));

@@ -1,6 +1,2 @@
-﻿  Model.cpp
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(55,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(70,19): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(73,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(98,19): warning C4018: '<': signed/unsigned mismatch
+﻿  main.cpp
   GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe
