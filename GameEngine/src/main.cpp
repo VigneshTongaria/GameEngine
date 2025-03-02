@@ -14,6 +14,7 @@
 #include "io/Mouse.h"
 #include "Camera.h"
 #include "Model.h"
+#include "GameObject.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -199,8 +200,10 @@ int main()
 	LightingShader.setTransformation("mat_Projection",Projection);
 	LightingShader.setFloat("material.shininess",32.0f);
     
-	Model ourModel("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj",
-	glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,30.0f),glm::vec3(1.0f,1.0f,1.0f));
+	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,30.0f),glm::vec3(1.0f,1.0f,1.0f));
+//	Model ourModel("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
+	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
+	Model* ourModel = gameObject.GetComponent<Model>();
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -293,7 +296,7 @@ int main()
         // 	LightingShader.setTransformation("mat_Model",_model);
 		// 	glDrawArrays(GL_TRIANGLES,0,36);
 		// }
-		ourModel.Draw(LightingShader);
+		ourModel->Draw(LightingShader);
 
 		glBindVertexArray(lightVAO);
 

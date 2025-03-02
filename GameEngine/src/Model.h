@@ -7,13 +7,13 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+#include "Component.h"
+#include "GameObject.h"
 
-
-class Model
+class Model : public Component
 {
 public :
-   Model(const char* path,glm::vec3 worldPosition = glm::vec3(0.0f,0.0f,0.0f),
-   glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f),glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
+   Model(const char* path);
    ~Model();
    void Draw(Shader &shader);
    //void AddRigidbody();

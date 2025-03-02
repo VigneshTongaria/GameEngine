@@ -1,27 +1,9 @@
 #include "Model.h"
 #include "stb/stb_image.h"
 
- Model::Model(const char* path,glm::vec3 worldPosition,glm::vec3 rotationXYZ,glm::vec3 scale)
+ Model::Model(const char* path)
 {
      loadModel(path);
-
-     mat_model = glm::mat4(1.0f);
-     mat_model = glm::translate(mat_model,worldPosition);
-
-     if(rotationXYZ.x != 0)
-     {
-        mat_model = glm::rotate(mat_model,glm::radians(rotationXYZ.x),glm::vec3(1.0f,0.0f,0.0f));
-     }
-     if(rotationXYZ.y != 0)
-     {
-        mat_model = glm::rotate(mat_model,glm::radians(rotationXYZ.y),glm::vec3(0.0f,1.0f,0.0f));
-     }
-     if(rotationXYZ.z != 0)
-     {
-        mat_model = glm::rotate(mat_model,glm::radians(rotationXYZ.z),glm::vec3(0.0f,0.0f,1.0f));
-     }
-
-     mat_model = glm::scale(mat_model,scale);
 }
 Model::~Model()
 {
@@ -33,6 +15,27 @@ Model::~Model()
 
 void Model::Draw(Shader &shader)
 {
+    GameObject *go = this->gameObject;
+    if (go == nullptr)
+        std::cout << "Gameobject is null" << std::endl;
+    mat_model = glm::mat4(1.0f);
+    mat_model = glm::translate(mat_model, go->position);
+
+    if (go->rotationXYZ.x != 0)
+    {
+        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    }
+    if (go->rotationXYZ.y != 0)
+    {
+        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    }
+    if (go->rotationXYZ.z != 0)
+    {
+        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    }
+
+    mat_model = glm::scale(mat_model, go->scale);
+
     shader.setTransformation("mat_Model",mat_model);
     
     for(unsigned int i=0; i < meshes.size(); i++)
