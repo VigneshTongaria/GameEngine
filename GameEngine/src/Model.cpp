@@ -1,9 +1,27 @@
 #include "Model.h"
 #include "stb/stb_image.h"
 
- Model::Model(const char *path)
+ Model::Model(const char* path,glm::vec3 worldPosition,glm::vec3 rotationXYZ,glm::vec3 scale)
 {
      loadModel(path);
+
+     mat_model = glm::mat4(1.0f);
+     mat_model = glm::translate(mat_model,worldPosition);
+
+     if(rotationXYZ.x != 0)
+     {
+        mat_model = glm::rotate(mat_model,glm::radians(rotationXYZ.x),glm::vec3(1.0f,0.0f,0.0f));
+     }
+     if(rotationXYZ.y != 0)
+     {
+        mat_model = glm::rotate(mat_model,glm::radians(rotationXYZ.y),glm::vec3(0.0f,1.0f,0.0f));
+     }
+     if(rotationXYZ.z != 0)
+     {
+        mat_model = glm::rotate(mat_model,glm::radians(rotationXYZ.z),glm::vec3(0.0f,0.0f,1.0f));
+     }
+
+     mat_model = glm::scale(mat_model,scale);
 }
 Model::~Model()
 {
@@ -15,6 +33,8 @@ Model::~Model()
 
 void Model::Draw(Shader &shader)
 {
+    shader.setTransformation("mat_Model",mat_model);
+    
     for(unsigned int i=0; i < meshes.size(); i++)
     {
         meshes[i].Draw(shader);
@@ -60,7 +80,7 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
     std::vector<unsigned int> indices;  
     
     //Processing vertices data
-    for(int i=0; i< mesh->mNumVertices; i++)
+    for(unsigned int i=0; i< mesh->mNumVertices; i++)
     {
         Vertex vertex;
         vertex.position = glm::vec3(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z);
@@ -75,10 +95,10 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
     }
     
     //Processing indices data
-    for(int i=0; i<mesh->mNumFaces; i++)
+    for(unsigned int i=0; i<mesh->mNumFaces; i++)
     {
         aiFace* face = &mesh->mFaces[i];
-        for(int j=0; j<face->mNumIndices; j++)
+        for(unsigned int j=0; j<face->mNumIndices; j++)
         {
             indices.push_back(face->mIndices[j]);
         }
@@ -103,7 +123,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 {
     std::vector<Texture> textures;
 
-    for(int i=0 ;i<mat->GetTextureCount(type); i++)
+    for(unsigned int i=0 ;i<mat->GetTextureCount(type); i++)
     {
         aiString path;
         bool tex_already_loaded = false;

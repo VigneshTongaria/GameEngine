@@ -199,7 +199,8 @@ int main()
 	LightingShader.setTransformation("mat_Projection",Projection);
 	LightingShader.setFloat("material.shininess",32.0f);
     
-	Model ourModel("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
+	Model ourModel("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj",
+	glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,30.0f),glm::vec3(1.0f,1.0f,1.0f));
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -283,7 +284,6 @@ int main()
 		LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
         LightingShader.setTransformation("mat_View",View);
-		LightingShader.setTransformation("mat_Model",model);
 		LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
 		// for(unsigned int i = 0 ; i<10 ; i++)
