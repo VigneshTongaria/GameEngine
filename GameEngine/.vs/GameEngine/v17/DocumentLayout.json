@@ -99,8 +99,7 @@
               "ViewState": "AgIAALYAAAAAAAAAAAAmwM0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -112,8 +111,7 @@
               "RelativeToolTip": "Linking\\include\\glm\\detail\\type_vec4.inl",
               "ViewState": "AgIAAE0DAAAAAAAAAAAEwGEDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-02T16:23:39.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T16:23:39.22Z"
             },
             {
               "$type": "Document",
@@ -138,8 +136,7 @@
               "RelativeToolTip": "src\\Component.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-02T14:59:09.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T14:59:09.08Z"
             },
             {
               "$type": "Document",
@@ -151,8 +148,7 @@
               "RelativeToolTip": "src\\GameObject.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-02T14:22:49.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T14:22:49.387Z"
             },
             {
               "$type": "Document",
@@ -164,8 +160,7 @@
               "RelativeToolTip": "src\\Mesh.cpp",
               "ViewState": "AgIAACQAAAAAAAAAAAAEwDgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-27T18:28:52.453Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T18:28:52.453Z"
             },
             {
               "$type": "Document",
@@ -177,8 +172,7 @@
               "RelativeToolTip": "src\\Model.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-01T09:28:42.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T09:28:42.484Z"
             },
             {
               "$type": "Document",
@@ -190,8 +184,7 @@
               "RelativeToolTip": "src\\Model.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-01T09:31:57.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T09:31:57.925Z"
             },
             {
               "$type": "Document",
