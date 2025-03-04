@@ -1,8 +1,7 @@
 #ifndef RIGIDBODY_HPP
 #define RIGIDBODY_HPP
-#include "Component.h"
+#include "../GameObject.h"
 #include <glm/glm.hpp>
-#include "GameObject.h"
 
 class Rigidbody : public Component
 {
@@ -10,9 +9,11 @@ private:
      glm::vec3* position;
 public:
      float mass;
-     float velocity;
-     float accelaration;
-     Rigidbody(float mass = 1.0f,float velocity = 0.0f,float accelaration = 0.0f);
+     glm::vec3 velocity;
+     glm::vec3 accelaration;
+     Rigidbody(float mass = 1.0f,glm::vec3 velocity = glm::vec3(1.0f), glm::vec3 accelaration = glm::vec3(1.0f));
+
+     void AddImpulse(glm::vec3 impulse);
      void AddForce(glm::vec3 force);
 
      //Call Start after initialzing all classes and gamobjects

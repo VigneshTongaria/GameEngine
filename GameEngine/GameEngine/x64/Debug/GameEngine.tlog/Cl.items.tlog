@@ -8,4 +8,5 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\Mouse.cpp;C:\Users\vigne
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\main.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Mesh.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mesh.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Model.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbody.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\rigidbody.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Shader.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Shader.obj

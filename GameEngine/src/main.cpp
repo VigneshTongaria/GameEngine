@@ -15,6 +15,7 @@
 #include "Camera.h"
 #include "Model.h"
 #include "GameObject.h"
+#include "physics/rigidbody.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -200,10 +201,14 @@ int main()
 	LightingShader.setTransformation("mat_Projection",Projection);
 	LightingShader.setFloat("material.shininess",32.0f);
     
-	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,30.0f),glm::vec3(1.0f,1.0f,1.0f));
-//	Model ourModel("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
+	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
+
+    //	Adding gameObject components
 	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
 	Model* ourModel = gameObject.GetComponent<Model>();
+
+	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,-10.0f,0.0f));
+	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -256,6 +261,10 @@ int main()
 	LightnigSourceShader.setTransformation("mat_Projection",Projection);
 
 	//camera
+
+	// Call all start functions here
+    lastFrame = float(glfwGetTime());
+	rb->Start();
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -316,6 +325,10 @@ int main()
 		LightnigShader_1.setFloat("x_Offset",0.0f);
 		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,(void*)(3*sizeof(unsigned int)));*/
 		//glDrawArrays(GL_TRIANGLES,3,3);
+
+		// Physics related //update
+
+		rb->Update(deltaTime);
 
 
 		//Check for all events and swaps buffers
