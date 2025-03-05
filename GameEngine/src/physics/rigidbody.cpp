@@ -16,7 +16,9 @@ void Rigidbody::Start()
 
 void Rigidbody::Update(float dt)
 {
-    *position += velocity*dt + (accelaration * dt * dt) / 2.0f;
+    glm::vec3 ds = velocity*dt + (accelaration * dt * dt) / 2.0f;
+    *position += ds;
+    velocity += accelaration * dt;
 }
 
 void Rigidbody::AddForce(glm::vec3 force)

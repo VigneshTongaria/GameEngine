@@ -77,7 +77,7 @@ int main()
 
 	//Run_Shaders();
 	//Vertex shader
-	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
+	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core_BW.glsl");
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 
 	float vertices[] = {
@@ -207,7 +207,7 @@ int main()
 	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
 	Model* ourModel = gameObject.GetComponent<Model>();
 
-	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,-10.0f,0.0f));
+	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,0.0f,0.0f));
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
