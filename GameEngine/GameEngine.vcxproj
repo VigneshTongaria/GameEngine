@@ -35,6 +35,7 @@
   <ItemGroup>
     <None Include="Assets\fragment_core.glsl" />
     <None Include="Assets\fragment_core_1.glsl" />
+    <None Include="Assets\fragment_core_BW.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />

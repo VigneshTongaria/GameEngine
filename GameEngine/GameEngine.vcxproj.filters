@@ -61,6 +61,7 @@
     <None Include="Assets\vertex_core_lightSource.glsl" />
     <None Include="assimp-vc143-mtd.dll" />
     <None Include="src\.gitattributes" />
+    <None Include="Assets\fragment_core_BW.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">

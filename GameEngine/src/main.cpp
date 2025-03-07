@@ -79,6 +79,7 @@ int main()
 	//Vertex shader
 	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core_BW.glsl");
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
+	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
 
 	float vertices[] = {
 		// positions          // normals           // texture coords
@@ -256,9 +257,13 @@ int main()
 	LightingShader.setFloat("spotLight.quadratic", 0.032f);
 	LightingShader.setFloat("spotLight.cosTheta", glm::cos(glm::radians(12.5f)));
 	LightingShader.setFloat("spotLight.cosThetaOuter", glm::cos(glm::radians(15.0f)));
-
+    
+	// Cube Shaders 
 	LightnigSourceShader.UseShaderProgram();
 	LightnigSourceShader.setTransformation("mat_Projection",Projection);
+
+	HighlightShader.UseShaderProgram();
+	HighlightShader.setTransformation("mat_Projection",Projection);
 
 	//camera
 
@@ -277,8 +282,15 @@ int main()
 
 		//rendering
 		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_STENCIL_TEST);
+
+		glStencilOp(GL_KEEP,GL_KEEP,GL_REPLACE);
+
 		glClearColor(0.2f, 0.3f, 0.3f, 0.6f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		
+		// Disable writing to stencil buffer
+		glStencilMask(0x00);
 
 		//draw shapes
 		LightingShader.UseShaderProgram();
@@ -305,12 +317,20 @@ int main()
         // 	LightingShader.setTransformation("mat_Model",_model);
 		// 	glDrawArrays(GL_TRIANGLES,0,36);
 		// }
+		// writing stencil on models
+
 		ourModel->Draw(LightingShader);
 
 		glBindVertexArray(lightVAO);
 
 		LightnigSourceShader.UseShaderProgram();
 		LightnigSourceShader.setTransformation("mat_View",View);
+		
+	    // Enable writing to stencil buffer
+
+		glStencilFunc(GL_ALWAYS,1,0xFF);
+		glStencilMask(0xFF);
+
 		for(unsigned int i = 0 ; i<4 ; i++)
 		{
 			glm::mat4 _model = glm::mat4(1.0f);
@@ -318,13 +338,29 @@ int main()
         	LightnigSourceShader.setTransformation("mat_Model",_model);
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
+        
+		// Disable writing to stencil buffer and just reading its values
 
-		//glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
+		glStencilFunc(GL_NOTEQUAL,1,0xFF);
+		glStencilMask(0x00);
+		//glDisable(GL_DEPTH_TEST);
 
-		/*LightnigShader_1.UseShaderProgram();
-		LightnigShader_1.setFloat("x_Offset",0.0f);
-		glDrawElements(GL_TRIANGLES,3,GL_UNSIGNED_INT,(void*)(3*sizeof(unsigned int)));*/
-		//glDrawArrays(GL_TRIANGLES,3,3);
+		//Drawring highlight cubes
+
+		HighlightShader.UseShaderProgram();
+		HighlightShader.setTransformation("mat_View",View);
+		for(unsigned int i = 0 ; i<4 ; i++)
+		{
+			glm::mat4 _model = glm::mat4(1.0f);
+			_model = glm::translate(_model,pointLightPositions[i]);
+			_model = glm::scale(_model,glm::vec3(1.1f,1.1f,1.1f));
+        	HighlightShader.setTransformation("mat_Model",_model);
+			glDrawArrays(GL_TRIANGLES,0,36);
+		}
+
+		glStencilMask(0xFF);
+		glStencilFunc(GL_ALWAYS, 1, 0xFF);
+		glEnable(GL_DEPTH_TEST);
 
 		// Physics related //update
 
