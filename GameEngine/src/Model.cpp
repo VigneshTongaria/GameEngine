@@ -175,4 +175,5 @@ void Model::loadModel(DEFAULT_MODEL model,std::vector<Texture> textures)
      default:
         break;
      }
+     meshes.push_back(Mesh(vertices,textures,indices));
 }

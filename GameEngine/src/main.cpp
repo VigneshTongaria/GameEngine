@@ -81,6 +81,7 @@ int main()
 	//Vertex shader
 	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
+	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
 
 	float vertices[] = {
@@ -280,6 +281,9 @@ int main()
 	HighlightShader.UseShaderProgram();
 	HighlightShader.setTransformation("mat_Projection",Projection);
 
+	ImageShader.UseShaderProgram();
+	ImageShader.setTransformation("mat_Projection",Projection);
+
 	//camera
 
 	// Call all start functions here
@@ -337,13 +341,15 @@ int main()
 		ourModel->Draw(LightingShader);
 
 		// drawing cubes
+
+		ImageShader.UseShaderProgram();
+		ImageShader.setTransformation("mat_View",View);
         
 		for(unsigned int i=0; i < 10 ; i++)
 		{
-			CubesGameObject[i]->GetComponent<Model>()->Draw(LightingShader);
+			CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader);
 		}
 		
-
 		glBindVertexArray(lightVAO);
 
 		LightnigSourceShader.UseShaderProgram();

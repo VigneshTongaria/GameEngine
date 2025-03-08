@@ -74,6 +74,8 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
             format = GL_RGB;
         else if (nrChannels == 4)
             format = GL_RGBA;
+        
+        if(nrChannels == 4) std::cout<<"png loaded"<<std::endl;
 
 		glGenTextures(1, &texture.id);
 		glBindTexture(GL_TEXTURE_2D, texture.id);

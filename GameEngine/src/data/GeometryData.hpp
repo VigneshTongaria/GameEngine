@@ -37,6 +37,10 @@ private:
         {
             vecT.push_back(T(arr[i], arr[i + 1]));
         }
+        else 
+        {
+            std::cout<<"Vector comparison failed"<<std::endl;
+        }
        }
        
        return vecT;

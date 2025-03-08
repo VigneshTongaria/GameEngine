@@ -19,8 +19,8 @@ ModelData GeometryData::GetModelData(DEFAULT_MODEL model)
 
         if(GeometryData::defaultModelDatas.find(CUBE) == GeometryData::defaultModelDatas.end()) 
         {
-           vertices = GetVertexVecFromData(GetVectorFromFloatArr<glm::vec3>(cubeVertices,3,0,36),
-           GetVectorFromFloatArr<glm::vec3>(cubeVertices,3,3,36),GetVectorFromFloatArr<glm::vec2>(cubeVertices,2,6,36));
+           vertices = GetVertexVecFromData(GetVectorFromFloatArr<glm::vec3>(cubeVertices,8,0,216),
+           GetVectorFromFloatArr<glm::vec3>(cubeVertices,8,3,216),GetVectorFromFloatArr<glm::vec2>(cubeVertices,8,6,216));
            
            ModelData m_Data = ModelData(vertices,CUBE);
 
