@@ -23,11 +23,12 @@
     <ClCompile Include="lib\stb.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Component.h" />
+    <ClCompile Include="src\data\GeometryData.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\io\KeyBoard.cpp" />
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\managers\SceneManager.cpp" />
+    <ClCompile Include="src\managers\ResourcesManager.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\physics\rigidbody.cpp" />
@@ -51,10 +52,11 @@
     <ClInclude Include="Linking\include\GLFW\glfw3native.h" />
     <ClInclude Include="Linking\include\KHR\khrplatform.h" />
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\data\GeometryData.hpp" />
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
-    <ClInclude Include="src\managers\SceneManager.hpp" />
+    <ClInclude Include="src\managers\ResourcesManager.hpp" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\physics\rigidbody.hpp" />

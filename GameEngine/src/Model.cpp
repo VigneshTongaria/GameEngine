@@ -1,10 +1,13 @@
 #include "Model.h"
 #include "stb/stb_image.h"
-#include "managers/SceneManager.hpp"
 
- Model::Model(const char* path)
+Model::Model(const char* path)
 {
      loadModel(path);
+}
+Model::Model(DEFAULT_MODEL model,std::vector<Texture> textures)
+{
+     loadModel(model,textures);
 }
 Model::~Model()
 {
@@ -41,7 +44,7 @@ void Model::Draw(Shader &shader)
     
     for(unsigned int i=0; i < meshes.size(); i++)
     {
-        meshes[i].DrawIndices(shader);
+        meshes[i].Draw(shader);
     }
 }
 
@@ -147,7 +150,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 
         if(tex_already_loaded == false)
         {
-            Texture texture= SceneManager::loadTexture(path.C_Str(),directory,t_type,path);
+            Texture texture= ResourcesManager::loadTexture(path.C_Str(),directory,t_type,path);
 
             textures.push_back(texture);
             textures_Loaded.push_back(texture);
@@ -156,4 +159,20 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
     }
 
     return textures;
+}
+
+void Model::loadModel(DEFAULT_MODEL model,std::vector<Texture> textures)
+{
+     std::vector<Vertex> vertices;
+     std::vector<unsigned int> indices;
+
+     switch (model)
+     {
+     case DEFAULT_MODEL::CUBE:
+        vertices = GeometryData::GetModelData(DEFAULT_MODEL :: CUBE).data;
+        break;
+     
+     default:
+        break;
+     }
 }

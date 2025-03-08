@@ -16,6 +16,8 @@
 #include "Model.h"
 #include "GameObject.h"
 #include "physics/rigidbody.hpp"
+#include "managers/ResourcesManager.hpp"
+#include "data/GeometryData.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -204,12 +206,25 @@ int main()
     
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
 
-    //	Adding gameObject components
+    //	Adding gameObject components for  our model
 	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
 	Model* ourModel = gameObject.GetComponent<Model>();
 
 	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,0.0f,0.0f));
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
+
+	// Texture for cubes
+	std::vector<Texture> newTexture;
+	newTexture.push_back( ResourcesManager::loadTexture("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/grass.png",TEXTURE_TYPE::DIFFUSE));
+
+	// Gameobjects for cubes
+	GameObject** CubesGameObject = new GameObject*[10];
+    for(unsigned int i = 0; i < 10; i++)
+	{
+        CubesGameObject[i] = new GameObject(cubePositions[i]);
+		CubesGameObject[i]->AddComponent<Model>(DEFAULT_MODEL::CUBE,newTexture);
+	}
+    
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -320,6 +335,14 @@ int main()
 		// writing stencil on models
 
 		ourModel->Draw(LightingShader);
+
+		// drawing cubes
+        
+		for(unsigned int i=0; i < 10 ; i++)
+		{
+			CubesGameObject[i]->GetComponent<Model>()->Draw(LightingShader);
+		}
+		
 
 		glBindVertexArray(lightVAO);
 

@@ -1,5 +1,5 @@
 #include "Mesh.h"
-#include "managers/SceneManager.hpp"
+#include "managers/ResourcesManager.hpp"
 
 Mesh :: Mesh(std::vector<Vertex> vertices, std::vector<Texture> textures, std::vector<unsigned int> indices)
 {
@@ -32,7 +32,7 @@ void Mesh::setUpMesh()
    glBindVertexArray(0);
 }
 
-void Mesh::DrawIndices(Shader &shader)
+void Mesh::Draw(Shader &shader)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
@@ -48,11 +48,11 @@ void Mesh::DrawIndices(Shader &shader)
         {
         case TEXTURE_TYPE::DIFFUSE:
           number = std::to_string(diffuseNr++);
-          t_name = SceneManager::getTextureName(DIFFUSE);
+          t_name = ResourcesManager::getTextureName(DIFFUSE);
           break;
         case TEXTURE_TYPE::SPECULAR:
           number = std::to_string(specularNr++);
-          t_name = SceneManager::getTextureName(SPECULAR);
+          t_name = ResourcesManager::getTextureName(SPECULAR);
 
         default:
           break;
@@ -65,43 +65,12 @@ void Mesh::DrawIndices(Shader &shader)
 
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
+
+    if(indices.size() != 0)
     glDrawElements(GL_TRIANGLES,indices.size(),GL_UNSIGNED_INT,0);
-    glBindVertexArray(0);
-}
 
-void Mesh::DrawVertices(Shader &shader)
-{
-    unsigned int diffuseNr = 1;
-    unsigned int specularNr = 1;
-
-    for(unsigned int i=0 ; i<textures.size(); i++)
-    {
-        glActiveTexture(GL_TEXTURE0 + i);
-
-        TEXTURE_TYPE type = textures[i].type;
-        std::string number,t_name;
-
-        switch (type)
-        {
-        case TEXTURE_TYPE::DIFFUSE:
-          number = std::to_string(diffuseNr++);
-          t_name = SceneManager::getTextureName(DIFFUSE);
-          break;
-        case TEXTURE_TYPE::SPECULAR:
-          number = std::to_string(specularNr++);
-          t_name = SceneManager::getTextureName(SPECULAR);
-
-        default:
-          break;
-        }
-          
-        
-        shader.setInt("material." + t_name + number,i);
-        glBindTexture(GL_TEXTURE_2D,textures[i].id);
-    }
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindVertexArray(VAO);
+    else 
     glDrawArrays(GL_TRIANGLES,0,vertices.size());
+    
     glBindVertexArray(0);
 }

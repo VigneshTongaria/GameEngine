@@ -51,7 +51,10 @@
     <ClCompile Include="src\physics\rigidbody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\managers\SceneManager.cpp">
+    <ClCompile Include="src\managers\ResourcesManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\GeometryData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +107,10 @@
     <ClInclude Include="src\physics\rigidbody.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\managers\SceneManager.hpp">
+    <ClInclude Include="src\managers\ResourcesManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\GeometryData.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,8 +15,7 @@ class GameObject{
     glm::vec3 scale;
     std::unordered_map<std::type_index, std::shared_ptr<Component>> components;
 
-    GameObject(glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), 
-    glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
+    GameObject(glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
 
     template <typename T, typename... Args>
     void AddComponent(Args... args)
