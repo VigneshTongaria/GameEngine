@@ -77,7 +77,7 @@ int main()
 
 	//Run_Shaders();
 	//Vertex shader
-	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core_BW.glsl");
+	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
 
@@ -284,9 +284,9 @@ int main()
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_STENCIL_TEST);
 
-		glStencilOp(GL_KEEP,GL_KEEP,GL_REPLACE);
+		glStencilOp(GL_KEEP,GL_REPLACE,GL_REPLACE);
 
-		glClearColor(0.2f, 0.3f, 0.3f, 0.6f);
+		glClearColor(0.1f, 0.1f, 0.1f, 0.6f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		
 		// Disable writing to stencil buffer
@@ -343,9 +343,9 @@ int main()
 
 		glStencilFunc(GL_NOTEQUAL,1,0xFF);
 		glStencilMask(0x00);
-		//glDisable(GL_DEPTH_TEST);
+		glDisable(GL_DEPTH_TEST);
 
-		//Drawring highlight cubes
+		//Drawing highlight cubes
 
 		HighlightShader.UseShaderProgram();
 		HighlightShader.setTransformation("mat_View",View);

@@ -10,6 +10,11 @@
 #include "Component.h"
 #include "GameObject.h"
 
+enum DEFAULT_MODEL
+{
+    CUBE,SPHERE,CYLINDER
+};
+
 class Model : public Component
 {
 public :

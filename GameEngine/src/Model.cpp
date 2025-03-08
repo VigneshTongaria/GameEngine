@@ -63,13 +63,13 @@ void Model::loadModel(std::string path)
 
 void Model::processNode(aiNode* node,const aiScene* scene)
 {
-    std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
+    //std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh,scene));
     }
-    std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
+   // std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
     for(unsigned int i=0; i<node->mNumChildren; i++)
     {
         processNode(node->mChildren[i],scene);
@@ -137,7 +137,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
         {
             if(std::string(textures_Loaded[j].path.C_Str()) == std::string(path.C_Str()))
             {
-               std::cout<<textures_Loaded[j].path.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
+              // std::cout<<textures_Loaded[j].path.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
                tex_already_loaded = true;
                textures.push_back(textures_Loaded[j]);
                break;
@@ -153,7 +153,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 
             textures.push_back(texture);
             textures_Loaded.push_back(texture);
-            std::cout << "Texture - " << typeName << "Loaded"<<std::endl;
+           // std::cout << "Texture - " << typeName << "Loaded"<<std::endl;
         }
     }
 

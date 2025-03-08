@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\physics\\rigidbody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\physics\\rigidbody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\physics\\rigidbody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\physics\\rigidbody.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\physics\\rigidbody.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -97,20 +97,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp",
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAUwNEAAABVAAAAAAAAAA==",
+              "ViewState": "AgIAABIBAAAAAAAAAAAUwNEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -138,13 +139,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "rigidbody.cpp",
               "DocumentMoniker": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\physics\\rigidbody.cpp",
               "RelativeDocumentMoniker": "src\\physics\\rigidbody.cpp",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\physics\\rigidbody.cpp",
               "RelativeToolTip": "src\\physics\\rigidbody.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-04T17:37:58.17Z",
               "EditorCaption": ""
