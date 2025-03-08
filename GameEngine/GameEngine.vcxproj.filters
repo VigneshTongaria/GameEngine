@@ -51,6 +51,9 @@
     <ClCompile Include="src\physics\rigidbody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\managers\SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw3.dll" />
@@ -62,6 +65,7 @@
     <None Include="assimp-vc143-mtd.dll" />
     <None Include="src\.gitattributes" />
     <None Include="Assets\fragment_core_BW.glsl" />
+    <None Include="Assets\fragment_core_highlight.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">
@@ -98,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\physics\rigidbody.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\SceneManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

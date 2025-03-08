@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "stb/stb_image.h"
+#include "managers/SceneManager.hpp"
 
  Model::Model(const char* path)
 {
@@ -40,7 +41,7 @@ void Model::Draw(Shader &shader)
     
     for(unsigned int i=0; i < meshes.size(); i++)
     {
-        meshes[i].Draw(shader);
+        meshes[i].DrawIndices(shader);
     }
 }
 
@@ -112,17 +113,17 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
     {
         aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-        std::vector<Texture> diffuse_maps = loadMaterialsTextures(material,aiTextureType_DIFFUSE,"texture_diffuse");
+        std::vector<Texture> diffuse_maps = loadMaterialsTextures(material,aiTextureType_DIFFUSE,TEXTURE_TYPE::DIFFUSE);
         textures.insert(textures.end(),diffuse_maps.begin(),diffuse_maps.end());
 
-        std::vector<Texture> specular_maps = loadMaterialsTextures(material,aiTextureType_SPECULAR,"texture_specular");
+        std::vector<Texture> specular_maps = loadMaterialsTextures(material,aiTextureType_SPECULAR,TEXTURE_TYPE::SPECULAR);
         textures.insert(textures.end(),specular_maps.begin(),specular_maps.end());
     }
 
     return Mesh(vertices, textures, indices);
 }
 
-std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType type,std::string typeName)
+std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)
 {
     std::vector<Texture> textures;
 
@@ -131,11 +132,11 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
         aiString path;
         bool tex_already_loaded = false;
         mat->GetTexture(type,i,&path);
-        std::cout << "Texture - " << typeName << "path - "<< path.C_Str() << std::endl;
+       // std::cout << "Texture - " << typeName << "path - "<< path.C_Str() << std::endl;
 
         for(int j=0; j< textures_Loaded.size(); j++)
         {
-            if(std::string(textures_Loaded[j].path.C_Str()) == std::string(path.C_Str()))
+            if(textures_Loaded[j].aiPath == path)
             {
               // std::cout<<textures_Loaded[j].path.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
                tex_already_loaded = true;
@@ -146,10 +147,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 
         if(tex_already_loaded == false)
         {
-            Texture texture;
-            texture.id = loadTexture(path.C_Str(),directory);
-            texture.type = typeName;
-            texture.path = path;
+            Texture texture= SceneManager::loadTexture(path.C_Str(),directory,t_type,path);
 
             textures.push_back(texture);
             textures_Loaded.push_back(texture);
@@ -158,47 +156,4 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
     }
 
     return textures;
-}
-
-unsigned int Model::loadTexture(const char* filename,const std::string &directory)
-{
-	unsigned int textureID = -1;
-	int width,height,nrChannels;
-
-    std::string path = static_cast<std::string>(filename);
-    path = directory + "/" + path;
-
-	unsigned char *data = stbi_load(path.c_str(),&width,&height,&nrChannels,0);
-
-	if (data)
-    {
-		GLenum format;
-        if (nrChannels == 1)
-            format = GL_RED;
-        else if (nrChannels == 3)
-            format = GL_RGB;
-        else if (nrChannels == 4)
-            format = GL_RGBA;
-
-		glGenTextures(1, &textureID);
-		glBindTexture(GL_TEXTURE_2D, textureID);
-
-		// GENERATING MIPMAPS and setting interpolations
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture: " << path << "\n";
-        std::cout << "Reason: " << stbi_failure_reason() << std::endl;
-    }
-	stbi_image_free(data);
-    
-	return textureID;
 }

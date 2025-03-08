@@ -6,6 +6,7 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.cpp;C:\Users\vig
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\KeyBoard.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\KeyBoard.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\Mouse.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mouse.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\main.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\SceneManager.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\SceneManager.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Mesh.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mesh.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Model.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbody.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\rigidbody.obj

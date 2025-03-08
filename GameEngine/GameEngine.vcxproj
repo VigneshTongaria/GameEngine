@@ -27,6 +27,7 @@
     <ClCompile Include="src\io\KeyBoard.cpp" />
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\managers\SceneManager.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\physics\rigidbody.cpp" />
@@ -36,6 +37,7 @@
     <None Include="Assets\fragment_core.glsl" />
     <None Include="Assets\fragment_core_1.glsl" />
     <None Include="Assets\fragment_core_BW.glsl" />
+    <None Include="Assets\fragment_core_highlight.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
@@ -52,6 +54,7 @@
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
+    <ClInclude Include="src\managers\SceneManager.hpp" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\physics\rigidbody.hpp" />

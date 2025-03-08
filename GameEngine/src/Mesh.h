@@ -15,11 +15,17 @@ struct Vertex
     glm::vec2 textcords;
 };
 
+enum TEXTURE_TYPE
+{
+    DIFFUSE,SPECULAR,NORMAL,EMMISIVE
+};
+
 struct Texture
 {
     unsigned int id;
-    std::string type;
-    aiString path;
+    TEXTURE_TYPE type;
+    std::string path;
+    aiString aiPath;
 };
 
 class Mesh
@@ -30,8 +36,8 @@ public :
     std::vector<unsigned int> indices;   
     
     Mesh(std::vector<Vertex> vertices, std::vector<Texture> textures, std::vector<unsigned int> indices);
-    void Draw(Shader &Shader);
-
+    void DrawIndices(Shader &Shader);
+    void DrawVertices(Shader &Shader);
 private:
     unsigned int VAO,VBO,EBO;
     void setUpMesh();
