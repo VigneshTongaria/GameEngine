@@ -14,8 +14,5 @@ out vec4 FragColor;
 void main()
 {
     vec4 textureColor = texture(material.texture_diffuse1,TextCords);
-
-    if(textureColor.a < 0.1) 
-       discard;
     FragColor = textureColor;
 }

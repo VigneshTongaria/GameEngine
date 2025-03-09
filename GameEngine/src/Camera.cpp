@@ -3,9 +3,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-Camera:: Camera(glm::vec3 CameraPos,
-    glm::vec3 CameraUp,
-    glm::vec3 CameraFront,float yaw,float pitch)
+Camera:: Camera(glm::vec3 CameraPos,glm::vec3 CameraUp,glm::vec3 CameraFront,float yaw,float pitch,
+    float perspectiveAngle,float height,float width,float nearPlane,float farPlane)
 {
     this->Position = CameraPos;
     this->Up = CameraUp;
@@ -14,12 +13,23 @@ Camera:: Camera(glm::vec3 CameraPos,
     this->pitch = 90.0f;
     this->MouseSensitivity = 0.1f;
     this->MovementSpeed =3.5f;
+
+    this->perspectiveAngle = perspectiveAngle;
+    this->height = height;
+    this->width = width;
+    this->nearPlane = nearPlane;
+    this->farPlane = farPlane;
+
     UpdateCameraVectors();
 }
 
 glm::mat4 Camera :: GetViewMatrix()
 {
     return glm::lookAt(Position,Position + Front,Up);
+}
+glm::mat4 Camera :: GetProjectionMatrix()
+{
+    return glm::perspective(perspectiveAngle,height/width,nearPlane,farPlane);
 }
 glm::vec3 Camera :: GetCameraPos()
 {

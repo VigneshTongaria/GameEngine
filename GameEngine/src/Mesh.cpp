@@ -43,9 +43,14 @@ void Mesh::Draw(Shader &shader)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
-
+      
     for(unsigned int i=0 ; i<textures.size(); i++)
     {
+        if(textures[i].id == -1)
+        {
+           break;
+        }
+
         glActiveTexture(GL_TEXTURE0 + i);
 
         TEXTURE_TYPE type = textures[i].type;
@@ -64,8 +69,6 @@ void Mesh::Draw(Shader &shader)
         default:
           break;
         }
-          
-        
         shader.setInt("material." + t_name + number,i);
         glBindTexture(GL_TEXTURE_2D,textures[i].id);
     }

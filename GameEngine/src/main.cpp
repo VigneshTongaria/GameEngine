@@ -22,23 +22,21 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
+void SetViewAndProjectionForAllShaders();
 std::string loadShaderSRC(const char* filename);
 float Arrow_vertical_Input = 0.0f;
 
 glm::mat4 mouseTransform = glm::mat4(1.0f);
 glm::mat4 mouseScroll = glm::mat4(1.0f);
 glm::mat4 Scale = glm::mat4(1.0f);
-glm::mat4 m_Model = glm::mat4(1.0f);
-glm::mat4 View = glm::mat4(1.0f);
-glm::mat4 Projection = glm::mat4(1.0f); 
-glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 
 Camera MainCamera;
+
+// All shaders
+std::vector<Shader*> shaders;
 
 
 int main()
@@ -83,6 +81,12 @@ int main()
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
+
+	shaders.push_back(&LightingShader);
+	shaders.push_back(&LightnigSourceShader);
+	shaders.push_back(&ImageShader);
+	shaders.push_back(&HighlightShader);
+
 
 	float vertices[] = {
 		// positions          // normals           // texture coords
@@ -199,10 +203,6 @@ int main()
 
 	LightnigShader_1.setTransformation("mat_Rotation", Rot_0);*/
 	//setting LightingShader values
-	m_Model = glm::rotate(m_Model,glm::radians(-45.0f), glm::vec3(1.0f,0.0f,0.0f));
-
-	Projection = glm::perspective(glm::radians(60.0f),800.0f/600.0f,0.1f,100.0f);
-	LightingShader.setTransformation("mat_Projection",Projection);
 	LightingShader.setFloat("material.shininess",32.0f);
     
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
@@ -216,7 +216,7 @@ int main()
 
 	// Texture for cubes
 	std::vector<Texture> newTexture;
-	newTexture.push_back( ResourcesManager::loadTexture("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/grass.png",TEXTURE_TYPE::DIFFUSE));
+	newTexture.push_back( ResourcesManager::loadTexture("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/blending_transparent_window.png",TEXTURE_TYPE::DIFFUSE));
 
 	// Gameobjects for cubes
 	GameObject** CubesGameObject = new GameObject*[10];
@@ -276,13 +276,10 @@ int main()
     
 	// Cube Shaders 
 	LightnigSourceShader.UseShaderProgram();
-	LightnigSourceShader.setTransformation("mat_Projection",Projection);
 
 	HighlightShader.UseShaderProgram();
-	HighlightShader.setTransformation("mat_Projection",Projection);
 
 	ImageShader.UseShaderProgram();
-	ImageShader.setTransformation("mat_Projection",Projection);
 
 	//camera
 
@@ -298,12 +295,18 @@ int main()
 		lastFrame = currentTime;
 		//process inputs
 		process_inputs(window);
+		SetViewAndProjectionForAllShaders();
 
 		//rendering
+
+		// All tests
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_STENCIL_TEST);
+		glEnable(GL_BLEND);
+		glEnable(GL_CULL_FACE);
 
 		glStencilOp(GL_KEEP,GL_REPLACE,GL_REPLACE);
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
 		glClearColor(0.1f, 0.1f, 0.1f, 0.6f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -311,11 +314,11 @@ int main()
 		// Disable writing to stencil buffer
 		glStencilMask(0x00);
 
+
 		//draw shapes
 		LightingShader.UseShaderProgram();
 
 		float time = static_cast<float>(glfwGetTime());
-		View = MainCamera.GetViewMatrix();
 
 		glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
@@ -326,7 +329,6 @@ int main()
 		LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
 		LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
-        LightingShader.setTransformation("mat_View",View);
 		LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
 		// for(unsigned int i = 0 ; i<10 ; i++)
@@ -340,20 +342,12 @@ int main()
 
 		ourModel->Draw(LightingShader);
 
-		// drawing cubes
+		// Drawing lightsource cubes and highlight
 
-		ImageShader.UseShaderProgram();
-		ImageShader.setTransformation("mat_View",View);
-        
-		for(unsigned int i=0; i < 10 ; i++)
-		{
-			CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader);
-		}
 		
 		glBindVertexArray(lightVAO);
 
 		LightnigSourceShader.UseShaderProgram();
-		LightnigSourceShader.setTransformation("mat_View",View);
 		
 	    // Enable writing to stencil buffer
 
@@ -367,6 +361,15 @@ int main()
         	LightnigSourceShader.setTransformation("mat_Model",_model);
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
+
+		// drawing Transparent objects
+        glStencilMask(0x00);
+		ImageShader.UseShaderProgram();
+        
+		for(unsigned int i=0; i < 10 ; i++)
+		{
+			CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader);
+		}
         
 		// Disable writing to stencil buffer and just reading its values
 
@@ -375,9 +378,10 @@ int main()
 		glDisable(GL_DEPTH_TEST);
 
 		//Drawing highlight cubes
+		glBindVertexArray(lightVAO);
 
 		HighlightShader.UseShaderProgram();
-		HighlightShader.setTransformation("mat_View",View);
+
 		for(unsigned int i = 0 ; i<4 ; i++)
 		{
 			glm::mat4 _model = glm::mat4(1.0f);
@@ -497,4 +501,13 @@ std::string loadShaderSRC(const char* filename)
     return ret;
 }
 
+void SetViewAndProjectionForAllShaders()
+{
+	for(auto& shader : shaders)
+	{
+		shader->UseShaderProgram();
+        shader->setTransformation("mat_View",MainCamera.GetViewMatrix());
+		shader->setTransformation("mat_Projection",MainCamera.GetProjectionMatrix());
+	}
+}
 

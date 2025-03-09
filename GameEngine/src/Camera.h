@@ -25,11 +25,19 @@ public:
   float MovementSpeed;
   float Zoom;
   float MouseSensitivity;
+  float perspectiveAngle;
+  float height;
+  float width;
+  float nearPlane;
+  float farPlane;
   Camera(glm::vec3 CameraPos = glm::vec3(0.0f,0.0f,3.0f),
   glm::vec3 CameraUp = glm::vec3(0.0f,1.0f,0.0f),
-  glm::vec3 CameraFront = glm::vec3(0.0f,0.0f,1.0f),float yaw = 0.0f,float pitch = 89.0f);
+  glm::vec3 CameraFront = glm::vec3(0.0f,0.0f,1.0f),float yaw = 0.0f,float pitch = 89.0f,
+  float perspectiveAnlge = glm::radians(60.0f),float height = 800.0f,float width = 600.0f,
+  float nearPlane = 0.1f,float farPlane = 100.0f);
 
   glm::mat4 GetViewMatrix();
+  glm::mat4 GetProjectionMatrix();
   glm::vec3 GetCameraPos();
   glm::vec3 GetCameraFront();
   void ProcessWASD(CAMERA_MOVEMENT mov, float deltaTime);
