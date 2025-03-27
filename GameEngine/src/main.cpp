@@ -81,11 +81,13 @@ int main()
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
+	Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_post.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
 	shaders.push_back(&ImageShader);
 	shaders.push_back(&HighlightShader);
+	shaders.push_back(&PostShader);
 
 
 	float vertices[] = {
@@ -132,6 +134,18 @@ int main()
 		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
 	};
+
+	float quadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
+        // positions   // texCoords
+        -1.0f,  1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f,  0.0f, 0.0f,
+         1.0f, -1.0f,  1.0f, 0.0f,
+
+        -1.0f,  1.0f,  0.0f, 1.0f,
+         1.0f, -1.0f,  1.0f, 0.0f,
+         1.0f,  1.0f,  1.0f, 1.0f
+    };
+
 	glm::vec3 cubePositions[] = {
 		glm::vec3( 0.0f,  0.0f,  0.0f), 
 		glm::vec3( 2.0f,  5.0f, -15.0f), 
@@ -186,6 +200,21 @@ int main()
 	// LightingShader.setInt("Texture1",0);
 	// LightingShader.setInt("Texture2",1);
 
+	// Vertex data for quad
+
+	unsigned int quadVBO,quadVAO;
+	glGenVertexArrays(1,&quadVAO);
+	glGenBuffers(1,&quadVBO);
+
+	glBindVertexArray(quadVAO);
+	glBindBuffer(GL_ARRAY_BUFFER,quadVBO);
+	glBufferData(GL_ARRAY_BUFFER,sizeof(quadVertices),&quadVertices,GL_STATIC_DRAW);
+	glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,4*sizeof(float),(void*)0);
+	glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,4*sizeof(float),(void*)(2*sizeof(float)));
+	glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+
+
 	//Lighting VAO
 
 	unsigned int lightVAO;
@@ -202,6 +231,28 @@ int main()
 	LightnigShader_1.UseShaderProgram();
 
 	LightnigShader_1.setTransformation("mat_Rotation", Rot_0);*/
+
+	// Generating Frame buffers
+
+	unsigned int fbo;
+	glGenFramebuffers(1,&fbo);
+	glBindFramebuffer(GL_FRAMEBUFFER,fbo);
+
+	Texture colorBuffer = ResourcesManager::loadTexture(GL_RGB,800,600);
+	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,colorBuffer.id,0);
+
+	// Generating render buffer objects
+	unsigned int rbo;
+	glGenRenderbuffers(1,&rbo);
+	glBindRenderbuffer(GL_RENDERBUFFER,rbo);
+	glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
+
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
+	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	  std::cout<<"Frame buffers not generated"<<std::endl;
+	
+	glBindRenderbuffer(GL_RENDERBUFFER,0);
+
 	//setting LightingShader values
 	LightingShader.setFloat("material.shininess",32.0f);
     
@@ -298,6 +349,9 @@ int main()
 		SetViewAndProjectionForAllShaders();
 
 		//rendering
+
+		// Binding framebuffers
+		glBindFramebuffer(GL_FRAMEBUFFER,fbo);
 
 		// All tests
 		glEnable(GL_DEPTH_TEST);
@@ -398,6 +452,17 @@ int main()
 		// Physics related //update
 
 		rb->Update(deltaTime);
+
+		// Post processing
+
+		glBindFramebuffer(GL_FRAMEBUFFER,0);
+		glDisable(GL_DEPTH_TEST);
+		glClearColor(1.0f,1.0f,1.0f,1.0f);
+
+        PostShader.UseShaderProgram();
+		glBindVertexArray(quadVAO);
+		glBindTexture(GL_TEXTURE_2D,colorBuffer.id);
+        glDrawArrays(GL_TRIANGLES,0,6);
 
 
 		//Check for all events and swaps buffers

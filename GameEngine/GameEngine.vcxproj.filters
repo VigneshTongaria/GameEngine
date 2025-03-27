@@ -69,6 +69,8 @@
     <None Include="src\.gitattributes" />
     <None Include="Assets\fragment_core_BW.glsl" />
     <None Include="Assets\fragment_core_highlight.glsl" />
+    <None Include="Assets\fragment_post.glsl" />
+    <None Include="Assets\vertex_unlit.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">

@@ -100,6 +100,27 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
 	return texture;
 }
 
+Texture ResourcesManager::loadTexture(GLenum format,unsigned int width,unsigned int height)
+{
+    Texture texture;
+    texture.id = -1;
+    texture.type = TEXTURE_TYPE::EMPTY;
+    texture.path = "";
+    glGenTextures(1, &texture.id);
+    glBindTexture(GL_TEXTURE_2D, texture.id);
+
+    // GENERATING MIPMAPS and setting interpolations
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, NULL);
+
+    return texture;
+}
+
 std::string ResourcesManager::getTextureName(TEXTURE_TYPE type)
 {
     switch (type)

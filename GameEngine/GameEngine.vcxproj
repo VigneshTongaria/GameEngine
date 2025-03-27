@@ -40,8 +40,10 @@
     <None Include="Assets\fragment_core_BW.glsl" />
     <None Include="Assets\fragment_core_highlight.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
+    <None Include="Assets\fragment_post.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
+    <None Include="Assets\vertex_unlit.glsl" />
     <None Include="assimp-vc143-mtd.dll" />
     <None Include="glfw3.dll" />
     <None Include="src\.gitattributes" />
