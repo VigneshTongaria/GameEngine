@@ -26,7 +26,6 @@ Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath)
 		glGetShaderInfoLog(vertexShader, 512, NULL, Infolog);
 		std::cout << VertexShaderPath << " Error with vertex shader complilaton " <<  Infolog;
 	}
-
 	//Fragment shader
 	unsigned int fragment_shader;
 	fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);

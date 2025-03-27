@@ -11,7 +11,7 @@ private:
 public:
     static Texture loadTexture(const char* filename,const std::string &directory,TEXTURE_TYPE type,aiString aiPath);
     static Texture loadTexture(const char* path,TEXTURE_TYPE type);
-    static Texture loadTexture(GLenum format,unsigned int width,unsigned int height);
+    static Texture loadTexture(GLenum format,int width,int height);
     static std::string getTextureName(TEXTURE_TYPE type);
 };
 

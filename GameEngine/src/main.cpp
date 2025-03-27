@@ -457,7 +457,8 @@ int main()
 
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
 		glDisable(GL_DEPTH_TEST);
-		glClearColor(1.0f,1.0f,1.0f,1.0f);
+		glClearColor(0.1f,0.1f,0.1f,0.1f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
         PostShader.UseShaderProgram();
 		glBindVertexArray(quadVAO);
