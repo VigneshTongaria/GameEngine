@@ -342,8 +342,10 @@ int main()
 	// Loading cubeMap
 
 	CubeMap cubeMap = ResourcesManager::loadCubeMap(cubeFaces);
+	CubeMapShader.UseShaderProgram();
 	CubeMapShader.setInt("skybox",0);
     
+	LightingShader.UseShaderProgram();
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -439,7 +441,10 @@ int main()
 
 		glDepthMask(GL_FALSE);
 		CubeMapShader.UseShaderProgram();
+		glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));  
+		CubeMapShader.setTransformation("mat_View",view_nt);
 		glBindVertexArray(skyboxVAO);
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
         glDrawArrays(GL_TRIANGLES,0,36);
 		glDepthMask(GL_TRUE);
