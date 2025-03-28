@@ -9,5 +9,4 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14
       C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
       This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
   
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

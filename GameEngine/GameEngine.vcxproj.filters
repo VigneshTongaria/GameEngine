@@ -71,6 +71,8 @@
     <None Include="Assets\fragment_core_highlight.glsl" />
     <None Include="Assets\fragment_post.glsl" />
     <None Include="Assets\vertex_unlit.glsl" />
+    <None Include="Assets\fragment_cubeMap.glsl" />
+    <None Include="Assets\vertex_cubeMap.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">
@@ -165,6 +167,30 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\resources\textures\wall.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\skybox\back.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\skybox\bottom.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\skybox\front.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\skybox\left.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\skybox\right.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\skybox\top.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\blending_transparent_window.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\resources\grass.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

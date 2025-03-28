@@ -37,6 +37,15 @@ Camera MainCamera;
 
 // All shaders
 std::vector<Shader*> shaders;
+std::vector<std::string> cubeFaces
+{
+    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/right.jpg",
+    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/left.jpg",
+    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/top.jpg",
+    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/bottom.jpg",
+    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/front.jpg",
+    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/back.jpg"
+};
 
 
 int main()
@@ -82,12 +91,14 @@ int main()
 	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
 	Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_post.glsl");
+	Shader CubeMapShader("Assets/vertex_cubeMap.glsl", "Assets/fragment_cubeMap.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
 	shaders.push_back(&ImageShader);
 	shaders.push_back(&HighlightShader);
 	shaders.push_back(&PostShader);
+	shaders.push_back(&CubeMapShader);
 
 
 	float vertices[] = {
@@ -133,6 +144,50 @@ int main()
 		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
 		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
 		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
+	};
+	float skyboxVertices[] = {
+		// positions          
+		-1.0f,  1.0f, -1.0f,
+		-1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+		 1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+	
+		-1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
+	
+		 1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+	
+		-1.0f, -1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
+	
+		-1.0f,  1.0f, -1.0f,
+		 1.0f,  1.0f, -1.0f,
+		 1.0f,  1.0f,  1.0f,
+		 1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f, -1.0f,
+	
+		-1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		 1.0f, -1.0f, -1.0f,
+		 1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		 1.0f, -1.0f,  1.0f
 	};
 
 	float quadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
@@ -226,11 +281,18 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0);
 	glEnableVertexAttribArray(0);
 
-	/*glm::mat4 Rot_0 = glm::mat4(1.0);
-	Rot_0 = glm::rotate(Rot_0, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	LightnigShader_1.UseShaderProgram();
+	// Skybox VAO
 
-	LightnigShader_1.setTransformation("mat_Rotation", Rot_0);*/
+	unsigned int skyboxVAO,skyboxVBO;
+    
+	glGenVertexArrays(1,&skyboxVAO);
+	glGenBuffers(1,&skyboxVBO);
+
+	glBindVertexArray(skyboxVAO);
+	glBindBuffer(GL_ARRAY_BUFFER,skyboxVBO);
+	glBufferData(GL_ARRAY_BUFFER,sizeof(skyboxVertices),&skyboxVertices,GL_STATIC_DRAW);
+	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
+	glEnableVertexAttribArray(0);
 
 	// Generating Frame buffers
 
@@ -276,6 +338,11 @@ int main()
         CubesGameObject[i] = new GameObject(cubePositions[i]);
 		CubesGameObject[i]->AddComponent<Model>(DEFAULT_MODEL::CUBE,newTexture);
 	}
+
+	// Loading cubeMap
+
+	CubeMap cubeMap = ResourcesManager::loadCubeMap(cubeFaces);
+	CubeMapShader.setInt("skybox",0);
     
 
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
@@ -368,7 +435,15 @@ int main()
 		// Disable writing to stencil buffer
 		glStencilMask(0x00);
 
+		// RenderSkybox first
 
+		glDepthMask(GL_FALSE);
+		CubeMapShader.UseShaderProgram();
+		glBindVertexArray(skyboxVAO);
+		glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
+        glDrawArrays(GL_TRIANGLES,0,36);
+		glDepthMask(GL_TRUE);
+ 
 		//draw shapes
 		LightingShader.UseShaderProgram();
 
