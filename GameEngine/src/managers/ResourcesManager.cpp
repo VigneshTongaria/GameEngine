@@ -127,6 +127,7 @@ CubeMap ResourcesManager::loadCubeMap(std::vector<std::string> facesPath)
     glGenTextures(1,&cubeMap.id);
     glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
     int width, height, nrChannels;
+    stbi_set_flip_vertically_on_load(false);
 
     for (size_t i = 0; i < facesPath.size(); i++)
     {
@@ -151,6 +152,7 @@ CubeMap ResourcesManager::loadCubeMap(std::vector<std::string> facesPath)
         }
         stbi_image_free(data);
     }
+    stbi_set_flip_vertically_on_load(true);
 
     glTexParameteri(GL_TEXTURE_CUBE_MAP,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_CUBE_MAP,GL_TEXTURE_MAG_FILTER,GL_LINEAR);

@@ -86,7 +86,7 @@ int main()
 
 	//Run_Shaders();
 	//Vertex shader
-	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
+	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_reflective.glsl");
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
@@ -347,6 +347,9 @@ int main()
     
 	LightingShader.UseShaderProgram();
 
+	// Setting reflection probe
+	LightingShader.setInt("reflection",0);
+
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
 	LightingShader.setVec3("dirLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
@@ -426,8 +429,9 @@ int main()
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_STENCIL_TEST);
 		glEnable(GL_BLEND);
-		glEnable(GL_CULL_FACE);
+		//glEnable(GL_CULL_FACE);
 
+		glDepthFunc(GL_LEQUAL);
 		glStencilOp(GL_KEEP,GL_REPLACE,GL_REPLACE);
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
@@ -436,18 +440,6 @@ int main()
 		
 		// Disable writing to stencil buffer
 		glStencilMask(0x00);
-
-		// RenderSkybox first
-
-		glDepthMask(GL_FALSE);
-		CubeMapShader.UseShaderProgram();
-		glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));  
-		CubeMapShader.setTransformation("mat_View",view_nt);
-		glBindVertexArray(skyboxVAO);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
-        glDrawArrays(GL_TRIANGLES,0,36);
-		glDepthMask(GL_TRUE);
  
 		//draw shapes
 		LightingShader.UseShaderProgram();
@@ -509,7 +501,8 @@ int main()
 
 		glStencilFunc(GL_NOTEQUAL,1,0xFF);
 		glStencilMask(0x00);
-		glDisable(GL_DEPTH_TEST);
+		//glDisable(GL_DEPTH_TEST);
+		glDepthMask(GL_ALWAYS);
 
 		//Drawing highlight cubes
 		glBindVertexArray(lightVAO);
@@ -524,6 +517,17 @@ int main()
         	HighlightShader.setTransformation("mat_Model",_model);
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
+
+		// RenderSkybox 
+		glEnable(GL_DEPTH_TEST);
+		
+		CubeMapShader.UseShaderProgram();
+		glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));  
+		CubeMapShader.setTransformation("mat_View",view_nt);
+		glBindVertexArray(skyboxVAO);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
+        glDrawArrays(GL_TRIANGLES,0,36);
 
 		glStencilMask(0xFF);
 		glStencilFunc(GL_ALWAYS, 1, 0xFF);
