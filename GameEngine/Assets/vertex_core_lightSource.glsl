@@ -1,9 +1,12 @@
 #version 460 core
 layout (location = 0) in vec3 aPos;
 
-uniform mat4 mat_View;
 uniform mat4 mat_Model;
-uniform mat4 mat_Projection;
+layout (std140) uniform Matrices
+{
+    mat4 mat_Projection;
+    mat4 mat_View;
+};
 
 void main()
 {

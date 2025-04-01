@@ -42,6 +42,7 @@
     <None Include="Assets\fragment_core_lightSource.glsl" />
     <None Include="Assets\fragment_cubeMap.glsl" />
     <None Include="Assets\fragment_post.glsl" />
+    <None Include="Assets\fragment_reflective.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
     <None Include="Assets\vertex_cubeMap.glsl" />

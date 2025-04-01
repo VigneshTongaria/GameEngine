@@ -6,7 +6,7 @@
 #include <iostream>
 #include <glm/gtc/type_ptr.hpp>
 
-Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath)
+Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath,const char* GeometryShaderPath)
 {
     int success;
 	char Infolog[512];
@@ -43,17 +43,56 @@ Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath)
 		std::cout << FragmentShaderPath << " Error with fragment shader complilaton for"<< Infolog;
 	}
 
-	m_ID = glCreateProgram();
+    // Geometry shader (optional)
 
-	glAttachShader(m_ID, vertexShader);
-	glAttachShader(m_ID, fragment_shader);
-	glLinkProgram(m_ID);
-
-    glGetProgramiv(m_ID, GL_LINK_STATUS, &success);
-	if (!success)
+	if(GeometryShaderPath != NULL)
 	{
-		glGetProgramInfoLog(m_ID, 512, NULL, Infolog);
-		std::cout << "Error with shader program complilaton " << Infolog;
+		unsigned int geometry_shader;
+		geometry_shader = glCreateShader(GL_GEOMETRY_SHADER);
+
+		std::string geometry_shader_SRC = loadShaderSRC(GeometryShaderPath);
+		const GLchar *geometryShaderChar = geometry_shader_SRC.c_str();
+		glShaderSource(geometry_shader, 1, &geometryShaderChar, NULL);
+
+		glCompileShader(geometry_shader);
+
+		glGetShaderiv(geometry_shader, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(geometry_shader, 512, NULL, Infolog);
+			std::cout << GeometryShaderPath << " Error with geometry shader complilaton for" << Infolog;
+		}
+
+		m_ID = glCreateProgram();
+
+		glAttachShader(m_ID, vertexShader);
+		glAttachShader(m_ID, geometry_shader);
+		glAttachShader(m_ID, fragment_shader);
+		glLinkProgram(m_ID);
+
+		glGetProgramiv(m_ID, GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(m_ID, 512, NULL, Infolog);
+			std::cout << "Error with shader program complilaton " << Infolog;
+		}
+	}
+
+	else
+	{
+
+		m_ID = glCreateProgram();
+
+		glAttachShader(m_ID, vertexShader);
+		glAttachShader(m_ID, fragment_shader);
+		glLinkProgram(m_ID);
+
+		glGetProgramiv(m_ID, GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(m_ID, 512, NULL, Infolog);
+			std::cout << "Error with shader program complilaton " << Infolog;
+		}
 	}
 
     glDeleteShader(vertexShader);

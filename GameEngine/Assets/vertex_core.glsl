@@ -7,9 +7,12 @@ out vec3 FragPos;
 out vec3 lightPos;
 out vec3 normal;
 out vec2 TextCords;
-uniform mat4 mat_View;
+layout (std140) uniform Matrices
+{
+    mat4 mat_Projection;
+    mat4 mat_View;
+};
 uniform mat4 mat_Model;
-uniform mat4 mat_Projection;
 uniform vec3 lightPosition;
 
 void main()

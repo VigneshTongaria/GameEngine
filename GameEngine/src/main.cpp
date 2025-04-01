@@ -22,7 +22,7 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
-void SetViewAndProjectionForAllShaders();
+void SetViewAndProjectionForAllShaders(unsigned int uboIndex);
 std::string loadShaderSRC(const char* filename);
 float Arrow_vertical_Input = 0.0f;
 
@@ -92,6 +92,8 @@ int main()
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
 	Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_post.glsl");
 	Shader CubeMapShader("Assets/vertex_cubeMap.glsl", "Assets/fragment_cubeMap.glsl");
+	Shader ExplosionShader("Assets/GeometryShaders/Vertex_unlit.glsl", 
+		"Assets/GeometryShaders/fragment_unlit.glsl","Assets/GeometryShaders/Geometry_explode.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
@@ -99,8 +101,20 @@ int main()
 	shaders.push_back(&HighlightShader);
 	shaders.push_back(&PostShader);
 	shaders.push_back(&CubeMapShader);
+	shaders.push_back(&ExplosionShader);
 
+	// Adding uniform buffer index
+	unsigned int uniformVertexCoreIndex = glGetUniformBlockIndex(LightingShader.m_ID,"Matrices");
+	unsigned int uniformVertexSkyboxIndex = glGetUniformBlockIndex(CubeMapShader.m_ID,"Matrices");
+	unsigned int uniformVertexLightingSourceIndex = glGetUniformBlockIndex(LightnigSourceShader.m_ID,"Matrices");
+	unsigned int uniformVertexSimplendex = glGetUniformBlockIndex(ExplosionShader.m_ID,"Matrices");
 
+	glUniformBlockBinding(LightingShader.m_ID,uniformVertexCoreIndex,0);
+	glUniformBlockBinding(CubeMapShader.m_ID,uniformVertexSkyboxIndex,0);
+	glUniformBlockBinding(LightnigSourceShader.m_ID,uniformVertexLightingSourceIndex,0);
+	glUniformBlockBinding(ExplosionShader.m_ID,uniformVertexSimplendex,0);
+
+    // Vertices data not used now added geometrydata class but still used in VBO 
 	float vertices[] = {
 		// positions          // normals           // texture coords
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
@@ -315,6 +329,16 @@ int main()
 	
 	glBindRenderbuffer(GL_RENDERBUFFER,0);
 
+	// Generating uniform buffers
+	unsigned int uboMatrices;
+	glGenBuffers(1, &uboMatrices);
+
+	glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
+	glBufferData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), NULL, GL_STATIC_DRAW);
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
+	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
+
 	//setting LightingShader values
 	LightingShader.setFloat("material.shininess",32.0f);
     
@@ -406,6 +430,12 @@ int main()
 
 	//camera
 
+	// Set projection mattrix in the uniform buffer
+
+	glBindBuffer(GL_UNIFORM_BUFFER,uboMatrices);
+	glBufferSubData(GL_UNIFORM_BUFFER,0,sizeof(glm::mat4),glm::value_ptr(MainCamera.GetProjectionMatrix()));
+	glBindBuffer(GL_UNIFORM_BUFFER,0);
+
 	// Call all start functions here
     lastFrame = float(glfwGetTime());
 	rb->Start();
@@ -418,7 +448,7 @@ int main()
 		lastFrame = currentTime;
 		//process inputs
 		process_inputs(window);
-		SetViewAndProjectionForAllShaders();
+		SetViewAndProjectionForAllShaders(uboMatrices);
 
 		//rendering
 
@@ -442,7 +472,7 @@ int main()
 		glStencilMask(0x00);
  
 		//draw shapes
-		LightingShader.UseShaderProgram();
+		ExplosionShader.UseShaderProgram();
 
 		float time = static_cast<float>(glfwGetTime());
 
@@ -466,7 +496,8 @@ int main()
 		// }
 		// writing stencil on models
 
-		ourModel->Draw(LightingShader);
+		ourModel->Draw(ExplosionShader);
+		ExplosionShader.setFloat("time", glfwGetTime());  
 
 		// Drawing lightsource cubes and highlight
 
@@ -523,7 +554,7 @@ int main()
 		
 		CubeMapShader.UseShaderProgram();
 		glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));  
-		CubeMapShader.setTransformation("mat_View",view_nt);
+		CubeMapShader.setTransformation("mat_View_nt",view_nt);
 		glBindVertexArray(skyboxVAO);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
@@ -651,13 +682,19 @@ std::string loadShaderSRC(const char* filename)
     return ret;
 }
 
-void SetViewAndProjectionForAllShaders()
+void SetViewAndProjectionForAllShaders(unsigned int uboIndex)
 {
-	for(auto& shader : shaders)
-	{
-		shader->UseShaderProgram();
-        shader->setTransformation("mat_View",MainCamera.GetViewMatrix());
-		shader->setTransformation("mat_Projection",MainCamera.GetProjectionMatrix());
-	}
+	// for(auto& shader : shaders)
+	// {
+	// 	shader->UseShaderProgram();
+    //     shader->setTransformation("mat_View",MainCamera.GetViewMatrix());
+	// 	shader->setTransformation("mat_Projection",MainCamera.GetProjectionMatrix());
+	// }
+
+	// Setting view mattrix in uniform buffer
+	glBindBuffer(GL_UNIFORM_BUFFER,uboIndex);
+	glBufferSubData(GL_UNIFORM_BUFFER,sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(MainCamera.GetViewMatrix()));
+	glBindBuffer(GL_UNIFORM_BUFFER,0);
 }
+
 
