@@ -18,7 +18,7 @@ public :
    Model(const char* path);
    Model(DEFAULT_MODEL model,std::vector<Texture> textures);
    ~Model();
-   void Draw(Shader &shader);
+   void Draw(Shader &shader,GLenum mode);
    //void AddRigidbody();
 
 private:

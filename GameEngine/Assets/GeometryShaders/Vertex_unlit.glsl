@@ -19,7 +19,6 @@ void main()
 {
     gl_Position = mat_Projection*mat_View* mat_Model * vec4(aPos.x,aPos.y, aPos.z, 1.0);
 
-    //normal = mat3(transpose(inverse(mat_Model))) * aNormal;
-    vs_out.normal = aNormal;
+    vs_out.normal = mat3(transpose(inverse(mat_Model))) * aNormal;
     vs_out.TextCords = aTextCords;
 }

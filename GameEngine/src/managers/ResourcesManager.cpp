@@ -3,6 +3,7 @@
 
 const std::string ResourcesManager::Texture_Diffuse_Name = "texture_diffuse";
 const std::string ResourcesManager::Texture_Specular_Name = "texture_specular";
+unsigned int ResourcesManager::VerticesCount = 0;
 
 Texture ResourcesManager::loadTexture(const char* filename,const std::string &directory,TEXTURE_TYPE type,aiString aiPath)
 {

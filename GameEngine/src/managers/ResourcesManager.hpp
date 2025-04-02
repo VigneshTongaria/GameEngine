@@ -15,6 +15,7 @@ private:
     static const std::string Texture_Specular_Name;
 
 public:
+    static unsigned int VerticesCount;
     static Texture loadTexture(const char* filename,const std::string &directory,TEXTURE_TYPE type,aiString aiPath);
     static Texture loadTexture(const char* path,TEXTURE_TYPE type);
     static Texture loadTexture(GLenum format,int width,int height);

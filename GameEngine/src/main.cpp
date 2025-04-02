@@ -86,14 +86,14 @@ int main()
 
 	//Run_Shaders();
 	//Vertex shader
-	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_reflective.glsl");
+	Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
 	Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_post.glsl");
 	Shader CubeMapShader("Assets/vertex_cubeMap.glsl", "Assets/fragment_cubeMap.glsl");
 	Shader ExplosionShader("Assets/GeometryShaders/Vertex_unlit.glsl", 
-		"Assets/GeometryShaders/fragment_unlit.glsl","Assets/GeometryShaders/Geometry_explode.glsl");
+		"Assets/fragment_core_highlight.glsl","Assets/GeometryShaders/Geometry_normals.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
@@ -439,6 +439,7 @@ int main()
 	// Call all start functions here
     lastFrame = float(glfwGetTime());
 	rb->Start();
+	ResourcesManager::VerticesCount = 0;
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -451,6 +452,7 @@ int main()
 		SetViewAndProjectionForAllShaders(uboMatrices);
 
 		//rendering
+		ResourcesManager::VerticesCount = 0;
 
 		// Binding framebuffers
 		glBindFramebuffer(GL_FRAMEBUFFER,fbo);
@@ -472,7 +474,7 @@ int main()
 		glStencilMask(0x00);
  
 		//draw shapes
-		ExplosionShader.UseShaderProgram();
+		LightingShader.UseShaderProgram();
 
 		float time = static_cast<float>(glfwGetTime());
 
@@ -496,8 +498,14 @@ int main()
 		// }
 		// writing stencil on models
 
-		ourModel->Draw(ExplosionShader);
-		ExplosionShader.setFloat("time", glfwGetTime());  
+		ourModel->Draw(LightingShader,GL_TRIANGLES);
+
+		// Drawing debug normals gizmos
+		
+		ExplosionShader.UseShaderProgram();
+		ourModel->Draw(ExplosionShader, GL_TRIANGLES);
+
+
 
 		// Drawing lightsource cubes and highlight
 
@@ -525,7 +533,7 @@ int main()
         
 		for(unsigned int i=0; i < 10 ; i++)
 		{
-			CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader);
+			CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader,GL_TRIANGLES);
 		}
         
 		// Disable writing to stencil buffer and just reading its values
@@ -567,6 +575,8 @@ int main()
 		// Physics related //update
 
 		rb->Update(deltaTime);
+
+		// Late update
 
 		// Post processing
 

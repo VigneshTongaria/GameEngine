@@ -28,6 +28,11 @@ struct Texture
     aiString aiPath;
 };
 
+enum DRAW_MODE
+{
+    TRIANGLES,LINES,POINT,
+};
+
 class Mesh
 {
 public :
@@ -36,7 +41,7 @@ public :
     std::vector<unsigned int> indices;   
     
     Mesh(std::vector<Vertex> vertices, std::vector<Texture> textures, std::vector<unsigned int> indices);
-    void Draw(Shader &Shader);
+    void Draw(Shader &Shader,GLenum mode);
 private:
     unsigned int VAO,VBO,EBO;
     void setUpMesh();

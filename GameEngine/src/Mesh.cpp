@@ -39,7 +39,7 @@ void Mesh::setUpMesh()
    glBindVertexArray(0);
 }
 
-void Mesh::Draw(Shader &shader)
+void Mesh::Draw(Shader &shader,GLenum mode)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
@@ -76,11 +76,14 @@ void Mesh::Draw(Shader &shader)
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
-    if(indices.size() != 0)
-    glDrawElements(GL_TRIANGLES,indices.size(),GL_UNSIGNED_INT,0);
+    if (indices.size() != 0)
+      glDrawElements(mode, indices.size(), GL_UNSIGNED_INT, 0);
 
-    else 
-    glDrawArrays(GL_TRIANGLES,0,vertices.size());
-    
+    else
+      glDrawArrays(mode, 0, vertices.size());
+
     glBindVertexArray(0);
+
+    // Calculate vertices count
+    ResourcesManager::VerticesCount +=  vertices.size();
 }
