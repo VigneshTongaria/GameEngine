@@ -35,6 +35,9 @@ float lastFrame = 0.0f; // Time of last frame
 
 Camera MainCamera;
 
+// Asteriods mattrices
+std::vector<glm::mat4> asteriodModelMats;
+
 // All shaders
 std::vector<Shader*> shaders;
 std::vector<std::string> cubeFaces
@@ -350,6 +353,12 @@ int main()
 
 	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,0.0f,0.0f));
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
+
+	// Adding asteriod belt GameObject
+	GameObject* asteriodObject = new GameObject();
+	asteriodObject->AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/rock/rock.obj");
+
+	Model* asteriodModel = asteriodObject->GetComponent<Model>();
 
 	// Texture for cubes
 	std::vector<Texture> newTexture;
@@ -670,6 +679,10 @@ void Mat_Calculations()
 	std::cout << vec.x << " "<< vec.y << " "<<vec.z << std::endl;
 }
 
+void RenderAsteriods()
+{
+    
+}
 
 std::string loadShaderSRC(const char* filename)
 {

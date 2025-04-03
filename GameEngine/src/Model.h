@@ -19,6 +19,7 @@ public :
    Model(DEFAULT_MODEL model,std::vector<Texture> textures);
    ~Model();
    void Draw(Shader &shader,GLenum mode);
+   void DrawInstanced(Shader &shader,GLenum mode,unsigned int NOFinstance);
    //void AddRigidbody();
 
 private:
