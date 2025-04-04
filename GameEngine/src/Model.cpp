@@ -5,6 +5,67 @@ Model::Model(const char* path)
 {
      loadModel(path);
 }
+Model::Model(const char* path,unsigned int instances)
+{
+    loadModel(path);
+    instancesModels = new glm::mat4[instances];
+
+    float thetaIncrement = 360.0f / static_cast<float>(instances);
+    float theta = 0.0f;
+    float offset = 3.0f;
+    float radius = 10.0f;
+
+    for (unsigned int i = 0; i < instances; i++)
+    {
+        glm::mat4 newModel = glm::mat4(1.0f);
+        float xRand = ((rand() / static_cast<float>(RAND_MAX)) * 2 * offset) - offset;
+        float x = sin(theta) * radius + xRand;
+
+        float yRand = ((rand() / static_cast<float>(RAND_MAX)) * 2 * offset) - offset;
+        float y = sin(theta) * radius + yRand;
+
+        float zRand = ((rand() / static_cast<float>(RAND_MAX)) * 2 * offset) - offset;
+        float z = zRand;
+
+        newModel = glm::translate(newModel, glm::vec3(x, y, z));
+
+        // 2. scale: scale between 0.05 and 0.25f
+        float scale = (rand() % 20) / 100.0f + 0.05;
+        newModel = glm::scale(newModel, glm::vec3(scale));
+
+        // 3. rotation: add random rotation around a (semi)randomly picked rotation axis vector
+        float rotAngle = (rand() % 360);
+        newModel = glm::rotate(newModel, rotAngle, glm::vec3(0.4f, 0.6f, 0.8f));
+        instancesModels[i] = newModel;
+    }
+
+    unsigned int buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, instances * sizeof(glm::mat4), &instancesModels[0], GL_STATIC_DRAW);
+    
+    for(unsigned int i=0 ; i<meshes.size(); i++)
+    {
+       glBindVertexArray(meshes[i].VertexArrayObject);
+       size_t vec4Size = sizeof(glm::vec4);
+       
+       glVertexAttribPointer(3,4,GL_FLOAT,GL_FALSE,4*vec4Size ,(void*)(0));
+       glEnableVertexAttribArray(3);
+       glVertexAttribPointer(4,4,GL_FLOAT,GL_FALSE,4*vec4Size ,(void*)(vec4Size));
+       glEnableVertexAttribArray(4);
+       glVertexAttribPointer(5,4,GL_FLOAT,GL_FALSE,4*vec4Size ,(void*)(2*vec4Size));
+       glEnableVertexAttribArray(5);
+       glVertexAttribPointer(6,4,GL_FLOAT,GL_FALSE,4*vec4Size ,(void*)(3*vec4Size));
+       glEnableVertexAttribArray(6);
+
+       glVertexAttribDivisor(3, 1);
+       glVertexAttribDivisor(4, 1);
+       glVertexAttribDivisor(5, 1);
+       glVertexAttribDivisor(6, 1);
+
+       glBindVertexArray(0);
+    }
+}
 Model::Model(DEFAULT_MODEL model,std::vector<Texture> textures)
 {
      loadModel(model,textures);
@@ -73,19 +134,13 @@ void Model::DrawInstanced(Shader &shader,GLenum mode,unsigned int instances)
 
     mat_model = glm::scale(mat_model, go->scale);
 
-    std::vector<glm::mat4> instancesModels;
-
-    for(unsigned int i = 0; i < instances; i++)
-    {
-       glm::mat4 newModel = glm::mat4(1.0f);
-       
-    }
-
     shader.setTransformation("mat_Model",mat_model);
     
     for(unsigned int i=0; i < meshes.size(); i++)
     {
-        meshes[i].Draw(shader,mode);
+        meshes[i].AssignTextures(shader);
+        glBindVertexArray(meshes[i].VertexArrayObject);
+        glDrawElementsInstanced(GL_TRIANGLES,meshes[i].indices.size(),GL_UNSIGNED_INT,0,instances);
     }
 }
 
@@ -100,7 +155,7 @@ void Model::loadModel(std::string path)
         std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() <<std::endl;
         return;
     }
-    std::cout << "SUCCESS::ASSIMP::Scene loaded succesfully"<<std::endl;
+    std::cout << "SUCCESS::ASSIMP::MODEL loaded succesfully"<<std::endl;
     directory = path.substr(0,path.find_last_of('/'));
 
     processNode(scene->mRootNode,scene);
@@ -195,7 +250,7 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 
             textures.push_back(texture);
             textures_Loaded.push_back(texture);
-           // std::cout << "Texture - " << typeName << "Loaded"<<std::endl;
+            std::cout << "Texture - " << directory <<"/ " << path.C_Str() << " Loaded"<<std::endl;
         }
     }
 

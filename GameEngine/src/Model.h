@@ -16,6 +16,7 @@ class Model : public Component
 {
 public :
    Model(const char* path);
+   Model(const char* path, unsigned int instances);
    Model(DEFAULT_MODEL model,std::vector<Texture> textures);
    ~Model();
    void Draw(Shader &shader,GLenum mode);
@@ -24,6 +25,7 @@ public :
 
 private:
    glm::mat4 mat_model;
+   glm::mat4* instancesModels;
    std::vector<Mesh> meshes;
    std::vector<Texture> textures_Loaded;
    std::string directory;

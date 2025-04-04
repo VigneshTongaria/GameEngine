@@ -23,6 +23,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex);
+void RenderAsteriods(Model* m,Shader* s);
 std::string loadShaderSRC(const char* filename);
 float Arrow_vertical_Input = 0.0f;
 
@@ -32,6 +33,7 @@ glm::mat4 Scale = glm::mat4(1.0f);
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
+unsigned int asteriodInstances = 10.0f;
 
 Camera MainCamera;
 
@@ -97,6 +99,7 @@ int main()
 	Shader CubeMapShader("Assets/vertex_cubeMap.glsl", "Assets/fragment_cubeMap.glsl");
 	Shader ExplosionShader("Assets/GeometryShaders/Vertex_unlit.glsl", 
 		"Assets/fragment_core_highlight.glsl","Assets/GeometryShaders/Geometry_normals.glsl");
+	Shader InstanceShader("Assets/vertex_Instance.glsl", "Assets/GeometryShaders/fragment_unlit.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
@@ -105,17 +108,20 @@ int main()
 	shaders.push_back(&PostShader);
 	shaders.push_back(&CubeMapShader);
 	shaders.push_back(&ExplosionShader);
+	shaders.push_back(&InstanceShader);
 
 	// Adding uniform buffer index
 	unsigned int uniformVertexCoreIndex = glGetUniformBlockIndex(LightingShader.m_ID,"Matrices");
 	unsigned int uniformVertexSkyboxIndex = glGetUniformBlockIndex(CubeMapShader.m_ID,"Matrices");
 	unsigned int uniformVertexLightingSourceIndex = glGetUniformBlockIndex(LightnigSourceShader.m_ID,"Matrices");
 	unsigned int uniformVertexSimplendex = glGetUniformBlockIndex(ExplosionShader.m_ID,"Matrices");
+	unsigned int uniformVertexInstanceIndex = glGetUniformBlockIndex(InstanceShader.m_ID,"Matrices");
 
 	glUniformBlockBinding(LightingShader.m_ID,uniformVertexCoreIndex,0);
 	glUniformBlockBinding(CubeMapShader.m_ID,uniformVertexSkyboxIndex,0);
 	glUniformBlockBinding(LightnigSourceShader.m_ID,uniformVertexLightingSourceIndex,0);
 	glUniformBlockBinding(ExplosionShader.m_ID,uniformVertexSimplendex,0);
+	glUniformBlockBinding(InstanceShader.m_ID,uniformVertexInstanceIndex,0);
 
     // Vertices data not used now added geometrydata class but still used in VBO 
 	float vertices[] = {
@@ -355,10 +361,10 @@ int main()
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	// Adding asteriod belt GameObject
-	GameObject* asteriodObject = new GameObject();
-	asteriodObject->AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/rock/rock.obj");
+	GameObject asteriodObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
+	asteriodObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/rock/rock.obj",asteriodInstances);
 
-	Model* asteriodModel = asteriodObject->GetComponent<Model>();
+	Model* asteriodModel = asteriodObject.GetComponent<Model>();
 
 	// Texture for cubes
 	std::vector<Texture> newTexture;
@@ -513,6 +519,9 @@ int main()
 		
 		ExplosionShader.UseShaderProgram();
 		ourModel->Draw(ExplosionShader, GL_TRIANGLES);
+
+		// Draw Asteriods
+		RenderAsteriods(asteriodModel,&InstanceShader);
 
 
 
@@ -679,9 +688,10 @@ void Mat_Calculations()
 	std::cout << vec.x << " "<< vec.y << " "<<vec.z << std::endl;
 }
 
-void RenderAsteriods()
+void RenderAsteriods(Model* m,Shader* s)
 {
-    
+    s->UseShaderProgram();
+	m->DrawInstanced(*s,GL_TRIANGLES,asteriodInstances);
 }
 
 std::string loadShaderSRC(const char* filename)

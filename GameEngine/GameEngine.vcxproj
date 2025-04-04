@@ -46,6 +46,7 @@
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
     <None Include="Assets\vertex_cubeMap.glsl" />
+    <None Include="Assets\vertex_Instance.glsl" />
     <None Include="Assets\vertex_unlit.glsl" />
     <None Include="assimp-vc143-mtd.dll" />
     <None Include="glfw3.dll" />

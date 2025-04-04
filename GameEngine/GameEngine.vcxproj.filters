@@ -74,6 +74,7 @@
     <None Include="Assets\fragment_cubeMap.glsl" />
     <None Include="Assets\vertex_cubeMap.glsl" />
     <None Include="Assets\fragment_reflective.glsl" />
+    <None Include="Assets\vertex_Instance.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">
