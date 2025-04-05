@@ -13,7 +13,7 @@ Model::Model(const char* path,unsigned int instances)
     float thetaIncrement = 360.0f / static_cast<float>(instances);
     float theta = 0.0f;
     float offset = 3.0f;
-    float radius = 10.0f;
+    float radius = 30.0f;
 
     for (unsigned int i = 0; i < instances; i++)
     {
@@ -22,12 +22,12 @@ Model::Model(const char* path,unsigned int instances)
         float x = sin(theta) * radius + xRand;
 
         float yRand = ((rand() / static_cast<float>(RAND_MAX)) * 2 * offset) - offset;
-        float y = sin(theta) * radius + yRand;
+        float y = cos(theta) * radius + yRand;
 
         float zRand = ((rand() / static_cast<float>(RAND_MAX)) * 2 * offset) - offset;
         float z = zRand;
 
-        newModel = glm::translate(newModel, glm::vec3(x, y, z));
+        newModel = glm::translate(newModel, glm::vec3(x, z, y));
 
         // 2. scale: scale between 0.05 and 0.25f
         float scale = (rand() % 20) / 100.0f + 0.05;
@@ -37,6 +37,8 @@ Model::Model(const char* path,unsigned int instances)
         float rotAngle = (rand() % 360);
         newModel = glm::rotate(newModel, rotAngle, glm::vec3(0.4f, 0.6f, 0.8f));
         instancesModels[i] = newModel;
+
+        theta += thetaIncrement;
     }
 
     unsigned int buffer;

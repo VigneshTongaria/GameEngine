@@ -125,8 +125,7 @@
               "ViewState": "AgIAAPoBAAAAAAAAAAAswAsCAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -196,7 +195,7 @@
               "RelativeDocumentMoniker": "src\\Model.cpp",
               "ToolTip": "C:\\Users\\vigne\\GithubRepos\\GameEngine\\GameEngine\\src\\Model.cpp",
               "RelativeToolTip": "src\\Model.cpp",
-              "ViewState": "AgIAABkAAAAAAAAAAAAcwCsAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwC0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-01T09:31:57.925Z",
               "EditorCaption": ""

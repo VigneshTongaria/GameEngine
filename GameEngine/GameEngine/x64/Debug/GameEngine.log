@@ -1,1 +1,19 @@
-﻿  GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe
+﻿  Model.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(33,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(37,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(54,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(56,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(58,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(60,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(145,68): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

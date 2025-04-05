@@ -33,7 +33,7 @@ glm::mat4 Scale = glm::mat4(1.0f);
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
-unsigned int asteriodInstances = 10.0f;
+unsigned int asteriodInstances = 1000;
 
 Camera MainCamera;
 
@@ -361,7 +361,7 @@ int main()
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	// Adding asteriod belt GameObject
-	GameObject asteriodObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
+	GameObject asteriodObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(30.0f,50.0f,10.0f),glm::vec3(1.0f,1.0f,1.0f));
 	asteriodObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/rock/rock.obj",asteriodInstances);
 
 	Model* asteriodModel = asteriodObject.GetComponent<Model>();
@@ -517,8 +517,8 @@ int main()
 
 		// Drawing debug normals gizmos
 		
-		ExplosionShader.UseShaderProgram();
-		ourModel->Draw(ExplosionShader, GL_TRIANGLES);
+		// ExplosionShader.UseShaderProgram();
+		// ourModel->Draw(ExplosionShader, GL_TRIANGLES);
 
 		// Draw Asteriods
 		RenderAsteriods(asteriodModel,&InstanceShader);
