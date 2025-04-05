@@ -34,6 +34,8 @@ float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 unsigned int asteriodInstances = 1000;
+unsigned int SRC_HEIGHT = 600;
+unsigned int SRC_WIDTH = 800;
 
 Camera MainCamera;
 
@@ -319,6 +321,19 @@ int main()
 
 	// Generating Frame buffers
 
+	// Multisampling buffers
+	unsigned int msbo;
+	glGenFramebuffers(1,&msbo);
+	glBindFramebuffer(GL_FRAMEBUFFER,msbo);
+
+	unsigned int textureColorBufferMultiSampled;
+    glGenTextures(1, &textureColorBufferMultiSampled);
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureColorBufferMultiSampled);
+    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 8, GL_RGB, 800, 600, GL_TRUE);
+    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+    
+	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D_MULTISAMPLE,textureColorBufferMultiSampled,0);
+	// Post processing buffers
 	unsigned int fbo;
 	glGenFramebuffers(1,&fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER,fbo);
@@ -327,16 +342,16 @@ int main()
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,colorBuffer.id,0);
 
 	// Generating render buffer objects
-	unsigned int rbo;
-	glGenRenderbuffers(1,&rbo);
-	glBindRenderbuffer(GL_RENDERBUFFER,rbo);
-	glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
+	// unsigned int rbo;
+	// glGenRenderbuffers(1,&rbo);
+	// glBindRenderbuffer(GL_RENDERBUFFER,rbo);
+	// glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,800,600);
 
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
-	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-	  std::cout<<"Frame buffers not generated"<<std::endl;
+	// glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
+	// if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	//   std::cout<<"Frame buffers not generated"<<std::endl;
 	
-	glBindRenderbuffer(GL_RENDERBUFFER,0);
+	// glBindRenderbuffer(GL_RENDERBUFFER,0);
 
 	// Generating uniform buffers
 	unsigned int uboMatrices;
@@ -470,7 +485,7 @@ int main()
 		ResourcesManager::VerticesCount = 0;
 
 		// Binding framebuffers
-		glBindFramebuffer(GL_FRAMEBUFFER,fbo);
+		glBindFramebuffer(GL_FRAMEBUFFER,msbo);
 
 		// All tests
 		glEnable(GL_DEPTH_TEST);
@@ -574,9 +589,9 @@ int main()
         	HighlightShader.setTransformation("mat_Model",_model);
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
+		glEnable(GL_DEPTH_TEST);
 
 		// RenderSkybox 
-		glEnable(GL_DEPTH_TEST);
 		
 		CubeMapShader.UseShaderProgram();
 		glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));  
@@ -595,6 +610,12 @@ int main()
 		rb->Update(deltaTime);
 
 		// Late update
+
+		// Multisampling 
+		glBindFramebuffer(GL_READ_FRAMEBUFFER,msbo);
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER,fbo);
+
+		glBlitFramebuffer(0,0,SRC_WIDTH,SRC_HEIGHT,0,0,SRC_WIDTH,SRC_HEIGHT,GL_COLOR_BUFFER_BIT,GL_NEAREST);
 
 		// Post processing
 
