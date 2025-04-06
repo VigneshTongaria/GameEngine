@@ -46,36 +46,7 @@ void Mesh::Draw(Shader &shader,GLenum mode)
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
       
-    for(unsigned int i=0 ; i<textures.size(); i++)
-    {
-        if(textures[i].id == -1)
-        {
-           break;
-        }
-
-        glActiveTexture(GL_TEXTURE0 + i);
-
-        TEXTURE_TYPE type = textures[i].type;
-        std::string number,t_name;
-
-        switch (type)
-        {
-        case TEXTURE_TYPE::DIFFUSE:
-          number = std::to_string(diffuseNr++);
-          t_name = ResourcesManager::getTextureName(DIFFUSE);
-          break;
-        case TEXTURE_TYPE::SPECULAR:
-          number = std::to_string(specularNr++);
-          t_name = ResourcesManager::getTextureName(SPECULAR);
-
-        default:
-          break;
-        }
-        shader.setInt("material." + t_name + number,i);
-        glBindTexture(GL_TEXTURE_2D,textures[i].id);
-    }
-
-    glActiveTexture(GL_TEXTURE0);
+    AssignTextures(shader);
     glBindVertexArray(VAO);
 
     if (indices.size() != 0)

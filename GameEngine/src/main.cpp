@@ -379,7 +379,7 @@ int main()
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
 
 	//setting LightingShader values
-	LightingShader.setFloat("material.shininess",16.0f);
+	LightingShader.setFloat("material.shininess",32.0f);
     
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
 
@@ -422,7 +422,7 @@ int main()
 	LightingShader.setVec3("dirLight.direction", glm::vec3(-1.0f, -1.0f, -1.0f));
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
 	LightingShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setVec3("dirLight.specular", glm::vec3(0.8f, 0.8f, 0.8f));
+	LightingShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
 	// point light 1
 	// LightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
 	// LightingShader.setVec3("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -506,6 +506,7 @@ int main()
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_STENCIL_TEST);
 		glEnable(GL_BLEND);
+		glEnable(GL_FRAMEBUFFER_SRGB);
 		//glEnable(GL_CULL_FACE);
 
 		glDepthFunc(GL_LEQUAL);
