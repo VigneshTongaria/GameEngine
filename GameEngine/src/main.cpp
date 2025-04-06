@@ -329,11 +329,25 @@ int main()
 	unsigned int textureColorBufferMultiSampled;
     glGenTextures(1, &textureColorBufferMultiSampled);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureColorBufferMultiSampled);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 8, GL_RGB, 800, 600, GL_TRUE);
+    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, 800, 600, GL_TRUE);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
     
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D_MULTISAMPLE,textureColorBufferMultiSampled,0);
-	// Post processing buffers
+
+	// Multisample Renderbuffers
+	unsigned int mrbo;
+	glGenRenderbuffers(1,&mrbo);
+	glBindRenderbuffer(GL_RENDERBUFFER,mrbo);
+	glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,800,600);
+
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,mrbo);
+	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	  std::cout<<"Frame buffers not generated"<<std::endl;
+	
+	glBindRenderbuffer(GL_RENDERBUFFER,0);
+	glBindFramebuffer(GL_FRAMEBUFFER,0);
+
+	// Post processing Frame buffer
 	unsigned int fbo;
 	glGenFramebuffers(1,&fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER,fbo);
@@ -341,17 +355,18 @@ int main()
 	Texture colorBuffer = ResourcesManager::loadTexture(GL_RGB,800,600);
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,colorBuffer.id,0);
 
-	// Generating render buffer objects
-	// unsigned int rbo;
-	// glGenRenderbuffers(1,&rbo);
-	// glBindRenderbuffer(GL_RENDERBUFFER,rbo);
-	// glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,800,600);
+	// Post processing renderBuffers
+	unsigned int rbo;
+	glGenRenderbuffers(1,&rbo);
+	glBindRenderbuffer(GL_RENDERBUFFER,rbo);
+	glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
 
-	// glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
-	// if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-	//   std::cout<<"Frame buffers not generated"<<std::endl;
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
+	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	  std::cout<<"Frame buffers not generated"<<std::endl;
 	
-	// glBindRenderbuffer(GL_RENDERBUFFER,0);
+	glBindRenderbuffer(GL_RENDERBUFFER,0);
+	glBindFramebuffer(GL_FRAMEBUFFER,0);
 
 	// Generating uniform buffers
 	unsigned int uboMatrices;
@@ -364,7 +379,7 @@ int main()
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
 
 	//setting LightingShader values
-	LightingShader.setFloat("material.shininess",32.0f);
+	LightingShader.setFloat("material.shininess",16.0f);
     
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
 
@@ -404,52 +419,52 @@ int main()
 	// Setting reflection probe
 	LightingShader.setInt("reflection",0);
 
-	LightingShader.setVec3("dirLight.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
-	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShader.setVec3("dirLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
-	LightingShader.setVec3("dirLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+	LightingShader.setVec3("dirLight.direction", glm::vec3(-1.0f, -1.0f, -1.0f));
+	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+	LightingShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShader.setVec3("dirLight.specular", glm::vec3(0.8f, 0.8f, 0.8f));
 	// point light 1
-	LightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
-	LightingShader.setVec3("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShader.setVec3("pointLights[0].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShader.setVec3("pointLights[0].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setFloat("pointLights[0].constant", 1.0f);
-	LightingShader.setFloat("pointLights[0].linear", 0.09f);
-	LightingShader.setFloat("pointLights[0].quadratic", 0.032f);
-	// point light 2
-	LightingShader.setVec3("pointLights[1].position", pointLightPositions[1]);
-	LightingShader.setVec3("pointLights[1].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShader.setVec3("pointLights[1].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShader.setVec3("pointLights[1].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setFloat("pointLights[1].constant", 1.0f);
-	LightingShader.setFloat("pointLights[1].linear", 0.09f);
-	LightingShader.setFloat("pointLights[1].quadratic", 0.032f);
-	// point light 3
-	LightingShader.setVec3("pointLights[2].position", pointLightPositions[2]);
-	LightingShader.setVec3("pointLights[2].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShader.setVec3("pointLights[2].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShader.setVec3("pointLights[2].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setFloat("pointLights[2].constant", 1.0f);
-	LightingShader.setFloat("pointLights[2].linear", 0.09f);
-	LightingShader.setFloat("pointLights[2].quadratic", 0.032f);
-	// point light 4
-	LightingShader.setVec3("pointLights[3].position", pointLightPositions[3]);
-	LightingShader.setVec3("pointLights[3].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShader.setVec3("pointLights[3].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShader.setVec3("pointLights[3].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setFloat("pointLights[3].constant", 1.0f);
-	LightingShader.setFloat("pointLights[3].linear", 0.09f);
-	LightingShader.setFloat("pointLights[3].quadratic", 0.032f);
-	// spotLight
+	// LightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
+	// LightingShader.setVec3("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	// LightingShader.setVec3("pointLights[0].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	// LightingShader.setVec3("pointLights[0].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	// LightingShader.setFloat("pointLights[0].constant", 1.0f);
+	// LightingShader.setFloat("pointLights[0].linear", 0.09f);
+	// LightingShader.setFloat("pointLights[0].quadratic", 0.032f);
+	// // point light 2
+	// LightingShader.setVec3("pointLights[1].position", pointLightPositions[1]);
+	// LightingShader.setVec3("pointLights[1].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	// LightingShader.setVec3("pointLights[1].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	// LightingShader.setVec3("pointLights[1].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	// LightingShader.setFloat("pointLights[1].constant", 1.0f);
+	// LightingShader.setFloat("pointLights[1].linear", 0.09f);
+	// LightingShader.setFloat("pointLights[1].quadratic", 0.032f);
+	// // point light 3
+	// LightingShader.setVec3("pointLights[2].position", pointLightPositions[2]);
+	// LightingShader.setVec3("pointLights[2].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	// LightingShader.setVec3("pointLights[2].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	// LightingShader.setVec3("pointLights[2].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	// LightingShader.setFloat("pointLights[2].constant", 1.0f);
+	// LightingShader.setFloat("pointLights[2].linear", 0.09f);
+	// LightingShader.setFloat("pointLights[2].quadratic", 0.032f);
+	// // point light 4
+	// LightingShader.setVec3("pointLights[3].position", pointLightPositions[3]);
+	// LightingShader.setVec3("pointLights[3].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	// LightingShader.setVec3("pointLights[3].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	// LightingShader.setVec3("pointLights[3].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	// LightingShader.setFloat("pointLights[3].constant", 1.0f);
+	// LightingShader.setFloat("pointLights[3].linear", 0.09f);
+	// LightingShader.setFloat("pointLights[3].quadratic", 0.032f);
+	// // spotLight
 
-	LightingShader.setVec3("spotLight.ambient", glm::vec3(0.0f, 0.0f, 0.0f));
-	LightingShader.setVec3("spotLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setVec3("spotLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setFloat("spotLight.constant", 1.0f);
-	LightingShader.setFloat("spotLight.linear", 0.09f);
-	LightingShader.setFloat("spotLight.quadratic", 0.032f);
-	LightingShader.setFloat("spotLight.cosTheta", glm::cos(glm::radians(12.5f)));
-	LightingShader.setFloat("spotLight.cosThetaOuter", glm::cos(glm::radians(15.0f)));
+	// LightingShader.setVec3("spotLight.ambient", glm::vec3(0.0f, 0.0f, 0.0f));
+	// LightingShader.setVec3("spotLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+	// LightingShader.setVec3("spotLight.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	// LightingShader.setFloat("spotLight.constant", 1.0f);
+	// LightingShader.setFloat("spotLight.linear", 0.09f);
+	// LightingShader.setFloat("spotLight.quadratic", 0.032f);
+	// LightingShader.setFloat("spotLight.cosTheta", glm::cos(glm::radians(12.5f)));
+	// LightingShader.setFloat("spotLight.cosThetaOuter", glm::cos(glm::radians(15.0f)));
     
 	// Cube Shaders 
 	LightnigSourceShader.UseShaderProgram();
@@ -561,13 +576,13 @@ int main()
 		}
 
 		// drawing Transparent objects
-        glStencilMask(0x00);
-		ImageShader.UseShaderProgram();
+        // glStencilMask(0x00);
+		// ImageShader.UseShaderProgram();
         
-		for(unsigned int i=0; i < 10 ; i++)
-		{
-			CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader,GL_TRIANGLES);
-		}
+		// for(unsigned int i=0; i < 10 ; i++)
+		// {
+		// 	CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader,GL_TRIANGLES);
+		// }
         
 		// Disable writing to stencil buffer and just reading its values
 

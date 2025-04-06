@@ -66,8 +66,8 @@ void main()
 {
     vec3 result = CalcDirLight(dirLight);
 
-    for(int i = 0; i < NR_POINT_LIGHTS; i++)
-      result += CalcPointLight(pointLights[i]);
+    //for(int i = 0; i < NR_POINT_LIGHTS; i++)
+     // result += CalcPointLight(pointLights[i]);
     //result += CalcSpotLight(spotLight);
 
     FragColor = vec4(result,1.0);
@@ -80,8 +80,10 @@ vec3 CalcDirLight(DirLight light)
     vec3 lightRay = normalize(-light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);
     vec3 viewDirection = normalize(viewPos - FragPos);
+    vec3 halfViewDirection = normalize(viewDirection + lightRay);
 
-    float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
+    //float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
+    float spec = pow(max(dot(halfViewDirection,normal),0.0),material.shininess);
     float diff = max(dot(normalSurface,lightRay),0.0);
 
     vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
