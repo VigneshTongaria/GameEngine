@@ -78,7 +78,7 @@ int main()
 
 	stbi_set_flip_vertically_on_load(true);
 	
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, SRC_HEIGHT, SRC_WIDTH);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetKeyCallback(window,KeyBoard::KeyCallback);
 	glfwSetMouseButtonCallback(window,Mouse::MouseButtonCallback);
@@ -368,6 +368,28 @@ int main()
 	glBindRenderbuffer(GL_RENDERBUFFER,0);
 	glBindFramebuffer(GL_FRAMEBUFFER,0);
 
+	// Generating depth map buffers
+
+	unsigned int depthMapFBO;
+	glGenFramebuffers(1, &depthMapFBO);
+	glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
+
+	const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+
+	unsigned int depthMap;
+	glGenTextures(1, &depthMap);
+	glBindTexture(GL_TEXTURE_2D, depthMap);
+	glTexImage2D(GL_TEXTURE_2D,0,GL_DEPTH_COMPONENT,SHADOW_WIDTH,SHADOW_HEIGHT,0,GL_DEPTH_COMPONENT,GL_FLOAT,NULL);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,GL_TEXTURE_2D,depthMap,0);
+	glDrawBuffer(GL_NONE);
+	glReadBuffer(GL_NONE);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
 	// Generating uniform buffers
 	unsigned int uboMatrices;
 	glGenBuffers(1, &uboMatrices);
@@ -576,6 +598,12 @@ int main()
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
 
+		glm::mat4 _model = glm::mat4(1.0f);
+		_model = glm::translate(_model,glm::vec3(0.0f,-1.0f,0.0f));
+		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
+		LightnigSourceShader.setTransformation("mat_Model", _model);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		// drawing Transparent objects
         // glStencilMask(0x00);
 		// ImageShader.UseShaderProgram();
@@ -593,18 +621,18 @@ int main()
 		glDepthMask(GL_ALWAYS);
 
 		//Drawing highlight cubes
-		glBindVertexArray(lightVAO);
+		// glBindVertexArray(lightVAO);
 
-		HighlightShader.UseShaderProgram();
+		// HighlightShader.UseShaderProgram();
 
-		for(unsigned int i = 0 ; i<4 ; i++)
-		{
-			glm::mat4 _model = glm::mat4(1.0f);
-			_model = glm::translate(_model,pointLightPositions[i]);
-			_model = glm::scale(_model,glm::vec3(1.1f,1.1f,1.1f));
-        	HighlightShader.setTransformation("mat_Model",_model);
-			glDrawArrays(GL_TRIANGLES,0,36);
-		}
+		// for(unsigned int i = 0 ; i<4 ; i++)
+		// {
+		// 	glm::mat4 _model = glm::mat4(1.0f);
+		// 	_model = glm::translate(_model,pointLightPositions[i]);
+		// 	_model = glm::scale(_model,glm::vec3(1.1f,1.1f,1.1f));
+        // 	HighlightShader.setTransformation("mat_Model",_model);
+		// 	glDrawArrays(GL_TRIANGLES,0,36);
+		// }
 		glEnable(GL_DEPTH_TEST);
 
 		// RenderSkybox 
@@ -730,6 +758,8 @@ void RenderAsteriods(Model* m,Shader* s)
     s->UseShaderProgram();
 	m->DrawInstanced(*s,GL_TRIANGLES,asteriodInstances);
 }
+
+
 
 std::string loadShaderSRC(const char* filename)
 {
