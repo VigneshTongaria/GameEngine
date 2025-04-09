@@ -9,6 +9,6 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14
       C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
       This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
   
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(599,15): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(599,15): warning C4309: 'argument': truncation of constant value
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(698,15): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(698,15): warning C4309: 'argument': truncation of constant value
   GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

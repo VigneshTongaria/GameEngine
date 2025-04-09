@@ -102,6 +102,8 @@ int main()
 	Shader ExplosionShader("Assets/GeometryShaders/Vertex_unlit.glsl", 
 		"Assets/fragment_core_highlight.glsl","Assets/GeometryShaders/Geometry_normals.glsl");
 	Shader InstanceShader("Assets/vertex_Instance.glsl", "Assets/GeometryShaders/fragment_unlit.glsl");
+	Shader DepthMapShader("Assets/vertex_depthMap.glsl", "Assets/fragment_depthMap.glsl");
+	Shader LightingShadowShader("Assets/vertex_core_shadows.glsl", "Assets/fragment_core_shadows.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
@@ -111,6 +113,7 @@ int main()
 	shaders.push_back(&CubeMapShader);
 	shaders.push_back(&ExplosionShader);
 	shaders.push_back(&InstanceShader);
+	shaders.push_back(&LightingShadowShader);
 
 	// Adding uniform buffer index
 	unsigned int uniformVertexCoreIndex = glGetUniformBlockIndex(LightingShader.m_ID,"Matrices");
@@ -118,12 +121,14 @@ int main()
 	unsigned int uniformVertexLightingSourceIndex = glGetUniformBlockIndex(LightnigSourceShader.m_ID,"Matrices");
 	unsigned int uniformVertexSimplendex = glGetUniformBlockIndex(ExplosionShader.m_ID,"Matrices");
 	unsigned int uniformVertexInstanceIndex = glGetUniformBlockIndex(InstanceShader.m_ID,"Matrices");
+	unsigned int uniformVertexCoreShadowsIndex = glGetUniformBlockIndex(LightingShadowShader.m_ID,"Matrices");
 
 	glUniformBlockBinding(LightingShader.m_ID,uniformVertexCoreIndex,0);
 	glUniformBlockBinding(CubeMapShader.m_ID,uniformVertexSkyboxIndex,0);
 	glUniformBlockBinding(LightnigSourceShader.m_ID,uniformVertexLightingSourceIndex,0);
 	glUniformBlockBinding(ExplosionShader.m_ID,uniformVertexSimplendex,0);
 	glUniformBlockBinding(InstanceShader.m_ID,uniformVertexInstanceIndex,0);
+	glUniformBlockBinding(LightingShadowShader.m_ID,uniformVertexCoreShadowsIndex,0);
 
     // Vertices data not used now added geometrydata class but still used in VBO 
 	float vertices[] = {
@@ -399,9 +404,7 @@ int main()
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
-
-	//setting LightingShader values
-	LightingShader.setFloat("material.shininess",32.0f);
+	
     
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
 
@@ -430,6 +433,13 @@ int main()
 		CubesGameObject[i]->AddComponent<Model>(DEFAULT_MODEL::CUBE,newTexture);
 	}
 
+	// Adding light projection and view matrices
+	float near_plane = 1.0f,far_plane = 17.5f;
+	glm::vec3 DirectionalLightDir = glm::vec3(-1.0f,-1.0f,-1.0f);
+	glm::mat4 lightView = glm::lookAt(-1.0f*DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
+	glm::mat4 lightProj = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,near_plane, far_plane);
+	glm::mat4 lightSpaceMatrix =  lightProj *lightView;
+
 	// Loading cubeMap
 
 	CubeMap cubeMap = ResourcesManager::loadCubeMap(cubeFaces);
@@ -438,10 +448,14 @@ int main()
     
 	LightingShader.UseShaderProgram();
 
+	// Loading miscallaneous textures
+	Texture woodTexture = ResourcesManager::loadTexture("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/ExtraTextures/Wood_base.jpg",TEXTURE_TYPE::DIFFUSE);
+
 	// Setting reflection probe
 	LightingShader.setInt("reflection",0);
+	LightingShader.setFloat("material.shininess",32.0f);
 
-	LightingShader.setVec3("dirLight.direction", glm::vec3(-1.0f, -1.0f, -1.0f));
+	LightingShader.setVec3("dirLight.direction", DirectionalLightDir);
 	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
 	LightingShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
 	LightingShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
@@ -487,6 +501,26 @@ int main()
 	// LightingShader.setFloat("spotLight.quadratic", 0.032f);
 	// LightingShader.setFloat("spotLight.cosTheta", glm::cos(glm::radians(12.5f)));
 	// LightingShader.setFloat("spotLight.cosThetaOuter", glm::cos(glm::radians(15.0f)));
+
+	// Lighting shadow shader values set
+
+	LightingShadowShader.UseShaderProgram();
+	LightingShadowShader.setFloat("material.shininess",32.0f);
+	LightingShadowShader.setInt("reflection",0);
+
+	LightingShadowShader.setVec3("dirLight.direction", DirectionalLightDir);
+	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShadowShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
+
+	glBindTexture(GL_TEXTURE_2D,depthMap);
+	LightingShadowShader.setTransformation("mat_Lightspace",lightSpaceMatrix);
+	LightingShadowShader.setInt("shadowMap",10);
+	glBindTexture(GL_TEXTURE_2D,0);
+
+	// Depth map shader values set
+	DepthMapShader.UseShaderProgram();
+	DepthMapShader.setTransformation("lightSpaceMatrix",lightSpaceMatrix);
     
 	// Cube Shaders 
 	LightnigSourceShader.UseShaderProgram();
@@ -521,6 +555,35 @@ int main()
 		//rendering
 		ResourcesManager::VerticesCount = 0;
 
+		// Rendering scene first for depth Map
+		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+		glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
+		glClear(GL_DEPTH_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);
+
+		DepthMapShader.UseShaderProgram();
+		ourModel->Draw(DepthMapShader,GL_TRIANGLES);
+
+		glBindVertexArray(lightVAO);
+
+		for(unsigned int i = 0 ; i<4 ; i++)
+		{
+			glm::mat4 _model = glm::mat4(1.0f);
+			_model = glm::translate(_model,pointLightPositions[i]);
+        	DepthMapShader.setTransformation("mat_Model",_model);
+			glDrawArrays(GL_TRIANGLES,0,36);
+		}
+
+		glm::mat4 _model = glm::mat4(1.0f);
+		_model = glm::translate(_model,glm::vec3(0.0f,-1.0f,0.0f));
+		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
+		DepthMapShader.setTransformation("mat_Model", _model);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		glBindFramebuffer(GL_FRAMEBUFFER,0);
+
+
+
 		// Binding framebuffers
 		glBindFramebuffer(GL_FRAMEBUFFER,msbo);
 
@@ -534,15 +597,20 @@ int main()
 		glDepthFunc(GL_LEQUAL);
 		glStencilOp(GL_KEEP,GL_REPLACE,GL_REPLACE);
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+		glViewport(0, 0, SRC_WIDTH, SRC_HEIGHT);
 
 		glClearColor(0.1f, 0.1f, 0.1f, 0.6f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		
 		// Disable writing to stencil buffer
 		glStencilMask(0x00);
+
  
 		//draw shapes
-		LightingShader.UseShaderProgram();
+		LightingShadowShader.UseShaderProgram();
+
+		glActiveTexture(GL_TEXTURE10);
+		glBindTexture(GL_TEXTURE_2D,depthMap);
 
 		float time = static_cast<float>(glfwGetTime());
 
@@ -552,10 +620,10 @@ int main()
 		
 		//  LightPositions[0].x = 1.0f*glm::sin(glm::radians(time*10.0f));
 		//  LightPositions[0].z = 1.0f*glm::cos(glm::radians(time*10.0f));
-		LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
-		LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
+		// LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
+		// LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
-		LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
+		// LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
 		// for(unsigned int i = 0 ; i<10 ; i++)
 		// {
@@ -566,7 +634,7 @@ int main()
 		// }
 		// writing stencil on models
 
-		ourModel->Draw(LightingShader,GL_TRIANGLES);
+		ourModel->Draw(LightingShadowShader,GL_TRIANGLES);
 
 		// Drawing debug normals gizmos
 		
@@ -581,28 +649,37 @@ int main()
 		// Drawing lightsource cubes and highlight
 
 		
-		glBindVertexArray(lightVAO);
+		glBindVertexArray(VAO);
 
-		LightnigSourceShader.UseShaderProgram();
+		LightingShadowShader.UseShaderProgram();
 		
 	    // Enable writing to stencil buffer
 
 		glStencilFunc(GL_ALWAYS,1,0xFF);
 		glStencilMask(0xFF);
 
+		LightingShadowShader.setInt("material.texture_diffuse1", 0);
+		glActiveTexture(GL_TEXTURE0);
+	    glBindTexture(GL_TEXTURE_2D, woodTexture.id);
+
+		LightingShadowShader.setInt("material.texture_specular1", 1);
+		glActiveTexture(GL_TEXTURE1);
+	    glBindTexture(GL_TEXTURE_2D, woodTexture.id);
 		for(unsigned int i = 0 ; i<4 ; i++)
 		{
 			glm::mat4 _model = glm::mat4(1.0f);
 			_model = glm::translate(_model,pointLightPositions[i]);
-        	LightnigSourceShader.setTransformation("mat_Model",_model);
+        	LightingShadowShader.setTransformation("mat_Model",_model);
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
 
-		glm::mat4 _model = glm::mat4(1.0f);
-		_model = glm::translate(_model,glm::vec3(0.0f,-1.0f,0.0f));
+		_model = glm::mat4(1.0f);
+		_model = glm::translate(_model,glm::vec3(0.0f,-3.0f,0.0f));
 		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
-		LightnigSourceShader.setTransformation("mat_Model", _model);
+		LightingShadowShader.setTransformation("mat_Model", _model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		glBindTexture(GL_TEXTURE_2D,0);
 
 		// drawing Transparent objects
         // glStencilMask(0x00);
