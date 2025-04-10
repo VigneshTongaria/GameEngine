@@ -434,9 +434,9 @@ int main()
 	}
 
 	// Adding light projection and view matrices
-	float near_plane = 1.0f,far_plane = 17.5f;
+	float near_plane = 1.0f,far_plane = 170.5f;
 	glm::vec3 DirectionalLightDir = glm::vec3(-1.0f,-1.0f,-1.0f);
-	glm::mat4 lightView = glm::lookAt(-1.0f*DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
+	glm::mat4 lightView = glm::lookAt(-10.0f*DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
 	glm::mat4 lightProj = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,near_plane, far_plane);
 	glm::mat4 lightSpaceMatrix =  lightProj *lightView;
 
@@ -575,7 +575,7 @@ int main()
 		}
 
 		glm::mat4 _model = glm::mat4(1.0f);
-		_model = glm::translate(_model,glm::vec3(0.0f,-1.0f,0.0f));
+		_model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
 		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
 		DepthMapShader.setTransformation("mat_Model", _model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -674,7 +674,7 @@ int main()
 		}
 
 		_model = glm::mat4(1.0f);
-		_model = glm::translate(_model,glm::vec3(0.0f,-3.0f,0.0f));
+		_model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
 		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
 		LightingShadowShader.setTransformation("mat_Model", _model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
