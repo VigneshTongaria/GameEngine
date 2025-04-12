@@ -382,13 +382,15 @@ int main()
 	const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
 
 	unsigned int depthMap;
+	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	glGenTextures(1, &depthMap);
 	glBindTexture(GL_TEXTURE_2D, depthMap);
 	glTexImage2D(GL_TEXTURE_2D,0,GL_DEPTH_COMPONENT,SHADOW_WIDTH,SHADOW_HEIGHT,0,GL_DEPTH_COMPONENT,GL_FLOAT,NULL);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+	glTexParameterfv(GL_TEXTURE_2D,GL_TEXTURE_BORDER_COLOR,borderColor);
 
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,GL_TEXTURE_2D,depthMap,0);
 	glDrawBuffer(GL_NONE);
@@ -435,8 +437,8 @@ int main()
 
 	// Adding light projection and view matrices
 	float near_plane = 1.0f,far_plane = 170.5f;
-	glm::vec3 DirectionalLightDir = glm::vec3(-1.0f,-1.0f,-1.0f);
-	glm::mat4 lightView = glm::lookAt(-10.0f*DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
+	glm::vec3 DirectionalLightDir = glm::vec3(-1.0f, -1.0f, -1.0f);
+	glm::mat4 lightView = glm::lookAt(-10.0f* DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
 	glm::mat4 lightProj = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,near_plane, far_plane);
 	glm::mat4 lightSpaceMatrix =  lightProj *lightView;
 
@@ -559,6 +561,7 @@ int main()
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 		glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
 		glClear(GL_DEPTH_BUFFER_BIT);
+		//glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 
 		DepthMapShader.UseShaderProgram();
@@ -623,7 +626,7 @@ int main()
 		// LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
 		// LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
-		// LightingShader.setVec3("viewPos",MainCamera.GetCameraPos());
+		LightingShadowShader.setVec3("viewPos",MainCamera.GetCameraPos());
 		
 		// for(unsigned int i = 0 ; i<10 ; i++)
 		// {
@@ -662,9 +665,11 @@ int main()
 		glActiveTexture(GL_TEXTURE0);
 	    glBindTexture(GL_TEXTURE_2D, woodTexture.id);
 
-		LightingShadowShader.setInt("material.texture_specular1", 1);
+		// LightingShadowShader.setInt("material.texture_specular1", 1);
+		// glActiveTexture(GL_TEXTURE1);
+	    // glBindTexture(GL_TEXTURE_2D, woodTexture.id);
 		glActiveTexture(GL_TEXTURE1);
-	    glBindTexture(GL_TEXTURE_2D, woodTexture.id);
+	    glBindTexture(GL_TEXTURE_2D, 0);
 		for(unsigned int i = 0 ; i<4 ; i++)
 		{
 			glm::mat4 _model = glm::mat4(1.0f);
