@@ -23,6 +23,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void Mat_Calculations();
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex);
+void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO);
 void RenderAsteriods(Model* m,Shader* s);
 std::string loadShaderSRC(const char* filename);
 float Arrow_vertical_Input = 0.0f;
@@ -33,6 +34,7 @@ glm::mat4 Scale = glm::mat4(1.0f);
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
+unsigned int NR_POINT_LIGHTS;
 unsigned int asteriodInstances = 1000;
 unsigned int SRC_HEIGHT = 600;
 unsigned int SRC_WIDTH = 800;
@@ -41,6 +43,9 @@ Camera MainCamera;
 
 // Asteriods mattrices
 std::vector<glm::mat4> asteriodModelMats;
+
+// All models
+std::vector<Model*> SceneModels;
 
 // All shaders
 std::vector<Shader*> shaders;
@@ -104,6 +109,8 @@ int main()
 	Shader InstanceShader("Assets/vertex_Instance.glsl", "Assets/GeometryShaders/fragment_unlit.glsl");
 	Shader DepthMapShader("Assets/vertex_depthMap.glsl", "Assets/fragment_depthMap.glsl");
 	Shader LightingShadowShader("Assets/vertex_core_shadows.glsl", "Assets/fragment_core_shadows.glsl");
+	Shader PointLightingShadowShader("Assets/vertex_pointLight.glsl","Assets/GeometryShaders/fragment_PointLightMap.glsl",
+		"Assets/GeometryShaders/Geometry_PointLight.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
@@ -373,7 +380,7 @@ int main()
 	glBindRenderbuffer(GL_RENDERBUFFER,0);
 	glBindFramebuffer(GL_FRAMEBUFFER,0);
 
-	// Generating depth map buffers
+	// Generating directional light depth map buffers
 
 	unsigned int depthMapFBO;
 	glGenFramebuffers(1, &depthMapFBO);
@@ -396,6 +403,39 @@ int main()
 	glDrawBuffer(GL_NONE);
 	glReadBuffer(GL_NONE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	// Generating point light cubemaps depth buffers
+
+	std::vector<unsigned int> pointLightDepthMap;
+	std::vector<unsigned int> pointLightDepthMapBuffers;
+
+	for(unsigned int i = 0; i<NR_POINT_LIGHTS; i++)
+	{
+        unsigned int depthCubeMap;
+		glGenTextures(GL_TEXTURE_CUBE_MAP,&depthCubeMap);
+
+		for(int i=0 ; i<6 ; i++)
+		{
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,0,GL_DEPTH_ATTACHMENT,SHADOW_WIDTH,SHADOW_HEIGHT,0,GL_DEPTH_ATTACHMENT,GL_FLOAT,NULL);
+		}
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+		unsigned int depthBuffer;
+		glGenFramebuffers(1,&depthBuffer);
+
+		glBindFramebuffer(GL_FRAMEBUFFER,depthBuffer);
+		glFramebufferTexture(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,depthCubeMap,0);
+		glDrawBuffer(GL_NONE);
+		glReadBuffer(GL_NONE);
+		glBindFramebuffer(GL_FRAMEBUFFER,0);
+
+		pointLightDepthMap.push_back(depthCubeMap);
+		pointLightDepthMapBuffers.push_back(depthBuffer);
+	}
 
 	// Generating uniform buffers
 	unsigned int uboMatrices;
@@ -441,6 +481,26 @@ int main()
 	glm::mat4 lightView = glm::lookAt(-10.0f* DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
 	glm::mat4 lightProj = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,near_plane, far_plane);
 	glm::mat4 lightSpaceMatrix =  lightProj *lightView;
+
+	// points light view and projection matrix
+
+	float aspect = (float)SHADOW_WIDTH / (float)SHADOW_HEIGHT;
+	float near = 1.0f;
+	float far = 25.0f;
+	glm::mat4 shadowProj = glm::perspective(glm::radians(90.0f), aspect, near, far);
+
+	std::vector<std::vector<glm::mat4>> pointLightsViewProjection;
+
+	for(int i=0;i<NR_POINT_LIGHTS;i++)
+	{
+		glm::vec3 lightPos = pointLightPositions[i];
+		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
+		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
+		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
+	}
 
 	// Loading cubeMap
 
@@ -511,13 +571,55 @@ int main()
 	LightingShadowShader.setInt("reflection",0);
 
 	LightingShadowShader.setVec3("dirLight.direction", DirectionalLightDir);
-	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
 	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
 	LightingShadowShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
+
+	LightingShadowShader.setVec3("pointLights[0].position", pointLightPositions[0]);
+	LightingShadowShader.setVec3("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	LightingShadowShader.setVec3("pointLights[0].diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShadowShader.setVec3("pointLights[0].specular", glm::vec3(0.4f, 0.4f, 0.4f));
+	LightingShadowShader.setFloat("pointLights[0].constant", 1.0f);
+	LightingShadowShader.setFloat("pointLights[0].linear", 0.09f);
+	LightingShadowShader.setFloat("pointLights[0].quadratic", 0.032f);
+
+	LightingShadowShader.setVec3("pointLights[1].position", pointLightPositions[1]);
+	LightingShadowShader.setVec3("pointLights[1].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	LightingShadowShader.setVec3("pointLights[1].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	LightingShadowShader.setVec3("pointLights[1].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShadowShader.setFloat("pointLights[1].constant", 1.0f);
+	LightingShadowShader.setFloat("pointLights[1].linear", 0.09f);
+	LightingShadowShader.setFloat("pointLights[1].quadratic", 0.032f);
+	// point light 3
+	LightingShadowShader.setVec3("pointLights[2].position", pointLightPositions[2]);
+	LightingShadowShader.setVec3("pointLights[2].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	LightingShadowShader.setVec3("pointLights[2].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	LightingShadowShader.setVec3("pointLights[2].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShadowShader.setFloat("pointLights[2].constant", 1.0f);
+	LightingShadowShader.setFloat("pointLights[2].linear", 0.09f);
+	LightingShadowShader.setFloat("pointLights[2].quadratic", 0.032f);
+	// point light 4
+	LightingShadowShader.setVec3("pointLights[3].position", pointLightPositions[3]);
+	LightingShadowShader.setVec3("pointLights[3].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	LightingShadowShader.setVec3("pointLights[3].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+	LightingShadowShader.setVec3("pointLights[3].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShadowShader.setFloat("pointLights[3].constant", 1.0f);
+	LightingShadowShader.setFloat("pointLights[3].linear", 0.09f);
+	LightingShadowShader.setFloat("pointLights[3].quadratic", 0.032f);
+
+	// Setting and binding all the shadow depth maps
+
+	for(int i=0 ;i<NR_POINT_LIGHTS; i++)
+	{
+		LightingShadowShader.setInt("pointShadowMap["+std::to_string(i)+"]",11 + i);
+	}
+	LightingShadowShader.setFloat("far_plane",far);
 
 	glBindTexture(GL_TEXTURE_2D,depthMap);
 	LightingShadowShader.setTransformation("mat_Lightspace",lightSpaceMatrix);
 	LightingShadowShader.setInt("shadowMap",10);
+
+
 	glBindTexture(GL_TEXTURE_2D,0);
 
 	// Depth map shader values set
@@ -557,7 +659,7 @@ int main()
 		//rendering
 		ResourcesManager::VerticesCount = 0;
 
-		// Rendering scene first for depth Map
+		// Rendering scene first for depth Map for directional light
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 		glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
 		glClear(GL_DEPTH_BUFFER_BIT);
@@ -585,7 +687,40 @@ int main()
 
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
 
+        // Rendering scene for depth maps for points lights
+		glClear(GL_DEPTH_BUFFER_BIT);
+        
+		for(int i=0; i<NR_POINT_LIGHTS; i++)
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER,pointLightDepthMapBuffers[i]);
+			PointLightingShadowShader.UseShaderProgram();
+			PointLightingShadowShader.setVec3("lightPos",pointLightPositions[i]);
+			PointLightingShadowShader.setFloat("far_plane",far);
+			for(int j=0; j<6; j++)
+			{
+				PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(i) + "]",pointLightsViewProjection[i][j]);
+			}
+			ourModel->Draw(PointLightingShadowShader, GL_TRIANGLES);
 
+			glBindVertexArray(lightVAO);
+
+			for (unsigned int i = 0; i < 4; i++)
+			{
+				glm::mat4 _model = glm::mat4(1.0f);
+				_model = glm::translate(_model, pointLightPositions[i]);
+				PointLightingShadowShader.setTransformation("mat_Model", _model);
+				glDrawArrays(GL_TRIANGLES, 0, 36);
+			}
+
+			glm::mat4 _model = glm::mat4(1.0f);
+			_model = glm::translate(_model, glm::vec3(0.0f, -2.0f, 0.0f));
+			_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+			PointLightingShadowShader.setTransformation("mat_Model", _model);
+
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
 
 		// Binding framebuffers
 		glBindFramebuffer(GL_FRAMEBUFFER,msbo);
@@ -614,6 +749,12 @@ int main()
 
 		glActiveTexture(GL_TEXTURE10);
 		glBindTexture(GL_TEXTURE_2D,depthMap);
+
+		for(int i=0;i<NR_POINT_LIGHTS;i++)
+		{
+			glActiveTexture(GL_TEXTURE11 + i);
+			glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
+		}
 
 		float time = static_cast<float>(glfwGetTime());
 
@@ -862,6 +1003,11 @@ std::string loadShaderSRC(const char* filename)
 	}
 	file.close();
     return ret;
+}
+
+void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO)
+{
+
 }
 
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex)

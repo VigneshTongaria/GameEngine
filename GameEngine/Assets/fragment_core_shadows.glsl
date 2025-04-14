@@ -1,5 +1,6 @@
 #version 460 core
 
+#define NR_POINT_LIGHTS 4  
 struct Material {
     sampler2D texture_diffuse1;
     sampler2D texture_specular1;
@@ -17,6 +18,7 @@ struct DirLight {
 };  
 uniform DirLight dirLight;
 uniform sampler2D shadowMap;
+uniform samplerCube pointShadowMap[NR_POINT_LIGHTS];
 float shadowCalculations(vec4 lightFragPos);
 vec3 CalcDirLight(DirLight light); 
 
@@ -31,10 +33,10 @@ struct PointLight {
     float quadratic;
 };
 
-#define NR_POINT_LIGHTS 4  
 uniform PointLight pointLights[NR_POINT_LIGHTS];
+float pointShadowCalculations(PointLight light,samplerCube depthMap);
 
-vec3 CalcPointLight(PointLight light); 
+vec3 CalcPointLight(PointLight light,int index);
 
 struct SpotLight {
     vec3 position;
@@ -65,20 +67,20 @@ uniform sampler2D Texture2;
 uniform vec3 lightColor;
 uniform vec3 objectColor;
 uniform vec3 viewPos;
+uniform float far_plane;
 void main()
 {
     vec3 result = CalcDirLight(dirLight);
 
-    //for(int i = 0; i < NR_POINT_LIGHTS; i++)
-     // result += CalcPointLight(pointLights[i]);
+    for(int i = 0; i < NR_POINT_LIGHTS; i++)
+      result += CalcPointLight(pointLights[i],i);
     //result += CalcSpotLight(spotLight);
 
     FragColor = vec4(result,1.0);
 }
 
 vec3 CalcDirLight(DirLight light)
-{
-    
+{  
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(-light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);
@@ -97,14 +99,16 @@ vec3 CalcDirLight(DirLight light)
     return ( (1.0 - shadow)*(diffusion +  specular) + ambientLight);
 }
 
-vec3 CalcPointLight(PointLight light)
+vec3 CalcPointLight(PointLight light,int index)
 {
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(light.position - FragPos);
     vec3 reflectRay = reflect(-lightRay,normal);
     vec3 viewDirection = normalize(viewPos - FragPos);
+    vec3 halfViewDirection = normalize(viewDirection + lightRay);
 
-    float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
+    //float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
+    float spec = pow(max(dot(halfViewDirection,normal),0.0),material.shininess);
     float diff = max(dot(normalSurface,lightRay),0.0);
 
     vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
@@ -117,6 +121,8 @@ vec3 CalcPointLight(PointLight light)
     specular *= attenuation;
     diffusion *= attenuation;
     ambientLight *= attenuation;
+
+    float shadow = pointShadowCalculations(light,pointShadowMap[index]);
 
     return (specular + diffusion + ambientLight);
 }
@@ -183,6 +189,24 @@ float shadowCalculations(vec4 fragPosLightSpace)
     shadow = 0.0;
 
     shadow /= 9.0;
+    
+    return shadow;
+}
+
+float pointShadowCalculations(PointLight light,samplerCube depthMap)
+{
+    vec3 FragToLight = FragPos - light.position;
+
+    float closestDepth = texture(depthMap,FragToLight).r;
+    float currentDepth = length(FragToLight)/far_plane;
+
+    //float bias = max(0.05 * (1.0 - dot(lightRay,normalSurface)),0.005);
+
+    float shadow = 0.0;
+    vec2 texelSize = 1.0/textureSize(shadowMap,0);
+
+    shadow = (currentDepth > closestDepth + 0.0005) ? 1.0 : 0.0;
+
     
     return shadow;
 }
