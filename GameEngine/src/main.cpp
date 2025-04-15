@@ -31,10 +31,17 @@ float Arrow_vertical_Input = 0.0f;
 glm::mat4 mouseTransform = glm::mat4(1.0f);
 glm::mat4 mouseScroll = glm::mat4(1.0f);
 glm::mat4 Scale = glm::mat4(1.0f);
+
+glm::vec3 pointLightPositions[] = {
+	glm::vec3( 0.7f,  0.2f,  2.0f),
+	glm::vec3( 2.3f, -3.3f, -4.0f),
+	glm::vec3(-4.0f,  2.0f, -12.0f),
+	glm::vec3( 0.0f,  0.0f, -3.0f)
+}; 
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
-unsigned int NR_POINT_LIGHTS;
+unsigned int NR_POINT_LIGHTS = 4;
 unsigned int asteriodInstances = 1000;
 unsigned int SRC_HEIGHT = 600;
 unsigned int SRC_WIDTH = 800;
@@ -250,13 +257,6 @@ int main()
 		glm::vec3( 1.5f,  0.2f, -1.5f), 
 		glm::vec3(-1.3f,  1.0f, -1.5f)  
 	};
-
-	glm::vec3 pointLightPositions[] = {
-		glm::vec3( 0.7f,  0.2f,  2.0f),
-		glm::vec3( 2.3f, -3.3f, -4.0f),
-		glm::vec3(-4.0f,  2.0f, -12.0f),
-		glm::vec3( 0.0f,  0.0f, -3.0f)
-	}; 
 	
 	unsigned int indices[] = 
 	{
@@ -412,11 +412,12 @@ int main()
 	for(unsigned int i = 0; i<NR_POINT_LIGHTS; i++)
 	{
         unsigned int depthCubeMap;
-		glGenTextures(GL_TEXTURE_CUBE_MAP,&depthCubeMap);
+		glGenTextures(1, &depthCubeMap);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubeMap);
 
-		for(int i=0 ; i<6 ; i++)
+		for(unsigned int j=0 ; j<6 ; j++)
 		{
-			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,0,GL_DEPTH_ATTACHMENT,SHADOW_WIDTH,SHADOW_HEIGHT,0,GL_DEPTH_ATTACHMENT,GL_FLOAT,NULL);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + j,0,GL_DEPTH_COMPONENT,SHADOW_WIDTH,SHADOW_HEIGHT,0,GL_DEPTH_COMPONENT,GL_FLOAT,NULL);
 		}
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -432,6 +433,7 @@ int main()
 		glDrawBuffer(GL_NONE);
 		glReadBuffer(GL_NONE);
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 
 		pointLightDepthMap.push_back(depthCubeMap);
 		pointLightDepthMapBuffers.push_back(depthBuffer);
@@ -453,6 +455,8 @@ int main()
     //	Adding gameObject components for  our model
 	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
 	Model* ourModel = gameObject.GetComponent<Model>();
+
+	SceneModels.push_back(ourModel);
 
 	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,0.0f,0.0f));
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
@@ -491,15 +495,17 @@ int main()
 
 	std::vector<std::vector<glm::mat4>> pointLightsViewProjection;
 
-	for(int i=0;i<NR_POINT_LIGHTS;i++)
+	for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
 	{
 		glm::vec3 lightPos = pointLightPositions[i];
-		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
-		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
-		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
-		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
-		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
-		pointLightsViewProjection[i].push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
+		std::vector<glm::mat4> newLightView;
+		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
+		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
+		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
+		pointLightsViewProjection.push_back(newLightView);
 	}
 
 	// Loading cubeMap
@@ -609,9 +615,11 @@ int main()
 
 	// Setting and binding all the shadow depth maps
 
-	for(int i=0 ;i<NR_POINT_LIGHTS; i++)
+	for(unsigned int i=0 ;i<NR_POINT_LIGHTS; i++)
 	{
+		glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
 		LightingShadowShader.setInt("pointShadowMap["+std::to_string(i)+"]",11 + i);
+		glBindTexture(GL_TEXTURE_CUBE_MAP,0);
 	}
 	LightingShadowShader.setFloat("far_plane",far);
 
@@ -666,59 +674,24 @@ int main()
 		//glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 
-		DepthMapShader.UseShaderProgram();
-		ourModel->Draw(DepthMapShader,GL_TRIANGLES);
-
-		glBindVertexArray(lightVAO);
-
-		for(unsigned int i = 0 ; i<4 ; i++)
-		{
-			glm::mat4 _model = glm::mat4(1.0f);
-			_model = glm::translate(_model,pointLightPositions[i]);
-        	DepthMapShader.setTransformation("mat_Model",_model);
-			glDrawArrays(GL_TRIANGLES,0,36);
-		}
-
-		glm::mat4 _model = glm::mat4(1.0f);
-		_model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
-		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
-		DepthMapShader.setTransformation("mat_Model", _model);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		RenderScene(&DepthMapShader,SceneModels,lightVAO);
 
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
 
         // Rendering scene for depth maps for points lights
 		glClear(GL_DEPTH_BUFFER_BIT);
         
-		for(int i=0; i<NR_POINT_LIGHTS; i++)
+		for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
 		{
 			glBindFramebuffer(GL_FRAMEBUFFER,pointLightDepthMapBuffers[i]);
 			PointLightingShadowShader.UseShaderProgram();
 			PointLightingShadowShader.setVec3("lightPos",pointLightPositions[i]);
 			PointLightingShadowShader.setFloat("far_plane",far);
-			for(int j=0; j<6; j++)
+			for(unsigned int j=0; j<6; j++)
 			{
-				PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(i) + "]",pointLightsViewProjection[i][j]);
+				PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(j) + "]",pointLightsViewProjection[i][j]);
 			}
-			ourModel->Draw(PointLightingShadowShader, GL_TRIANGLES);
-
-			glBindVertexArray(lightVAO);
-
-			for (unsigned int i = 0; i < 4; i++)
-			{
-				glm::mat4 _model = glm::mat4(1.0f);
-				_model = glm::translate(_model, pointLightPositions[i]);
-				PointLightingShadowShader.setTransformation("mat_Model", _model);
-				glDrawArrays(GL_TRIANGLES, 0, 36);
-			}
-
-			glm::mat4 _model = glm::mat4(1.0f);
-			_model = glm::translate(_model, glm::vec3(0.0f, -2.0f, 0.0f));
-			_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
-			PointLightingShadowShader.setTransformation("mat_Model", _model);
-
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-
+			RenderScene(&PointLightingShadowShader,SceneModels,lightVAO);
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		}
 
@@ -750,17 +723,13 @@ int main()
 		glActiveTexture(GL_TEXTURE10);
 		glBindTexture(GL_TEXTURE_2D,depthMap);
 
-		for(int i=0;i<NR_POINT_LIGHTS;i++)
+		for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
 		{
 			glActiveTexture(GL_TEXTURE11 + i);
 			glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
 		}
 
 		float time = static_cast<float>(glfwGetTime());
-
-		glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
 		
 		//  LightPositions[0].x = 1.0f*glm::sin(glm::radians(time*10.0f));
 		//  LightPositions[0].z = 1.0f*glm::cos(glm::radians(time*10.0f));
@@ -819,7 +788,7 @@ int main()
 			glDrawArrays(GL_TRIANGLES,0,36);
 		}
 
-		_model = glm::mat4(1.0f);
+		glm::mat4 _model = glm::mat4(1.0f);
 		_model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
 		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
 		LightingShadowShader.setTransformation("mat_Model", _model);
@@ -1007,7 +976,27 @@ std::string loadShaderSRC(const char* filename)
 
 void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO)
 {
+	shader->UseShaderProgram();
+    for(auto& model : models)
+	{
+		model->Draw(*shader,GL_TRIANGLES);
+	}
 
+	glBindVertexArray(cubeVAO);
+
+	for (unsigned int i = 0; i < 4; i++)
+	{
+		glm::mat4 _model = glm::mat4(1.0f);
+		_model = glm::translate(_model, pointLightPositions[i]);
+		shader->setTransformation("mat_Model", _model);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+	}
+
+	glm::mat4 _model = glm::mat4(1.0f);
+	_model = glm::translate(_model, glm::vec3(0.0f, -2.0f, 0.0f));
+	_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+	shader->setTransformation("mat_Model", _model);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex)

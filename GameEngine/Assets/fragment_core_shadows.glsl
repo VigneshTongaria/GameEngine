@@ -124,7 +124,7 @@ vec3 CalcPointLight(PointLight light,int index)
 
     float shadow = pointShadowCalculations(light,pointShadowMap[index]);
 
-    return (specular + diffusion + ambientLight);
+    return ((1.0 - shadow)*(specular + diffusion) + ambientLight);
 }
 
 vec3 CalcSpotLight(SpotLight light)
@@ -205,8 +205,6 @@ float pointShadowCalculations(PointLight light,samplerCube depthMap)
     float shadow = 0.0;
     vec2 texelSize = 1.0/textureSize(shadowMap,0);
 
-    shadow = (currentDepth > closestDepth + 0.0005) ? 1.0 : 0.0;
-
-    
+    shadow = (currentDepth - 0.0005 > closestDepth) ? 1.0 : 0.0;
     return shadow;
 }
