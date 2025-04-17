@@ -35,6 +35,7 @@ struct PointLight {
 
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 float pointShadowCalculations(PointLight light,samplerCube depthMap);
+vec3 pointShadowCalculationsDebugger(PointLight light,samplerCube depthMap);
 
 vec3 CalcPointLight(PointLight light,int index);
 
@@ -68,15 +69,18 @@ uniform vec3 lightColor;
 uniform vec3 objectColor;
 uniform vec3 viewPos;
 uniform float far_plane;
+
 void main()
 {
-    vec3 result = CalcDirLight(dirLight);
+    vec3 result = vec3(0.0);
+    //result += CalcDirLight(dirLight);
 
     for(int i = 0; i < NR_POINT_LIGHTS; i++)
       result += CalcPointLight(pointLights[i],i);
     //result += CalcSpotLight(spotLight);
 
     FragColor = vec4(result,1.0);
+    //FragColor = vec4(pointShadowCalculationsDebugger(pointLights[0],pointShadowMap[0]),1.0);
 }
 
 vec3 CalcDirLight(DirLight light)
@@ -198,13 +202,30 @@ float pointShadowCalculations(PointLight light,samplerCube depthMap)
     vec3 FragToLight = FragPos - light.position;
 
     float closestDepth = texture(depthMap,FragToLight).r;
-    float currentDepth = length(FragToLight)/far_plane;
+    closestDepth *= far_plane;
+    float currentDepth = length(FragToLight);
 
     //float bias = max(0.05 * (1.0 - dot(lightRay,normalSurface)),0.005);
 
     float shadow = 0.0;
-    vec2 texelSize = 1.0/textureSize(shadowMap,0);
+    float bias = 0.05;
 
-    shadow = (currentDepth - 0.0005 > closestDepth) ? 1.0 : 0.0;
+    shadow = (currentDepth - bias > closestDepth) ? 1.0 : 0.0;
     return shadow;
+}
+
+vec3 pointShadowCalculationsDebugger(PointLight light,samplerCube depthMap)
+{
+    vec3 FragToLight = FragPos - light.position;
+
+    float closestDepth = texture(depthMap,FragToLight).r;
+    closestDepth *= far_plane;
+    float currentDepth = length(FragToLight);
+
+    //float bias = max(0.05 * (1.0 - dot(lightRay,normalSurface)),0.005);
+
+    float shadow = 0.0;
+    float bias = 0.0005;
+
+    return vec3(closestDepth/far_plane);
 }

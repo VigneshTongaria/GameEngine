@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>
 #include <fstream>
 #include <sstream>
 #include <streambuf>
@@ -413,6 +414,8 @@ int main()
 	{
         unsigned int depthCubeMap;
 		glGenTextures(1, &depthCubeMap);
+		unsigned int depthBuffer;
+		glGenFramebuffers(1,&depthBuffer);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, depthCubeMap);
 
 		for(unsigned int j=0 ; j<6 ; j++)
@@ -424,9 +427,6 @@ int main()
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-
-		unsigned int depthBuffer;
-		glGenFramebuffers(1,&depthBuffer);
 
 		glBindFramebuffer(GL_FRAMEBUFFER,depthBuffer);
 		glFramebufferTexture(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,depthCubeMap,0);
@@ -505,6 +505,10 @@ int main()
 		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
 		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
 		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
+
+		// for (int i = 0; i < 6; ++i) {
+		// 	std::cout << "Matrix " << i << ":\n" << glm::to_string(newLightView[i]) << std::endl;
+		// }
 		pointLightsViewProjection.push_back(newLightView);
 	}
 
@@ -617,9 +621,7 @@ int main()
 
 	for(unsigned int i=0 ;i<NR_POINT_LIGHTS; i++)
 	{
-		glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
-		LightingShadowShader.setInt("pointShadowMap["+std::to_string(i)+"]",11 + i);
-		glBindTexture(GL_TEXTURE_CUBE_MAP,0);
+		LightingShadowShader.setInt("pointShadowMap["+std::to_string(i)+"]",5 + i);
 	}
 	LightingShadowShader.setFloat("far_plane",far);
 
@@ -670,20 +672,17 @@ int main()
 		// Rendering scene first for depth Map for directional light
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 		glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
-		glClear(GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		//glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 
 		RenderScene(&DepthMapShader,SceneModels,lightVAO);
-
-		glBindFramebuffer(GL_FRAMEBUFFER,0);
-
-        // Rendering scene for depth maps for points lights
-		glClear(GL_DEPTH_BUFFER_BIT);
         
 		for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
 		{
+			glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT); 
 			glBindFramebuffer(GL_FRAMEBUFFER,pointLightDepthMapBuffers[i]);
+			glClear(GL_DEPTH_BUFFER_BIT);
 			PointLightingShadowShader.UseShaderProgram();
 			PointLightingShadowShader.setVec3("lightPos",pointLightPositions[i]);
 			PointLightingShadowShader.setFloat("far_plane",far);
@@ -692,7 +691,6 @@ int main()
 				PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(j) + "]",pointLightsViewProjection[i][j]);
 			}
 			RenderScene(&PointLightingShadowShader,SceneModels,lightVAO);
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		}
 
 		// Binding framebuffers
@@ -714,7 +712,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		
 		// Disable writing to stencil buffer
-		glStencilMask(0x00);
+		//glStencilMask(0x00);
 
  
 		//draw shapes
@@ -725,7 +723,7 @@ int main()
 
 		for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
 		{
-			glActiveTexture(GL_TEXTURE11 + i);
+			glActiveTexture(GL_TEXTURE5 + i);
 			glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
 		}
 
@@ -791,6 +789,12 @@ int main()
 		glm::mat4 _model = glm::mat4(1.0f);
 		_model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
 		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
+		LightingShadowShader.setTransformation("mat_Model", _model);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		_model = glm::mat4(1.0f);
+		_model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
+		_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
 		LightingShadowShader.setTransformation("mat_Model", _model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -994,6 +998,12 @@ void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO)
 
 	glm::mat4 _model = glm::mat4(1.0f);
 	_model = glm::translate(_model, glm::vec3(0.0f, -2.0f, 0.0f));
+	_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+	shader->setTransformation("mat_Model", _model);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	_model = glm::mat4(1.0f);
+	_model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
 	_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
 	shader->setTransformation("mat_Model", _model);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
