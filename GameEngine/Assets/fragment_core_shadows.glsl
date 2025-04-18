@@ -70,6 +70,17 @@ uniform vec3 objectColor;
 uniform vec3 viewPos;
 uniform float far_plane;
 
+vec3 sampleOffsetDirections[20] = vec3[]
+(
+   vec3( 1,  1,  1), vec3( 1, -1,  1), vec3(-1, -1,  1), vec3(-1,  1,  1), 
+   vec3( 1,  1, -1), vec3( 1, -1, -1), vec3(-1, -1, -1), vec3(-1,  1, -1),
+   vec3( 1,  1,  0), vec3( 1, -1,  0), vec3(-1, -1,  0), vec3(-1,  1,  0),
+   vec3( 1,  0,  1), vec3(-1,  0,  1), vec3( 1,  0, -1), vec3(-1,  0, -1),
+   vec3( 0,  1,  1), vec3( 0, -1,  1), vec3( 0, -1, -1), vec3( 0,  1, -1)
+);
+float offsetSamples = 20.0;
+float diskRadius = 0.05;
+
 void main()
 {
     vec3 result = vec3(0.0);
@@ -201,8 +212,8 @@ float pointShadowCalculations(PointLight light,samplerCube depthMap)
 {
     vec3 FragToLight = FragPos - light.position;
 
-    float closestDepth = texture(depthMap,FragToLight).r;
-    closestDepth *= far_plane;
+    //float closestDepth = texture(depthMap,FragToLight).r;
+    //closestDepth *= far_plane;
     float currentDepth = length(FragToLight);
 
     //float bias = max(0.05 * (1.0 - dot(lightRay,normalSurface)),0.005);
@@ -210,8 +221,17 @@ float pointShadowCalculations(PointLight light,samplerCube depthMap)
     float shadow = 0.0;
     float bias = 0.05;
 
-    shadow = (currentDepth - bias > closestDepth) ? 1.0 : 0.0;
-    return shadow;
+
+    for(int i=0; i<offsetSamples; ++i)
+    {
+        float closestDepth = texture(depthMap,FragToLight + sampleOffsetDirections[i]*diskRadius).r;
+        closestDepth *= far_plane;
+
+        if(closestDepth <= far_plane) 
+           shadow += (currentDepth - bias > closestDepth) ? 1.0 : 0.0;
+    }
+
+    return shadow/offsetSamples;
 }
 
 vec3 pointShadowCalculationsDebugger(PointLight light,samplerCube depthMap)
