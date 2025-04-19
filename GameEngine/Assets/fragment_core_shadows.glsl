@@ -4,6 +4,7 @@
 struct Material {
     sampler2D texture_diffuse1;
     sampler2D texture_specular1;
+    sampler2D texture_normal1;
     sampler2D emissiveMap;
     float shininess;
 }; 
@@ -18,6 +19,7 @@ struct DirLight {
 };  
 uniform DirLight dirLight;
 uniform sampler2D shadowMap;
+uniform int hasNormalMap;
 uniform samplerCube pointShadowMap[NR_POINT_LIGHTS];
 float shadowCalculations(vec4 lightFragPos);
 vec3 CalcDirLight(DirLight light); 
@@ -57,6 +59,7 @@ uniform SpotLight spotLight;
 vec3 CalcSpotLight(SpotLight light); 
   
 uniform Material material;
+bool m_hasNormalMap;
 
 out vec4 FragColor;
 in vec3 FragPos;
@@ -84,10 +87,10 @@ float diskRadius = 0.05;
 void main()
 {
     vec3 result = vec3(0.0);
-    //result += CalcDirLight(dirLight);
+    result += CalcDirLight(dirLight);
 
-    for(int i = 0; i < NR_POINT_LIGHTS; i++)
-      result += CalcPointLight(pointLights[i],i);
+    //for(int i = 0; i < NR_POINT_LIGHTS; i++)
+       //result += CalcPointLight(pointLights[i],i);
     //result += CalcSpotLight(spotLight);
 
     FragColor = vec4(result,1.0);
@@ -96,6 +99,11 @@ void main()
 
 vec3 CalcDirLight(DirLight light)
 {  
+    if(m_hasNormalMap)
+    {
+        vec3 normal = texture(material.texture_normal1,TextCords).rgb;
+        normal = normalize(normal * 2.0 - 1.0); 
+    }  
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(-light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);

@@ -3,6 +3,7 @@
 
 const std::string ResourcesManager::Texture_Diffuse_Name = "texture_diffuse";
 const std::string ResourcesManager::Texture_Specular_Name = "texture_specular";
+const std::string ResourcesManager::Texture_Normal_Name = "texture_normal";
 unsigned int ResourcesManager::VerticesCount = 0;
 
 Texture ResourcesManager::loadTexture(const char* filename,const std::string &directory,TEXTURE_TYPE type,aiString aiPath)
@@ -146,6 +147,8 @@ std::string ResourcesManager::getTextureName(TEXTURE_TYPE type)
         return Texture_Diffuse_Name;
     case TEXTURE_TYPE::SPECULAR:
         return Texture_Specular_Name;
+    case TEXTURE_TYPE::NORMAL:
+        return Texture_Normal_Name;
     
     default:
         std::cout<<"Texture type does not exist in current context"; 

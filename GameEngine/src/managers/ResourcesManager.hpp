@@ -13,6 +13,7 @@ class ResourcesManager
 private:
     static const std::string Texture_Diffuse_Name;
     static const std::string Texture_Specular_Name;
+    static const std::string Texture_Normal_Name;
 
 public:
     static unsigned int VerticesCount;

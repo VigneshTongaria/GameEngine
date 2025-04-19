@@ -98,6 +98,10 @@ Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath,const
     glDeleteShader(vertexShader);
     glDeleteShader(fragment_shader);
 }
+void Shader::setBool(const std::string &name, bool value) const 
+{
+    glUniform1i(glGetUniformLocation(m_ID, name.c_str()), (int)value);
+}
 void Shader::setInt(const std::string &name, int value) const
 {
 	glUniform1i(glGetUniformLocation(m_ID,name.c_str()), value);

@@ -624,6 +624,9 @@ int main()
 		LightingShadowShader.setInt("pointShadowMap["+std::to_string(i)+"]",5 + i);
 	}
 	LightingShadowShader.setFloat("far_plane",far);
+	LightingShadowShader.setInt("hasNormalMap",0);
+	int loc = glGetUniformLocation(LightingShadowShader.m_ID, "hasNormalMap");
+    std::cout << "hasNormalMap location: " << loc << std::endl;
 
 	glBindTexture(GL_TEXTURE_2D,depthMap);
 	LightingShadowShader.setTransformation("mat_Lightspace",lightSpaceMatrix);
@@ -745,7 +748,11 @@ int main()
 		// }
 		// writing stencil on models
 
+		LightingShadowShader.setInt("hasNormalMap",1);
+
 		ourModel->Draw(LightingShadowShader,GL_TRIANGLES);
+
+		LightingShadowShader.setInt("hasNormalMap",0);
 
 		// Drawing debug normals gizmos
 		
@@ -792,11 +799,11 @@ int main()
 		LightingShadowShader.setTransformation("mat_Model", _model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		_model = glm::mat4(1.0f);
-		_model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
-		_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
-		LightingShadowShader.setTransformation("mat_Model", _model);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// _model = glm::mat4(1.0f);
+		// _model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
+		// _model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+		// LightingShadowShader.setTransformation("mat_Model", _model);
+		// glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindTexture(GL_TEXTURE_2D,0);
 
@@ -1002,11 +1009,11 @@ void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO)
 	shader->setTransformation("mat_Model", _model);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 
-	_model = glm::mat4(1.0f);
-	_model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
-	_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
-	shader->setTransformation("mat_Model", _model);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	// _model = glm::mat4(1.0f);
+	// _model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
+	// _model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+	// shader->setTransformation("mat_Model", _model);
+	// glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex)

@@ -65,6 +65,7 @@ void Mesh::AssignTextures(Shader &shader)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
+    unsigned int normalNr = 1;
       
     for(unsigned int i=0 ; i<textures.size(); i++)
     {
@@ -87,6 +88,12 @@ void Mesh::AssignTextures(Shader &shader)
         case TEXTURE_TYPE::SPECULAR:
           number = std::to_string(specularNr++);
           t_name = ResourcesManager::getTextureName(SPECULAR);
+          break;
+
+        case TEXTURE_TYPE::NORMAL:
+          number = std::to_string(normalNr++);
+          t_name = ResourcesManager::getTextureName(NORMAL);
+          break;
 
         default:
           break;
