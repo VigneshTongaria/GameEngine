@@ -66,6 +66,7 @@ in vec3 FragPos;
 in vec3 normal;
 in vec3 lightPos;
 in vec4 FragPosLightSpace;
+in mat3 TBN;
 uniform sampler2D Texture1;
 uniform sampler2D Texture2;
 uniform vec3 lightColor;
@@ -102,8 +103,12 @@ vec3 CalcDirLight(DirLight light)
     if(m_hasNormalMap)
     {
         vec3 normal = texture(material.texture_normal1,TextCords).rgb;
-        normal = normalize(normal * 2.0 - 1.0); 
+        normal = normal * 2.0 - 1.0; 
+        normal = normalize(TBN*normal);
     }  
+    vec3 normal = texture(material.texture_normal1,TextCords).rgb;
+    normal = normal * 2.0 - 1.0; 
+    normal = normalize(TBN*normal);
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(-light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);

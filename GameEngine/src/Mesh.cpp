@@ -35,6 +35,10 @@ void Mesh::setUpMesh()
    glEnableVertexAttribArray(1);
    glVertexAttribPointer(2,2,GL_FLOAT,false,sizeof(Vertex),(void*)offsetof(Vertex,textcords));
    glEnableVertexAttribArray(2);
+   glVertexAttribPointer(3,3,GL_FLOAT,false,sizeof(Vertex),(void*)offsetof(Vertex,tangent));
+   glEnableVertexAttribArray(3);
+   glVertexAttribPointer(4,3,GL_FLOAT,false,sizeof(Vertex),(void*)offsetof(Vertex,bitangent));
+   glEnableVertexAttribArray(4);
 
    glBindVertexArray(0);
 

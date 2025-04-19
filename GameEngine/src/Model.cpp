@@ -150,7 +150,7 @@ void Model::loadModel(std::string path)
 {
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(path,
-        aiProcess_FlipUVs|aiProcess_Triangulate);
+        aiProcess_FlipUVs|aiProcess_Triangulate|aiProcess_CalcTangentSpace);
     
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
@@ -189,7 +189,14 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
     {
         Vertex vertex;
         vertex.position = glm::vec3(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z);
+
+        if(mesh->HasNormals())
         vertex.normal = glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
+
+        if(mesh->HasTangentsAndBitangents())
+        vertex.tangent = glm::vec3(mesh->mTangents[i].x,mesh->mTangents[i].y,mesh->mTangents[i].z);
+
+        vertex.bitangent = glm::cross(vertex.normal,vertex.tangent);
         
         if(mesh->HasTextureCoords(0))
         {
@@ -251,6 +258,22 @@ std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType 
 
         if(tex_already_loaded == false)
         {
+            if (path.C_Str()[0] == '*')
+            {
+                int embeddedIndex = std::atoi(path.C_Str() + 1); // skip the '*'
+                if (scene->mNumTextures > embeddedIndex)
+                {
+                    aiTexture *tex = scene->mTextures[embeddedIndex];
+
+                    // Load embedded texture (compressed or raw)
+                    Texture texture = ResourcesManager::loadEmbeddedTexture(tex, t_type, path);
+                    textures.push_back(texture);
+                    textures_Loaded.push_back(texture);
+                    std::cout << "Embedded texture " << path.C_Str() << " loaded." << std::endl;
+                    continue;
+                }
+            }
+
             Texture texture= ResourcesManager::loadTexture(path.C_Str(),directory,t_type,path);
 
             textures.push_back(texture);

@@ -450,7 +450,7 @@ int main()
 	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
 	
     
-	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
+	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f));
 
     //	Adding gameObject components for  our model
 	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
@@ -460,6 +460,13 @@ int main()
 
 	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,0.0f,0.0f));
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
+
+	// Adding entire city
+	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,90.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f));
+	cityObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/Spartan/source/Spartan_Sketchfab.fbx");
+	Model* cityModel = cityObject.GetComponent<Model>();
+
+	SceneModels.push_back(cityModel);
 
 	// Adding asteriod belt GameObject
 	GameObject asteriodObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(30.0f,50.0f,10.0f),glm::vec3(1.0f,1.0f,1.0f));
@@ -750,7 +757,10 @@ int main()
 
 		LightingShadowShader.setInt("hasNormalMap",1);
 
-		ourModel->Draw(LightingShadowShader,GL_TRIANGLES);
+		for(auto& model : SceneModels)
+		{
+			model->Draw(LightingShadowShader, GL_TRIANGLES);
+		}
 
 		LightingShadowShader.setInt("hasNormalMap",0);
 
