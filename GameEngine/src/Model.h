@@ -31,8 +31,8 @@ private:
    std::string directory;
    void loadModel(std::string path);
    void loadModel(DEFAULT_MODEL model,std::vector<Texture> textures);
-   void processNode(aiNode* node,const aiScene *scene);
-   Mesh processMesh(aiMesh* mesh,const aiScene *scene);
-   std::vector<Texture> loadMaterialsTextures(aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
+   void processNode(aiNode* Parent, aiNode* node,const aiScene *scene);
+   Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
+   std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
 };
 #endif

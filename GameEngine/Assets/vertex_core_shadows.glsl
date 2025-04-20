@@ -25,7 +25,8 @@ void main()
     gl_Position = mat_Projection*mat_View* mat_Model * vec4(aPos.x,aPos.y, aPos.z, 1.0);
     FragPos = vec3(mat_Model * vec4(aPos,1.0));
 
-    normal = mat3(transpose(inverse(mat_Model))) * aNormal;
+    normal = normalize(mat3(transpose(inverse(mat_Model))) * aNormal);
+    //normal = normalize(vec3(mat_Model  * vec4(aNormal,    0.0)));
     lightPos = vec3(vec4(lightPosition,1.0));
     TextCords = aTextCords;
     FragPosLightSpace = mat_Lightspace * mat_Model * vec4(aPos.x,aPos.y, aPos.z, 1.0);

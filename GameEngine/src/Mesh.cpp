@@ -61,6 +61,12 @@ void Mesh::Draw(Shader &shader,GLenum mode)
 
     glBindVertexArray(0);
 
+    for(unsigned int i=0 ; i<textures.size(); i++)
+    {
+      glActiveTexture(GL_TEXTURE0 + i);
+      glBindTexture(GL_TEXTURE_2D,0);
+    }
+
     // Calculate vertices count
     ResourcesManager::VerticesCount +=  vertices.size();
 }
@@ -75,7 +81,8 @@ void Mesh::AssignTextures(Shader &shader)
     {
         if(textures[i].id == -1)
         {
-           break;
+           std::cout<<"Texture not assigned" << "\n";
+           continue;
         }
 
         glActiveTexture(GL_TEXTURE0 + i);

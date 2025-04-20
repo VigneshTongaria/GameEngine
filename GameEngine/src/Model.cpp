@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "stb/stb_image.h"
+#include "managers/UtilitiesManager.hpp"
 
 Model::Model(const char* path)
 {
@@ -150,53 +151,63 @@ void Model::loadModel(std::string path)
 {
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(path,
-        aiProcess_FlipUVs|aiProcess_Triangulate|aiProcess_CalcTangentSpace);
+        aiProcess_Triangulate|aiProcess_CalcTangentSpace);
     
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
         std::cout << "ERROR::ASSIMP::" << importer.GetErrorString() <<std::endl;
         return;
     }
-    std::cout << "SUCCESS::ASSIMP::MODEL loaded succesfully"<<std::endl;
+    std::cout << "SUCCESS::ASSIMP::MODEL loaded succesfully : "<<path<<std::endl;
     directory = path.substr(0,path.find_last_of('/'));
 
-    processNode(scene->mRootNode,scene);
+    std::cout<<" Texture count for the model : "<<directory<<" "<<scene->mNumTextures<<"\n";
+
+    processNode(nullptr, scene->mRootNode,scene);
 }
 
-void Model::processNode(aiNode* node,const aiScene* scene)
+void Model::processNode(aiNode* Parent,aiNode* node,const aiScene* scene)
 {
+    glm::mat4 globalTransform = glm::mat4(1.0f);
+    if(Parent != nullptr) globalTransform *= UtilitiesManger::convertToGLM(Parent->mTransformation);
+    globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
     //std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh,scene));
+        meshes.push_back(processMesh(mesh,scene,globalTransform));
     }
    // std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
     for(unsigned int i=0; i<node->mNumChildren; i++)
     {
-        processNode(node->mChildren[i],scene);
+        processNode(node,node->mChildren[i],scene);
     }
 }
 
-Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
+Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransform)
 {
     std::vector<Vertex> vertices;
     std::vector<Texture> textures;
     std::vector<unsigned int> indices;  
+
+    glm::mat3 globalTransformInverseTrans = glm::transpose(glm::inverse(glm::mat3(globalTransform)));
+
     
     //Processing vertices data
     for(unsigned int i=0; i< mesh->mNumVertices; i++)
     {
         Vertex vertex;
-        vertex.position = glm::vec3(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z);
+        vertex.position = globalTransform * glm::vec4(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,1.0f);
 
         if(mesh->HasNormals())
-        vertex.normal = glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
+        vertex.normal = globalTransformInverseTrans * glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
 
         if(mesh->HasTangentsAndBitangents())
-        vertex.tangent = glm::vec3(mesh->mTangents[i].x,mesh->mTangents[i].y,mesh->mTangents[i].z);
+        {
+            vertex.tangent = globalTransformInverseTrans * glm::vec3(mesh->mTangents[i].x,mesh->mTangents[i].y,mesh->mTangents[i].z);
 
-        vertex.bitangent = glm::cross(vertex.normal,vertex.tangent);
+            vertex.bitangent = globalTransformInverseTrans * glm::cross(vertex.normal,vertex.tangent);
+        }
         
         if(mesh->HasTextureCoords(0))
         {
@@ -221,64 +232,101 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene)
     {
         aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-        std::vector<Texture> diffuse_maps = loadMaterialsTextures(material,aiTextureType_DIFFUSE,TEXTURE_TYPE::DIFFUSE);
+        std::vector<Texture> diffuse_maps = loadMaterialsTextures(scene,material,aiTextureType_DIFFUSE,TEXTURE_TYPE::DIFFUSE);
         textures.insert(textures.end(),diffuse_maps.begin(),diffuse_maps.end());
 
-        std::vector<Texture> specular_maps = loadMaterialsTextures(material,aiTextureType_SPECULAR,TEXTURE_TYPE::SPECULAR);
+        // std::vector<Texture> base_maps = loadMaterialsTextures(scene,material,aiTextureType_BASE_COLOR,TEXTURE_TYPE::DIFFUSE);
+        // textures.insert(textures.end(),base_maps.begin(),base_maps.end());
+
+        std::vector<Texture> specular_maps = loadMaterialsTextures(scene,material,aiTextureType_SPECULAR,TEXTURE_TYPE::SPECULAR);
         textures.insert(textures.end(),specular_maps.begin(),specular_maps.end());
 
-        std::vector<Texture> normal_maps = loadMaterialsTextures(material,aiTextureType_NORMALS,TEXTURE_TYPE::NORMAL);
+        std::vector<Texture> normal_maps = loadMaterialsTextures(scene,material,aiTextureType_NORMALS,TEXTURE_TYPE::NORMAL);
         textures.insert(textures.end(),normal_maps.begin(),normal_maps.end());
     }
 
     return Mesh(vertices, textures, indices);
 }
 
-std::vector<Texture> Model::loadMaterialsTextures(aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)
+std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)
 {
     std::vector<Texture> textures;
+
+    std::cout << "Texture count for : " << ResourcesManager::getTextureName(t_type) << " "<<mat->GetTextureCount(type) << std::endl;
+  
 
     for(unsigned int i=0 ;i<mat->GetTextureCount(type); i++)
     {
         aiString path;
+        int embeddedIndex = 0;
         bool tex_already_loaded = false;
         mat->GetTexture(type,i,&path);
-       // std::cout << "Texture - " << typeName << "path - "<< path.C_Str() << std::endl;
 
         for(int j=0; j< textures_Loaded.size(); j++)
         {
-            if(textures_Loaded[j].aiPath == path)
+            if (path.C_Str()[0] == '*')
             {
-              // std::cout<<textures_Loaded[j].path.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
+                embeddedIndex = std::atoi(path.C_Str() + 1);
+                aiTexture *tex = scene->mTextures[embeddedIndex];
+                if(textures_Loaded[j].data == reinterpret_cast<const unsigned char *>(scene->mTextures[embeddedIndex]->pcData))
+                {
+                    std::cout<<textures_Loaded[j].data<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
+                    tex_already_loaded = true;
+                    textures.push_back(textures_Loaded[j]);
+                    break;
+                }
+            }
+
+            else if(textures_Loaded[j].aiPath == path)
+            {
+               //std::cout<<textures_Loaded[j].aiPath.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
                tex_already_loaded = true;
                textures.push_back(textures_Loaded[j]);
                break;
             }
+
+            if(tex_already_loaded) break;
         }
 
         if(tex_already_loaded == false)
         {
             if (path.C_Str()[0] == '*')
             {
+                std::cout << "Embedded texture " << path.C_Str() << " loading" << std::endl;
                 int embeddedIndex = std::atoi(path.C_Str() + 1); // skip the '*'
                 if (scene->mNumTextures > embeddedIndex)
                 {
                     aiTexture *tex = scene->mTextures[embeddedIndex];
 
                     // Load embedded texture (compressed or raw)
-                    Texture texture = ResourcesManager::loadEmbeddedTexture(tex, t_type, path);
+                    Texture texture;
+                    
+                    // Compressed texture like PNG or JPG
+                    if(tex->mHeight == 0)
+                    {
+                        texture = ResourcesManager::loadTextureFromMemory(reinterpret_cast<const unsigned char *>(tex->pcData), tex->mWidth, t_type);
+                    }
+                    
+                    // Uncompressed texture 
+                    else
+                    {
+                        std::cout<<"Loading uncompressed texture"<<"\n";
+                        texture = ResourcesManager::loadTextureFromMemory(reinterpret_cast<const unsigned char *>(tex->pcData), tex->mWidth * tex->mHeight * 4, t_type);
+                    }
+
                     textures.push_back(texture);
                     textures_Loaded.push_back(texture);
-                    std::cout << "Embedded texture " << path.C_Str() << " loaded." << std::endl;
-                    continue;
                 }
             }
 
-            Texture texture= ResourcesManager::loadTexture(path.C_Str(),directory,t_type,path);
+            else
+            {
+                Texture texture = ResourcesManager::loadTexture(path.C_Str(), directory, t_type, path);
 
-            textures.push_back(texture);
-            textures_Loaded.push_back(texture);
-            std::cout << "Texture - " << directory <<"/ " << path.C_Str() << " Loaded"<<std::endl;
+                textures.push_back(texture);
+                textures_Loaded.push_back(texture);
+                //std::cout << "Texture - " << directory << "/ " << path.C_Str() << " Loaded" << std::endl;
+            }
         }
     }
 

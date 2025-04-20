@@ -87,28 +87,33 @@ float diskRadius = 0.05;
 
 void main()
 {
+    if(texture(material.texture_diffuse1,TextCords).a == 0.0)
+       discard;
+
     vec3 result = vec3(0.0);
     result += CalcDirLight(dirLight);
 
     //for(int i = 0; i < NR_POINT_LIGHTS; i++)
        //result += CalcPointLight(pointLights[i],i);
     //result += CalcSpotLight(spotLight);
-
+    
     FragColor = vec4(result,1.0);
     //FragColor = vec4(pointShadowCalculationsDebugger(pointLights[0],pointShadowMap[0]),1.0);
 }
 
 vec3 CalcDirLight(DirLight light)
 {  
-    if(m_hasNormalMap)
+    if(false)
     {
         vec3 normal = texture(material.texture_normal1,TextCords).rgb;
         normal = normal * 2.0 - 1.0; 
         normal = normalize(TBN*normal);
-    }  
+    } 
+
     vec3 normal = texture(material.texture_normal1,TextCords).rgb;
     normal = normal * 2.0 - 1.0; 
-    normal = normalize(TBN*normal);
+    normal = normalize(TBN*normal); 
+
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(-light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);
@@ -121,7 +126,7 @@ vec3 CalcDirLight(DirLight light)
     float shadow = shadowCalculations(FragPosLightSpace);
 
     vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
-    vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).rgb;
+    vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).r;
     vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
 
     return ( (1.0 - shadow)*(diffusion +  specular) + ambientLight);

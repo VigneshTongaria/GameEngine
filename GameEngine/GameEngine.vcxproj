@@ -29,6 +29,7 @@
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\managers\ResourcesManager.cpp" />
+    <ClCompile Include="src\managers\UtilitiesManger.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\physics\rigidbody.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
     <ClInclude Include="src\managers\ResourcesManager.hpp" />
+    <ClInclude Include="src\managers\UtilitiesManager.hpp" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\physics\rigidbody.hpp" />

@@ -28,6 +28,7 @@ struct Texture
     TEXTURE_TYPE type;
     std::string path;
     aiString aiPath;
+    const unsigned char* data;
 };
 
 enum DRAW_MODE

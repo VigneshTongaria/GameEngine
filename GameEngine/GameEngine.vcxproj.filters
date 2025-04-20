@@ -57,6 +57,9 @@
     <ClCompile Include="src\data\GeometryData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\managers\UtilitiesManger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw3.dll" />
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\data\GeometryData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\UtilitiesManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

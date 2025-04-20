@@ -29,14 +29,17 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
     texture.id = -1;
     texture.type = type;
     texture.path = pathName;
+    texture.data = reinterpret_cast<const unsigned char*>(path);
 
 	unsigned char *data = stbi_load(path,&width,&height,&nrChannels,0);
 
 	if (data)
     {
-		GLenum format;
+		GLenum format = GL_RGB;
         if (nrChannels == 1)
             format = GL_RED;
+        else if (nrChannels == 2)
+            format = GL_RG;
         else if (nrChannels == 3)
             format = GL_RGB;
         else if (nrChannels == 4)
@@ -91,6 +94,67 @@ Texture ResourcesManager::loadTexture(GLenum format,int width,int height)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     return texture;
+}
+
+Texture ResourcesManager::loadTextureFromMemory(const unsigned char* path,int imageSize,TEXTURE_TYPE type)
+{
+    int width,height,nrChannels;
+
+    Texture texture;
+    texture.id = -1;
+    texture.type = type;
+    texture.path = "";
+    texture.data = path;
+
+	unsigned char *data = stbi_load_from_memory(path,imageSize,&width,&height,&nrChannels,0);
+
+	if (data)
+    {
+		GLenum format = GL_RGB;
+        if (nrChannels == 1)
+            format = GL_RED;
+        else if (nrChannels == 2)
+            format = GL_RG;
+        else if (nrChannels == 3)
+            format = GL_RGB;
+        else if (nrChannels == 4)
+            format = GL_RGBA;
+        
+        // std::cout<<" Nr channels"<<nrChannels<<"\n";
+        // std::cout<<" Width"<<width<<"\n";
+        // std::cout<<" Height"<<height<<"\n";
+        
+        GLenum internalFormat = format;
+        
+        if(type == TEXTURE_TYPE::DIFFUSE)
+        {
+            if(nrChannels == 3) internalFormat = GL_SRGB;
+            else if(nrChannels == 4) internalFormat = GL_SRGB_ALPHA;
+        }
+
+		glGenTextures(1, &texture.id);
+		glBindTexture(GL_TEXTURE_2D, texture.id);
+
+		// GENERATING MIPMAPS and setting interpolations
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+        std::cout << "Texture loaded : " << path << "\n";
+    }
+    else
+    {
+        std::cout << "Failed to load texture: " << path << "\n";
+        std::cout << "Reason: " << stbi_failure_reason() << std::endl;
+    }
+	stbi_image_free(data);
+    
+	return texture;
 }
 
 CubeMap ResourcesManager::loadCubeMap(std::vector<std::string> facesPath)

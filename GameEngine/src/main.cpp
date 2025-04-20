@@ -453,17 +453,17 @@ int main()
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f));
 
     //	Adding gameObject components for  our model
-	gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
-	Model* ourModel = gameObject.GetComponent<Model>();
+	// gameObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/backpack/backpack.obj");
+	// Model* ourModel = gameObject.GetComponent<Model>();
 
-	SceneModels.push_back(ourModel);
+	// SceneModels.push_back(ourModel);
 
 	gameObject.AddComponent<Rigidbody>(1.0f,glm::vec3(0.0f), glm::vec3(0.0f,0.0f,0.0f));
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	// Adding entire city
-	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,90.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f));
-	cityObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/Spartan/source/Spartan_Sketchfab.fbx");
+	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.3f,0.3f,0.3f));
+	cityObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 	Model* cityModel = cityObject.GetComponent<Model>();
 
 	SceneModels.push_back(cityModel);
@@ -711,7 +711,7 @@ int main()
 		glEnable(GL_STENCIL_TEST);
 		glEnable(GL_BLEND);
 		glEnable(GL_FRAMEBUFFER_SRGB);
-		//glEnable(GL_CULL_FACE);
+		glEnable(GL_CULL_FACE);
 
 		glDepthFunc(GL_LEQUAL);
 		glStencilOp(GL_KEEP,GL_REPLACE,GL_REPLACE);
@@ -786,36 +786,38 @@ int main()
 		glStencilFunc(GL_ALWAYS,1,0xFF);
 		glStencilMask(0xFF);
 
-		LightingShadowShader.setInt("material.texture_diffuse1", 0);
-		glActiveTexture(GL_TEXTURE0);
-	    glBindTexture(GL_TEXTURE_2D, woodTexture.id);
+		// Rendering cubes
 
-		// LightingShadowShader.setInt("material.texture_specular1", 1);
-		// glActiveTexture(GL_TEXTURE1);
+		// LightingShadowShader.setInt("material.texture_diffuse1", 0);
+		// glActiveTexture(GL_TEXTURE0);
 	    // glBindTexture(GL_TEXTURE_2D, woodTexture.id);
-		glActiveTexture(GL_TEXTURE1);
-	    glBindTexture(GL_TEXTURE_2D, 0);
-		for(unsigned int i = 0 ; i<4 ; i++)
-		{
-			glm::mat4 _model = glm::mat4(1.0f);
-			_model = glm::translate(_model,pointLightPositions[i]);
-        	LightingShadowShader.setTransformation("mat_Model",_model);
-			glDrawArrays(GL_TRIANGLES,0,36);
-		}
 
-		glm::mat4 _model = glm::mat4(1.0f);
-		_model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
-		_model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
-		LightingShadowShader.setTransformation("mat_Model", _model);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// // LightingShadowShader.setInt("material.texture_specular1", 1);
+		// // glActiveTexture(GL_TEXTURE1);
+	    // // glBindTexture(GL_TEXTURE_2D, woodTexture.id);
+		// glActiveTexture(GL_TEXTURE1);
+	    // glBindTexture(GL_TEXTURE_2D, 0);
+		// for(unsigned int i = 0 ; i<4 ; i++)
+		// {
+		// 	glm::mat4 _model = glm::mat4(1.0f);
+		// 	_model = glm::translate(_model,pointLightPositions[i]);
+        // 	LightingShadowShader.setTransformation("mat_Model",_model);
+		// 	glDrawArrays(GL_TRIANGLES,0,36);
+		// }
 
-		// _model = glm::mat4(1.0f);
-		// _model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
-		// _model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+		// glm::mat4 _model = glm::mat4(1.0f);
+		// _model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
+		// _model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
 		// LightingShadowShader.setTransformation("mat_Model", _model);
 		// glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		glBindTexture(GL_TEXTURE_2D,0);
+		// // _model = glm::mat4(1.0f);
+		// // _model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
+		// // _model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+		// // LightingShadowShader.setTransformation("mat_Model", _model);
+		// // glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		// glBindTexture(GL_TEXTURE_2D,0);
 
 		// drawing Transparent objects
         // glStencilMask(0x00);
@@ -1003,21 +1005,21 @@ void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO)
 		model->Draw(*shader,GL_TRIANGLES);
 	}
 
-	glBindVertexArray(cubeVAO);
+	// glBindVertexArray(cubeVAO);
 
-	for (unsigned int i = 0; i < 4; i++)
-	{
-		glm::mat4 _model = glm::mat4(1.0f);
-		_model = glm::translate(_model, pointLightPositions[i]);
-		shader->setTransformation("mat_Model", _model);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-	}
+	// for (unsigned int i = 0; i < 4; i++)
+	// {
+	// 	glm::mat4 _model = glm::mat4(1.0f);
+	// 	_model = glm::translate(_model, pointLightPositions[i]);
+	// 	shader->setTransformation("mat_Model", _model);
+	// 	glDrawArrays(GL_TRIANGLES, 0, 36);
+	// }
 
-	glm::mat4 _model = glm::mat4(1.0f);
-	_model = glm::translate(_model, glm::vec3(0.0f, -2.0f, 0.0f));
-	_model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
-	shader->setTransformation("mat_Model", _model);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	// glm::mat4 _model = glm::mat4(1.0f);
+	// _model = glm::translate(_model, glm::vec3(0.0f, -2.0f, 0.0f));
+	// _model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+	// shader->setTransformation("mat_Model", _model);
+	// glDrawArrays(GL_TRIANGLES, 0, 36);
 
 	// _model = glm::mat4(1.0f);
 	// _model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
