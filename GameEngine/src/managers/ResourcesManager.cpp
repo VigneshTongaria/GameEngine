@@ -78,7 +78,7 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
 	return texture;
 }
 
-Texture ResourcesManager::loadTexture(GLenum format,int width,int height)
+Texture ResourcesManager::loadTexture(GLenum format,GLenum internalformat, int width,int height)
 {
     Texture texture;
     texture.id = -1;
@@ -89,7 +89,7 @@ Texture ResourcesManager::loadTexture(GLenum format,int width,int height)
 
     // GENERATING MIPMAPS and setting interpolations
 
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0,internalformat, width, height, 0, format, GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

@@ -29,7 +29,7 @@ glm::mat4 Camera :: GetViewMatrix()
 }
 glm::mat4 Camera :: GetProjectionMatrix()
 {
-    return glm::perspective(perspectiveAngle,height/width,nearPlane,farPlane);
+    return glm::perspective(perspectiveAngle,width/height,nearPlane,farPlane);
 }
 glm::vec3 Camera :: GetCameraPos()
 {

@@ -44,8 +44,8 @@ float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 unsigned int NR_POINT_LIGHTS = 4;
 unsigned int asteriodInstances = 1000;
-unsigned int SRC_HEIGHT = 600;
-unsigned int SRC_WIDTH = 800;
+unsigned int SRC_HEIGHT = 1080;
+unsigned int SRC_WIDTH = 1920;
 
 Camera MainCamera;
 
@@ -75,7 +75,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SRC_WIDTH, SRC_HEIGHT, "OpenGL", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -91,7 +91,7 @@ int main()
 
 	stbi_set_flip_vertically_on_load(true);
 	
-	glViewport(0, 0, SRC_HEIGHT, SRC_WIDTH);
+	glViewport(0, 0,SRC_WIDTH,SRC_HEIGHT);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetKeyCallback(window,KeyBoard::KeyCallback);
 	glfwSetMouseButtonCallback(window,Mouse::MouseButtonCallback);
@@ -103,6 +103,9 @@ int main()
 	// unsigned int texture_2 = loadTexture("Assets/Images/container2_specular.png");
 	// unsigned int texture_3 = loadTexture("Assets/Images/container2_emissive.jpg");
 	
+	// Setting up camera
+	MainCamera.height = SRC_HEIGHT;
+	MainCamera.width = SRC_WIDTH;
 
 	//Run_Shaders();
 	//Vertex shader
@@ -342,7 +345,7 @@ int main()
 	unsigned int textureColorBufferMultiSampled;
     glGenTextures(1, &textureColorBufferMultiSampled);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureColorBufferMultiSampled);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB, 800, 600, GL_TRUE);
+    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB,SRC_WIDTH, SRC_HEIGHT, GL_TRUE);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
     
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D_MULTISAMPLE,textureColorBufferMultiSampled,0);
@@ -351,7 +354,7 @@ int main()
 	unsigned int mrbo;
 	glGenRenderbuffers(1,&mrbo);
 	glBindRenderbuffer(GL_RENDERBUFFER,mrbo);
-	glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,800,600);
+	glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,SRC_WIDTH, SRC_HEIGHT);
 
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,mrbo);
 	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
@@ -365,14 +368,14 @@ int main()
 	glGenFramebuffers(1,&fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER,fbo);
 
-	Texture colorBuffer = ResourcesManager::loadTexture(GL_RGB,800,600);
+	Texture colorBuffer = ResourcesManager::loadTexture(GL_RGBA,GL_RGBA16F,SRC_WIDTH, SRC_HEIGHT);
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,colorBuffer.id,0);
 
 	// Post processing renderBuffers
 	unsigned int rbo;
 	glGenRenderbuffers(1,&rbo);
 	glBindRenderbuffer(GL_RENDERBUFFER,rbo);
-	glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,800,600);
+	glRenderbufferStorage(GL_RENDERBUFFER,GL_DEPTH24_STENCIL8,SRC_WIDTH, SRC_HEIGHT);
 
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,rbo);
 	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
@@ -479,12 +482,12 @@ int main()
 	newTexture.push_back( ResourcesManager::loadTexture("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/blending_transparent_window.png",TEXTURE_TYPE::DIFFUSE));
 
 	// Gameobjects for cubes
-	GameObject** CubesGameObject = new GameObject*[10];
-    for(unsigned int i = 0; i < 10; i++)
-	{
-        CubesGameObject[i] = new GameObject(cubePositions[i]);
-		CubesGameObject[i]->AddComponent<Model>(DEFAULT_MODEL::CUBE,newTexture);
-	}
+	// GameObject** CubesGameObject = new GameObject*[10];
+    // for(unsigned int i = 0; i < 10; i++)
+	// {
+    //     CubesGameObject[i] = new GameObject(cubePositions[i]);
+	// 	CubesGameObject[i]->AddComponent<Model>(DEFAULT_MODEL::CUBE,newTexture);
+	// }
 
 	// Adding light projection and view matrices
 	float near_plane = 1.0f,far_plane = 170.5f;
@@ -535,9 +538,9 @@ int main()
 	LightingShader.setFloat("material.shininess",32.0f);
 
 	LightingShader.setVec3("dirLight.direction", DirectionalLightDir);
-	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.1f, 0.1f, 0.1f));
+	LightingShader.setVec3("dirLight.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
 	LightingShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
+	LightingShader.setVec3("dirLight.specular", glm::vec3(0.6f, 0.6f, 0.6f));
 	// point light 1
 	// LightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
 	// LightingShader.setVec3("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
@@ -585,10 +588,10 @@ int main()
 
 	LightingShadowShader.UseShaderProgram();
 	LightingShadowShader.setFloat("material.shininess",32.0f);
-	LightingShadowShader.setInt("reflection",0);
+	LightingShadowShader.setInt("reflection",13);
 
 	LightingShadowShader.setVec3("dirLight.direction", DirectionalLightDir);
-	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
 	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
 	LightingShadowShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
 
@@ -756,6 +759,10 @@ int main()
 		// writing stencil on models
 
 		LightingShadowShader.setInt("hasNormalMap",1);
+		
+		glActiveTexture(GL_TEXTURE13);
+		glBindTexture(GL_TEXTURE_CUBE_MAP,cubeMap.id);
+		glActiveTexture(GL_TEXTURE0);
 
 		for(auto& model : SceneModels)
 		{
@@ -884,6 +891,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
         PostShader.UseShaderProgram();
+		PostShader.setFloat("exposure",1.0f);
 		glBindVertexArray(quadVAO);
 		glBindTexture(GL_TEXTURE_2D,colorBuffer.id);
         glDrawArrays(GL_TRIANGLES,0,6);

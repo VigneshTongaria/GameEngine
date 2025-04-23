@@ -19,6 +19,7 @@ struct DirLight {
 };  
 uniform DirLight dirLight;
 uniform sampler2D shadowMap;
+uniform samplerCube reflection;
 uniform int hasNormalMap;
 uniform samplerCube pointShadowMap[NR_POINT_LIGHTS];
 float shadowCalculations(vec4 lightFragPos);
@@ -110,15 +111,16 @@ vec3 CalcDirLight(DirLight light)
         normal = normalize(TBN*normal);
     } 
 
-    vec3 normal = texture(material.texture_normal1,TextCords).rgb;
-    normal = normal * 2.0 - 1.0; 
-    normal = normalize(TBN*normal); 
+    //vec3 normal = texture(material.texture_normal1,TextCords).rgb;
+    //normal = normal * 2.0 - 1.0; 
+    //normal = normalize(TBN*normal); 
 
     vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(-light.direction);
     vec3 reflectRay = reflect(-lightRay,normal);
     vec3 viewDirection = normalize(viewPos - FragPos);
     vec3 halfViewDirection = normalize(viewDirection + lightRay);
+    vec3 viewReflectRay = reflect(-1.0*viewDirection,normalSurface);
 
     //float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
     float spec = pow(max(dot(halfViewDirection,normal),0.0),material.shininess);
@@ -128,8 +130,9 @@ vec3 CalcDirLight(DirLight light)
     vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
     vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).r;
     vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
+    vec3 reflectionCube = light.specular*0.1* texture(reflection,viewReflectRay).rgb* texture(material.texture_specular1,TextCords).r;
 
-    return ( (1.0 - shadow)*(diffusion +  specular) + ambientLight);
+    return ( (1.0 - shadow)*(diffusion +  specular)+ reflectionCube + ambientLight);
 }
 
 vec3 CalcPointLight(PointLight light,int index)
@@ -157,7 +160,7 @@ vec3 CalcPointLight(PointLight light,int index)
 
     float shadow = pointShadowCalculations(light,pointShadowMap[index]);
 
-    return ((1.0 - shadow)*(specular + diffusion) + ambientLight);
+    return ((1.0 - shadow)*(specular + diffusion)+ ambientLight);
 }
 
 vec3 CalcSpotLight(SpotLight light)

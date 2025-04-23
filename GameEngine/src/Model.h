@@ -17,7 +17,7 @@ class Model : public Component
 public :
    Model(const char* path);
    Model(const char* path, unsigned int instances);
-   Model(DEFAULT_MODEL model,std::vector<Texture> textures);
+   Model(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
    ~Model();
    void Draw(Shader &shader,GLenum mode);
    void DrawInstanced(Shader &shader,GLenum mode,unsigned int NOFinstance);
@@ -30,7 +30,7 @@ private:
    std::vector<Texture> textures_Loaded;
    std::string directory;
    void loadModel(std::string path);
-   void loadModel(DEFAULT_MODEL model,std::vector<Texture> textures);
+   void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
    void processNode(aiNode* Parent, aiNode* node,const aiScene *scene);
    Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
    std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);

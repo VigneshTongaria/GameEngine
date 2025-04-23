@@ -1,9 +1,10 @@
 #include "Mesh.h"
 #include "managers/ResourcesManager.hpp"
 
-Mesh :: Mesh(std::vector<Vertex> vertices, std::vector<Texture> textures, std::vector<unsigned int> indices)
+Mesh :: Mesh(std::vector<Vertex> vertices,Material material, std::vector<Texture> textures, std::vector<unsigned int> indices)
 {
     this->vertices = vertices;
+    this->material = material;
     this->textures = textures;
     this->indices = indices;
     setUpMesh();
@@ -76,6 +77,7 @@ void Mesh::AssignTextures(Shader &shader)
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
     unsigned int normalNr = 1;
+    shader.setFloat("material.shininess",32.0f*material.shininess);
       
     for(unsigned int i=0 ; i<textures.size(); i++)
     {

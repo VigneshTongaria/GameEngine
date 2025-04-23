@@ -69,9 +69,9 @@ Model::Model(const char* path,unsigned int instances)
        glBindVertexArray(0);
     }
 }
-Model::Model(DEFAULT_MODEL model,std::vector<Texture> textures)
+Model::Model(DEFAULT_MODEL model,Material mat, std::vector<Texture> textures)
 {
-     loadModel(model,textures);
+     loadModel(model,mat,textures);
 }
 Model::~Model()
 {
@@ -187,6 +187,7 @@ void Model::processNode(aiNode* Parent,aiNode* node,const aiScene* scene)
 Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransform)
 {
     std::vector<Vertex> vertices;
+    Material mat;
     std::vector<Texture> textures;
     std::vector<unsigned int> indices;  
 
@@ -243,9 +244,25 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
 
         std::vector<Texture> normal_maps = loadMaterialsTextures(scene,material,aiTextureType_NORMALS,TEXTURE_TYPE::NORMAL);
         textures.insert(textures.end(),normal_maps.begin(),normal_maps.end());
+
+        mat.DiffuseMaps = diffuse_maps;
+        mat.NormalsMaps = normal_maps;
+        mat.SpecularMaps = specular_maps;
+
+        float shininess = 0.0f;
+        if (material->Get(AI_MATKEY_ROUGHNESS_FACTOR, shininess) == AI_SUCCESS)
+        {
+            std::cout << "Shininess: " << shininess << std::endl;
+        }
+        else
+        {
+            std::cout << "No shininess value found. Using default." << std::endl;
+            shininess = 32.0f; // Default fallback value
+        }
+        mat.shininess = shininess;
     }
 
-    return Mesh(vertices, textures, indices);
+    return Mesh(vertices,mat, textures, indices);
 }
 
 std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)
@@ -333,7 +350,7 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
     return textures;
 }
 
-void Model::loadModel(DEFAULT_MODEL model,std::vector<Texture> textures)
+void Model::loadModel(DEFAULT_MODEL model,Material mat, std::vector<Texture> textures)
 {
      std::vector<Vertex> vertices;
      std::vector<unsigned int> indices;
@@ -347,5 +364,5 @@ void Model::loadModel(DEFAULT_MODEL model,std::vector<Texture> textures)
      default:
         break;
      }
-     meshes.push_back(Mesh(vertices,textures,indices));
+     meshes.push_back(Mesh(vertices,mat,textures,indices));
 }
