@@ -11,6 +11,6 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14
   
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(107,22): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(108,21): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(843,15): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(843,15): warning C4309: 'argument': truncation of constant value
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(861,15): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(861,15): warning C4309: 'argument': truncation of constant value
   GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

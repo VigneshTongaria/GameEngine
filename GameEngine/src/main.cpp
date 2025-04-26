@@ -113,7 +113,7 @@ int main()
 	Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
 	Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
 	Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
-	Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_post.glsl");
+	Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_Blending.glsl");
 	Shader CubeMapShader("Assets/vertex_cubeMap.glsl", "Assets/fragment_cubeMap.glsl");
 	Shader ExplosionShader("Assets/GeometryShaders/Vertex_unlit.glsl", 
 		"Assets/fragment_core_highlight.glsl","Assets/GeometryShaders/Geometry_normals.glsl");
@@ -122,6 +122,8 @@ int main()
 	Shader LightingShadowShader("Assets/vertex_core_shadows.glsl", "Assets/fragment_core_shadows.glsl");
 	Shader PointLightingShadowShader("Assets/vertex_pointLight.glsl","Assets/GeometryShaders/fragment_PointLightMap.glsl",
 		"Assets/GeometryShaders/Geometry_PointLight.glsl");
+	Shader BrightShader("Assets/vertex_unlit.glsl", "Assets/fragment_brightness.glsl");
+	Shader BloomShader("Assets/vertex_unlit.glsl", "Assets/fragment_bloom.glsl");
 
 	shaders.push_back(&LightingShader);
 	shaders.push_back(&LightnigSourceShader);
@@ -369,7 +371,22 @@ int main()
 	glBindFramebuffer(GL_FRAMEBUFFER,fbo);
 
 	Texture colorBuffer = ResourcesManager::loadTexture(GL_RGBA,GL_RGBA16F,SRC_WIDTH, SRC_HEIGHT);
+	Texture brightColorBuffer = ResourcesManager::loadTexture(GL_RGBA,GL_RGBA16F,SRC_WIDTH, SRC_HEIGHT);
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,colorBuffer.id,0);
+	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT1,GL_TEXTURE_2D,brightColorBuffer.id,0);
+
+	// Blur frameBuffer
+	unsigned int pingpongFBO[2];
+	glGenFramebuffers(2, pingpongFBO);
+	Texture pingpongBuffers[2];
+	pingpongBuffers[0] = ResourcesManager::loadTexture(GL_RGBA,GL_RGBA16F,SRC_WIDTH, SRC_HEIGHT);
+	pingpongBuffers[1] = ResourcesManager::loadTexture(GL_RGBA,GL_RGBA16F,SRC_WIDTH, SRC_HEIGHT);
+
+	for (unsigned int i = 0; i < 2; i++)
+	{
+		glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[i]);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, pingpongBuffers[i].id, 0);
+	}
 
 	// Post processing renderBuffers
 	unsigned int rbo;
@@ -686,6 +703,7 @@ int main()
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
 		glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 		//glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 
@@ -882,18 +900,70 @@ int main()
 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER,fbo);
 
 		glBlitFramebuffer(0,0,SRC_WIDTH,SRC_HEIGHT,0,0,SRC_WIDTH,SRC_HEIGHT,GL_COLOR_BUFFER_BIT,GL_NEAREST);
+		glDisable(GL_DEPTH_TEST);
+
+		// Brightness processing
+        glBindFramebuffer(GL_FRAMEBUFFER,fbo);
+		BrightShader.UseShaderProgram();
+		BrightShader.setInt("screenTexture",0);
+        
+		unsigned int Color1[1] = {GL_COLOR_ATTACHMENT1};
+		glDrawBuffers(1,Color1);
+
+		glBindVertexArray(quadVAO);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D,colorBuffer.id);
+        glDrawArrays(GL_TRIANGLES,0,6);
+		
+		unsigned int Color0[1] = {GL_COLOR_ATTACHMENT0};
+		glDrawBuffers(1,Color0);
+
+        glBindVertexArray(0);
+		glBindFramebuffer(GL_FRAMEBUFFER,0);
+
+		// Blurring Brightness
+		bool Horizontal = true, isFirstIteration = true;
+		unsigned int samples = 10;
+        BloomShader.UseShaderProgram();
+		glBindVertexArray(quadVAO);
+
+		for(unsigned int i=0; i<samples; i++)
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER,pingpongFBO[Horizontal]);
+			BloomShader.setInt("horizontal",Horizontal);
+
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D,isFirstIteration ? brightColorBuffer.id : pingpongBuffers[!Horizontal].id);
+            glDrawArrays(GL_TRIANGLES,0,6);
+			Horizontal = !Horizontal;
+
+			isFirstIteration = false;
+		}
+		glBindFramebuffer(GL_FRAMEBUFFER,0);
+
 
 		// Post processing
 
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
 		glDisable(GL_DEPTH_TEST);
 		glClearColor(0.1f,0.1f,0.1f,0.1f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		// unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+		// glDrawBuffers(2,attachMents);
 
         PostShader.UseShaderProgram();
-		PostShader.setFloat("exposure",1.0f);
-		glBindVertexArray(quadVAO);
+		PostShader.setFloat("exposure",0.4f);
+		PostShader.setInt("scene",0);
+		PostShader.setInt("bloomBlur",1);
+
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D,colorBuffer.id);
+		glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D,pingpongBuffers[0].id);
+		glActiveTexture(GL_TEXTURE0);
+
+		glBindVertexArray(quadVAO);
         glDrawArrays(GL_TRIANGLES,0,6);
 
 
