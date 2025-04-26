@@ -77,7 +77,7 @@ void Mesh::AssignTextures(Shader &shader)
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
     unsigned int normalNr = 1;
-    shader.setFloat("material.shininess",32.0f*material.shininess);
+    shader.setFloat("material.shininess",material.shininess);
       
     for(unsigned int i=0 ; i<textures.size(); i++)
     {

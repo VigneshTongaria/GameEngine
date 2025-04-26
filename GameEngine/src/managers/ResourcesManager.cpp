@@ -132,6 +132,11 @@ Texture ResourcesManager::loadTextureFromMemory(const unsigned char* path,int im
             else if(nrChannels == 4) internalFormat = GL_SRGB_ALPHA;
         }
 
+        else if(type == TEXTURE_TYPE::SPECULAR)
+        {
+            std::cout<< " Specular NR channels" << nrChannels << "\n";
+        }
+
 		glGenTextures(1, &texture.id);
 		glBindTexture(GL_TEXTURE_2D, texture.id);
 

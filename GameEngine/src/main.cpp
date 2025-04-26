@@ -375,6 +375,9 @@ int main()
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,colorBuffer.id,0);
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT1,GL_TEXTURE_2D,brightColorBuffer.id,0);
 
+	unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+	glDrawBuffers(2,attachMents);
+
 	// Blur frameBuffer
 	unsigned int pingpongFBO[2];
 	glGenFramebuffers(2, pingpongFBO);
@@ -907,16 +910,13 @@ int main()
 		BrightShader.UseShaderProgram();
 		BrightShader.setInt("screenTexture",0);
         
-		unsigned int Color1[1] = {GL_COLOR_ATTACHMENT1};
-		glDrawBuffers(1,Color1);
+		// unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+		// glDrawBuffers(2,attachMents);
 
 		glBindVertexArray(quadVAO);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D,colorBuffer.id);
         glDrawArrays(GL_TRIANGLES,0,6);
-		
-		unsigned int Color0[1] = {GL_COLOR_ATTACHMENT0};
-		glDrawBuffers(1,Color0);
 
         glBindVertexArray(0);
 		glBindFramebuffer(GL_FRAMEBUFFER,0);
@@ -953,7 +953,7 @@ int main()
 		// glDrawBuffers(2,attachMents);
 
         PostShader.UseShaderProgram();
-		PostShader.setFloat("exposure",0.4f);
+		PostShader.setFloat("exposure",1.0f);
 		PostShader.setInt("scene",0);
 		PostShader.setInt("bloomBlur",1);
 
@@ -1051,8 +1051,6 @@ void RenderAsteriods(Model* m,Shader* s)
     s->UseShaderProgram();
 	m->DrawInstanced(*s,GL_TRIANGLES,asteriodInstances);
 }
-
-
 
 std::string loadShaderSRC(const char* filename)
 {

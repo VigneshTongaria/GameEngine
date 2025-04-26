@@ -249,7 +249,7 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
         mat.NormalsMaps = normal_maps;
         mat.SpecularMaps = specular_maps;
 
-        float shininess = 0.0f;
+        float shininess = -1.0f;
         if (material->Get(AI_MATKEY_ROUGHNESS_FACTOR, shininess) == AI_SUCCESS)
         {
             std::cout << "Shininess: " << shininess << std::endl;
@@ -257,7 +257,6 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
         else
         {
             std::cout << "No shininess value found. Using default." << std::endl;
-            shininess = 32.0f; // Default fallback value
         }
         mat.shininess = shininess;
     }

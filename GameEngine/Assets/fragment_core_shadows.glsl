@@ -75,6 +75,11 @@ uniform vec3 objectColor;
 uniform vec3 viewPos;
 uniform float far_plane;
 
+float metallicness;
+float smoothness;
+float smoothnessExp;
+float ambientOcclusion;
+
 vec3 sampleOffsetDirections[20] = vec3[]
 (
    vec3( 1,  1,  1), vec3( 1, -1,  1), vec3(-1, -1,  1), vec3(-1,  1,  1), 
@@ -90,6 +95,22 @@ void main()
 {
     if(texture(material.texture_diffuse1,TextCords).a == 0.0)
        discard;
+    
+    if(material.shininess != -1.0)
+    {
+        vec3 metallicMap = texture(material.texture_specular1,TextCords).rgb;
+        metallicness = 1.0 - metallicMap.r;
+        smoothness = metallicMap.g;
+        if(smoothness < 1.0) smoothness *= 0.1;
+        ambientOcclusion = metallicMap.b;
+        smoothnessExp = smoothness*64.0;
+    }
+    else 
+    {
+        metallicness = 0.0;
+        smoothness = 0.1;
+        smoothnessExp = material.shininess;
+    }
 
     vec3 result = vec3(0.0);
     result += CalcDirLight(dirLight);
@@ -99,6 +120,7 @@ void main()
     //result += CalcSpotLight(spotLight);
     
     FragColor = vec4(result,1.0);
+    //FragColor = vec4(vec3(metallicness,smoothness,ambientOcclusion),1.0);
     //FragColor = vec4(pointShadowCalculationsDebugger(pointLights[0],pointShadowMap[0]),1.0);
 }
 
@@ -122,15 +144,15 @@ vec3 CalcDirLight(DirLight light)
     vec3 halfViewDirection = normalize(viewDirection + lightRay);
     vec3 viewReflectRay = reflect(-1.0*viewDirection,normalSurface);
 
-    //float spec = pow(max(dot(reflectRay,viewDirection),0.0),material.shininess);
-    float spec = pow(max(dot(halfViewDirection,normal),0.0),material.shininess);
+    //float spec = pow(max(dot(reflectRay,viewDirection),0.0),smoothnessExp);
+    float spec = pow(max(dot(halfViewDirection,normal),0.0),smoothnessExp);
     float diff = max(dot(normalSurface,lightRay),0.0);
     float shadow = shadowCalculations(FragPosLightSpace);
 
     vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
-    vec3 specular = light.specular * spec* texture(material.texture_specular1,TextCords).r;
+    vec3 specular = light.specular * spec;
     vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
-    vec3 reflectionCube = light.specular*0.1* texture(reflection,viewReflectRay).rgb* texture(material.texture_specular1,TextCords).r;
+    vec3 reflectionCube = 0.1 * smoothness * texture(reflection,viewReflectRay).rgb;
 
     return ( (1.0 - shadow)*(diffusion +  specular)+ reflectionCube + ambientLight);
 }
