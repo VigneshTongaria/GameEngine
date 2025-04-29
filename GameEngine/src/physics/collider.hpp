@@ -5,6 +5,7 @@
 #include "./Component.h"
 #include "./GameObject.h"
 #include <functional>
+#include "collisionsManager.hpp"
 
 enum ColliderType
 {
