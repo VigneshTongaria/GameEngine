@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/Linking/include"
+                "${workspaceFolder}/Linking/include",
+                "${workspaceFolder}/src/managers"
             ],
             "defines": [
                 "_DEBUG",

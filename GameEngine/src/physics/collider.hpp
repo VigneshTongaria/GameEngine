@@ -18,20 +18,18 @@ class Collider : public Component
 
 protected :
 
-    std::function<void(Collider* other)> CheckCollisionCallback;
-
 public:
     
     ColliderType type;
     glm::vec3 center;
     bool isTrigger;
 
+    std::function<void(Collider* other)> OnCollisionEnterCallback;
+
     Collider(const glm::vec3& offset = glm::vec3(0.0f));
     virtual ~Collider() = default;
 
     virtual void UpdatePosition(const glm::vec3& offset);
-
-    virtual bool CheckCollision(Collider* other) = 0;
 
     glm::vec3 GetColliderPosition() const;
 };
@@ -43,7 +41,7 @@ public:
 Collider::Collider(const glm::vec3& offset)
 {
     GameObject *g = this->gameObject;
-    CheckCollisionCallback = nullptr;
+    OnCollisionEnterCallback= nullptr;
     isTrigger = false;
 
     if (g == nullptr)
@@ -55,12 +53,6 @@ Collider::Collider(const glm::vec3& offset)
 void Collider::UpdatePosition(const glm::vec3& offset)
 {
     center += offset;
-}
-
-bool Collider::CheckCollision(Collider* other)
-{
-    if(CheckCollisionCallback != nullptr)
-       CheckCollisionCallback(other);
 }
 
 glm::vec3 Collider::GetColliderPosition() const

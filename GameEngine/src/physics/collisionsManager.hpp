@@ -4,19 +4,11 @@
 #include <unordered_map>
 #include "rigidbody.hpp"
 #include "Colliders/sphereCollider.hpp"
+#include "./UtilitiesManager.hpp"
 
 struct Grid
 {
     int x,y;
-};
-struct CollisionInfo
-{
-    CollisionInfo()
-    {
-       isCollided = false;
-    }
-
-    bool isCollided;
 };
 
 struct CollisionPair {
@@ -40,23 +32,16 @@ struct CollisionPairHasher {
 static class CollisionsManager
 {
 private:
-static std::unordered_map<CollisionPair, float, CollisionPairHasher> activeCollisions;
+static std::unordered_map<UnorderedMapKey<Collider*>, float, UnorderedMapHash<Collider*>> activeCollisions;
     
 public:
    static constexpr float collisionCooldown = 0.2f; // seconds
-  
-   static CollisionInfo HandleSphereToSphereCollision(sphereCollider* s1,sphereCollider* s2);
 
    static void TryResolveCollision(Collider* a, Collider* b, float deltaTime) {
-    CollisionPair pair = { a, b };
+    UnorderedMapKey<Collider*> pair = { a, b };
     
     auto it = activeCollisions.find(pair);
     if (it != activeCollisions.end()) {
-        // Decrease cooldown
-        it->second -= deltaTime;
-        if (it->second <= 0.0f) {
-            activeCollisions.erase(it); // Can resolve again next time
-        }
         return; // Already resolved recently
     }
 
