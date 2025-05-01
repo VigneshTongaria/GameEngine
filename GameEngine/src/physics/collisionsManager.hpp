@@ -5,6 +5,7 @@
 #include "rigidbody.hpp"
 #include "Colliders/sphereCollider.hpp"
 #include "./UtilitiesManager.hpp"
+#include "PhysicsCalculations/physicsCollision.hpp"
 
 struct Grid
 {
@@ -31,35 +32,22 @@ struct CollisionPairHasher {
 
 static class CollisionsManager
 {
-private:
-static std::unordered_map<UnorderedMapKey<Collider*>, float, UnorderedMapHash<Collider*>> activeCollisions;
-    
 public:
-   static constexpr float collisionCooldown = 0.2f; // seconds
+    static constexpr float PhysicsDeltaTime = 0.02f;
+    static constexpr float collisionCooldown = 0.2f; // seconds
+    static constexpr int GRID_WIDTH = 30;
+    static constexpr int GRID_HEIGHT = 30;
 
-   static void TryResolveCollision(Collider* a, Collider* b, float deltaTime) {
-    UnorderedMapKey<Collider*> pair = { a, b };
-    
-    auto it = activeCollisions.find(pair);
-    if (it != activeCollisions.end()) {
-        return; // Already resolved recently
-    }
+    static void AddColliderToPhysics(Collider* c);
+    static void TryResolveCollision(Collider *a, Collider *b);
+    static void Update();
 
-    // Not in set → resolve it
-    //Physics::ResolveCollision(a, b);
-    activeCollisions[pair] = collisionCooldown;
-}
+private:
+    static std::unordered_map<UnorderedMapKey<Collider *>, float, UnorderedMapHash<Collider *>> activeCollisions;
+    static std::vector<Collider *> sceneColliders;
+    static std::vector<Collider *> gridColliders[GRID_WIDTH][GRID_HEIGHT];
 
-static void Update(float deltaTime) {
-    for (auto it = activeCollisions.begin(); it != activeCollisions.end(); ) {
-        it->second -= deltaTime;
-        if (it->second <= 0.0f)
-            it = activeCollisions.erase(it);
-        else
-            ++it;
-    }
-}
-
+    static void resolveGridColliders();
 };
 
 #endif

@@ -9,7 +9,7 @@ Rigidbody::Rigidbody(float mass, glm::vec3 velocity, glm::vec3 accelaration)
     this->position = nullptr;
 }
 
-void Rigidbody::Start()
+void Rigidbody::start()
 {
     position = &this->gameObject->position;
 }

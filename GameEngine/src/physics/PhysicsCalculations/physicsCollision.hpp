@@ -19,6 +19,11 @@
 //         return ha ^ hb; // XOR works fine for pointer hashing
 //     }
 // };
+struct CollisionInfo
+{
+    bool isCollided;
+};
+
 
 static class physicsCollision
 {

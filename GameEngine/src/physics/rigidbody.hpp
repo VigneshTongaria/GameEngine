@@ -16,8 +16,7 @@ public:
      void AddImpulse(glm::vec3 impulse);
      void AddForce(glm::vec3 force);
 
-     //Call Start after initialzing all classes and gamobjects
-     void Start();
+     void start() override;
 
      // Call update in while loop
      void Update(float dt);

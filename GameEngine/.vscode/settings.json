@@ -71,6 +71,7 @@
         "thread": "cpp",
         "unordered_set": "cpp",
         "xtree": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "*.rh": "cpp"
     }
 }

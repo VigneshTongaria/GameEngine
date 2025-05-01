@@ -19,6 +19,7 @@
 #include "physics/rigidbody.hpp"
 #include "managers/ResourcesManager.hpp"
 #include "data/GeometryData.hpp"
+#include "physics/PhysicsThread.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -689,6 +690,8 @@ int main()
 	rb->Start();
 	ResourcesManager::VerticesCount = 0;
 
+	startPhysicsThread();
+
 	while (!glfwWindowShouldClose(window))
 	{
 		//calculate deltaTime
@@ -971,6 +974,9 @@ int main()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	// Call OnDestroy/End functions here
+	stopPhysicsThread();
 
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 	glfwTerminate();
