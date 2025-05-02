@@ -12,6 +12,7 @@ public:
 
     virtual void awake();
     virtual void start();
+    virtual void fixedUpdate(float dt);
     virtual void update();
 };
 

@@ -29,7 +29,7 @@ static class physicsCollision
 {
 private:
     /* data */
-    static void ResolveSphereToSphereCollision(Collider* s1,Collider* s2);
+    static bool ResolveSphereToSphereCollision(Collider* s1,Collider* s2);
 
 public:
 
@@ -38,10 +38,10 @@ public:
     using CollisionKey = UnorderedMapKey<ColliderType>;
     using CollisionKeyHash = UnorderedMapHash<ColliderType>;
 
-    using CollisionFunc = void(*)(Collider*, Collider*);
+    using CollisionFunc = bool(*)(Collider*, Collider*);
     static std::unordered_map<CollisionKey, CollisionFunc, CollisionKeyHash> collisionMap;
 
-    static void ResolveCollisions(Collider* c1,Collider* c2);
+    static bool ResolveCollisions(Collider* c1,Collider* c2);
 
     ~physicsCollision();
 };

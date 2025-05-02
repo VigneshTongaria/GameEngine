@@ -19,7 +19,7 @@ public:
      void start() override;
 
      // Call update in while loop
-     void Update(float dt);
+     void fixedUpdate(float dt) override;
 };
 
 

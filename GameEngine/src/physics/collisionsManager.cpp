@@ -44,7 +44,12 @@ void CollisionsManager::TryResolveCollision(Collider* a, Collider* b) {
     }
 
     // Not in set → resolve it
-    physicsCollision::ResolveCollisions(a,b);
+    bool isCollided = physicsCollision::ResolveCollisions(a,b);
+    
+    // If not collided return
+    if(!isCollided) return;
+    
+    // If collided add to the active collisions
     activeCollisions[pair] = collisionCooldown;
 }
 

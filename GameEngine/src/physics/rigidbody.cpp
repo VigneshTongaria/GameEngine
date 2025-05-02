@@ -1,4 +1,5 @@
 #include "rigidbody.hpp"
+#include "rigidbodyManager.hpp"
 
 Rigidbody::Rigidbody(float mass, glm::vec3 velocity, glm::vec3 accelaration)
 {
@@ -7,6 +8,8 @@ Rigidbody::Rigidbody(float mass, glm::vec3 velocity, glm::vec3 accelaration)
     this->accelaration = accelaration;
 
     this->position = nullptr;
+
+    RigidbodyManager::AddrigidbodyToPhysics(this);
 }
 
 void Rigidbody::start()
@@ -14,7 +17,7 @@ void Rigidbody::start()
     position = &this->gameObject->position;
 }
 
-void Rigidbody::Update(float dt)
+void Rigidbody::fixedUpdate(float dt)
 {
     glm::vec3 ds = velocity*dt + (accelaration * dt * dt) / 2.0f;
     *position += ds;

@@ -4,6 +4,7 @@
 #include <atomic>
 #include <mutex>
 #include"physics/collisionsManager.hpp"
+#include"physics/rigidbodyManager.hpp"
 
 void startPhysicsThread();
 void stopPhysicsThread();
@@ -19,6 +20,7 @@ void physicsMain()
     {
         std::lock_guard<std::mutex> lock(physicsMutex);
         CollisionsManager::Update();
+        RigidbodyManager::Update(physicsDelta);
 
         std::this_thread::sleep_for(std::chrono::seconds(physicsDelta));
     }
