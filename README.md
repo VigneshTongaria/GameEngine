@@ -12,7 +12,7 @@ This is repo for the game engine project in development by me, this is not a ful
 
 I have implemented a 3D renderer, using OpenGL.
 
-This includes, importing fbx/glb file and mapping respective textures, I have kept it simple and implemented ping pong lighting which includes, specular lighting, shadow mapping, soft shadows and few post processing effects like bloom, etc. You can check the shaders in assets/. glsl type files.
+This includes, importing fbx/glb file and mapping respective textures, I have kept it simple and implemented ping pong lighting (Forward) which includes, specular lighting, shadow mapping, soft shadows and few post processing effects like bloom, etc. You can check the shaders in assets/. glsl type files.
 
 
 
