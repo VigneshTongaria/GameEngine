@@ -28,10 +28,14 @@
     <ClCompile Include="src\io\KeyBoard.cpp" />
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\managers\GameplayManager.cpp" />
     <ClCompile Include="src\managers\ResourcesManager.cpp" />
     <ClCompile Include="src\managers\UtilitiesManger.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\physics\Colliders\spherCollider.cpp" />
+    <ClCompile Include="src\physics\collisionsManager.cpp" />
+    <ClCompile Include="src\physics\PhysicsCalculations\physicsCollision.cpp" />
     <ClCompile Include="src\physics\rigidbody.cpp" />
     <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
@@ -63,11 +67,18 @@
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
+    <ClInclude Include="src\managers\GameplayManager.hpp" />
     <ClInclude Include="src\managers\ResourcesManager.hpp" />
     <ClInclude Include="src\managers\UtilitiesManager.hpp" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
+    <ClInclude Include="src\physics\collider.hpp" />
+    <ClInclude Include="src\physics\Colliders\sphereCollider.hpp" />
+    <ClInclude Include="src\physics\collisionsManager.hpp" />
+    <ClInclude Include="src\physics\PhysicsCalculations\physicsCollision.hpp" />
+    <ClInclude Include="src\physics\PhysicsThread.h" />
     <ClInclude Include="src\physics\rigidbody.hpp" />
+    <ClInclude Include="src\physics\rigidbodyManager.hpp" />
     <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
