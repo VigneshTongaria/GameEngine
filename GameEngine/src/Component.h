@@ -1,8 +1,7 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 #include<iostream>
-
-class GameObject;
+#include"GameObject.h"
 
 class Component {
 public:
@@ -18,8 +17,11 @@ public:
 
 Component::Component()
 {
-    gameObject->awakeCallbacks.push_back([this]() { this->awake(); });
-    gameObject->startCallbacks.push_back([this]() { this->start(); });
+    if (gameObject != nullptr)
+    {
+        gameObject->awakeCallbacks.push_back([this]() { this->awake(); });
+        gameObject->startCallbacks.push_back([this]() { this->start(); });
+    }
 }
 
 

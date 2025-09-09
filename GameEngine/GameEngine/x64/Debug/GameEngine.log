@@ -1,4 +1,65 @@
-﻿  main.cpp
+﻿  glad.c
+  stb.cpp
+  Camera.cpp
+  Component.h
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,57): error C2065: 'Component': undeclared identifier
+  (compiling source file 'src/Component.h')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,46): error C2923: 'std::shared_ptr': 'Component' is not a valid template type argument for parameter '_Ty'
+  (compiling source file 'src/Component.h')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,57):
+      see declaration of 'Component'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,46): error C3203: 'shared_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
+  (compiling source file 'src/Component.h')
+  
+  GeometryData.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/data/GeometryData.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/data/GeometryData.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+  GameObject.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,15): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/GameObject.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/GameObject.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,37): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/GameObject.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(20,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/GameObject.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(22,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/GameObject.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(23,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/GameObject.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\GameplayManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'GameplayManager' when no variable is declared
+  (compiling source file 'src/GameObject.cpp')
+  
+  KeyBoard.cpp
+  Mouse.cpp
+  main.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,57): error C2065: 'Component': undeclared identifier
+  (compiling source file 'src/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,46): error C2923: 'std::shared_ptr': 'Component' is not a valid template type argument for parameter '_Ty'
+  (compiling source file 'src/main.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,57):
+      see declaration of 'Component'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,46): error C3203: 'shared_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
+  (compiling source file 'src/main.cpp')
+  
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
   (compiling source file 'src/main.cpp')
       C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
@@ -9,8 +70,119 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14
       C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
       This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
   
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(107,22): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(108,21): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(864,15): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\main.cpp(864,15): warning C4309: 'argument': truncation of constant value
-  GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collider.hpp(12,9): error C2365: 'SPHERE': redefinition; previous definition was 'enumerator'
+  (compiling source file 'src/main.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(9,10):
+      see declaration of 'SPHERE'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collider.hpp(58,5): error C2653: 'CollisionsManager': is not a class or namespace name
+  (compiling source file 'src/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collider.hpp(58,24): error C3861: 'AddColliderToPhysics': identifier not found
+  (compiling source file 'src/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collisionsManager.hpp(7,10): error C1083: Cannot open include file: './UtilitiesManager.hpp': No such file or directory
+  (compiling source file 'src/main.cpp')
+  
+  GameplayManager.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\GameplayManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'GameplayManager' when no variable is declared
+  (compiling source file 'src/managers/GameplayManager.cpp')
+  
+  ResourcesManager.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(11,12): warning C4101: 'height': unreferenced local variable
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(11,19): warning C4101: 'nrChannels': unreferenced local variable
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(11,6): warning C4101: 'width': unreferenced local variable
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(190,57): warning C4267: 'argument': conversion from 'size_t' to 'GLenum', possible loss of data
+  UtilitiesManger.cpp
+  Mesh.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Mesh.cpp(58,40): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Mesh.cpp(61,42): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Mesh.cpp(72,54): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Model.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,57): error C2065: 'Component': undeclared identifier
+  (compiling source file 'src/Model.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,46): error C2923: 'std::shared_ptr': 'Component' is not a valid template type argument for parameter '_Ty'
+  (compiling source file 'src/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,57):
+      see declaration of 'Component'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GameObject.h(17,46): error C3203: 'shared_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
+  (compiling source file 'src/Model.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(34,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(38,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(55,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(57,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(59,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(61,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(146,68): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Model.cpp(313,41): warning C4018: '>': signed/unsigned mismatch
+  spherCollider.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\Colliders\sphereCollider.hpp(3,10): error C1083: Cannot open include file: './collider.hpp': No such file or directory
+  (compiling source file 'src/physics/Colliders/spherCollider.cpp')
+  
+  collisionsManager.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,15): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,37): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(20,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(22,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(23,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collider.hpp(5,10): error C1083: Cannot open include file: './Component.h': No such file or directory
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+  physicsCollision.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(1,9): error C1083: Cannot open include file: './collisionsManager.hpp': No such file or directory
+  (compiling source file 'src/physics/PhysicsCalculations/physicsCollision.cpp')
+  
+  rigidbody.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,15): error C2143: syntax error: missing ';' before '*'
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(10,37): error C2238: unexpected token(s) preceding ';'
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(20,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(22,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\Component.h(23,9): error C2065: 'gameObject': undeclared identifier
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbodyManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'RigidbodyManager' when no variable is declared
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbody.cpp(17,23): error C2039: 'gameObject': is not a member of 'Rigidbody'
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbody.hpp(6,7):
+      see declaration of 'Rigidbody'
+  
+  Shader.cpp
+  Generating Code...

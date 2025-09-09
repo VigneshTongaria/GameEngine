@@ -687,7 +687,7 @@ int main()
 
 	// Call all start functions here
     lastFrame = float(glfwGetTime());
-	rb->Start();
+	rb->start();
 	ResourcesManager::VerticesCount = 0;
 
 	startPhysicsThread();
@@ -897,7 +897,7 @@ int main()
 
 		// Physics related //update
 
-		rb->Update(deltaTime);
+		rb->fixedUpdate(deltaTime);
 
 		// Late update
 
