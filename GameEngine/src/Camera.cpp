@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
+#include "managers/UtilitiesManager.hpp"
 
 Camera:: Camera(glm::vec3 CameraPos,glm::vec3 CameraUp,glm::vec3 CameraFront,float yaw,float pitch,
     float perspectiveAngle,float height,float width,float nearPlane,float farPlane)
@@ -30,6 +32,10 @@ glm::mat4 Camera :: GetViewMatrix()
 glm::mat4 Camera :: GetProjectionMatrix()
 {
     return glm::perspective(perspectiveAngle,width/height,nearPlane,farPlane);
+}
+glm::mat4 Camera :: GetProjectionViewMatrix()
+{
+    return  GetProjectionMatrix() * GetViewMatrix();
 }
 glm::vec3 Camera :: GetCameraPos()
 {

@@ -36,4 +36,5 @@ private:
 
 public:
     static glm::mat4 convertToGLM(const aiMatrix4x4& from);
+    static void mattrixDebugger(const glm::mat4 mat);
 };

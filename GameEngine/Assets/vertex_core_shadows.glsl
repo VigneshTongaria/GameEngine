@@ -15,17 +15,20 @@ layout (std140) uniform Matrices
 {
     mat4 mat_Projection;
     mat4 mat_View;
+    mat4 mat_Projection_View;
 };
 uniform mat4 mat_Model;
+uniform mat4 transpose_mat_Model;
 uniform vec3 lightPosition;
 uniform mat4 mat_Lightspace;
 
 void main()
 {
-    gl_Position = mat_Projection*mat_View* mat_Model * vec4(aPos.x,aPos.y, aPos.z, 1.0);
+    gl_Position = mat_Projection_View * mat_Model * vec4(aPos.x,aPos.y, aPos.z, 1.0);
     FragPos = vec3(mat_Model * vec4(aPos,1.0));
 
-    normal = normalize(mat3(transpose(inverse(mat_Model))) * aNormal);
+    //normal = normalize(mat3(transpose(inverse(mat_Model))) * aNormal);
+    normal = normalize(mat3(transpose_mat_Model) * aNormal);
     //normal = normalize(vec3(mat_Model  * vec4(aNormal,    0.0)));
     lightPos = vec3(vec4(lightPosition,1.0));
     TextCords = aTextCords;

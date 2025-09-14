@@ -6,6 +6,7 @@ layout (std140) uniform Matrices
 {
     mat4 mat_Projection;
     mat4 mat_View;
+    mat4 mat_Projection_View;
 };
 
 void main()

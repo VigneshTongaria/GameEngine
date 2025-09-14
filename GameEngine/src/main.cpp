@@ -467,11 +467,12 @@ int main()
 	unsigned int uboMatrices;
 	glGenBuffers(1, &uboMatrices);
 
-	glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
-	glBufferData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), NULL, GL_STATIC_DRAW);
-	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 3 * sizeof(glm::mat4));
 
-	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 2 * sizeof(glm::mat4));
+	glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
+	glBufferData(GL_UNIFORM_BUFFER, 3 * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
+
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	
     
 	GameObject gameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f));
@@ -486,9 +487,9 @@ int main()
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	// Adding entire city
-	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
+	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f));
 	cityObject.AddComponent<Model>
-	("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/Door/shaw_hornet_-_hollow_knight_silksong/scene.gltf");
+	("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 	Model* cityModel = cityObject.GetComponent<Model>();
 
 	SceneModels.push_back(cityModel);
@@ -701,10 +702,10 @@ int main()
 		lastFrame = currentTime;
 		//process inputs
 		process_inputs(window);
-		SetViewAndProjectionForAllShaders(uboMatrices);
 
 		//rendering
 		ResourcesManager::VerticesCount = 0;
+		SetViewAndProjectionForAllShaders(uboMatrices);
 
 		// Rendering scene first for depth Map for directional light
 		glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
@@ -1123,6 +1124,7 @@ void SetViewAndProjectionForAllShaders(unsigned int uboIndex)
 	// Setting view mattrix in uniform buffer
 	glBindBuffer(GL_UNIFORM_BUFFER,uboIndex);
 	glBufferSubData(GL_UNIFORM_BUFFER,sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(MainCamera.GetViewMatrix()));
+	glBufferSubData(GL_UNIFORM_BUFFER,2*sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(MainCamera.GetProjectionViewMatrix()));
 	glBindBuffer(GL_UNIFORM_BUFFER,0);
 }
 

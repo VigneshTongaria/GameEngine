@@ -105,6 +105,7 @@ void Model::Draw(Shader &shader,GLenum mode)
     mat_model = glm::scale(mat_model, go->scale);
 
     shader.setTransformation("mat_Model",mat_model);
+    shader.setTransformation("transpose_mat_Model",glm::transpose(glm::inverse(mat_model)));
     
     for(unsigned int i=0; i < meshes.size(); i++)
     {

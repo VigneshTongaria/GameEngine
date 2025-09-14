@@ -35,8 +35,9 @@ public:
   float perspectiveAnlge = glm::radians(60.0f),float height = 800.0f,float width = 600.0f,
   float nearPlane = 0.1f,float farPlane = 100.0f);
 
-  glm::mat4 GetViewMatrix();
-  glm::mat4 GetProjectionMatrix();
+  glm::mat4 GetViewMatrix(); 
+  glm::mat4 GetProjectionMatrix(); 
+  glm::mat4 GetProjectionViewMatrix();
   glm::vec3 GetCameraPos();
   glm::vec3 GetCameraFront();
   void ProcessWASD(CAMERA_MOVEMENT mov, float deltaTime);
