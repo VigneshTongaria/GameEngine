@@ -1,5 +1,6 @@
 #include "rigidbody.hpp"
 #include "rigidbodyManager.hpp"
+#include "../GameObject.h"
 
 Rigidbody::Rigidbody(float mass, glm::vec3 velocity, glm::vec3 accelaration)
 {

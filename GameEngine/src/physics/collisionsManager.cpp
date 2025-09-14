@@ -1,5 +1,11 @@
 #include"collisionsManager.hpp"
 
+std::unordered_map<UnorderedMapKey<Collider*>, float, UnorderedMapHash<Collider*>> CollisionsManager::activeCollisions;
+
+std::vector<Collider*> CollisionsManager::sceneColliders;
+
+std::vector<Collider*> CollisionsManager::gridColliders[CollisionsManager::GRID_WIDTH][CollisionsManager::GRID_HEIGHT];
+
 void CollisionsManager::AddColliderToPhysics(Collider* c)
 {
     sceneColliders.push_back(c);
@@ -15,9 +21,9 @@ void CollisionsManager::resolveGridColliders()
         gridColliders[grid_X][grid_Y].push_back(col);
     }
 
-    for(int i = -GRID_WIDTH; i<GRID_WIDTH; i++)
+    for(int i = 0; i<GRID_WIDTH; i++)
     {
-        for(int j = - GRID_HEIGHT; j<GRID_HEIGHT; j++)
+        for(int j = 0; j<GRID_HEIGHT; j++)
         {
             for(auto& col_a : gridColliders[i][j])
             {

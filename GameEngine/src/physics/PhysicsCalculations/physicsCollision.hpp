@@ -1,5 +1,6 @@
-#include"./collisionsManager.hpp"
-#include"././UtilitiesManager.hpp"
+#pragma once
+#include"../collisionsManager.hpp"
+#include"../../managers/UtilitiesManager.hpp"
 
 // struct CollisionKey
 // {

@@ -1,0 +1,11 @@
+Model Information:
+* title:	SHAW! HORNET - Hollow Knight Silksong
+* source:	https://sketchfab.com/3d-models/shaw-hornet-hollow-knight-silksong-670a87a9234c40bc9c2a4f274f6d8cc1
+* author:	Seifert (https://sketchfab.com/Peter_Seifert)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "SHAW! HORNET - Hollow Knight Silksong" (https://sketchfab.com/3d-models/shaw-hornet-hollow-knight-silksong-670a87a9234c40bc9c2a4f274f6d8cc1) by Seifert (https://sketchfab.com/Peter_Seifert) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

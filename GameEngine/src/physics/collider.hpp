@@ -1,17 +1,15 @@
-#ifndef COLLLIDER_H
-#define COLLIDER_H
+#pragma once
 #include<iostream>
 #include<glm/glm.hpp>
-#include "./Component.h"
-#include "./GameObject.h"
+#include "../Component.h"
 #include <functional>
-#include "collisionsManager.hpp"
 
-enum ColliderType
+enum class ColliderType
 {
     BOX,SPHERE
 };
 
+class Rigidbody;
 
 class Collider : public Component
 {
@@ -24,7 +22,7 @@ public:
     glm::vec3 center;
     bool isTrigger;
     bool hasRigidBody;
-    Rigidbody* rb;
+    Rigidbody *rb;
 
     void awake() override;
     void start() override;
@@ -40,43 +38,3 @@ public:
 
     glm::vec3 GetColliderPosition() const;
 };
-
-
-
-#endif
-
-Collider::Collider(const glm::vec3& offset)
-{
-    GameObject *g = this->gameObject;
-    OnCollisionEnterCallback= nullptr;
-    isTrigger = false;
-
-    if (g == nullptr)
-        std::cout << "Gameobject for collider is null" << std::endl;
-
-    center = offset;
-    CollisionsManager::AddColliderToPhysics(this);
-}
-
-void Collider::awake()
-{
-    rb = this->gameObject->GetComponent<Rigidbody>();
-
-    if(rb != nullptr) hasRigidBody = true;
-    else hasRigidBody = false;
-}
-
-Rigidbody* Collider::getAttachedRigidBody() const
-{
-    return rb;
-}
-
-void Collider::UpdateDeltaPosition(const glm::vec3& delta)
-{
-    this->gameObject->position += delta;
-}
-
-glm::vec3 Collider::GetColliderPosition() const
-{
-    return this->gameObject->position + center;
-}

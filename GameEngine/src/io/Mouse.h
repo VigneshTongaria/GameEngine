@@ -1,5 +1,4 @@
-#ifndef MOUSE_H
-#define MOUSE_H
+#pragma once
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 class Mouse
@@ -34,7 +33,3 @@ public:
     static bool MouseButtonWentUp(int button);
     static bool MosueButtonWentDown(int button);
 };
-
-
-
-#endif

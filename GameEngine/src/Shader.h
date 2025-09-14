@@ -1,5 +1,4 @@
-#ifndef SHADER_H
-#define SHADER_H
+#pragma once
 #include <glad/glad.h> // Include OpenGL headers
 #include <string>
 #include <iostream>
@@ -20,4 +19,3 @@ public:
     Shader(const char* VertexShaderPath, const char* FragmentShaderPath,const char* GeometryShaderPath = NULL);
     void UseShaderProgram();
 };
-#endif

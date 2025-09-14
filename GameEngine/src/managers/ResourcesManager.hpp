@@ -1,5 +1,4 @@
-#ifndef RESOURCESMANAGER_HPP
-#define RESOURCESMANAGER_HPP
+#pragma once
 #include "../Mesh.h"
 
 struct CubeMap
@@ -24,5 +23,3 @@ public:
     static CubeMap loadCubeMap(std::vector<std::string> facesPath);
     static std::string getTextureName(TEXTURE_TYPE type);
 };
-
-#endif

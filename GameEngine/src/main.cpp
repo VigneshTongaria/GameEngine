@@ -411,7 +411,7 @@ int main()
 	glGenFramebuffers(1, &depthMapFBO);
 	glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
 
-	const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+	const unsigned int SHADOW_WIDTH = 2048, SHADOW_HEIGHT = 2048;
 
 	unsigned int depthMap;
 	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -486,8 +486,9 @@ int main()
 	Rigidbody* rb = gameObject.GetComponent<Rigidbody>();
 
 	// Adding entire city
-	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.3f,0.3f,0.3f));
-	cityObject.AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
+	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(1.0f,1.0f,1.0f));
+	cityObject.AddComponent<Model>
+	("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/Door/shaw_hornet_-_hollow_knight_silksong/scene.gltf");
 	Model* cityModel = cityObject.GetComponent<Model>();
 
 	SceneModels.push_back(cityModel);
@@ -511,7 +512,7 @@ int main()
 	// }
 
 	// Adding light projection and view matrices
-	float near_plane = 1.0f,far_plane = 170.5f;
+	float near_plane = 1.0f,far_plane = 300.5f;
 	glm::vec3 DirectionalLightDir = glm::vec3(-1.0f, -1.0f, -1.0f);
 	glm::mat4 lightView = glm::lookAt(-10.0f* DirectionalLightDir,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
 	glm::mat4 lightProj = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,near_plane, far_plane);
@@ -926,7 +927,7 @@ int main()
 
 		// Blurring Brightness
 		bool Horizontal = true, isFirstIteration = true;
-		unsigned int samples = 10;
+		unsigned int samples = 1;
         BloomShader.UseShaderProgram();
 		glBindVertexArray(quadVAO);
 
@@ -1054,8 +1055,8 @@ void Mat_Calculations()
 
 void RenderAsteriods(Model* m,Shader* s)
 {
-    s->UseShaderProgram();
-	m->DrawInstanced(*s,GL_TRIANGLES,asteriodInstances);
+    //s->UseShaderProgram();
+	//m->DrawInstanced(*s,GL_TRIANGLES,asteriodInstances);
 }
 
 std::string loadShaderSRC(const char* filename)

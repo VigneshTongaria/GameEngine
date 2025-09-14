@@ -5,6 +5,10 @@ GameplayManager::GameplayManager(/* args */)
     
 }
 
+std::vector<std::function<void()>> GameplayManager::awakeCallbacks;
+std::vector<std::function<void()>> GameplayManager::startCallbacks;
+std::vector<std::function<void()>> GameplayManager::updateCallbacks;
+
 void GameplayManager::awake()
 {
     for(auto& fun : awakeCallbacks)

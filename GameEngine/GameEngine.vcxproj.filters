@@ -72,6 +72,15 @@
     <ClCompile Include="src\physics\Colliders\spherCollider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\physics\collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\physics\rigidbodyManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw3.dll" />
@@ -90,6 +99,14 @@
     <None Include="Assets\vertex_cubeMap.glsl" />
     <None Include="Assets\fragment_reflective.glsl" />
     <None Include="Assets\vertex_Instance.glsl" />
+    <None Include="Assets\fragment_Blending.glsl" />
+    <None Include="Assets\fragment_bloom.glsl" />
+    <None Include="Assets\fragment_brightness.glsl" />
+    <None Include="Assets\fragment_depthMap.glsl" />
+    <None Include="Assets\fragment_core_shadows.glsl" />
+    <None Include="Assets\vertex_core_shadows.glsl" />
+    <None Include="Assets\vertex_depthMap.glsl" />
+    <None Include="Assets\Vertex_pointLight.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">

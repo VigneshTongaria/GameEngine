@@ -1,7 +1,7 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#pragma once
 #include<iostream>
-#include"GameObject.h"
+
+class GameObject;
 
 class Component {
 public:
@@ -14,15 +14,3 @@ public:
     virtual void fixedUpdate(float dt);
     virtual void update();
 };
-
-Component::Component()
-{
-    if (gameObject != nullptr)
-    {
-        gameObject->awakeCallbacks.push_back([this]() { this->awake(); });
-        gameObject->startCallbacks.push_back([this]() { this->start(); });
-    }
-}
-
-
-#endif // !COMPONENT_H

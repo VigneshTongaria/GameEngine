@@ -150,11 +150,11 @@ vec3 CalcDirLight(DirLight light)
     float shadow = shadowCalculations(FragPosLightSpace);
 
     vec3 diffusion = light.diffuse * diff* texture(material.texture_diffuse1,TextCords).rgb;
-    vec3 specular = light.specular * spec;
+    vec3 specular = light.specular * spec * texture(material.texture_specular1,TextCords).r;
     vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
-    vec3 reflectionCube = 0.1 * smoothness * texture(reflection,viewReflectRay).rgb;
+    vec3 reflectionCube = 1 * smoothness * texture(reflection,viewReflectRay).rgb;
 
-    return ( (1.0 - shadow)*(diffusion +  specular)+ reflectionCube + ambientLight);
+    return ( (1.0 - shadow)*(diffusion +  specular) + ambientLight);
 }
 
 vec3 CalcPointLight(PointLight light,int index)
@@ -233,20 +233,21 @@ float shadowCalculations(vec4 fragPosLightSpace)
     float shadow = 0.0;
     vec2 texelSize = 1.0/textureSize(shadowMap,0);
 
-    for(int x = -1; x <= 1; ++x)
-    {
-        for(int y = -1; y <= 1; ++y)
-        {
-            float pcfDepth = texture(shadowMap,proj.xy + vec2(x,y)*texelSize).r;
-            shadow += (currentDepth > pcfDepth + 0.0005) ? 1.0 : 0.0;
-        }
-    }
+    //for(int x = -3; x <= 3; ++x)
+    //{
+        //for(int y = -3; y <= 3; ++y)
+        //{
+            //float pcfDepth = texture(shadowMap,proj.xy + vec2(x,y)*texelSize).r;
+            //shadow += (currentDepth > pcfDepth + 0.0005) ? 1.0 : 0.0;
+        //}
+    //}
 
-    //float shadow = (currentDepth > closestDepth + 0.0005) ? 1.0 : 0.0;
+    //float closestDepth = texture(shadowMap,proj.xy).r;
+    shadow = (currentDepth > closestDepth + 0.0005) ? 1.0 : 0.0;
     if(proj.z > 1.0)
     shadow = 0.0;
 
-    shadow /= 9.0;
+    shadow /= 1.0;
     
     return shadow;
 }

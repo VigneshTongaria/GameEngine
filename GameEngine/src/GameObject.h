@@ -1,12 +1,12 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#pragma once
 #include<iostream>
 #include <unordered_map>
 #include <typeindex>
 #include <memory>
-#include "Component.h"
 #include<glm/glm.hpp>
 #include<functional>
+
+class Component;
 
 class GameObject{
 
@@ -47,5 +47,3 @@ class GameObject{
     // void RemoveComponent();
 
 };
-
-#endif

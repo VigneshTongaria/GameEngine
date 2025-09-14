@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include "rigidbody.hpp"
 #include "Colliders/sphereCollider.hpp"
-#include "./UtilitiesManager.hpp"
+#include "../managers/UtilitiesManager.hpp"
 #include "PhysicsCalculations/physicsCollision.hpp"
 
 struct Grid

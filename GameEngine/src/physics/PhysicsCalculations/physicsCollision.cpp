@@ -1,5 +1,8 @@
 #include "physicsCollision.hpp"
 
+std::unordered_map<physicsCollision::CollisionKey, physicsCollision::CollisionFunc, 
+    physicsCollision::CollisionKeyHash> physicsCollision::collisionMap;
+
 physicsCollision::physicsCollision()
 {
     collisionMap[CollisionKey(ColliderType::SPHERE,ColliderType::SPHERE)] = ResolveSphereToSphereCollision;
@@ -23,7 +26,4 @@ bool physicsCollision::ResolveSphereToSphereCollision(Collider* c1, Collider*c2)
 
     if(distanceDelta > combinedRadius)
        return false;
-    
-    
-    
 }

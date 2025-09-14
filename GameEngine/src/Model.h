@@ -1,5 +1,4 @@
-#ifndef MODEL_H
-#define MODEL_H
+#pragma once
 #include<iostream>
 #include <vector>
 #include "Shader.h"
@@ -35,4 +34,3 @@ private:
    Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
    std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
 };
-#endif

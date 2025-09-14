@@ -1,5 +1,4 @@
-#ifndef KEYBOARD_H
-#define KEYBOARD_H
+#pragma once
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 class KeyBoard
@@ -16,6 +15,3 @@ public:
     static bool KeyWentUp(int key);
     static bool KeyWentDown(int key);
 };
-
-
-#endif

@@ -1,5 +1,6 @@
 #include "GameObject.h"
 #include "managers/GameplayManager.hpp"
+#include "Component.h"
 
 GameObject::GameObject(glm::vec3 position, glm::vec3 rotationXYZ, glm::vec3 scale)
 {

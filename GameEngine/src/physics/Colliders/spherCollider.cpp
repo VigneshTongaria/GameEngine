@@ -2,7 +2,7 @@
 
 sphereCollider::sphereCollider(const float radius)
 {
-    this->type = SPHERE;
+    this->type = ColliderType::SPHERE;
     this->radius = radius;
 }
 

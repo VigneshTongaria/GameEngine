@@ -1,6 +1,7 @@
-#ifndef UTILITIESMANAGER_HPP
-#define UTILITIESMANAGER_HPP
-#include "../Mesh.h"
+#pragma once
+
+#include <glm/glm.hpp>
+#include <assimp/matrix4x4.h>
 
 template<typename T>
 struct UnorderedMapKey
@@ -13,7 +14,7 @@ struct UnorderedMapKey
         this->b = b;
     }
 
-    bool operator==(const T& other)
+    bool operator==(const UnorderedMapKey<T>& other) const
     {
         return ((a == other.a && b == other.b) || (a == other.b && b == other.a));
     }
@@ -36,5 +37,3 @@ private:
 public:
     static glm::mat4 convertToGLM(const aiMatrix4x4& from);
 };
-
-#endif

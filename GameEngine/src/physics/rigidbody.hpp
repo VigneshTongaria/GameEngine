@@ -1,6 +1,5 @@
-#ifndef RIGIDBODY_HPP
-#define RIGIDBODY_HPP
-#include "../GameObject.h"
+#pragma once
+#include "../Component.h"
 #include <glm/glm.hpp>
 
 class Rigidbody : public Component
@@ -21,6 +20,3 @@ public:
      // Call update in while loop
      void fixedUpdate(float dt) override;
 };
-
-
-#endif

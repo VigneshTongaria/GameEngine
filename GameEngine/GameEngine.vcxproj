@@ -22,6 +22,7 @@
     <ClCompile Include="lib\glad.c" />
     <ClCompile Include="lib\stb.cpp" />
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Component.h" />
     <ClCompile Include="src\data\GeometryData.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
@@ -33,25 +34,35 @@
     <ClCompile Include="src\managers\UtilitiesManger.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\physics\collider.cpp" />
     <ClCompile Include="src\physics\Colliders\spherCollider.cpp" />
     <ClCompile Include="src\physics\collisionsManager.cpp" />
     <ClCompile Include="src\physics\PhysicsCalculations\physicsCollision.cpp" />
     <ClCompile Include="src\physics\rigidbody.cpp" />
+    <ClCompile Include="src\physics\rigidbodyManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\fragment_Blending.glsl" />
+    <None Include="Assets\fragment_bloom.glsl" />
+    <None Include="Assets\fragment_brightness.glsl" />
     <None Include="Assets\fragment_core.glsl" />
     <None Include="Assets\fragment_core_1.glsl" />
     <None Include="Assets\fragment_core_BW.glsl" />
     <None Include="Assets\fragment_core_highlight.glsl" />
     <None Include="Assets\fragment_core_lightSource.glsl" />
+    <None Include="Assets\fragment_core_shadows.glsl" />
     <None Include="Assets\fragment_cubeMap.glsl" />
+    <None Include="Assets\fragment_depthMap.glsl" />
     <None Include="Assets\fragment_post.glsl" />
     <None Include="Assets\fragment_reflective.glsl" />
     <None Include="Assets\vertex_core.glsl" />
     <None Include="Assets\vertex_core_lightSource.glsl" />
+    <None Include="Assets\vertex_core_shadows.glsl" />
     <None Include="Assets\vertex_cubeMap.glsl" />
+    <None Include="Assets\vertex_depthMap.glsl" />
     <None Include="Assets\vertex_Instance.glsl" />
+    <None Include="Assets\Vertex_pointLight.glsl" />
     <None Include="Assets\vertex_unlit.glsl" />
     <None Include="assimp-vc143-mtd.dll" />
     <None Include="glfw3.dll" />
@@ -201,7 +212,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
