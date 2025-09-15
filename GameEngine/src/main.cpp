@@ -615,7 +615,7 @@ int main()
 
 	LightingShadowShader.setVec3("dirLight.direction", DirectionalLightDir);
 	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
-	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(3.0f, 3.0f, 3.0f));
 	LightingShadowShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
 
 	LightingShadowShader.setVec3("pointLights[0].position", pointLightPositions[0]);
@@ -699,6 +699,8 @@ int main()
 		//calculate deltaTime
 		float currentTime = float(glfwGetTime());
 		deltaTime = currentTime - lastFrame;
+
+		std::cout<<"--[ Frame Time ] : "<<deltaTime<<std::endl;
 		lastFrame = currentTime;
 		//process inputs
 		process_inputs(window);

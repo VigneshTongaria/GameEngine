@@ -202,7 +202,9 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
         vertex.position = globalTransform * glm::vec4(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,1.0f);
 
         if(mesh->HasNormals())
-        vertex.normal = globalTransformInverseTrans * glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
+        {
+            vertex.normal = globalTransformInverseTrans * glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
+        }
 
         if(mesh->HasTangentsAndBitangents())
         {
@@ -245,6 +247,9 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
 
         std::vector<Texture> normal_maps = loadMaterialsTextures(scene,material,aiTextureType_NORMALS,TEXTURE_TYPE::NORMAL);
         textures.insert(textures.end(),normal_maps.begin(),normal_maps.end());
+
+        if(normal_maps.size() > 0)
+          std::cout<<"Has normal map"<<std::endl;
 
         mat.DiffuseMaps = diffuse_maps;
         mat.NormalsMaps = normal_maps;

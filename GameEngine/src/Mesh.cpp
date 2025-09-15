@@ -92,6 +92,8 @@ void Mesh::AssignTextures(Shader &shader)
         TEXTURE_TYPE type = textures[i].type;
         std::string number,t_name;
 
+        shader.setBool("hasNormalMap",false);
+
         switch (type)
         {
         case TEXTURE_TYPE::DIFFUSE:
@@ -106,6 +108,7 @@ void Mesh::AssignTextures(Shader &shader)
         case TEXTURE_TYPE::NORMAL:
           number = std::to_string(normalNr++);
           t_name = ResourcesManager::getTextureName(NORMAL);
+          shader.setBool("hasNormalMap",true);
           break;
 
         default:

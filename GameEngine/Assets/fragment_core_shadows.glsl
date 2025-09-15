@@ -20,7 +20,7 @@ struct DirLight {
 uniform DirLight dirLight;
 uniform sampler2D shadowMap;
 uniform samplerCube reflection;
-uniform int hasNormalMap;
+//uniform int hasNormalMap;
 uniform samplerCube pointShadowMap[NR_POINT_LIGHTS];
 float shadowCalculations(vec4 lightFragPos);
 vec3 CalcDirLight(DirLight light); 
@@ -60,7 +60,7 @@ uniform SpotLight spotLight;
 vec3 CalcSpotLight(SpotLight light); 
   
 uniform Material material;
-bool m_hasNormalMap;
+uniform bool hasNormalMap;
 
 out vec4 FragColor;
 in vec3 FragPos;
@@ -126,26 +126,23 @@ void main()
 
 vec3 CalcDirLight(DirLight light)
 {  
+    vec3 normalSurface = normalize(normal);
     if(false)
     {
-        vec3 normal = texture(material.texture_normal1,TextCords).rgb;
-        normal = normal * 2.0 - 1.0; 
-        normal = normalize(TBN*normal);
-    } 
+         normalSurface = texture(material.texture_normal1,TextCords).rgb;
+         normalSurface = normalSurface * 2.0 - 1.0; 
+         normalSurface = normalize(TBN*normalSurface);
+    }
 
-    //vec3 normal = texture(material.texture_normal1,TextCords).rgb;
-    //normal = normal * 2.0 - 1.0; 
-    //normal = normalize(TBN*normal); 
-
-    vec3 normalSurface = normalize(normal);
+    //vec3 normalSurface = normalize(normal);
     vec3 lightRay = normalize(-light.direction);
-    vec3 reflectRay = reflect(-lightRay,normal);
+    vec3 reflectRay = reflect(-lightRay,normalSurface);
     vec3 viewDirection = normalize(viewPos - FragPos);
     vec3 halfViewDirection = normalize(viewDirection + lightRay);
     vec3 viewReflectRay = reflect(-1.0*viewDirection,normalSurface);
 
     //float spec = pow(max(dot(reflectRay,viewDirection),0.0),smoothnessExp);
-    float spec = pow(max(dot(halfViewDirection,normal),0.0),smoothnessExp);
+    float spec = pow(max(dot(halfViewDirection,normalSurface),0.0),smoothnessExp);
     float diff = max(dot(normalSurface,lightRay),0.0);
     float shadow = shadowCalculations(FragPosLightSpace);
 
