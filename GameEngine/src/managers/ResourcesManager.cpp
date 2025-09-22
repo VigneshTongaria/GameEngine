@@ -5,7 +5,7 @@ const std::string ResourcesManager::Texture_Diffuse_Name = "texture_diffuse";
 const std::string ResourcesManager::Texture_Specular_Name = "texture_specular";
 const std::string ResourcesManager::Texture_Normal_Name = "texture_normal";
 unsigned int ResourcesManager::VerticesCount = 0;
-std::unordered_map<std::string, std::shared_ptr<Texture>> textureCache;
+std::unordered_map<std::string, std::shared_ptr<Texture>> ResourcesManager::textureCache;
 
 Texture ResourcesManager::loadTexture(const char* filename,const std::string &directory,TEXTURE_TYPE type,aiString aiPath)
 {
@@ -22,14 +22,15 @@ Texture ResourcesManager::loadTexture(const char* filename,const std::string &di
 
 Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
 {
-	int width,height,nrChannels;
-
     std::string pathName = static_cast<std::string>(path);
 
-    if(textureCache[pathName] != nullptr)
+    if(textureCache.find(pathName) != textureCache.end())
     {
+        std::cout<<"Found the texture already"<<std::endl;
         return *textureCache[pathName];
     }
+
+    int width,height,nrChannels;
 
     Texture texture;
     texture.id = -1;
@@ -106,9 +107,12 @@ Texture ResourcesManager::loadTexture(GLenum format,GLenum internalformat, int w
 
 Texture ResourcesManager::loadTextureFromMemory(const std::string &directory, const unsigned char* path,int imageSize,TEXTURE_TYPE type)
 {
-    if(textureCache[directory + std::string(reinterpret_cast<const char*>(path))] != nullptr)
-     return *textureCache[directory + std::string(reinterpret_cast<const char*>(path))];
-
+    std::cout<<"Texture path"<<directory<<std::endl;
+    if(textureCache.find(directory) != textureCache.end())
+    {
+        std::cout<<"Texture already present"<<std::endl;
+        return *textureCache[directory];
+    }
     int width,height,nrChannels;
 
     Texture texture;
@@ -169,6 +173,8 @@ Texture ResourcesManager::loadTextureFromMemory(const std::string &directory, co
         std::cout << "Reason: " << stbi_failure_reason() << std::endl;
     }
 	stbi_image_free(data);
+
+    textureCache[directory] = std::make_shared<Texture>(texture);
     
 	return texture;
 }

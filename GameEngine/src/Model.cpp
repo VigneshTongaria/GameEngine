@@ -280,38 +280,9 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
         int embeddedIndex = 0;
         bool tex_already_loaded = false;
         mat->GetTexture(type,i,&path);
-
-        for(int j=0; j< textures_Loaded.size(); j++)
+        if (path.C_Str()[0] == '*')
         {
-            if (path.C_Str()[0] == '*')
-            {
-                embeddedIndex = std::atoi(path.C_Str() + 1);
-                aiTexture *tex = scene->mTextures[embeddedIndex];
-                if(textures_Loaded[j].data == reinterpret_cast<const unsigned char *>(scene->mTextures[embeddedIndex]->pcData))
-                {
-                    std::cout<<textures_Loaded[j].data<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
-                    tex_already_loaded = true;
-                    textures.push_back(textures_Loaded[j]);
-                    break;
-                }
-            }
-
-            else if(textures_Loaded[j].aiPath == path)
-            {
-               //std::cout<<textures_Loaded[j].aiPath.C_Str()<<" Texture already exists so assigning old texture to this mesh"<<std::endl;
-               tex_already_loaded = true;
-               textures.push_back(textures_Loaded[j]);
-               break;
-            }
-
-            if(tex_already_loaded) break;
-        }
-
-        if(tex_already_loaded == false)
-        {
-            if (path.C_Str()[0] == '*')
-            {
-                //std::cout << "Embedded texture " << path.C_Str() << " loading" << std::endl;
+            //std::cout << "Embedded texture " << path.C_Str() << " loading" << std::endl;
                 int embeddedIndex = std::atoi(path.C_Str() + 1); // skip the '*'
                 if (scene->mNumTextures > embeddedIndex)
                 {
@@ -323,29 +294,28 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
                     // Compressed texture like PNG or JPG
                     if(tex->mHeight == 0)
                     {
-                        texture = ResourcesManager::loadTextureFromMemory(reinterpret_cast<const unsigned char *>(tex->pcData), tex->mWidth, t_type);
+                        texture = ResourcesManager::loadTextureFromMemory(directory + path.C_Str(),reinterpret_cast<const unsigned char *>(tex->pcData), tex->mWidth, t_type);
                     }
                     
                     // Uncompressed texture 
                     else
                     {
                         std::cout<<"Loading uncompressed texture"<<"\n";
-                        texture = ResourcesManager::loadTextureFromMemory(reinterpret_cast<const unsigned char *>(tex->pcData), tex->mWidth * tex->mHeight * 4, t_type);
+                        texture = ResourcesManager::loadTextureFromMemory(directory + path.C_Str(), reinterpret_cast<const unsigned char *>(tex->pcData), tex->mWidth * tex->mHeight * 4, t_type);
                     }
 
                     textures.push_back(texture);
                     textures_Loaded.push_back(texture);
                 }
-            }
+        }
 
-            else
-            {
-                Texture texture = ResourcesManager::loadTexture(path.C_Str(), directory, t_type, path);
+        else
+        {
+            Texture texture = ResourcesManager::loadTexture(path.C_Str(), directory, t_type, path);
 
-                textures.push_back(texture);
-                textures_Loaded.push_back(texture);
-                //std::cout << "Texture - " << directory << "/ " << path.C_Str() << " Loaded" << std::endl;
-            }
+            textures.push_back(texture);
+            textures_Loaded.push_back(texture);
+            // std::cout << "Texture - " << directory << "/ " << path.C_Str() << " Loaded" << std::endl;
         }
     }
 
