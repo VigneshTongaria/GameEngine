@@ -719,20 +719,21 @@ int main()
 
 		RenderScene(&DepthMapShader,SceneModels,lightVAO);
         
-		for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
-		{
-			glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT); 
-			glBindFramebuffer(GL_FRAMEBUFFER,pointLightDepthMapBuffers[i]);
-			glClear(GL_DEPTH_BUFFER_BIT);
-			PointLightingShadowShader.UseShaderProgram();
-			PointLightingShadowShader.setVec3("lightPos",pointLightPositions[i]);
-			PointLightingShadowShader.setFloat("far_plane",far);
-			for(unsigned int j=0; j<6; j++)
-			{
-				PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(j) + "]",pointLightsViewProjection[i][j]);
-			}
-			RenderScene(&PointLightingShadowShader,SceneModels,lightVAO);
-		}
+		// Rendering scene for all lights
+		// for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
+		// {
+		// 	glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT); 
+		// 	glBindFramebuffer(GL_FRAMEBUFFER,pointLightDepthMapBuffers[i]);
+		// 	glClear(GL_DEPTH_BUFFER_BIT);
+		// 	PointLightingShadowShader.UseShaderProgram();
+		// 	PointLightingShadowShader.setVec3("lightPos",pointLightPositions[i]);
+		// 	PointLightingShadowShader.setFloat("far_plane",far);
+		// 	for(unsigned int j=0; j<6; j++)
+		// 	{
+		// 		PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(j) + "]",pointLightsViewProjection[i][j]);
+		// 	}
+		// 	RenderScene(&PointLightingShadowShader,SceneModels,lightVAO);
+		// }
 
 		// Binding framebuffers
 		glBindFramebuffer(GL_FRAMEBUFFER,msbo);
@@ -762,11 +763,11 @@ int main()
 		glActiveTexture(GL_TEXTURE10);
 		glBindTexture(GL_TEXTURE_2D,depthMap);
 
-		for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
-		{
-			glActiveTexture(GL_TEXTURE5 + i);
-			glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
-		}
+		// for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
+		// {
+		// 	glActiveTexture(GL_TEXTURE5 + i);
+		// 	glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
+		// }
 
 		float time = static_cast<float>(glfwGetTime());
 		
@@ -930,7 +931,7 @@ int main()
 
 		// Blurring Brightness
 		bool Horizontal = true, isFirstIteration = true;
-		unsigned int samples = 1;
+		unsigned int samples = 6;
         BloomShader.UseShaderProgram();
 		glBindVertexArray(quadVAO);
 

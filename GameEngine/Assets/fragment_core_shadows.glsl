@@ -127,7 +127,7 @@ void main()
 vec3 CalcDirLight(DirLight light)
 {  
     vec3 normalSurface = normalize(normal);
-    if(false)
+    if(hasNormalMap)
     {
          normalSurface = texture(material.texture_normal1,TextCords).rgb;
          normalSurface = normalSurface * 2.0 - 1.0; 

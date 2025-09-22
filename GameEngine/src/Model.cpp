@@ -248,9 +248,6 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
         std::vector<Texture> normal_maps = loadMaterialsTextures(scene,material,aiTextureType_NORMALS,TEXTURE_TYPE::NORMAL);
         textures.insert(textures.end(),normal_maps.begin(),normal_maps.end());
 
-        if(normal_maps.size() > 0)
-          std::cout<<"Has normal map"<<std::endl;
-
         mat.DiffuseMaps = diffuse_maps;
         mat.NormalsMaps = normal_maps;
         mat.SpecularMaps = specular_maps;
@@ -258,11 +255,11 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
         float shininess = -1.0f;
         if (material->Get(AI_MATKEY_ROUGHNESS_FACTOR, shininess) == AI_SUCCESS)
         {
-            std::cout << "Shininess: " << shininess << std::endl;
+           // std::cout << "Shininess: " << shininess << std::endl;
         }
         else
         {
-            std::cout << "No shininess value found. Using default." << std::endl;
+            // std::cout << "No shininess value found. Using default." << std::endl;
         }
         mat.shininess = shininess;
     }
@@ -274,7 +271,7 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
 {
     std::vector<Texture> textures;
 
-    std::cout << "Texture count for : " << ResourcesManager::getTextureName(t_type) << " "<<mat->GetTextureCount(type) << std::endl;
+    //std::cout << "Texture count for : " << ResourcesManager::getTextureName(t_type) << " "<<mat->GetTextureCount(type) << std::endl;
   
 
     for(unsigned int i=0 ;i<mat->GetTextureCount(type); i++)
@@ -314,7 +311,7 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
         {
             if (path.C_Str()[0] == '*')
             {
-                std::cout << "Embedded texture " << path.C_Str() << " loading" << std::endl;
+                //std::cout << "Embedded texture " << path.C_Str() << " loading" << std::endl;
                 int embeddedIndex = std::atoi(path.C_Str() + 1); // skip the '*'
                 if (scene->mNumTextures > embeddedIndex)
                 {

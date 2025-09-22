@@ -5,6 +5,7 @@ const std::string ResourcesManager::Texture_Diffuse_Name = "texture_diffuse";
 const std::string ResourcesManager::Texture_Specular_Name = "texture_specular";
 const std::string ResourcesManager::Texture_Normal_Name = "texture_normal";
 unsigned int ResourcesManager::VerticesCount = 0;
+std::unordered_map<std::string, std::shared_ptr<Texture>> textureCache;
 
 Texture ResourcesManager::loadTexture(const char* filename,const std::string &directory,TEXTURE_TYPE type,aiString aiPath)
 {
@@ -24,6 +25,11 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
 	int width,height,nrChannels;
 
     std::string pathName = static_cast<std::string>(path);
+
+    if(textureCache[pathName] != nullptr)
+    {
+        return *textureCache[pathName];
+    }
 
     Texture texture;
     texture.id = -1;
@@ -66,7 +72,7 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
 		glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-        std::cout << "Texture loaded : " << path << "\n";
+        //std::cout << "Texture loaded : " << path << "\n";
     }
     else
     {
@@ -74,6 +80,8 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
         std::cout << "Reason: " << stbi_failure_reason() << std::endl;
     }
 	stbi_image_free(data);
+
+    textureCache[pathName] = std::make_shared<Texture>(texture);
     
 	return texture;
 }
@@ -96,8 +104,11 @@ Texture ResourcesManager::loadTexture(GLenum format,GLenum internalformat, int w
     return texture;
 }
 
-Texture ResourcesManager::loadTextureFromMemory(const unsigned char* path,int imageSize,TEXTURE_TYPE type)
+Texture ResourcesManager::loadTextureFromMemory(const std::string &directory, const unsigned char* path,int imageSize,TEXTURE_TYPE type)
 {
+    if(textureCache[directory + std::string(reinterpret_cast<const char*>(path))] != nullptr)
+     return *textureCache[directory + std::string(reinterpret_cast<const char*>(path))];
+
     int width,height,nrChannels;
 
     Texture texture;
@@ -134,7 +145,7 @@ Texture ResourcesManager::loadTextureFromMemory(const unsigned char* path,int im
 
         else if(type == TEXTURE_TYPE::SPECULAR)
         {
-            std::cout<< " Specular NR channels" << nrChannels << "\n";
+            //std::cout<< " Specular NR channels" << nrChannels << "\n";
         }
 
 		glGenTextures(1, &texture.id);
@@ -150,7 +161,7 @@ Texture ResourcesManager::loadTextureFromMemory(const unsigned char* path,int im
 		glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-        std::cout << "Texture loaded : " << path << "\n";
+        //std::cout << "Texture loaded : " << path << "\n";
     }
     else
     {
