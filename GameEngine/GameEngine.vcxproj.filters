@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\core\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\glad.c">
@@ -24,7 +24,7 @@
     <ClCompile Include="lib\stb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shader.cpp">
+    <ClCompile Include="src\rendering\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\io\KeyBoard.cpp">
@@ -33,19 +33,19 @@
     <ClCompile Include="src\io\Mouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Camera.cpp">
+    <ClCompile Include="src\core\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mesh.cpp">
+    <ClCompile Include="src\rendering\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Model.cpp">
+    <ClCompile Include="src\rendering\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Component.h">
+    <ClCompile Include="src\core\Component.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObject.cpp">
+    <ClCompile Include="src\core\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\physics\rigidbody.cpp">
@@ -75,10 +75,13 @@
     <ClCompile Include="src\physics\collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Component.cpp">
+    <ClCompile Include="src\core\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\physics\rigidbodyManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,7 +124,7 @@
     <ClInclude Include="Linking\include\KHR\khrplatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shader.h">
+    <ClInclude Include="src\rendering\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\io\KeyBoard.h">
@@ -130,16 +133,16 @@
     <ClInclude Include="src\io\Mouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Camera.h">
+    <ClInclude Include="src\core\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mesh.h">
+    <ClInclude Include="src\rendering\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Model.h">
+    <ClInclude Include="src\rendering\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObject.h">
+    <ClInclude Include="src\core\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\physics\rigidbody.hpp">
@@ -173,6 +176,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\physics\rigidbodyManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

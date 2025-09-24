@@ -23,7 +23,6 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
-void Mat_Calculations();
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex);
 void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO);
 void RenderAsteriods(Model* m,Shader* s);
@@ -34,12 +33,6 @@ glm::mat4 mouseTransform = glm::mat4(1.0f);
 glm::mat4 mouseScroll = glm::mat4(1.0f);
 glm::mat4 Scale = glm::mat4(1.0f);
 
-glm::vec3 pointLightPositions[] = {
-	glm::vec3( 0.7f,  0.2f,  2.0f),
-	glm::vec3( 2.3f, -3.3f, -4.0f),
-	glm::vec3(-4.0f,  2.0f, -12.0f),
-	glm::vec3( 0.0f,  0.0f, -3.0f)
-}; 
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -528,22 +521,22 @@ int main()
 
 	std::vector<std::vector<glm::mat4>> pointLightsViewProjection;
 
-	for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
-	{
-		glm::vec3 lightPos = pointLightPositions[i];
-		std::vector<glm::mat4> newLightView;
-		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
-		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
-		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
-		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
-		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
-		newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
+	// for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
+	// {
+	// 	glm::vec3 lightPos = pointLightPositions[i];
+	// 	std::vector<glm::mat4> newLightView;
+	// 	newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+	// 	newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+	// 	newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+	// 	newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
+	// 	newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
+	// 	newLightView.push_back(shadowProj * glm::lookAt(lightPos, lightPos + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
 
-		// for (int i = 0; i < 6; ++i) {
-		// 	std::cout << "Matrix " << i << ":\n" << glm::to_string(newLightView[i]) << std::endl;
-		// }
-		pointLightsViewProjection.push_back(newLightView);
-	}
+	// 	// for (int i = 0; i < 6; ++i) {
+	// 	// 	std::cout << "Matrix " << i << ":\n" << glm::to_string(newLightView[i]) << std::endl;
+	// 	// }
+	// 	pointLightsViewProjection.push_back(newLightView);
+	// }
 
 	// Loading cubeMap
 
@@ -617,38 +610,6 @@ int main()
 	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
 	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(3.0f, 3.0f, 3.0f));
 	LightingShadowShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
-
-	LightingShadowShader.setVec3("pointLights[0].position", pointLightPositions[0]);
-	LightingShadowShader.setVec3("pointLights[0].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShadowShader.setVec3("pointLights[0].diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShadowShader.setVec3("pointLights[0].specular", glm::vec3(0.4f, 0.4f, 0.4f));
-	LightingShadowShader.setFloat("pointLights[0].constant", 1.0f);
-	LightingShadowShader.setFloat("pointLights[0].linear", 0.09f);
-	LightingShadowShader.setFloat("pointLights[0].quadratic", 0.032f);
-
-	LightingShadowShader.setVec3("pointLights[1].position", pointLightPositions[1]);
-	LightingShadowShader.setVec3("pointLights[1].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShadowShader.setVec3("pointLights[1].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShadowShader.setVec3("pointLights[1].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShadowShader.setFloat("pointLights[1].constant", 1.0f);
-	LightingShadowShader.setFloat("pointLights[1].linear", 0.09f);
-	LightingShadowShader.setFloat("pointLights[1].quadratic", 0.032f);
-	// point light 3
-	LightingShadowShader.setVec3("pointLights[2].position", pointLightPositions[2]);
-	LightingShadowShader.setVec3("pointLights[2].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShadowShader.setVec3("pointLights[2].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShadowShader.setVec3("pointLights[2].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShadowShader.setFloat("pointLights[2].constant", 1.0f);
-	LightingShadowShader.setFloat("pointLights[2].linear", 0.09f);
-	LightingShadowShader.setFloat("pointLights[2].quadratic", 0.032f);
-	// point light 4
-	LightingShadowShader.setVec3("pointLights[3].position", pointLightPositions[3]);
-	LightingShadowShader.setVec3("pointLights[3].ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-	LightingShadowShader.setVec3("pointLights[3].diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
-	LightingShadowShader.setVec3("pointLights[3].specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	LightingShadowShader.setFloat("pointLights[3].constant", 1.0f);
-	LightingShadowShader.setFloat("pointLights[3].linear", 0.09f);
-	LightingShadowShader.setFloat("pointLights[3].quadratic", 0.032f);
 
 	// Setting and binding all the shadow depth maps
 
@@ -1044,19 +1005,6 @@ void process_inputs(GLFWwindow* window)
 	// Apply new scale (create a fresh scale matrix)
 	Scale = glm::scale(glm::mat4(1.0f), currentScale);
 }
-
-void Mat_Calculations()
-{
-	glm::vec4 vec(1.0f, 3.0f, 0.0f, 1.0f);
-	glm::mat4 mat_T = glm::mat4(1.0f);
-	glm::mat4 trans = glm::translate(mat_T, glm::vec3(0.0f, 6.4f, 3.0f));
-	glm::mat4 rot = glm::rotate(mat_T, 60.0f, glm::vec3(5.0f, 0.0f, 60.0f));
-	glm::mat4 scale = glm::scale(mat_T, glm::vec3(0.5f, 0.4f, 0.4f));
-
-	vec = scale*rot*trans * vec;
-	std::cout << vec.x << " "<< vec.y << " "<<vec.z << std::endl;
-}
-
 void RenderAsteriods(Model* m,Shader* s)
 {
     //s->UseShaderProgram();

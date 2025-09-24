@@ -2,7 +2,7 @@
 #include<iostream>
 #include <vector>
 #include <unordered_map>
-#include "../Mesh.h"
+#include "../rendering/Mesh.h"
 
 enum DEFAULT_MODEL
 {

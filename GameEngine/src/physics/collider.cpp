@@ -1,7 +1,7 @@
 #include "collider.hpp"
 #include "collisionsManager.hpp"
 #include "rigidbody.hpp"
-#include "../GameObject.h"
+#include "../core/GameObject.h"
 
 Collider::Collider(const glm::vec3& offset)
 {

@@ -1,6 +1,126 @@
-﻿  ResourcesManager.cpp
+﻿  glad.c
+  stb.cpp
+  Camera.cpp
+  Component.cpp
+  Component.h
+  GeometryData.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/data/GeometryData.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/data/GeometryData.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+  GameObject.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\GameplayManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'GameplayManager' when no variable is declared
+  (compiling source file 'src/core/GameObject.cpp')
+  
+  KeyBoard.cpp
+  Mouse.cpp
+  main.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/core/main.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/core/main.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(29,14): warning C4091: 'static ': ignored on left of 'physicsCollision' when no variable is declared
+  (compiling source file 'src/core/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collisionsManager.hpp(33,14): warning C4091: 'static ': ignored on left of 'CollisionsManager' when no variable is declared
+  (compiling source file 'src/core/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbodyManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'RigidbodyManager' when no variable is declared
+  (compiling source file 'src/core/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsThread.h(15,39): warning C4244: 'initializing': conversion from 'float' to '__int64', possible loss of data
+  (compiling source file 'src/core/main.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\main.cpp(101,22): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\main.cpp(102,21): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\main.cpp(833,15): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\main.cpp(833,15): warning C4309: 'argument': truncation of constant value
+  GameplayManager.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\GameplayManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'GameplayManager' when no variable is declared
+  (compiling source file 'src/managers/GameplayManager.cpp')
+  
+  ResourcesManager.cpp
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(12,12): warning C4101: 'height': unreferenced local variable
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(12,19): warning C4101: 'nrChannels': unreferenced local variable
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(12,6): warning C4101: 'width': unreferenced local variable
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\managers\ResourcesManager.cpp(207,57): warning C4267: 'argument': conversion from 'size_t' to 'GLenum', possible loss of data
+  UtilitiesManger.cpp
+  Mesh.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Mesh.cpp(58,40): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Mesh.cpp(61,42): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Mesh.cpp(72,54): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Model.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(32,9): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/rendering/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(36,14): warning C4984: 'if constexpr' is a C++17 language extension
+  (compiling source file 'src/rendering/Model.cpp')
+      C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.hpp(27,26):
+      This diagnostic occurred in the compiler generated function 'std::vector<T,std::allocator<_Ty>> GeometryData::GetVectorFromFloatArr(const float [],unsigned int,unsigned int,unsigned int)'
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(34,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(38,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(55,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(57,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(59,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(61,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(147,68): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(287,41): warning C4018: '>': signed/unsigned mismatch
+  collider.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(29,14): warning C4091: 'static ': ignored on left of 'physicsCollision' when no variable is declared
+  (compiling source file 'src/physics/collider.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collisionsManager.hpp(33,14): warning C4091: 'static ': ignored on left of 'CollisionsManager' when no variable is declared
+  (compiling source file 'src/physics/collider.cpp')
+  
+  spherCollider.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(29,14): warning C4091: 'static ': ignored on left of 'physicsCollision' when no variable is declared
+  (compiling source file 'src/physics/Colliders/spherCollider.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collisionsManager.hpp(33,14): warning C4091: 'static ': ignored on left of 'CollisionsManager' when no variable is declared
+  (compiling source file 'src/physics/Colliders/spherCollider.cpp')
+  
+  collisionsManager.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(29,14): warning C4091: 'static ': ignored on left of 'physicsCollision' when no variable is declared
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collisionsManager.hpp(33,14): warning C4091: 'static ': ignored on left of 'CollisionsManager' when no variable is declared
+  (compiling source file 'src/physics/collisionsManager.cpp')
+  
+  physicsCollision.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collisionsManager.hpp(33,14): warning C4091: 'static ': ignored on left of 'CollisionsManager' when no variable is declared
+  (compiling source file 'src/physics/PhysicsCalculations/physicsCollision.cpp')
+  
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(29,14): warning C4091: 'static ': ignored on left of 'physicsCollision' when no variable is declared
+  (compiling source file 'src/physics/PhysicsCalculations/physicsCollision.cpp')
+  
+  rigidbody.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbodyManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'RigidbodyManager' when no variable is declared
+  (compiling source file 'src/physics/rigidbody.cpp')
+  
+  Generating Code...
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.cpp(34,1): warning C4715: 'physicsCollision::ResolveSphereToSphereCollision': not all control paths return a value
+  Compiling...
+  rigidbodyManager.cpp
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\rigidbodyManager.hpp(6,14): warning C4091: 'static ': ignored on left of 'RigidbodyManager' when no variable is declared
+  (compiling source file 'src/physics/rigidbodyManager.cpp')
+  
+  Shader.cpp
+  Generating Code...
+GameEngine\x64\Debug\Component.obj : warning LNK4042: object specified more than once; extras ignored
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   GameEngine.vcxproj -> C:\Users\vigne\GithubRepos\GameEngine\GameEngine\x64\Debug\GameEngine.exe

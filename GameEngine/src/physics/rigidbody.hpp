@@ -1,5 +1,5 @@
 #pragma once
-#include "../Component.h"
+#include "..//core/Component.h"
 #include <glm/glm.hpp>
 
 class Rigidbody : public Component

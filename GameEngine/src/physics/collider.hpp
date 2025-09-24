@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
 #include<glm/glm.hpp>
-#include "../Component.h"
+#include "../core/Component.h"
 #include <functional>
 
 enum class ColliderType

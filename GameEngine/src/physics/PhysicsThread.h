@@ -3,8 +3,8 @@
 #include <thread>
 #include <atomic>
 #include <mutex>
-#include"physics/collisionsManager.hpp"
-#include"physics/rigidbodyManager.hpp"
+#include"collisionsManager.hpp"
+#include"rigidbodyManager.hpp"
 
 void startPhysicsThread();
 void stopPhysicsThread();

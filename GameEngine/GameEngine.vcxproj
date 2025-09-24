@@ -21,26 +21,27 @@
   <ItemGroup>
     <ClCompile Include="lib\glad.c" />
     <ClCompile Include="lib\stb.cpp" />
-    <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\Component.cpp" />
-    <ClCompile Include="src\Component.h" />
+    <ClCompile Include="src\core\Camera.cpp" />
+    <ClCompile Include="src\core\Component.cpp" />
+    <ClCompile Include="src\core\Component.h" />
+    <ClCompile Include="src\core\Scene.cpp" />
     <ClCompile Include="src\data\GeometryData.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\core\GameObject.cpp" />
     <ClCompile Include="src\io\KeyBoard.cpp" />
     <ClCompile Include="src\io\Mouse.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\core\main.cpp" />
     <ClCompile Include="src\managers\GameplayManager.cpp" />
     <ClCompile Include="src\managers\ResourcesManager.cpp" />
     <ClCompile Include="src\managers\UtilitiesManger.cpp" />
-    <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\rendering\Mesh.cpp" />
+    <ClCompile Include="src\rendering\Model.cpp" />
     <ClCompile Include="src\physics\collider.cpp" />
     <ClCompile Include="src\physics\Colliders\spherCollider.cpp" />
     <ClCompile Include="src\physics\collisionsManager.cpp" />
     <ClCompile Include="src\physics\PhysicsCalculations\physicsCollision.cpp" />
     <ClCompile Include="src\physics\rigidbody.cpp" />
     <ClCompile Include="src\physics\rigidbodyManager.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\rendering\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\fragment_Blending.glsl" />
@@ -73,16 +74,18 @@
     <ClInclude Include="Linking\include\GLFW\glfw3.h" />
     <ClInclude Include="Linking\include\GLFW\glfw3native.h" />
     <ClInclude Include="Linking\include\KHR\khrplatform.h" />
-    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\core\Application.h" />
+    <ClInclude Include="src\core\Camera.h" />
+    <ClInclude Include="src\core\Scene.h" />
     <ClInclude Include="src\data\GeometryData.hpp" />
-    <ClInclude Include="src\GameObject.h" />
+    <ClInclude Include="src\core\GameObject.h" />
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
     <ClInclude Include="src\managers\GameplayManager.hpp" />
     <ClInclude Include="src\managers\ResourcesManager.hpp" />
     <ClInclude Include="src\managers\UtilitiesManager.hpp" />
-    <ClInclude Include="src\Mesh.h" />
-    <ClInclude Include="src\Model.h" />
+    <ClInclude Include="src\rendering\Mesh.h" />
+    <ClInclude Include="src\rendering\Model.h" />
     <ClInclude Include="src\physics\collider.hpp" />
     <ClInclude Include="src\physics\Colliders\sphereCollider.hpp" />
     <ClInclude Include="src\physics\collisionsManager.hpp" />
@@ -90,7 +93,7 @@
     <ClInclude Include="src\physics\PhysicsThread.h" />
     <ClInclude Include="src\physics\rigidbody.hpp" />
     <ClInclude Include="src\physics\rigidbodyManager.hpp" />
-    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\rendering\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Linking\lib\GLFW\glfw3.lib" />

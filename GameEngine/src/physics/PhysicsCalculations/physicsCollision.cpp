@@ -26,4 +26,9 @@ bool physicsCollision::ResolveSphereToSphereCollision(Collider* c1, Collider*c2)
 
     if(distanceDelta > combinedRadius)
        return false;
+    
+    else 
+    {
+        std::cout<<"Sphere collision entered"<<std::endl;
+    }
 }
