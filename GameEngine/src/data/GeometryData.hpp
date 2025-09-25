@@ -6,7 +6,7 @@
 
 enum DEFAULT_MODEL
 {
-    CUBE,SPHERE,CYLINDER
+    CUBE,SPHERE,CYLINDER,QUAD,CUBEMAP
 };
 
 class ModelData
@@ -52,6 +52,10 @@ private:
 public:
     // Data for cube
     static const float cubeVertices[];
+    // Data for quad for render buffer and post processing
+    static const float quadVertices[];
+    // Data for skybox rendering
+    static const float skyboxVertices[];
 
     static ModelData GetModelData(DEFAULT_MODEL model);
 };

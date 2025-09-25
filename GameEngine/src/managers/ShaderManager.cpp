@@ -2,7 +2,7 @@
 #include "../rendering/Shader.h"
 
 std::vector<Shader*> ShaderManager::shaderCache;
-std::unordered_map<Shader*,std::string> ShaderManager::shaderLibrary;
+std::unordered_map<SHADER_TYPE,Shader> ShaderManager::shaderLibrary;
 
 void ShaderManager::init()
 {
@@ -21,18 +21,27 @@ void ShaderManager::init()
 		"Assets/GeometryShaders/Geometry_PointLight.glsl");
 	Shader BrightShader("Assets/vertex_unlit.glsl", "Assets/fragment_brightness.glsl");
 	Shader BloomShader("Assets/vertex_unlit.glsl", "Assets/fragment_bloom.glsl");
+    
+	shaderLibrary[SHADER_TYPE::LIT] = LightingShader;
+	shaderLibrary[SHADER_TYPE::LIT_SHADOWS] = LightingShadowShader;
+	shaderLibrary[SHADER_TYPE::DEPTH] = DepthMapShader;
 
-    shaderCache.push_back(&LightingShader);
-	shaderCache.push_back(&LightnigSourceShader);
-	shaderCache.push_back(&ImageShader);
-	shaderCache.push_back(&HighlightShader);
-	shaderCache.push_back(&PostShader);
-	shaderCache.push_back(&CubeMapShader);
-	shaderCache.push_back(&ExplosionShader);
-	shaderCache.push_back(&InstanceShader);
-	shaderCache.push_back(&LightingShadowShader);
+	for(auto it = shaderLibrary.begin(); it!= shaderLibrary.end(); ++it)
+	{
+		shaderCache.push_back(&it->second);
+	}
+
+    // shaderCache.push_back(&LightingShader);
+	// shaderCache.push_back(&LightnigSourceShader);
+	// shaderCache.push_back(&ImageShader);
+	// shaderCache.push_back(&HighlightShader);
+	// shaderCache.push_back(&PostShader);
+	// shaderCache.push_back(&CubeMapShader);
+	// shaderCache.push_back(&ExplosionShader);
+	// shaderCache.push_back(&InstanceShader);
+	// shaderCache.push_back(&LightingShadowShader);
 }
-void ShaderManager::initShader(const char* vPath,const char* fPath)
+Shader* ShaderManager::getShader(SHADER_TYPE type)
 {
-      
+    return &shaderLibrary[type];
 }
