@@ -40,6 +40,21 @@ void ShaderManager::init()
 	// shaderCache.push_back(&ExplosionShader);
 	// shaderCache.push_back(&InstanceShader);
 	// shaderCache.push_back(&LightingShadowShader);
+
+	// Adding uniform buffer index
+	unsigned int uniformVertexCoreIndex = glGetUniformBlockIndex(LightingShader.m_ID,"Matrices");
+	unsigned int uniformVertexSkyboxIndex = glGetUniformBlockIndex(CubeMapShader.m_ID,"Matrices");
+	unsigned int uniformVertexLightingSourceIndex = glGetUniformBlockIndex(LightnigSourceShader.m_ID,"Matrices");
+	unsigned int uniformVertexSimplendex = glGetUniformBlockIndex(ExplosionShader.m_ID,"Matrices");
+	unsigned int uniformVertexInstanceIndex = glGetUniformBlockIndex(InstanceShader.m_ID,"Matrices");
+	unsigned int uniformVertexCoreShadowsIndex = glGetUniformBlockIndex(LightingShadowShader.m_ID,"Matrices");
+
+	glUniformBlockBinding(LightingShader.m_ID,uniformVertexCoreIndex,0);
+	glUniformBlockBinding(CubeMapShader.m_ID,uniformVertexSkyboxIndex,0);
+	glUniformBlockBinding(LightnigSourceShader.m_ID,uniformVertexLightingSourceIndex,0);
+	glUniformBlockBinding(ExplosionShader.m_ID,uniformVertexSimplendex,0);
+	glUniformBlockBinding(InstanceShader.m_ID,uniformVertexInstanceIndex,0);
+	glUniformBlockBinding(LightingShadowShader.m_ID,uniformVertexCoreShadowsIndex,0);
 }
 Shader* ShaderManager::getShader(SHADER_TYPE type)
 {
