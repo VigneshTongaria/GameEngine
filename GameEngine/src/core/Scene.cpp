@@ -1,5 +1,10 @@
 #include "Scene.h"
 
+Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
+{
+
+}
+
 void Scene::init()
 {
     const float* vertices = GeometryData::cubeVertices;
@@ -50,8 +55,6 @@ void Scene::init()
 	// glEnableVertexAttribArray(2);
 
 	// Vertex data for quad
-
-	unsigned int quadVBO,quadVAO;
 	glGenVertexArrays(1,&quadVAO);
 	glGenBuffers(1,&quadVBO);
 
@@ -76,9 +79,6 @@ void Scene::init()
 	// glEnableVertexAttribArray(0);
 
 	// Skybox VAO
-
-	unsigned int skyboxVAO,skyboxVBO;
-    
 	glGenVertexArrays(1,&skyboxVAO);
 	glGenBuffers(1,&skyboxVBO);
 
@@ -90,31 +90,17 @@ void Scene::init()
 
 	// Generating Frame buffers
 
-	// Multisampling buffers
-	unsigned int msbo;
-	glGenFramebuffers(1,&msbo);
-	glBindFramebuffer(GL_FRAMEBUFFER,msbo);
-
-	unsigned int textureColorBufferMultiSampled;
-    glGenTextures(1, &textureColorBufferMultiSampled);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, textureColorBufferMultiSampled);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB,SRC_WIDTH, SRC_HEIGHT, GL_TRUE);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
-    
-	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D_MULTISAMPLE,textureColorBufferMultiSampled,0);
-
 	// Multisample Renderbuffers
-	unsigned int mrbo;
-	glGenRenderbuffers(1,&mrbo);
-	glBindRenderbuffer(GL_RENDERBUFFER,mrbo);
-	glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,SRC_WIDTH, SRC_HEIGHT);
+	// unsigned int mrbo;
+	// glGenRenderbuffers(1,&mrbo);
+	// glBindRenderbuffer(GL_RENDERBUFFER,mrbo);
+	// glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,SRC_WIDTH, SRC_HEIGHT);
 
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,mrbo);
-	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-	  std::cout<<"Frame buffers not generated"<<std::endl;
+	// glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,mrbo);
+	// if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+	//   std::cout<<"Frame buffers not generated"<<std::endl;
 	
-	glBindRenderbuffer(GL_RENDERBUFFER,0);
-	glBindFramebuffer(GL_FRAMEBUFFER,0);
+	// glBindRenderbuffer(GL_RENDERBUFFER,0);
 
 	// Post processing Frame buffer
 	unsigned int fbo;

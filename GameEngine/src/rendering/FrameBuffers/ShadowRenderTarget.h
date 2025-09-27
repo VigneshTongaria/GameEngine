@@ -12,6 +12,8 @@ public:
     void init() override;
     void bindTexture() const override;
     void unbindTexture() const override;
+    void bindFrameBuffer() const override;
+    void unbindFrameBuffer() const override;
     void resize(const int newWidth,const int newHeight) override;
 
     GLuint getFramebufferID() const override;

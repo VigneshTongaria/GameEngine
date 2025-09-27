@@ -13,6 +13,9 @@ public:
     void init() override;
     void bindFrameBuffer() const override;
     void unbindFrameBuffer() const override;
+    void bindTexture() const override;
+    void unbindTexture() const override;
+    void resize(int width,int height) override;
     void resize(int newWidth, int newHeight,int samples);
     void resize(int samples);
 
