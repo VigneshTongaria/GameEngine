@@ -60,3 +60,17 @@ Shader* ShaderManager::getShader(SHADER_TYPE type)
 {
     return &shaderLibrary[type];
 }
+
+ShaderManager::~ShaderManager()
+{
+	for (auto shader : shaderCache) {
+            delete shader;
+        }
+	
+	shaderCache.clear();
+
+	for (auto shader : shaderLibrary) {
+            delete &shader.second;
+        }
+	shaderLibrary.clear();
+}

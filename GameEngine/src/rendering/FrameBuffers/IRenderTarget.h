@@ -1,5 +1,6 @@
 #pragma once
-#include <glad/glad.h>
+#include<glad/glad.h>
+#include<GLFW/glfw3.h>
 
 class IRenderTarget {
 public:
@@ -9,10 +10,16 @@ public:
     virtual void init() = 0;
 
     // Bind this render target for rendering
-    virtual void bind() = 0;
+    virtual void bindTexture() const = 0;
 
     // Unbind (usually bind default framebuffer 0)
-    virtual void unbind() = 0;
+    virtual void unbindTexture() const = 0;
+
+    // Bind this render target for rendering
+    virtual void bindFrameBuffer() const = 0;
+
+    // Unbind (usually bind default framebuffer 0)
+    virtual void unbindFrameBuffer() const = 0;
 
     // Resize GPU resources when viewport changes
     virtual void resize(int newWidth, int newHeight) = 0;

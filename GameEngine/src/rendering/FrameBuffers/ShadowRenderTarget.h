@@ -7,12 +7,12 @@ private:
     unsigned int m_dm_fbo;
     unsigned int m_dm;
 public:
-    ShadowRenderTarget(int width, int height);
+    ShadowRenderTarget(const int width,const int height);
 
     void init() override;
-    void bind() override;
-    void unbind() override;
-    void resize(int newWidth, int newHeight) override;
+    void bindTexture() const override;
+    void unbindTexture() const override;
+    void resize(const int newWidth,const int newHeight) override;
 
     GLuint getFramebufferID() const override;
 

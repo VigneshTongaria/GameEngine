@@ -192,8 +192,6 @@ int main()
 	glEnableVertexAttribArray(2);
 	//Assigning textures ID'S
 	LightingShader.UseShaderProgram();
-	// LightingShader.setInt("Texture1",0);
-	// LightingShader.setInt("Texture2",1);
 
 	// Vertex data for quad
 
@@ -363,7 +361,7 @@ int main()
 	unsigned int uboMatrices;
 	glGenBuffers(1, &uboMatrices);
 
-	glBindBufferRange(GL_UNIFORM_BUFFER, 0, uboMatrices, 0, 3 * sizeof(glm::mat4));
+	glBindBufferRange(GL_UNIFORM_BUFFER,0, uboMatrices, 0, 3 * sizeof(glm::mat4));
 
 	glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
 	glBufferData(GL_UNIFORM_BUFFER, 3 * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
