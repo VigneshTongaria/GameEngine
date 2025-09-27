@@ -7,6 +7,7 @@ Component::Component()
     {
         gameObject->awakeCallbacks.push_back([this]() { this->awake(); });
         gameObject->startCallbacks.push_back([this]() { this->start(); });
+        gameObject->updateCallbacks.push_back([this]() {this->update();});
     }
 }
 
