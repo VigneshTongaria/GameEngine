@@ -447,9 +447,6 @@ int main()
     
 	LightingShader.UseShaderProgram();
 
-	// Loading miscallaneous textures
-	Texture woodTexture = ResourcesManager::loadTexture("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/ExtraTextures/Wood_base.jpg",TEXTURE_TYPE::DIFFUSE);
-
 	// Setting reflection probe
 	LightingShader.setInt("reflection",0);
 	LightingShader.setFloat("material.shininess",32.0f);
@@ -509,7 +506,7 @@ int main()
 
 	LightingShadowShader.setVec3("dirLight.direction", DirectionalLightDir);
 	LightingShadowShader.setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
-	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(3.0f, 3.0f, 3.0f));
+	LightingShadowShader.setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
 	LightingShadowShader.setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
 
 	// Setting and binding all the shadow depth maps
@@ -519,9 +516,6 @@ int main()
 		LightingShadowShader.setInt("pointShadowMap["+std::to_string(i)+"]",5 + i);
 	}
 	LightingShadowShader.setFloat("far_plane",far);
-	LightingShadowShader.setInt("hasNormalMap",0);
-	int loc = glGetUniformLocation(LightingShadowShader.m_ID, "hasNormalMap");
-    std::cout << "hasNormalMap location: " << loc << std::endl;
 
 	glBindTexture(GL_TEXTURE_2D,depthMap);
 	LightingShadowShader.setTransformation("mat_Lightspace",lightSpaceMatrix);

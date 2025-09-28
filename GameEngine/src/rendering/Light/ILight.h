@@ -9,4 +9,5 @@ public:
 
     float intensity;
     bool renderShadows;
+    
 };

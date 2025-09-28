@@ -1,8 +1,10 @@
 #include "Scene.h"
+#include "../managers/ShaderManager.hpp"
 
 Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
 {
-
+    SRC_WIDTH = width;
+	SRC_HEIGHT = height;
 }
 
 void Scene::init()
@@ -143,32 +145,22 @@ void Scene::init()
 
 	// Generating directional light depth map buffers
 
-	unsigned int depthMapFBO;
-	glGenFramebuffers(1, &depthMapFBO);
-	glBindFramebuffer(GL_FRAMEBUFFER,depthMapFBO);
+	GameObject newDirLightObj(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f));
+	newDirLightObj.AddComponent<DirLight>();
 
-	const unsigned int SHADOW_WIDTH = 2048, SHADOW_HEIGHT = 2048;
+	dirLights.push_back(newDirLightObj.GetComponent<DirLight>());
 
-	unsigned int depthMap;
-	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	glGenTextures(1, &depthMap);
-	glBindTexture(GL_TEXTURE_2D, depthMap);
-	glTexImage2D(GL_TEXTURE_2D,0,GL_DEPTH_COMPONENT,SHADOW_WIDTH,SHADOW_HEIGHT,0,GL_DEPTH_COMPONENT,GL_FLOAT,NULL);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-	glTexParameterfv(GL_TEXTURE_2D,GL_TEXTURE_BORDER_COLOR,borderColor);
+	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f));
+	cityObject.AddComponent<Model>
+	("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
+	Model* cityModel = cityObject.GetComponent<Model>();
 
-	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,GL_TEXTURE_2D,depthMap,0);
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	sceneModels.push_back(cityModel);
 
 	// Generating point light cubemaps depth buffers
 
-	std::vector<unsigned int> pointLightDepthMap;
-	std::vector<unsigned int> pointLightDepthMapBuffers;
+	// std::vector<unsigned int> pointLightDepthMap;
+	// std::vector<unsigned int> pointLightDepthMapBuffers;
 
 	// for(unsigned int i = 0; i<NR_POINT_LIGHTS; i++)
 	// {
@@ -209,4 +201,313 @@ void Scene::init()
 	glBufferData(GL_UNIFORM_BUFFER, 3 * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
 
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
+	// skybox = ResourcesManager::loadCubeMap(cubeFaces);
+	// CubeMapShader.UseShaderProgram();
+	// CubeMapShader.setInt("skybox",0);
+
+	glBindBuffer(GL_UNIFORM_BUFFER,uboMatrices);
+	glBufferSubData(GL_UNIFORM_BUFFER,0,sizeof(glm::mat4),glm::value_ptr(mainCamera.GetProjectionMatrix()));
+	glBindBuffer(GL_UNIFORM_BUFFER,0);
+
+	ShaderManager::setShaderDirLightProperties(SHADER_TYPE::LIT_SHADOWS,dirLights[0],true,true);
+	ShaderManager::setShaderDirLightProperties(SHADER_TYPE::DEPTH,dirLights[0],false,true);
+
+	ShaderManager::getShader(SHADER_TYPE::LIT_SHADOWS)->setInt("shadowMap",10);
+}
+void Scene::render()
+{
+	std::cout << "--[ Frame Time ] : " << deltaTime << std::endl;
+	lastFrame = currentTime;
+	// process inputs
+	process_inputs(window);
+
+	// rendering
+	ResourcesManager::VerticesCount = 0;
+	SetViewAndProjectionForAllShaders(uboMatrices);
+
+	// Rendering scene first for depth Map for directional light
+	glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+	glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+
+	RenderScene(&DepthMapShader, SceneModels, lightVAO);
+
+	// Rendering scene for all lights
+	// for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
+	// {
+	// 	glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+	// 	glBindFramebuffer(GL_FRAMEBUFFER,pointLightDepthMapBuffers[i]);
+	// 	glClear(GL_DEPTH_BUFFER_BIT);
+	// 	PointLightingShadowShader.UseShaderProgram();
+	// 	PointLightingShadowShader.setVec3("lightPos",pointLightPositions[i]);
+	// 	PointLightingShadowShader.setFloat("far_plane",far);
+	// 	for(unsigned int j=0; j<6; j++)
+	// 	{
+	// 		PointLightingShadowShader.setTransformation("pointLightSpaceView[" + std::to_string(j) + "]",pointLightsViewProjection[i][j]);
+	// 	}
+	// 	RenderScene(&PointLightingShadowShader,SceneModels,lightVAO);
+	// }
+
+	// Binding framebuffers
+	glBindFramebuffer(GL_FRAMEBUFFER, msbo);
+
+	// All tests
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_STENCIL_TEST);
+	glEnable(GL_BLEND);
+	glEnable(GL_FRAMEBUFFER_SRGB);
+	glEnable(GL_CULL_FACE);
+
+	glDepthFunc(GL_LEQUAL);
+	glStencilOp(GL_KEEP, GL_REPLACE, GL_REPLACE);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glViewport(0, 0, SRC_WIDTH, SRC_HEIGHT);
+
+	glClearColor(0.1f, 0.1f, 0.1f, 0.6f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+	// Disable writing to stencil buffer
+	// glStencilMask(0x00);
+
+	// draw shapes
+	LightingShadowShader.UseShaderProgram();
+
+	glActiveTexture(GL_TEXTURE10);
+	glBindTexture(GL_TEXTURE_2D, depthMap);
+
+	// for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
+	// {
+	// 	glActiveTexture(GL_TEXTURE5 + i);
+	// 	glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
+	// }
+
+	float time = static_cast<float>(glfwGetTime());
+
+	//  LightPositions[0].x = 1.0f*glm::sin(glm::radians(time*10.0f));
+	//  LightPositions[0].z = 1.0f*glm::cos(glm::radians(time*10.0f));
+	// LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
+	// LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
+
+	LightingShadowShader.setVec3("viewPos", MainCamera.GetCameraPos());
+
+	// for(unsigned int i = 0 ; i<10 ; i++)
+	// {
+	// 	glm::mat4 _model = glm::mat4(1.0f);
+	// 	_model = glm::translate(_model,cubePositions[i]);
+	// 	LightingShader.setTransformation("mat_Model",_model);
+	// 	glDrawArrays(GL_TRIANGLES,0,36);
+	// }
+	// writing stencil on models
+
+	LightingShadowShader.setInt("hasNormalMap", 1);
+
+	glActiveTexture(GL_TEXTURE13);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap.id);
+	glActiveTexture(GL_TEXTURE0);
+
+	for (auto &model : SceneModels)
+	{
+		model->Draw(LightingShadowShader, GL_TRIANGLES);
+	}
+
+	LightingShadowShader.setInt("hasNormalMap", 0);
+
+	// Drawing debug normals gizmos
+
+	// ExplosionShader.UseShaderProgram();
+	// ourModel->Draw(ExplosionShader, GL_TRIANGLES);
+
+	// Draw Asteriods
+	RenderAsteriods(asteriodModel, &InstanceShader);
+
+	// Drawing lightsource cubes and highlight
+
+	glBindVertexArray(VAO);
+
+	LightingShadowShader.UseShaderProgram();
+
+	// Enable writing to stencil buffer
+
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	glStencilMask(0xFF);
+
+	// Rendering cubes
+
+	// LightingShadowShader.setInt("material.texture_diffuse1", 0);
+	// glActiveTexture(GL_TEXTURE0);
+	// glBindTexture(GL_TEXTURE_2D, woodTexture.id);
+
+	// // LightingShadowShader.setInt("material.texture_specular1", 1);
+	// // glActiveTexture(GL_TEXTURE1);
+	// // glBindTexture(GL_TEXTURE_2D, woodTexture.id);
+	// glActiveTexture(GL_TEXTURE1);
+	// glBindTexture(GL_TEXTURE_2D, 0);
+	// for(unsigned int i = 0 ; i<4 ; i++)
+	// {
+	// 	glm::mat4 _model = glm::mat4(1.0f);
+	// 	_model = glm::translate(_model,pointLightPositions[i]);
+	// 	LightingShadowShader.setTransformation("mat_Model",_model);
+	// 	glDrawArrays(GL_TRIANGLES,0,36);
+	// }
+
+	// glm::mat4 _model = glm::mat4(1.0f);
+	// _model = glm::translate(_model,glm::vec3(0.0f,-2.0f,0.0f));
+	// _model = glm::scale(_model,glm::vec3(30.0f,0.1f,30.0f));
+	// LightingShadowShader.setTransformation("mat_Model", _model);
+	// glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	// // _model = glm::mat4(1.0f);
+	// // _model = glm::translate(_model, glm::vec3(0.0f, 5.0f, 0.0f));
+	// // _model = glm::scale(_model, glm::vec3(30.0f, 0.1f, 30.0f));
+	// // LightingShadowShader.setTransformation("mat_Model", _model);
+	// // glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	// glBindTexture(GL_TEXTURE_2D,0);
+
+	// drawing Transparent objects
+	// glStencilMask(0x00);
+	// ImageShader.UseShaderProgram();
+
+	// for(unsigned int i=0; i < 10 ; i++)
+	// {
+	// 	CubesGameObject[i]->GetComponent<Model>()->Draw(ImageShader,GL_TRIANGLES);
+	// }
+
+	// Disable writing to stencil buffer and just reading its values
+
+	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+	glStencilMask(0x00);
+	// glDisable(GL_DEPTH_TEST);
+	glDepthMask(GL_ALWAYS);
+
+	// Drawing highlight cubes
+	//  glBindVertexArray(lightVAO);
+
+	// HighlightShader.UseShaderProgram();
+
+	// for(unsigned int i = 0 ; i<4 ; i++)
+	// {
+	// 	glm::mat4 _model = glm::mat4(1.0f);
+	// 	_model = glm::translate(_model,pointLightPositions[i]);
+	// 	_model = glm::scale(_model,glm::vec3(1.1f,1.1f,1.1f));
+	// 	HighlightShader.setTransformation("mat_Model",_model);
+	// 	glDrawArrays(GL_TRIANGLES,0,36);
+	// }
+	glEnable(GL_DEPTH_TEST);
+
+	// RenderSkybox
+
+	CubeMapShader.UseShaderProgram();
+	glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));
+	CubeMapShader.setTransformation("mat_View_nt", view_nt);
+	glBindVertexArray(skyboxVAO);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap.id);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	glStencilMask(0xFF);
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	glEnable(GL_DEPTH_TEST);
+
+	// Physics related //update
+
+	rb->fixedUpdate(deltaTime);
+
+	// Late update
+
+	// Multisampling
+	glBindFramebuffer(GL_READ_FRAMEBUFFER, msbo);
+	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbo);
+
+	glBlitFramebuffer(0, 0, SRC_WIDTH, SRC_HEIGHT, 0, 0, SRC_WIDTH, SRC_HEIGHT, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+	glDisable(GL_DEPTH_TEST);
+
+	// Brightness processing
+	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+	BrightShader.UseShaderProgram();
+	BrightShader.setInt("screenTexture", 0);
+
+	// unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+	// glDrawBuffers(2,attachMents);
+
+	glBindVertexArray(quadVAO);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, colorBuffer.id);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	glBindVertexArray(0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	// Blurring Brightness
+	bool Horizontal = true, isFirstIteration = true;
+	unsigned int samples = 6;
+	BloomShader.UseShaderProgram();
+	glBindVertexArray(quadVAO);
+
+	for (unsigned int i = 0; i < samples; i++)
+	{
+		glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[Horizontal]);
+		BloomShader.setInt("horizontal", Horizontal);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, isFirstIteration ? brightColorBuffer.id : pingpongBuffers[!Horizontal].id);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+		Horizontal = !Horizontal;
+
+		isFirstIteration = false;
+	}
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	// Post processing
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glDisable(GL_DEPTH_TEST);
+	glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+	// glDrawBuffers(2,attachMents);
+
+	PostShader.UseShaderProgram();
+	PostShader.setFloat("exposure", 1.0f);
+	PostShader.setInt("scene", 0);
+	PostShader.setInt("bloomBlur", 1);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, colorBuffer.id);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, pingpongBuffers[0].id);
+	glActiveTexture(GL_TEXTURE0);
+
+	glBindVertexArray(quadVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+
+void Scene::draw(Shader* shader)
+{
+	shader->UseShaderProgram();
+    for(auto& model : sceneModels)
+	{
+		model->Draw(*shader,GL_TRIANGLES);
+	}
+}
+
+void Scene::setViewAndProjectionForAllShaders(unsigned int uboIndex)
+{
+	// for(auto& shader : shaders)
+	// {
+	// 	shader->UseShaderProgram();
+    //     shader->setTransformation("mat_View",MainCamera.GetViewMatrix());
+	// 	shader->setTransformation("mat_Projection",MainCamera.GetProjectionMatrix());
+	// }
+
+	// Setting view mattrix in uniform buffer
+	glBindBuffer(GL_UNIFORM_BUFFER,uboIndex);
+	glBufferSubData(GL_UNIFORM_BUFFER,sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(mainCamera.GetViewMatrix()));
+	glBufferSubData(GL_UNIFORM_BUFFER,2*sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(mainCamera.GetProjectionViewMatrix()));
+	glBindBuffer(GL_UNIFORM_BUFFER,0);
 }

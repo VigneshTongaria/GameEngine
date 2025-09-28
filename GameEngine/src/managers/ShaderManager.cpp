@@ -1,5 +1,6 @@
 #include "ShaderManager.hpp"
 #include "../rendering/Shader.h"
+#include "../rendering/Light/DirLight.h"
 
 std::vector<Shader*> ShaderManager::shaderCache;
 std::unordered_map<SHADER_TYPE,Shader> ShaderManager::shaderLibrary;
@@ -56,9 +57,36 @@ void ShaderManager::init()
 	glUniformBlockBinding(InstanceShader.m_ID,uniformVertexInstanceIndex,0);
 	glUniformBlockBinding(LightingShadowShader.m_ID,uniformVertexCoreShadowsIndex,0);
 }
-Shader* ShaderManager::getShader(SHADER_TYPE type)
+Shader* ShaderManager::getShader(SHADER_TYPE type) 
 {
     return &shaderLibrary[type];
+}
+
+void ShaderManager::setShaderDirLightProperties(SHADER_TYPE type,DirLight* light,bool setColors,bool setView)
+{
+    Shader* s = getShader(type);
+	s->UseShaderProgram();
+
+	s->setVec3("dirLight.direction", light->LightDir);
+	
+	if(setColors)
+	{
+		s->setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
+		s->setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+		s->setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
+	}
+
+	if(setView)
+	{
+		s->setTransformation("mat_Lightspace",light->lightSpaceMattrix);
+	}
+}
+
+void ShaderManager::setShaderPlanes(SHADER_TYPE type,float n_plane,float f_plane)
+{
+	Shader* s = getShader(type);
+	s->UseShaderProgram();
+	s->setFloat("far_plane",f_plane);
 }
 
 ShaderManager::~ShaderManager()

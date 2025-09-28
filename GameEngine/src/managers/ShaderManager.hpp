@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_map>
 class Shader;
+class DirLight;
 
 enum SHADER_TYPE
 {
@@ -22,6 +23,8 @@ public:
     static void init();
     static void initShader(const char* vPath,const char* fPath);
     static Shader* getShader(SHADER_TYPE type);
+    static void setShaderDirLightProperties(SHADER_TYPE type, DirLight* light,bool setColors,bool setView);
+    static void setShaderPlanes(SHADER_TYPE type,float n_plane,float f_plane);
 
     ~ShaderManager();
 };
