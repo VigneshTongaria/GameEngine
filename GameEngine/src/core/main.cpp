@@ -28,8 +28,6 @@ void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO);
 void RenderAsteriods(Model* m,Shader* s);
 float Arrow_vertical_Input = 0.0f;
 
-glm::mat4 mouseTransform = glm::mat4(1.0f);
-glm::mat4 mouseScroll = glm::mat4(1.0f);
 glm::mat4 Scale = glm::mat4(1.0f);
 
 float cameraSpeed = 0.1f;

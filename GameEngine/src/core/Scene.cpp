@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "../managers/ShaderManager.hpp"
+#include "../io/KeyBoard.h"
+#include "../io/Mouse.h"
 
 Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
 {
@@ -192,7 +194,6 @@ void Scene::init()
 	// }
 
 	// Generating uniform buffers
-	unsigned int uboMatrices;
 	glGenBuffers(1, &uboMatrices);
 
 	glBindBufferRange(GL_UNIFORM_BUFFER,0, uboMatrices, 0, 3 * sizeof(glm::mat4));
@@ -214,27 +215,35 @@ void Scene::init()
 	ShaderManager::setShaderDirLightProperties(SHADER_TYPE::DEPTH,dirLights[0],false,true);
 
 	ShaderManager::getShader(SHADER_TYPE::LIT_SHADOWS)->setInt("shadowMap",10);
+
+	depthMapShader = ShaderManager::getShader(SHADER_TYPE::DEPTH);
+
+	lastFrame = float(glfwGetTime());
 }
 void Scene::render()
 {
+	// calculate deltaTime
+	float currentTime = float(glfwGetTime());
+	deltaTime = currentTime - lastFrame;
+
 	std::cout << "--[ Frame Time ] : " << deltaTime << std::endl;
 	lastFrame = currentTime;
 	// process inputs
-	process_inputs(window);
+	process_inputs();
 
 	// rendering
 	ResourcesManager::VerticesCount = 0;
-	SetViewAndProjectionForAllShaders(uboMatrices);
+	setViewAndProjectionForAllShaders(uboMatrices);
 
 	// Rendering scene first for depth Map for directional light
-	glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
-	glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+	glViewport(0, 0, SRC_WIDTH, SRC_HEIGHT);
+	glBindFramebuffer(GL_FRAMEBUFFER, dirLights[0]->shadowRenderTarget.getFramebufferID());
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 
-	RenderScene(&DepthMapShader, SceneModels, lightVAO);
+	draw(depthMapShader);
 
 	// Rendering scene for all lights
 	// for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
@@ -253,7 +262,7 @@ void Scene::render()
 	// }
 
 	// Binding framebuffers
-	glBindFramebuffer(GL_FRAMEBUFFER, msbo);
+	glBindFramebuffer(GL_FRAMEBUFFER, mSSARenderTarget.getFramebufferID());
 
 	// All tests
 	glEnable(GL_DEPTH_TEST);
@@ -274,10 +283,10 @@ void Scene::render()
 	// glStencilMask(0x00);
 
 	// draw shapes
-	LightingShadowShader.UseShaderProgram();
+	lightingShadowShader->UseShaderProgram();
 
 	glActiveTexture(GL_TEXTURE10);
-	glBindTexture(GL_TEXTURE_2D, depthMap);
+	dirLights[0]->shadowRenderTarget.bindTexture();
 
 	// for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
 	// {
@@ -285,14 +294,12 @@ void Scene::render()
 	// 	glBindTexture(GL_TEXTURE_CUBE_MAP,pointLightDepthMap[i]);
 	// }
 
-	float time = static_cast<float>(glfwGetTime());
-
 	//  LightPositions[0].x = 1.0f*glm::sin(glm::radians(time*10.0f));
 	//  LightPositions[0].z = 1.0f*glm::cos(glm::radians(time*10.0f));
 	// LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
 	// LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
-	LightingShadowShader.setVec3("viewPos", MainCamera.GetCameraPos());
+	lightingShadowShader->setVec3("viewPos", mainCamera.GetCameraPos());
 
 	// for(unsigned int i = 0 ; i<10 ; i++)
 	// {
@@ -303,32 +310,22 @@ void Scene::render()
 	// }
 	// writing stencil on models
 
-	LightingShadowShader.setInt("hasNormalMap", 1);
-
-	glActiveTexture(GL_TEXTURE13);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap.id);
+	// glActiveTexture(GL_TEXTURE13);
+	// glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap.id);
 	glActiveTexture(GL_TEXTURE0);
 
-	for (auto &model : SceneModels)
-	{
-		model->Draw(LightingShadowShader, GL_TRIANGLES);
-	}
-
-	LightingShadowShader.setInt("hasNormalMap", 0);
+	draw(lightingShadowShader);
 
 	// Drawing debug normals gizmos
 
 	// ExplosionShader.UseShaderProgram();
 	// ourModel->Draw(ExplosionShader, GL_TRIANGLES);
 
-	// Draw Asteriods
-	RenderAsteriods(asteriodModel, &InstanceShader);
-
 	// Drawing lightsource cubes and highlight
 
-	glBindVertexArray(VAO);
+	// glBindVertexArray(VAO);
 
-	LightingShadowShader.UseShaderProgram();
+	// LightingShadowShader.UseShaderProgram();
 
 	// Enable writing to stencil buffer
 
@@ -401,90 +398,85 @@ void Scene::render()
 
 	// RenderSkybox
 
-	CubeMapShader.UseShaderProgram();
-	glm::mat4 view_nt = glm::mat4(glm::mat3(MainCamera.GetViewMatrix()));
-	CubeMapShader.setTransformation("mat_View_nt", view_nt);
-	glBindVertexArray(skyboxVAO);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap.id);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	// CubeMapShader.UseShaderProgram();
+	// glm::mat4 view_nt = glm::mat4(glm::mat3(mainCamera.GetViewMatrix()));
+	// CubeMapShader.setTransformation("mat_View_nt", view_nt);
+	// glBindVertexArray(skyboxVAO);
+	// glActiveTexture(GL_TEXTURE0);
+	// glBindTexture(GL_TEXTURE_CUBE_MAP, skybox.id);
+	// glDrawArrays(GL_TRIANGLES, 0, 36);
 
 	glStencilMask(0xFF);
 	glStencilFunc(GL_ALWAYS, 1, 0xFF);
 	glEnable(GL_DEPTH_TEST);
 
-	// Physics related //update
-
-	rb->fixedUpdate(deltaTime);
-
 	// Late update
 
 	// Multisampling
-	glBindFramebuffer(GL_READ_FRAMEBUFFER, msbo);
-	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, fbo);
+	glBindFramebuffer(GL_READ_FRAMEBUFFER, mSSARenderTarget.getFramebufferID());
+	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 
 	glBlitFramebuffer(0, 0, SRC_WIDTH, SRC_HEIGHT, 0, 0, SRC_WIDTH, SRC_HEIGHT, GL_COLOR_BUFFER_BIT, GL_NEAREST);
 	glDisable(GL_DEPTH_TEST);
 
 	// Brightness processing
-	glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-	BrightShader.UseShaderProgram();
-	BrightShader.setInt("screenTexture", 0);
+	// glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+	// BrightShader.UseShaderProgram();
+	// BrightShader.setInt("screenTexture", 0);
 
-	// unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
-	// glDrawBuffers(2,attachMents);
+	// // unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+	// // glDrawBuffers(2,attachMents);
 
-	glBindVertexArray(quadVAO);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, colorBuffer.id);
-	glDrawArrays(GL_TRIANGLES, 0, 6);
+	// glBindVertexArray(quadVAO);
+	// glActiveTexture(GL_TEXTURE0);
+	// glBindTexture(GL_TEXTURE_2D, colorBuffer.id);
+	// glDrawArrays(GL_TRIANGLES, 0, 6);
 
-	glBindVertexArray(0);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	// glBindVertexArray(0);
+	// glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	// Blurring Brightness
-	bool Horizontal = true, isFirstIteration = true;
-	unsigned int samples = 6;
-	BloomShader.UseShaderProgram();
-	glBindVertexArray(quadVAO);
+	// // Blurring Brightness
+	// bool Horizontal = true, isFirstIteration = true;
+	// unsigned int samples = 6;
+	// BloomShader.UseShaderProgram();
+	// glBindVertexArray(quadVAO);
 
-	for (unsigned int i = 0; i < samples; i++)
-	{
-		glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[Horizontal]);
-		BloomShader.setInt("horizontal", Horizontal);
+	// for (unsigned int i = 0; i < samples; i++)
+	// {
+	// 	glBindFramebuffer(GL_FRAMEBUFFER, pingpongFBO[Horizontal]);
+	// 	BloomShader.setInt("horizontal", Horizontal);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, isFirstIteration ? brightColorBuffer.id : pingpongBuffers[!Horizontal].id);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-		Horizontal = !Horizontal;
+	// 	glActiveTexture(GL_TEXTURE0);
+	// 	glBindTexture(GL_TEXTURE_2D, isFirstIteration ? brightColorBuffer.id : pingpongBuffers[!Horizontal].id);
+	// 	glDrawArrays(GL_TRIANGLES, 0, 6);
+	// 	Horizontal = !Horizontal;
 
-		isFirstIteration = false;
-	}
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	// 	isFirstIteration = false;
+	// }
 
-	// Post processing
+	// // Post processing
 
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	glDisable(GL_DEPTH_TEST);
-	glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	// glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	// glDisable(GL_DEPTH_TEST);
+	// glClearColor(0.1f, 0.1f, 0.1f, 0.1f);
+	// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
-	// glDrawBuffers(2,attachMents);
+	// // unsigned int attachMents[2] = {GL_COLOR_ATTACHMENT0,GL_COLOR_ATTACHMENT1};
+	// // glDrawBuffers(2,attachMents);
 
-	PostShader.UseShaderProgram();
-	PostShader.setFloat("exposure", 1.0f);
-	PostShader.setInt("scene", 0);
-	PostShader.setInt("bloomBlur", 1);
+	// PostShader.UseShaderProgram();
+	// PostShader.setFloat("exposure", 1.0f);
+	// PostShader.setInt("scene", 0);
+	// PostShader.setInt("bloomBlur", 1);
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, colorBuffer.id);
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, pingpongBuffers[0].id);
-	glActiveTexture(GL_TEXTURE0);
+	// glActiveTexture(GL_TEXTURE0);
+	// glBindTexture(GL_TEXTURE_2D, colorBuffer.id);
+	// glActiveTexture(GL_TEXTURE1);
+	// glBindTexture(GL_TEXTURE_2D, pingpongBuffers[0].id);
+	// glActiveTexture(GL_TEXTURE0);
 
-	glBindVertexArray(quadVAO);
-	glDrawArrays(GL_TRIANGLES, 0, 6);
+	// glBindVertexArray(quadVAO);
+	// glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 void Scene::draw(Shader* shader)
@@ -494,6 +486,56 @@ void Scene::draw(Shader* shader)
 	{
 		model->Draw(*shader,GL_TRIANGLES);
 	}
+}
+
+void Scene::process_inputs()
+{
+	cameraSpeed = 3.5f* deltaTime;
+
+	if(KeyBoard::KeyWentDown(GLFW_KEY_UP))
+	{
+		Arrow_vertical_Input += 0.01f;
+		if(Arrow_vertical_Input >= 1.0f) Arrow_vertical_Input = 1.0f;
+	}
+	if(KeyBoard::KeyWentDown(GLFW_KEY_DOWN))
+	{
+		Arrow_vertical_Input -= 0.01f;
+		if(Arrow_vertical_Input <= 0.0f) Arrow_vertical_Input = 0.0f;
+	}
+	if(KeyBoard::Key(GLFW_KEY_W))
+	{
+		mainCamera.ProcessWASD(CAMERA_FORWARD,deltaTime);
+	}
+	if(KeyBoard::Key(GLFW_KEY_S))
+	{
+		mainCamera.ProcessWASD(CAMERA_BACKWARD,deltaTime);
+	}
+	if(KeyBoard::Key(GLFW_KEY_A))
+	{
+		mainCamera.ProcessWASD(CAMERA_LEFT,deltaTime);
+	}
+	if(KeyBoard::Key(GLFW_KEY_D))
+	{
+		mainCamera.ProcessWASD(CAMERA_RIGHT,deltaTime);
+	}
+	if(Mouse::MouseButton(GLFW_MOUSE_BUTTON_1))
+	{
+		mainCamera.ProcessMouse(float(Mouse::getMouseDX()),float(Mouse::getMouseDY()));
+	}
+	mainCamera.SetZoom(float(Mouse::getMouseWheelY()));
+	// Extract current scale from Scale matrix
+	glm::vec3 currentScale = glm::vec3(
+		glm::length(glm::vec3(Scale[0])), // X scaleth
+		glm::length(glm::vec3(Scale[1])), // Y scale
+		glm::length(glm::vec3(Scale[2]))  // Z scale
+	);
+
+	// Modify scale based on mouse wheel input
+	float scaleFactor = 1.0f + (0.01f * float(Mouse::getMouseWheelY())); // Scaling factor
+	currentScale *= scaleFactor;								  // Uniform scaling
+
+	// Apply new scale (create a fresh scale matrix)
+	Scale = glm::scale(glm::mat4(1.0f), currentScale);
 }
 
 void Scene::setViewAndProjectionForAllShaders(unsigned int uboIndex)

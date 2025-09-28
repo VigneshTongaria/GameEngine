@@ -25,16 +25,27 @@ public:
     
     unsigned int quadVBO,quadVAO;
     unsigned int skyboxVAO,skyboxVBO;
+    unsigned int uboMatrices;
     unsigned int SRC_WIDTH,SRC_HEIGHT;
+
+    float cameraSpeed = 0.1f;
+    float Arrow_vertical_Input = 0.0f;
+    glm::mat4 Scale = glm::mat4(1.0f);
+    float deltaTime = 0.0f; // Time between current frame and last frame
+    float lastFrame = 0.0f; // Time of last frame
+
     MSAARenderTarget mSSARenderTarget;
     std::vector<GameObject> gameObjects;
     std::vector<Model*> sceneModels;
     std::vector<DirLight*> dirLights;
     CubeMap skybox;
     Camera mainCamera;
+    Shader* depthMapShader;
+    Shader* lightingShadowShader;
 
     void render();
     void draw(Shader* shader);
+    void process_inputs();
 
     void setViewAndProjectionForAllShaders(unsigned int uboIndex);
  
