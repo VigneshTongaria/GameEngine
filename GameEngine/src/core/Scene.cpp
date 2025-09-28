@@ -7,6 +7,9 @@ Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
 {
     SRC_WIDTH = width;
 	SRC_HEIGHT = height;
+
+	mainCamera.width = width;
+	mainCamera.height = height;
 }
 
 void Scene::init()
@@ -146,18 +149,14 @@ void Scene::init()
 	glBindFramebuffer(GL_FRAMEBUFFER,0);
 
 	// Generating directional light depth map buffers
+	gameObjects.push_back(GameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
+	gameObjects.back().AddComponent<DirLight>();
 
-	GameObject newDirLightObj(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f));
-	newDirLightObj.AddComponent<DirLight>();
+	dirLights.push_back(gameObjects.back().GetComponent<DirLight>());
 
-	dirLights.push_back(newDirLightObj.GetComponent<DirLight>());
-
-	GameObject cityObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f));
-	cityObject.AddComponent<Model>
-	("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
-	Model* cityModel = cityObject.GetComponent<Model>();
-
-	sceneModels.push_back(cityModel);
+	gameObjects.push_back(GameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f)));
+	gameObjects.back().AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
+	sceneModels.push_back(gameObjects.back().GetComponent<Model>());
 
 	// Generating point light cubemaps depth buffers
 
@@ -214,9 +213,13 @@ void Scene::init()
 	ShaderManager::setShaderDirLightProperties(SHADER_TYPE::LIT_SHADOWS,dirLights[0],true,true);
 	ShaderManager::setShaderDirLightProperties(SHADER_TYPE::DEPTH,dirLights[0],false,true);
 
-	ShaderManager::getShader(SHADER_TYPE::LIT_SHADOWS)->setInt("shadowMap",10);
-
+	ShaderManager::setShaderPlanes(SHADER_TYPE::LIT_SHADOWS,mainCamera.nearPlane,mainCamera.farPlane);
+	ShaderManager::setShaderPlanes(SHADER_TYPE::DEPTH,mainCamera.nearPlane,mainCamera.farPlane);
+    
+	lightingShadowShader = ShaderManager::getShader(SHADER_TYPE::LIT_SHADOWS);
 	depthMapShader = ShaderManager::getShader(SHADER_TYPE::DEPTH);
+
+	lightingShadowShader->setInt("shadowMap",10);
 
 	lastFrame = float(glfwGetTime());
 }
@@ -240,7 +243,7 @@ void Scene::render()
 	glBindFramebuffer(GL_FRAMEBUFFER, dirLights[0]->shadowRenderTarget.getFramebufferID());
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 
 	draw(depthMapShader);
@@ -276,13 +279,14 @@ void Scene::render()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glViewport(0, 0, SRC_WIDTH, SRC_HEIGHT);
 
-	glClearColor(0.1f, 0.1f, 0.1f, 0.6f);
+	glClearColor(0.1f, 0.4f, 0.4f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	// Disable writing to stencil buffer
 	// glStencilMask(0x00);
 
 	// draw shapes
+
 	lightingShadowShader->UseShaderProgram();
 
 	glActiveTexture(GL_TEXTURE10);
@@ -329,8 +333,8 @@ void Scene::render()
 
 	// Enable writing to stencil buffer
 
-	glStencilFunc(GL_ALWAYS, 1, 0xFF);
-	glStencilMask(0xFF);
+	// glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	// glStencilMask(0xFF);
 
 	// Rendering cubes
 
@@ -376,10 +380,10 @@ void Scene::render()
 
 	// Disable writing to stencil buffer and just reading its values
 
-	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-	glStencilMask(0x00);
-	// glDisable(GL_DEPTH_TEST);
-	glDepthMask(GL_ALWAYS);
+	// glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+	// glStencilMask(0x00);
+	// // glDisable(GL_DEPTH_TEST);
+	// glDepthMask(GL_ALWAYS);
 
 	// Drawing highlight cubes
 	//  glBindVertexArray(lightVAO);
@@ -406,9 +410,9 @@ void Scene::render()
 	// glBindTexture(GL_TEXTURE_CUBE_MAP, skybox.id);
 	// glDrawArrays(GL_TRIANGLES, 0, 36);
 
-	glStencilMask(0xFF);
-	glStencilFunc(GL_ALWAYS, 1, 0xFF);
-	glEnable(GL_DEPTH_TEST);
+	// glStencilMask(0xFF);
+	// glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	// glEnable(GL_DEPTH_TEST);
 
 	// Late update
 
@@ -417,7 +421,7 @@ void Scene::render()
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 
 	glBlitFramebuffer(0, 0, SRC_WIDTH, SRC_HEIGHT, 0, 0, SRC_WIDTH, SRC_HEIGHT, GL_COLOR_BUFFER_BIT, GL_NEAREST);
-	glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_DEPTH_TEST);
 
 	// Brightness processing
 	// glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -552,4 +556,10 @@ void Scene::setViewAndProjectionForAllShaders(unsigned int uboIndex)
 	glBufferSubData(GL_UNIFORM_BUFFER,sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(mainCamera.GetViewMatrix()));
 	glBufferSubData(GL_UNIFORM_BUFFER,2*sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(mainCamera.GetProjectionViewMatrix()));
 	glBindBuffer(GL_UNIFORM_BUFFER,0);
+}
+
+Scene::~Scene()
+{
+	delete(&mainCamera);
+	delete(&skybox);
 }

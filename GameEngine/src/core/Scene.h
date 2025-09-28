@@ -8,7 +8,7 @@
 #include <glm/gtx/string_cast.hpp>
 #include<iostream>
 #include<vector>
-#include<../data/GeometryData.hpp>
+#include "../data/GeometryData.hpp"
 #include "../managers/ResourcesManager.hpp"
 #include "../rendering/FrameBuffers/ShadowRenderTarget.h"
 #include "../rendering/FrameBuffers/MSAARenderTarget.h"

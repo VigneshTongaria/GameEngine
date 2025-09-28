@@ -32,7 +32,11 @@
     <ClCompile Include="src\core\main.cpp" />
     <ClCompile Include="src\managers\GameplayManager.cpp" />
     <ClCompile Include="src\managers\ResourcesManager.cpp" />
+    <ClCompile Include="src\managers\ShaderManager.cpp" />
     <ClCompile Include="src\managers\UtilitiesManger.cpp" />
+    <ClCompile Include="src\rendering\FrameBuffers\MSAARenderTarget.cpp" />
+    <ClCompile Include="src\rendering\FrameBuffers\ShadowRenderTarget.cpp" />
+    <ClCompile Include="src\rendering\Light\DirLight.cpp" />
     <ClCompile Include="src\rendering\Mesh.cpp" />
     <ClCompile Include="src\rendering\Model.cpp" />
     <ClCompile Include="src\physics\collider.cpp" />
@@ -83,7 +87,13 @@
     <ClInclude Include="src\io\Mouse.h" />
     <ClInclude Include="src\managers\GameplayManager.hpp" />
     <ClInclude Include="src\managers\ResourcesManager.hpp" />
+    <ClInclude Include="src\managers\ShaderManager.hpp" />
     <ClInclude Include="src\managers\UtilitiesManager.hpp" />
+    <ClInclude Include="src\rendering\FrameBuffers\IRenderTarget.h" />
+    <ClInclude Include="src\rendering\FrameBuffers\MSAARenderTarget.h" />
+    <ClInclude Include="src\rendering\FrameBuffers\ShadowRenderTarget.h" />
+    <ClInclude Include="src\rendering\Light\DirLight.h" />
+    <ClInclude Include="src\rendering\Light\ILight.h" />
     <ClInclude Include="src\rendering\Mesh.h" />
     <ClInclude Include="src\rendering\Model.h" />
     <ClInclude Include="src\physics\collider.hpp" />

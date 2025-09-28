@@ -11,6 +11,14 @@ void ShadowRenderTarget::init()
     glGenFramebuffers(1, &m_dm_fbo);
     glGenTextures(1, &m_dm);
 }
+void ShadowRenderTarget::bindFrameBuffer() const
+{
+	glBindFramebuffer(GL_FRAMEBUFFER,m_dm_fbo);
+}
+void ShadowRenderTarget::unbindFrameBuffer() const
+{
+	glBindFramebuffer(GL_FRAMEBUFFER,0);
+}
 void ShadowRenderTarget::bindTexture() const
 {
 	glBindTexture(GL_TEXTURE_2D,m_dm);
@@ -36,4 +44,8 @@ void ShadowRenderTarget::resize(int newWidth,int newHeight)
 	glDrawBuffer(GL_NONE);
 	glReadBuffer(GL_NONE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+unsigned int ShadowRenderTarget::getFramebufferID() const
+{
+	return m_dm_fbo;
 }

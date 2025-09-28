@@ -120,7 +120,6 @@ void main()
     //result += CalcSpotLight(spotLight);
     
     FragColor = vec4(result,1.0);
-    //FragColor = vec4(vec3(metallicness,smoothness,ambientOcclusion),1.0);
     //FragColor = vec4(pointShadowCalculationsDebugger(pointLights[0],pointShadowMap[0]),1.0);
 }
 

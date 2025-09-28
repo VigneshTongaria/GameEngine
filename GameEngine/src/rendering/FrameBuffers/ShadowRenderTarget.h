@@ -16,7 +16,5 @@ public:
     void unbindFrameBuffer() const override;
     void resize(const int newWidth,const int newHeight) override;
 
-    GLuint getFramebufferID() const override;
-
-    ~ShadowRenderTarget();
+    unsigned int getFramebufferID() const override;
 };

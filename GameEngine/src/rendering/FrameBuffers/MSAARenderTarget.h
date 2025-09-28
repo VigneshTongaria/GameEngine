@@ -5,6 +5,7 @@ class MSAARenderTarget : public IRenderTarget
 {
 private:
     unsigned int m_msaa_fbo;
+    unsigned int m_mssa_rbo;
     unsigned int m_msaa_m;
     unsigned int m_samples;
 public:
@@ -17,9 +18,6 @@ public:
     void unbindTexture() const override;
     void resize(int width,int height) override;
     void resize(int newWidth, int newHeight,int samples);
-    void resize(int samples);
 
-    GLuint getFramebufferID() const override;
-
-    ~MSAARenderTarget();
+    unsigned int getFramebufferID() const override;
 };

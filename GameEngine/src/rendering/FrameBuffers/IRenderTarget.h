@@ -25,5 +25,5 @@ public:
     virtual void resize(int newWidth, int newHeight) = 0;
 
     // Get the underlying framebuffer ID
-    virtual GLuint getFramebufferID() const = 0;
+    virtual unsigned int getFramebufferID() const = 0;
 };
