@@ -1,4 +1,5 @@
 #include "ShadowRenderTarget.h"
+#include <iostream>
 
 ShadowRenderTarget::ShadowRenderTarget(int width, int height)
 {
@@ -41,6 +42,11 @@ void ShadowRenderTarget::resize(int newWidth,int newHeight)
 	glTexParameterfv(GL_TEXTURE_2D,GL_TEXTURE_BORDER_COLOR,borderColor);
 
 	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,GL_TEXTURE_2D,m_dm,0);
+
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+    std::cerr << "Depth framebuffer is not complete!" << std::endl;
+}
+
 	glDrawBuffer(GL_NONE);
 	glReadBuffer(GL_NONE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);

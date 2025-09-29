@@ -23,6 +23,7 @@ uniform samplerCube reflection;
 //uniform int hasNormalMap;
 uniform samplerCube pointShadowMap[NR_POINT_LIGHTS];
 float shadowCalculations(vec4 lightFragPos);
+float shadowMapDebugger(vec4 lightFragPos);
 vec3 CalcDirLight(DirLight light); 
 
 struct PointLight {
@@ -249,6 +250,18 @@ float shadowCalculations(vec4 fragPosLightSpace)
     shadow /= 9.0;
     
     return shadow;
+}
+
+float shadowMapDebugger(vec4 fragPosLightSpace)
+{
+    vec3 proj = fragPosLightSpace.xyz/fragPosLightSpace.w;
+    proj = proj*0.5 + 0.5;
+
+    if(proj.z > 1.0)
+    {
+        return 0.0;
+    }
+    return texture(shadowMap,proj.xy).r;
 }
 
 float pointShadowCalculations(PointLight light,samplerCube depthMap)

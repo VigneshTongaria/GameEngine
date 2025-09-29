@@ -218,7 +218,8 @@ void Scene::init()
     
 	lightingShadowShader = ShaderManager::getShader(SHADER_TYPE::LIT_SHADOWS);
 	depthMapShader = ShaderManager::getShader(SHADER_TYPE::DEPTH);
-
+    
+	lightingShadowShader->UseShaderProgram();
 	lightingShadowShader->setInt("shadowMap",10);
 
 	lastFrame = float(glfwGetTime());
@@ -239,7 +240,7 @@ void Scene::render()
 	setViewAndProjectionForAllShaders(uboMatrices);
 
 	// Rendering scene first for depth Map for directional light
-	glViewport(0, 0, SRC_WIDTH, SRC_HEIGHT);
+	glViewport(0, 0, 1024, 1024);
 	glBindFramebuffer(GL_FRAMEBUFFER, dirLights[0]->shadowRenderTarget.getFramebufferID());
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
