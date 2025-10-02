@@ -15,7 +15,7 @@ Rigidbody::Rigidbody(float mass, glm::vec3 velocity, glm::vec3 accelaration)
 
 void Rigidbody::start()
 {
-    position = &this->gameObject->position;
+    position = &this->gameObject->transform.position;
 }
 
 void Rigidbody::fixedUpdate(float dt)

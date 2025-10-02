@@ -11,7 +11,7 @@
 #include "../managers/ResourcesManager.hpp"
 #include "../data/GeometryData.hpp"
 
-class Model : public Component
+class Model
 {
 public :
    Model(const char* path);
@@ -23,7 +23,6 @@ public :
    //void AddRigidbody();
 
 private:
-   glm::mat4 mat_model;
    glm::mat4* instancesModels;
    std::vector<Mesh> meshes;
    std::vector<Texture> textures_Loaded;

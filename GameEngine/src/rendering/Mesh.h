@@ -7,6 +7,7 @@
 #include <vector>
 #include "Shader.h"
 #include <assimp/Importer.hpp>
+#include "../core/Component.h"
 
 struct Vertex
 {
@@ -44,7 +45,7 @@ enum DRAW_MODE
     TRIANGLES,LINES,POINT,
 };
 
-class Mesh
+class Mesh : public Component
 {
 public :
     std::vector<Vertex> vertices;
@@ -52,6 +53,7 @@ public :
     std::vector<Texture> textures;
     std::vector<unsigned int> indices;   
     unsigned int VertexArrayObject;
+    glm::mat4 mat_model;
     
     Mesh(std::vector<Vertex> vertices,Material material,std::vector<Texture> textures, std::vector<unsigned int> indices);
     void Draw(Shader &Shader,GLenum mode);

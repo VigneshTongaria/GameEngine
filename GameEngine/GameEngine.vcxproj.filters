@@ -96,6 +96,9 @@
     <ClCompile Include="src\rendering\FrameBuffers\ShadowRenderTarget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\ComponentsType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="glfw3.dll" />
@@ -122,6 +125,12 @@
     <None Include="Assets\vertex_core_shadows.glsl" />
     <None Include="Assets\vertex_depthMap.glsl" />
     <None Include="Assets\Vertex_pointLight.glsl" />
+    <None Include="src\core\GameObject.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="src\core\Scene.inl">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h">
@@ -212,6 +221,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\rendering\FrameBuffers\ShadowRenderTarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\ComponentsType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

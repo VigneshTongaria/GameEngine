@@ -24,6 +24,7 @@
     <ClCompile Include="src\core\Camera.cpp" />
     <ClCompile Include="src\core\Component.cpp" />
     <ClCompile Include="src\core\Component.h" />
+    <ClCompile Include="src\core\ComponentsType.cpp" />
     <ClCompile Include="src\core\Scene.cpp" />
     <ClCompile Include="src\data\GeometryData.cpp" />
     <ClCompile Include="src\core\GameObject.cpp" />
@@ -72,6 +73,8 @@
     <None Include="assimp-vc143-mtd.dll" />
     <None Include="glfw3.dll" />
     <None Include="src\.gitattributes" />
+    <None Include="src\core\GameObject.inl" />
+    <None Include="src\core\Scene.inl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Linking\include\glad\glad.h" />
@@ -80,6 +83,7 @@
     <ClInclude Include="Linking\include\KHR\khrplatform.h" />
     <ClInclude Include="src\core\Application.h" />
     <ClInclude Include="src\core\Camera.h" />
+    <ClInclude Include="src\core\ComponentsType.h" />
     <ClInclude Include="src\core\Scene.h" />
     <ClInclude Include="src\data\GeometryData.hpp" />
     <ClInclude Include="src\core\GameObject.h" />

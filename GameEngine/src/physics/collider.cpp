@@ -36,10 +36,10 @@ Rigidbody* Collider::getAttachedRigidBody() const
 
 void Collider::UpdateDeltaPosition(const glm::vec3& delta)
 {
-    this->gameObject->position += delta;
+    this->gameObject->transform.position += delta;
 }
 
 glm::vec3 Collider::GetColliderPosition() const
 {
-    return this->gameObject->position + center;
+    return this->gameObject->transform.position + center;
 }

@@ -83,29 +83,29 @@ Model::~Model()
 
 void Model::Draw(Shader &shader,GLenum mode)
 {
-    GameObject *go = this->gameObject;
-    if (go == nullptr)
-        std::cout << "Gameobject is null" << std::endl;
-    mat_model = glm::mat4(1.0f);
-    mat_model = glm::translate(mat_model, go->position);
+    // GameObject *go = this->gameObject;
+    // if (go == nullptr)
+    //     std::cout << "Gameobject is null" << std::endl;
+    // mat_model = glm::mat4(1.0f);
+    // mat_model = glm::translate(mat_model, go->position);
 
-    if (go->rotationXYZ.x != 0)
-    {
-        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    }
-    if (go->rotationXYZ.y != 0)
-    {
-        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    }
-    if (go->rotationXYZ.z != 0)
-    {
-        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    }
+    // if (go->rotationXYZ.x != 0)
+    // {
+    //     mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    // }
+    // if (go->rotationXYZ.y != 0)
+    // {
+    //     mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    // }
+    // if (go->rotationXYZ.z != 0)
+    // {
+    //     mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    // }
 
-    mat_model = glm::scale(mat_model, go->scale);
+    // mat_model = glm::scale(mat_model, go->scale);
 
-    shader.setTransformation("mat_Model",mat_model);
-    shader.setTransformation("transpose_mat_Model",glm::transpose(glm::inverse(mat_model)));
+    // shader.setTransformation("mat_Model",mat_model);
+    // shader.setTransformation("transpose_mat_Model",glm::transpose(glm::inverse(mat_model)));
     
     for(unsigned int i=0; i < meshes.size(); i++)
     {
@@ -114,31 +114,31 @@ void Model::Draw(Shader &shader,GLenum mode)
 }
 void Model::DrawInstanced(Shader &shader,GLenum mode,unsigned int instances)
 {
-    GameObject *go = this->gameObject;
-    if (go == nullptr)
-    {
-        std::cout << "Gameobject is null" << std::endl;
-        return;
-    }
-    mat_model = glm::mat4(1.0f);
-    mat_model = glm::translate(mat_model, go->position);
+    // GameObject *go = this->gameObject;
+    // if (go == nullptr)
+    // {
+    //     std::cout << "Gameobject is null" << std::endl;
+    //     return;
+    // }
+    // mat_model = glm::mat4(1.0f);
+    // mat_model = glm::translate(mat_model, go->position);
 
-    if (go->rotationXYZ.x != 0)
-    {
-        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.x), glm::vec3(1.0f, 0.0f, 0.0f));
-    }
-    if (go->rotationXYZ.y != 0)
-    {
-        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.y), glm::vec3(0.0f, 1.0f, 0.0f));
-    }
-    if (go->rotationXYZ.z != 0)
-    {
-        mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.z), glm::vec3(0.0f, 0.0f, 1.0f));
-    }
+    // if (go->rotationXYZ.x != 0)
+    // {
+    //     mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    // }
+    // if (go->rotationXYZ.y != 0)
+    // {
+    //     mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    // }
+    // if (go->rotationXYZ.z != 0)
+    // {
+    //     mat_model = glm::rotate(mat_model, glm::radians(go->rotationXYZ.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    // }
 
-    mat_model = glm::scale(mat_model, go->scale);
+    // mat_model = glm::scale(mat_model, go->scale);
 
-    shader.setTransformation("mat_Model",mat_model);
+    // shader.setTransformation("mat_Model",mat_model);
     
     for(unsigned int i=0; i < meshes.size(); i++)
     {

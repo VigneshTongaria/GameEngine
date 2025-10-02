@@ -2,6 +2,7 @@
 #include<iostream>
 
 class GameObject;
+class DirLight;
 
 class Component {
 public:

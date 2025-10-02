@@ -7,38 +7,40 @@
 #include<functional>
 
 class Component;
+class Scene;
+
+struct Transform
+{
+    public :
+    glm::vec3 position; 
+    glm::vec3 rotationXYZ; 
+    glm::vec3 scale;
+};
+
 
 class GameObject{
 
     public :
-    glm::vec3 position;
-    glm::vec3 rotationXYZ;
-    glm::vec3 scale;
+    Transform transform;
+    Scene* scene;
+    GameObject* parent;
+    std::vector<GameObject*> childGameObjects;
     std::unordered_map<std::type_index, std::shared_ptr<Component>> components;
     std::vector<std::function<void()>> awakeCallbacks;
     std::vector<std::function<void()>> startCallbacks;
     std::vector<std::function<void()>> updateCallbacks;
 
-    GameObject(glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
+    GameObject(Scene* scene, GameObject* parent,
+        glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), 
+        glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), 
+        glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
+    GameObject(Scene* scene, GameObject* parent,Transform transform);
 
     template <typename T, typename... Args>
-    void AddComponent(Args... args)
-    {
-        auto comp = std::make_shared<T>(std::forward<Args>(args)...);
-        comp->gameObject = this;
-        components[typeid(T)] = comp;
-    }
+    void AddComponent(Args&&... args);
 
     template <typename T>
-    T* GetComponent()
-    {
-        auto it = components.find(typeid(T));
-        if (it != components.end())
-        {
-            return static_cast<T*>(it->second.get());
-        }
-        return nullptr;
-    }
+    T* GetComponent();
     void awake();
     void start();
     void update();

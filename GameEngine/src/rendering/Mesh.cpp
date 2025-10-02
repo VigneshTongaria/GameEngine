@@ -1,5 +1,6 @@
 #include "Mesh.h"
 #include "../managers/ResourcesManager.hpp"
+#include "../core/GameObject.h"
 
 Mesh :: Mesh(std::vector<Vertex> vertices,Material material, std::vector<Texture> textures, std::vector<unsigned int> indices)
 {
@@ -48,6 +49,32 @@ void Mesh::setUpMesh()
 
 void Mesh::Draw(Shader &shader,GLenum mode)
 {
+    GameObject *go = this->gameObject;
+    if (go == nullptr)
+        std::cout << "Gameobject is null" << std::endl;
+    
+    Transform* _t = &go->transform;
+    mat_model = glm::mat4(1.0f);
+    mat_model = glm::translate(mat_model, _t->position);
+
+    if (_t->rotationXYZ.x != 0)
+    {
+        mat_model = glm::rotate(mat_model, glm::radians(_t->rotationXYZ.x), glm::vec3(1.0f, 0.0f, 0.0f));
+    }
+    if (_t->rotationXYZ.y != 0)
+    {
+        mat_model = glm::rotate(mat_model, glm::radians(_t->rotationXYZ.y), glm::vec3(0.0f, 1.0f, 0.0f));
+    }
+    if (_t->rotationXYZ.z != 0)
+    {
+        mat_model = glm::rotate(mat_model, glm::radians(_t->rotationXYZ.z), glm::vec3(0.0f, 0.0f, 1.0f));
+    }
+
+    mat_model = glm::scale(mat_model, _t->scale);
+
+    shader.setTransformation("mat_Model",mat_model);
+    shader.setTransformation("transpose_mat_Model",glm::transpose(glm::inverse(mat_model)));
+    
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
       

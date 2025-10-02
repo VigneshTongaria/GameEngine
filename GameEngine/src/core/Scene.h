@@ -8,17 +8,22 @@
 #include <glm/gtx/string_cast.hpp>
 #include<iostream>
 #include<vector>
-#include "../data/GeometryData.hpp"
-#include "../managers/ResourcesManager.hpp"
-#include "../rendering/FrameBuffers/ShadowRenderTarget.h"
+#include "ComponentsType.h"
 #include "../rendering/FrameBuffers/MSAARenderTarget.h"
-#include "GameObject.h"
-#include "../rendering/Model.h"
-#include "../rendering/Light/DirLight.h"
+#include "../managers/ResourcesManager.hpp"
+
+class Component;
+class GameObject;
+class Model;
+class DirLight;
+class CubeMap;
+class Camera;
+class Shader;
+struct Transform;
+
 class Scene
 {
 private:
-    /* data */
 public:
     Scene(int width,int height);
     void init();
@@ -36,6 +41,14 @@ public:
 
     MSAARenderTarget mSSARenderTarget;
     std::vector<GameObject> gameObjects;
+    std::unordered_map<COMPONENT_TYPE,std::vector<std::shared_ptr<Component>>> componentsMap;
+
+    template<typename T> 
+    void addComponentToScene(std::shared_ptr<T> comp);
+
+    template<typename T = void,typename...Args> 
+    GameObject* addNewGameObjectToScene(GameObject* parent,Transform transform, Args&&... args);
+
     std::vector<Model*> sceneModels;
     std::vector<DirLight*> dirLights;
     CubeMap skybox;
@@ -48,6 +61,7 @@ public:
     void process_inputs();
 
     void setViewAndProjectionForAllShaders(unsigned int uboIndex);
+    void updateSceneComponentsType(COMPONENT_TYPE type);
  
     ~Scene();
 };

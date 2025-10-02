@@ -1,7 +1,15 @@
 #include "Scene.h"
+#include "Scene.inl"
 #include "../managers/ShaderManager.hpp"
 #include "../io/KeyBoard.h"
 #include "../io/Mouse.h"
+#include "../data/GeometryData.hpp"
+#include "../managers/ResourcesManager.hpp"
+#include "../rendering/FrameBuffers/ShadowRenderTarget.h"
+#include "../rendering/FrameBuffers/MSAARenderTarget.h"
+#include "GameObject.h"
+#include "../rendering/Model.h"
+#include "../rendering/Light/DirLight.h"
 
 Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
 {
@@ -149,12 +157,12 @@ void Scene::init()
 	glBindFramebuffer(GL_FRAMEBUFFER,0);
 
 	// Generating directional light depth map buffers
-	gameObjects.push_back(GameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
+	gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
 	gameObjects.back().AddComponent<DirLight>();
 
-	dirLights.push_back(gameObjects.back().GetComponent<DirLight>());
+	//dirLights.push_back(gameObjects.back().GetComponent<DirLight>());
 
-	gameObjects.push_back(GameObject(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.1f,0.1f,0.1f)));
+	gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.4f,0.4f,0.4f)));
 	gameObjects.back().AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 	sceneModels.push_back(gameObjects.back().GetComponent<Model>());
 
@@ -240,14 +248,20 @@ void Scene::render()
 	setViewAndProjectionForAllShaders(uboMatrices);
 
 	// Rendering scene first for depth Map for directional light
-	glViewport(0, 0, 1024, 1024);
-	glBindFramebuffer(GL_FRAMEBUFFER, dirLights[0]->shadowRenderTarget.getFramebufferID());
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	for(auto& dir : dirLights)
+	{
+		glViewport(0, 0, 1024, 1024);
+		glBindFramebuffer(GL_FRAMEBUFFER, dir->shadowRenderTarget.getFramebufferID());
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_DEPTH_TEST);
+		glEnable(GL_CULL_FACE);
+		glEnable(GL_DEPTH_TEST);
 
-	draw(depthMapShader);
+		glActiveTexture(GL_TEXTURE10);
+		dirLights[0]->shadowRenderTarget.bindTexture();
+
+		draw(depthMapShader);
+	}
 
 	// Rendering scene for all lights
 	// for(unsigned int i=0; i<NR_POINT_LIGHTS; i++)
@@ -290,8 +304,15 @@ void Scene::render()
 
 	lightingShadowShader->UseShaderProgram();
 
-	glActiveTexture(GL_TEXTURE10);
-	dirLights[0]->shadowRenderTarget.bindTexture();
+	// glActiveTexture(GL_TEXTURE10);
+	// dirLights[0]->shadowRenderTarget.bindTexture();
+
+	
+	lightingShadowShader->setVec3("viewPos", mainCamera.GetCameraPos());
+
+	glActiveTexture(GL_TEXTURE0);
+
+	draw(lightingShadowShader);
 
 	// for(unsigned int i=0;i<NR_POINT_LIGHTS;i++)
 	// {
@@ -304,8 +325,6 @@ void Scene::render()
 	// LightingShader.setVec3("spotLight.position", MainCamera.GetCameraPos());
 	// LightingShader.setVec3("spotLight.direction", MainCamera.GetCameraFront());
 
-	lightingShadowShader->setVec3("viewPos", mainCamera.GetCameraPos());
-
 	// for(unsigned int i = 0 ; i<10 ; i++)
 	// {
 	// 	glm::mat4 _model = glm::mat4(1.0f);
@@ -317,9 +336,6 @@ void Scene::render()
 
 	// glActiveTexture(GL_TEXTURE13);
 	// glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMap.id);
-	glActiveTexture(GL_TEXTURE0);
-
-	draw(lightingShadowShader);
 
 	// Drawing debug normals gizmos
 
@@ -557,6 +573,25 @@ void Scene::setViewAndProjectionForAllShaders(unsigned int uboIndex)
 	glBufferSubData(GL_UNIFORM_BUFFER,sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(mainCamera.GetViewMatrix()));
 	glBufferSubData(GL_UNIFORM_BUFFER,2*sizeof(glm::mat4),sizeof(glm::mat4),glm::value_ptr(mainCamera.GetProjectionViewMatrix()));
 	glBindBuffer(GL_UNIFORM_BUFFER,0);
+}
+void Scene::updateSceneComponentsType(COMPONENT_TYPE type)
+{
+	switch (type)
+	{
+	case COMPONENT_TYPE::DIRLIGHT:
+	    
+		dirLights.clear();
+
+		for (auto& dir : componentsMap[COMPONENT_TYPE::DIRLIGHT])
+		{
+			dirLights.push_back(static_cast<DirLight*>(dir.get()));
+		}
+		/* code */
+		break;
+	
+	default:
+		break;
+	}
 }
 
 Scene::~Scene()
