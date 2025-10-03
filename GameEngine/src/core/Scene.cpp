@@ -157,14 +157,19 @@ void Scene::init()
 	glBindFramebuffer(GL_FRAMEBUFFER,0);
 
 	// Generating directional light depth map buffers
-	gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
-	gameObjects.back().AddComponent<DirLight>();
+	// gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
+	// gameObjects.back().AddComponent<DirLight>();
+
+	addNewGameObjectToScene<DirLight>(nullptr,
+		Transform(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
 
 	//dirLights.push_back(gameObjects.back().GetComponent<DirLight>());
 
-	gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.4f,0.4f,0.4f)));
-	gameObjects.back().AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
-	sceneModels.push_back(gameObjects.back().GetComponent<Model>());
+	Model cityModel = Model("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
+
+	// gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.4f,0.4f,0.4f)));
+	// gameObjects.back().AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
+	// sceneModels.push_back(gameObjects.back().GetComponent<Model>());
 
 	// Generating point light cubemaps depth buffers
 

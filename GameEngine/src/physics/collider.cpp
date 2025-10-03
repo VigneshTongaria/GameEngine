@@ -1,12 +1,14 @@
 #include "collider.hpp"
 #include "collisionsManager.hpp"
 #include "rigidbody.hpp"
-#include "../core/GameObject.h"
+#include "../core/GameObject.inl"
 
 Collider::Collider(const glm::vec3& offset)
 {
     GameObject* g = this->gameObject;
     OnCollisionEnterCallback = nullptr;
+    hasRigidBody = false;
+    rb = nullptr;
     isTrigger = false;
 
     if (g == nullptr)

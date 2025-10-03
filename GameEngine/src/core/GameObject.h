@@ -11,10 +11,52 @@ class Scene;
 
 struct Transform
 {
-    public :
-    glm::vec3 position; 
-    glm::vec3 rotationXYZ; 
+    glm::vec3 position;
+    glm::vec3 rotationXYZ;
     glm::vec3 scale;
+
+    Transform() : position(glm::vec3(0.0f)), rotationXYZ(glm::vec3(0.0f)), scale(glm::vec3(1.0f)) {}
+
+    Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl) {}
+
+    mutable bool dirty = true;
+    mutable glm::mat4 cachedMatrix{1.0f};
+
+    // Overloaded operators for position
+    Transform& operator+=(const glm::vec3& offset) {
+        position += offset;
+        dirty = true;
+        return *this;
+    }
+
+    Transform& operator-=(const glm::vec3& offset) {
+        position -= offset;
+        dirty = true;
+        return *this;
+    }
+
+    void setScale(const glm::vec3& s) {
+        scale = s;
+        dirty = true;
+    }
+
+    void setRotation(const glm::vec3& r) {
+        rotationXYZ = r;
+        dirty = true;
+    }
+
+    glm::mat4 getTransformationMatrix() const {
+        if (dirty) {
+            cachedMatrix = glm::mat4(1.0f);
+            cachedMatrix = glm::translate(cachedMatrix, position);
+            cachedMatrix = glm::rotate(cachedMatrix, glm::radians(rotationXYZ.x), {1,0,0});
+            cachedMatrix = glm::rotate(cachedMatrix, glm::radians(rotationXYZ.y), {0,1,0});
+            cachedMatrix = glm::rotate(cachedMatrix, glm::radians(rotationXYZ.z), {0,0,1});
+            cachedMatrix = glm::scale(cachedMatrix, scale);
+            dirty = false;
+        }
+        return cachedMatrix;
+    }
 };
 
 

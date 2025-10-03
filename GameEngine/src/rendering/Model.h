@@ -17,6 +17,7 @@ public :
    Model(const char* path);
    Model(const char* path, unsigned int instances);
    Model(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
+   GameObject* addModelToScene(Scene* scene,GameObject* parent = nullptr);
    ~Model();
    void Draw(Shader &shader,GLenum mode);
    void DrawInstanced(Shader &shader,GLenum mode,unsigned int NOFinstance);

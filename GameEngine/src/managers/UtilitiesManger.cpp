@@ -22,3 +22,20 @@ void UtilitiesManger::mattrixDebugger(const glm::mat4 mat)
         std::cout << std::endl;
     }
 }
+
+void decomposeTRS(const glm::mat4& m, glm::vec3& pos, glm::quat& rot, glm::vec3& scale)
+{
+    // Extract translation directly
+    pos = glm::vec3(m[3]); // last column
+
+    // Extract scale: length of basis vectors
+    scale.x = glm::length(glm::vec3(m[0]));
+    scale.y = glm::length(glm::vec3(m[1]));
+    scale.z = glm::length(glm::vec3(m[2]));
+
+    // Normalize the rotation matrix columns (remove scale)
+    glm::mat3 rotMat;
+    rotMat[0] = glm::vec3(m[0]) / scale.x;
+    rotMat[1] = glm::vec3(m[1]) / scale.y;
+    rotMat[2] = glm::vec3(m[2]) / scale.z;
+}

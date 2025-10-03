@@ -1,6 +1,8 @@
 #include "Model.h"
 #include "stb/stb_image.h"
 #include "../managers/UtilitiesManager.hpp"
+#include "../core/Scene.inl"
+#include <glm/gtx/matrix_decompose.hpp>
 
 Model::Model(const char* path)
 {
@@ -79,6 +81,13 @@ Model::~Model()
     {
         glDeleteTextures(1,&textures_Loaded[i].id);
     }
+}
+
+GameObject* Model::addModelToScene(Scene* scene,GameObject* parent)
+{
+    GameObject* modelPar = scene->addNewGameObjectToScene<>(parent, Transform());
+    glm::decom
+    return modelPar;
 }
 
 void Model::Draw(Shader &shader,GLenum mode)
@@ -172,7 +181,7 @@ void Model::processNode(aiNode* Parent,aiNode* node,const aiScene* scene)
     glm::mat4 globalTransform = glm::mat4(1.0f);
     if(Parent != nullptr) globalTransform *= UtilitiesManger::convertToGLM(Parent->mTransformation);
     globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
-    //std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
+    std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
