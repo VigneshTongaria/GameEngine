@@ -184,7 +184,7 @@ void Model::processNode(aiNode* Parent,aiNode* node,const aiScene* scene)
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh,scene,globalTransform));
+        meshHierarchyDatas.push_back(processMesh(mesh,scene,globalTransform));
     }
    // std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
     for(unsigned int i=0; i<node->mNumChildren; i++)
@@ -193,14 +193,14 @@ void Model::processNode(aiNode* Parent,aiNode* node,const aiScene* scene)
     }
 }
 
-Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransform)
+MeshHierarchyData Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransform)
 {
     std::vector<Vertex> vertices;
     Material mat;
     std::vector<Texture> textures;
     std::vector<unsigned int> indices;  
 
-    glm::mat3 globalTransformInverseTrans = glm::transpose(glm::inverse(glm::mat3(globalTransform)));
+    //glm::mat3 globalTransformInverseTrans = glm::transpose(glm::inverse(glm::mat3(globalTransform)));
 
     
     //Processing vertices data
@@ -211,14 +211,14 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
 
         if(mesh->HasNormals())
         {
-            vertex.normal = globalTransformInverseTrans * glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
+            vertex.normal = glm::vec3(mesh->mNormals[i].x,mesh->mNormals[i].y,mesh->mNormals[i].z);
         }
 
         if(mesh->HasTangentsAndBitangents())
         {
-            vertex.tangent = globalTransformInverseTrans * glm::vec3(mesh->mTangents[i].x,mesh->mTangents[i].y,mesh->mTangents[i].z);
+            vertex.tangent = glm::vec3(mesh->mTangents[i].x,mesh->mTangents[i].y,mesh->mTangents[i].z);
 
-            vertex.bitangent = globalTransformInverseTrans * glm::cross(vertex.normal,vertex.tangent);
+            vertex.bitangent = glm::cross(vertex.normal,vertex.tangent);
         }
         
         if(mesh->HasTextureCoords(0))
@@ -272,7 +272,7 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
         mat.shininess = shininess;
     }
 
-    return Mesh(vertices,mat, textures, indices);
+    return MeshHierarchyData(Mesh(vertices,mat, textures, indices),globalTransform);
 }
 
 std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)

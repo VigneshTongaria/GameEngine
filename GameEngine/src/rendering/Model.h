@@ -11,12 +11,19 @@
 #include "../managers/ResourcesManager.hpp"
 #include "../data/GeometryData.hpp"
 
-struct MeshGameObjectData
+struct MeshHierarchyData
 {
    Mesh mesh;
    glm::mat4 globalTransform;
 
-   MeshGameObjectData(Mesh m,glm::mat4 gT) : mesh(m),globalTransform(gT) { };
+   MeshHierarchyData(Mesh m,glm::mat4 gT) : mesh(m),globalTransform(gT) { };
+
+   std::vector<MeshHierarchyData*> children;
+
+   void addChild(MeshHierarchyData* data)
+   {
+       children.push_back(data);
+   }
 };
 
 class Model
@@ -34,12 +41,12 @@ public :
 private:
    glm::mat4* instancesModels;
    std::vector<Mesh> meshes;
-   std::vector<MeshGameObjectData> meshGameObjects;
+   std::vector<MeshHierarchyData> meshHierarchyDatas;
    std::string directory;
    aiScene modelData;
    void loadModel(std::string path);
    void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
    void processNode(aiNode* Parent, aiNode* node,const aiScene *scene);
-   Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
+   MeshHierarchyData processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
    std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
 };
