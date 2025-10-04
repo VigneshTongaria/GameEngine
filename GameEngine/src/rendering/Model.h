@@ -11,6 +11,14 @@
 #include "../managers/ResourcesManager.hpp"
 #include "../data/GeometryData.hpp"
 
+struct MeshGameObjectData
+{
+   Mesh mesh;
+   glm::mat4 globalTransform;
+
+   MeshGameObjectData(Mesh m,glm::mat4 gT) : mesh(m),globalTransform(gT) { };
+};
+
 class Model
 {
 public :
@@ -26,8 +34,9 @@ public :
 private:
    glm::mat4* instancesModels;
    std::vector<Mesh> meshes;
-   std::vector<Texture> textures_Loaded;
+   std::vector<MeshGameObjectData> meshGameObjects;
    std::string directory;
+   aiScene modelData;
    void loadModel(std::string path);
    void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
    void processNode(aiNode* Parent, aiNode* node,const aiScene *scene);

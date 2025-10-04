@@ -233,8 +233,7 @@
               "ViewState": "AgIAAPkDAAAAAAAAAAAYwA0EAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-01T11:13:06.84Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -246,8 +245,7 @@
               "RelativeToolTip": "src\\rendering\\Model.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-03T17:04:32.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T17:04:32.963Z"
             },
             {
               "$type": "Document",
@@ -259,8 +257,7 @@
               "RelativeToolTip": "src\\core\\GameObject.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-03T17:02:06.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T17:02:06.335Z"
             },
             {
               "$type": "Document",
@@ -272,8 +269,7 @@
               "RelativeToolTip": "src\\core\\GameObject.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-02T12:07:42.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-02T12:07:42.218Z"
             },
             {
               "$type": "Document",
@@ -298,8 +294,7 @@
               "RelativeToolTip": "src\\core\\Scene.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-28T11:10:36.159Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-28T11:10:36.159Z"
             },
             {
               "$type": "Document",
@@ -311,8 +306,7 @@
               "RelativeToolTip": "src\\physics\\rigidbody.hpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-04T17:38:19.046Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-04T17:38:19.046Z"
             },
             {
               "$type": "Document",
@@ -324,8 +318,7 @@
               "RelativeToolTip": "src\\physics\\rigidbody.cpp",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-04T17:37:58.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-04T17:37:58.17Z"
             },
             {
               "$type": "Document",
@@ -337,8 +330,7 @@
               "RelativeToolTip": "src\\physics\\collider.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-10T15:37:05.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-10T15:37:05.708Z"
             },
             {
               "$type": "Document",

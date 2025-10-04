@@ -73,14 +73,11 @@ Model::Model(const char* path,unsigned int instances)
 }
 Model::Model(DEFAULT_MODEL model,Material mat, std::vector<Texture> textures)
 {
-     loadModel(model,mat,textures);
+    loadModel(model,mat,textures);
 }
 Model::~Model()
 {
-    for(int i=0; i<textures_Loaded.size(); i++)
-    {
-        glDeleteTextures(1,&textures_Loaded[i].id);
-    }
+
 }
 
 GameObject* Model::addModelToScene(Scene* scene,GameObject* parent)
@@ -172,6 +169,8 @@ void Model::loadModel(std::string path)
     directory = path.substr(0,path.find_last_of('/'));
 
     std::cout<<" Texture count for the model : "<<directory<<" "<<scene->mNumTextures<<"\n";
+
+    modelData = *scene;
 
     processNode(nullptr, scene->mRootNode,scene);
 }
@@ -314,7 +313,6 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
                     }
 
                     textures.push_back(texture);
-                    textures_Loaded.push_back(texture);
                 }
         }
 
@@ -323,7 +321,6 @@ std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMateria
             Texture texture = ResourcesManager::loadTexture(path.C_Str(), directory, t_type, path);
 
             textures.push_back(texture);
-            textures_Loaded.push_back(texture);
             // std::cout << "Texture - " << directory << "/ " << path.C_Str() << " Loaded" << std::endl;
         }
     }
