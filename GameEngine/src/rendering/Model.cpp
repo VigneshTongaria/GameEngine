@@ -172,28 +172,37 @@ void Model::loadModel(std::string path)
 
     modelData = *scene;
 
-    processNode(nullptr, scene->mRootNode,scene);
+    processNode(nullptr, scene->mRootNode,scene,nullptr);
 }
 
-void Model::processNode(aiNode* Parent,aiNode* node,const aiScene* scene)
+void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* scene,MeshHierarchyData* parentMesh)
 {
     glm::mat4 globalTransform = glm::mat4(1.0f);
     if(Parent != nullptr) globalTransform *= UtilitiesManger::convertToGLM(Parent->mTransformation);
     globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
     std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
+
+    MeshRenderer newMeshRenderer;
+
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        meshHierarchyDatas.push_back(processMesh(mesh,scene,globalTransform));
+        newMeshRenderer.meshes.emplace_back(processMesh(mesh,scene,globalTransform));
     }
+
+    MeshHierarchyData* data =  &meshHierarchyDatas.emplace_back(MeshHierarchyData(newMeshRenderer,globalTransform));
+    
+    if(parentMesh != nullptr)
+      parentMesh->addChild(data);
+
    // std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
     for(unsigned int i=0; i<node->mNumChildren; i++)
     {
-        processNode(node,node->mChildren[i],scene);
+        processNode(node,node->mChildren[i],scene,data);
     }
 }
 
-MeshHierarchyData Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransform)
+Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransform)
 {
     std::vector<Vertex> vertices;
     Material mat;
@@ -272,7 +281,7 @@ MeshHierarchyData Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4
         mat.shininess = shininess;
     }
 
-    return MeshHierarchyData(Mesh(vertices,mat, textures, indices),globalTransform);
+    return Mesh(vertices,mat, textures, indices);
 }
 
 std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)

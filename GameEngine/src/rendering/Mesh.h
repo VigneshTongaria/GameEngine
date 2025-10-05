@@ -45,7 +45,7 @@ enum DRAW_MODE
     TRIANGLES,LINES,POINT,
 };
 
-class Mesh : public Component
+class Mesh
 {
 public :
     std::vector<Vertex> vertices;

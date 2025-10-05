@@ -10,13 +10,14 @@
 #include "../core/GameObject.h"
 #include "../managers/ResourcesManager.hpp"
 #include "../data/GeometryData.hpp"
+#include "MeshRenderer.h"
 
 struct MeshHierarchyData
 {
-   Mesh mesh;
+   MeshRenderer meshRenderer;
    glm::mat4 globalTransform;
 
-   MeshHierarchyData(Mesh m,glm::mat4 gT) : mesh(m),globalTransform(gT) { };
+   MeshHierarchyData(MeshRenderer m,glm::mat4 gT) : meshRenderer(m),globalTransform(gT) { };
 
    std::vector<MeshHierarchyData*> children;
 
@@ -46,7 +47,7 @@ private:
    aiScene modelData;
    void loadModel(std::string path);
    void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
-   void processNode(aiNode* Parent, aiNode* node,const aiScene *scene);
-   MeshHierarchyData processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
+   void processNode(const aiNode* Parent,const aiNode* node,const aiScene *scene,MeshHierarchyData* parentMesh);
+   Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
    std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
 };
