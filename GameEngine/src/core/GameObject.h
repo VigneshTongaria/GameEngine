@@ -19,6 +19,11 @@ struct Transform
 
     Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl) {}
 
+    Transform(glm::mat4 transformMattrix)
+    {
+        cachedMatrix = transformMattrix;
+    }
+
     mutable bool dirty = true;
     mutable glm::mat4 cachedMatrix{1.0f};
 

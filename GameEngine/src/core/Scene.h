@@ -20,6 +20,7 @@ class CubeMap;
 class Camera;
 class Shader;
 struct Transform;
+class MeshRenderer;
 
 class Scene
 {
@@ -50,6 +51,7 @@ public:
     GameObject* addNewGameObjectToScene(GameObject* parent,Transform transform, Args&&... args);
 
     std::vector<Model*> sceneModels;
+    std::vector<MeshRenderer*> sceneMeshRenderers;
     std::vector<DirLight*> dirLights;
     CubeMap skybox;
     Camera mainCamera;

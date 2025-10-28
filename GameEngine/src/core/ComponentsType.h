@@ -2,7 +2,7 @@
 
 enum COMPONENT_TYPE
 {
-    MESH,DIRLIGHT,COLLIDER
+    MESH_RENDERER,DIRLIGHT,COLLIDER
 };
 
 
@@ -13,6 +13,6 @@ class DirLight;
 template <>
 inline COMPONENT_TYPE GetComponentTypeEnum<DirLight>() { return COMPONENT_TYPE::DIRLIGHT; }
 
-class Model;
+class MeshRenderer;
 template <>
-inline COMPONENT_TYPE GetComponentTypeEnum<Model>() { return COMPONENT_TYPE::MESH; }
+inline COMPONENT_TYPE GetComponentTypeEnum<MeshRenderer>() { return COMPONENT_TYPE::MESH_RENDERER; }

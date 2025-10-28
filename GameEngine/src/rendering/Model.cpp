@@ -83,7 +83,15 @@ Model::~Model()
 GameObject* Model::addModelToScene(Scene* scene,GameObject* parent)
 {
     GameObject* modelPar = scene->addNewGameObjectToScene<>(parent, Transform());
-    glm::decom
+    
+    for(auto& data : meshHierarchyDatas)
+    {
+        for(auto& meshes : data.children)
+        {
+
+        }
+    }
+
     return modelPar;
 }
 
@@ -282,6 +290,16 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
     }
 
     return Mesh(vertices,mat, textures, indices);
+}
+
+GameObject* Model::processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent = nullptr)
+{
+     GameObject* parent = meshData->addMeshRendererToScene(scene,parent);
+
+     for(auto& child : meshData->children)
+     {
+        processMeshData(child,scene,parent);
+     }
 }
 
 std::vector<Texture> Model::loadMaterialsTextures(const aiScene* scene,aiMaterial* mat,aiTextureType type,TEXTURE_TYPE t_type)

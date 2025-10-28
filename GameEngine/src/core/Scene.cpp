@@ -10,6 +10,7 @@
 #include "GameObject.h"
 #include "../rendering/Model.h"
 #include "../rendering/Light/DirLight.h"
+#include "../rendering/MeshRenderer.h"
 
 Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
 {
@@ -593,6 +594,15 @@ void Scene::updateSceneComponentsType(COMPONENT_TYPE type)
 		}
 		/* code */
 		break;
+	
+	case COMPONENT_TYPE::MESH_RENDERER:
+	    
+	     sceneMeshRenderers.clear();
+
+		 for (auto& meshr : componentsMap[COMPONENT_TYPE::MESH_RENDERER])
+		{
+			sceneMeshRenderers.push_back(static_cast<MeshRenderer*>(meshr.get()));
+		}
 	
 	default:
 		break;
