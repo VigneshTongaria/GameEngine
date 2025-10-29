@@ -509,9 +509,13 @@ void Scene::render()
 void Scene::draw(Shader* shader)
 {
 	shader->UseShaderProgram();
-    for(auto& model : sceneModels)
+    // for(auto& model : sceneModels)
+	// {
+	// 	model->Draw(*shader,GL_TRIANGLES);
+	// }
+	for(auto& mR : sceneMeshRenderers)
 	{
-		model->Draw(*shader,GL_TRIANGLES);
+		mR->draw(*shader,GL_TRIANGLES);
 	}
 }
 

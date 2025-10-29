@@ -14,18 +14,20 @@ struct Transform
     glm::vec3 position;
     glm::vec3 rotationXYZ;
     glm::vec3 scale;
+    Transform* parent;
 
-    Transform() : position(glm::vec3(0.0f)), rotationXYZ(glm::vec3(0.0f)), scale(glm::vec3(1.0f)) {}
+    mutable bool dirty = true;
+    mutable glm::mat4 globalMatrix{1.0f};
+    mutable glm::mat4 localMatrix{1.0f};
+
+    Transform() : position(glm::vec3(0.0f)), rotationXYZ(glm::vec3(0.0f)), scale(glm::vec3(1.0f)),parent(nullptr) {}
 
     Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl) {}
 
-    Transform(glm::mat4 transformMattrix)
+    Transform(glm::mat4 localTransformMatrix)
     {
-        cachedMatrix = transformMattrix;
+        localMatrix = localTransformMatrix;
     }
-
-    mutable bool dirty = true;
-    mutable glm::mat4 cachedMatrix{1.0f};
 
     // Overloaded operators for position
     Transform& operator+=(const glm::vec3& offset) {
@@ -50,17 +52,22 @@ struct Transform
         dirty = true;
     }
 
+    void update()
+    {
+        globalMatrix = localMatrix * parent->getTransformationMatrix();
+    }
+
     glm::mat4 getTransformationMatrix() const {
         if (dirty) {
-            cachedMatrix = glm::mat4(1.0f);
-            cachedMatrix = glm::translate(cachedMatrix, position);
-            cachedMatrix = glm::rotate(cachedMatrix, glm::radians(rotationXYZ.x), {1,0,0});
-            cachedMatrix = glm::rotate(cachedMatrix, glm::radians(rotationXYZ.y), {0,1,0});
-            cachedMatrix = glm::rotate(cachedMatrix, glm::radians(rotationXYZ.z), {0,0,1});
-            cachedMatrix = glm::scale(cachedMatrix, scale);
+            localMatrix = glm::mat4(1.0f);
+            localMatrix = glm::translate(localMatrix, position);
+            localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.x), {1,0,0});
+            localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.y), {0,1,0});
+            localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.z), {0,0,1});
+            localMatrix = glm::scale(localMatrix, scale);
             dirty = false;
         }
-        return cachedMatrix;
+        return globalMatrix;
     }
 };
 

@@ -56,7 +56,7 @@ public :
     glm::mat4 mat_model;
     
     Mesh(std::vector<Vertex> vertices,Material material,std::vector<Texture> textures, std::vector<unsigned int> indices);
-    void Draw(Shader &Shader,GLenum mode);
+    void Draw(Shader &Shader,const glm::mat4& transformation,GLenum mode);
     void AssignTextures(Shader &Shader);
 private:
     unsigned int VAO,VBO,EBO;

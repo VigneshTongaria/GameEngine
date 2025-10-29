@@ -28,7 +28,12 @@ struct MeshHierarchyData
 
    GameObject* addMeshRendererToScene(Scene* scene,GameObject* parent = nullptr)
    {
-        scene->addNewGameObjectToScene<MeshRenderer>(parent,Transform(globalTransform));
+      MeshRenderer* newMeshRen =  scene->addNewGameObjectToScene<MeshRenderer>(parent,Transform(globalTransform))->GetComponent<MeshRenderer>();
+
+      for(auto& mesh : meshRenderer.meshes)
+      {
+         newMeshRen->meshes.emplace_back(mesh);
+      }
    }
 };
 

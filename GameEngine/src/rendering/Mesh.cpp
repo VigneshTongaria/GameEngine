@@ -47,13 +47,13 @@ void Mesh::setUpMesh()
    VertexArrayObject = VAO;
 }
 
-void Mesh::Draw(Shader &shader,GLenum mode)
+void Mesh::Draw(Shader &shader,const glm::mat4& transformation, GLenum mode)
 {
-    GameObject *go = this->gameObject;
-    if (go == nullptr)
-        std::cout << "Gameobject is null" << std::endl;
+    // GameObject *go = this->gameObject;
+    // if (go == nullptr)
+    //     std::cout << "Gameobject is null" << std::endl;
     
-    mat_model = go->transform.getTransformationMatrix();
+    mat_model = transformation;
     // mat_model = glm::translate(mat_model, _t->position);
 
     // if (_t->rotationXYZ.x != 0)

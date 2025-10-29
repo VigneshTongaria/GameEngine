@@ -84,13 +84,7 @@ GameObject* Model::addModelToScene(Scene* scene,GameObject* parent)
 {
     GameObject* modelPar = scene->addNewGameObjectToScene<>(parent, Transform());
     
-    for(auto& data : meshHierarchyDatas)
-    {
-        for(auto& meshes : data.children)
-        {
-
-        }
-    }
+    processMeshData(&meshHierarchyDatas[0],scene,modelPar);
 
     return modelPar;
 }
@@ -121,10 +115,10 @@ void Model::Draw(Shader &shader,GLenum mode)
     // shader.setTransformation("mat_Model",mat_model);
     // shader.setTransformation("transpose_mat_Model",glm::transpose(glm::inverse(mat_model)));
     
-    for(unsigned int i=0; i < meshes.size(); i++)
-    {
-        meshes[i].Draw(shader,mode);
-    }
+    // for(unsigned int i=0; i < meshes.size(); i++)
+    // {
+    //     meshes[i].Draw(shader,mode);
+    // }
 }
 void Model::DrawInstanced(Shader &shader,GLenum mode,unsigned int instances)
 {
@@ -224,7 +218,8 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
     for(unsigned int i=0; i< mesh->mNumVertices; i++)
     {
         Vertex vertex;
-        vertex.position = globalTransform * glm::vec4(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,1.0f);
+        //vertex.position = globalTransform * glm::vec4(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,1.0f);
+        vertex.position = glm::vec4(mesh->mVertices[i].x,mesh->mVertices[i].y,mesh->mVertices[i].z,1.0f);
 
         if(mesh->HasNormals())
         {
