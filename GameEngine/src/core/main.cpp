@@ -554,6 +554,9 @@ int main()
 
 	scene.init();
 
+	// Loading model
+	
+
 	while (!glfwWindowShouldClose(window))
 	{
 		scene.render();

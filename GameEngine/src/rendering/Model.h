@@ -8,6 +8,7 @@
 #include <assimp/postprocess.h>
 #include "../core/Component.h"
 #include "../core/GameObject.h"
+#include "../core/Scene.h"
 #include "../managers/ResourcesManager.hpp"
 #include "../data/GeometryData.hpp"
 #include "MeshRenderer.h"
@@ -34,6 +35,7 @@ struct MeshHierarchyData
       {
          newMeshRen->meshes.emplace_back(mesh);
       }
+      return newMeshRen->gameObject;
    }
 };
 
@@ -43,7 +45,7 @@ public :
    Model(const char* path);
    Model(const char* path, unsigned int instances);
    Model(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
-   GameObject* addModelToScene(Scene* scene,GameObject* parent = nullptr);
+   GameObject* addModelToScene(Scene* scene,GameObject* parent = nullptr, Transform transform = Transform());
    ~Model();
    void Draw(Shader &shader,GLenum mode);
    void DrawInstanced(Shader &shader,GLenum mode,unsigned int NOFinstance);
@@ -59,6 +61,6 @@ private:
    void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
    void processNode(const aiNode* Parent,const aiNode* node,const aiScene *scene,MeshHierarchyData* parentMesh);
    Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
-   GameObject* processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent = nullptr);
+   void processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent = nullptr);
    std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
 };

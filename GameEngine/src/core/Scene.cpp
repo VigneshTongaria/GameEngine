@@ -168,6 +168,8 @@ void Scene::init()
 
 	Model cityModel = Model("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 
+	cityModel.addModelToScene(this);
+
 	// gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.4f,0.4f,0.4f)));
 	// gameObjects.back().AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 	// sceneModels.push_back(gameObjects.back().GetComponent<Model>());

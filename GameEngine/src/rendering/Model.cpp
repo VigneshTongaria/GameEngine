@@ -80,9 +80,9 @@ Model::~Model()
 
 }
 
-GameObject* Model::addModelToScene(Scene* scene,GameObject* parent)
+GameObject* Model::addModelToScene(Scene* scene,GameObject* parent, Transform transform)
 {
-    GameObject* modelPar = scene->addNewGameObjectToScene<>(parent, Transform());
+    GameObject* modelPar = scene->addNewGameObjectToScene<>(parent, transform);
     
     processMeshData(&meshHierarchyDatas[0],scene,modelPar);
 
@@ -179,9 +179,12 @@ void Model::loadModel(std::string path)
 
 void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* scene,MeshHierarchyData* parentMesh)
 {
-    glm::mat4 globalTransform = glm::mat4(1.0f);
-    if(Parent != nullptr) globalTransform *= UtilitiesManger::convertToGLM(Parent->mTransformation);
-    globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
+    // glm::mat4 globalTransform = glm::mat4(1.0f);
+    // if(Parent != nullptr) globalTransform *= UtilitiesManger::convertToGLM(Parent->mTransformation);
+    // globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
+    // std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
+
+    glm::mat4 localTransform = UtilitiesManger::convertToGLM(node->mTransformation);
     std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
 
     MeshRenderer newMeshRenderer;
@@ -189,10 +192,14 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
     for(unsigned int i = 0; i<node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        newMeshRenderer.meshes.emplace_back(processMesh(mesh,scene,globalTransform));
+        newMeshRenderer.meshes.emplace_back(processMesh(mesh,scene,localTransform));
     }
 
-    MeshHierarchyData* data =  &meshHierarchyDatas.emplace_back(MeshHierarchyData(newMeshRenderer,globalTransform));
+    MeshHierarchyData newData = MeshHierarchyData(newMeshRenderer, localTransform);
+
+    meshHierarchyDatas.emplace_back(newData);
+
+    MeshHierarchyData* data = &meshHierarchyDatas.back();
     
     if(parentMesh != nullptr)
       parentMesh->addChild(data);
@@ -200,7 +207,7 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
    // std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
     for(unsigned int i=0; i<node->mNumChildren; i++)
     {
-        processNode(node,node->mChildren[i],scene,data);
+        processNode(node,node->mChildren[i],scene, data);
     }
 }
 
@@ -287,13 +294,13 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
     return Mesh(vertices,mat, textures, indices);
 }
 
-GameObject* Model::processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent = nullptr)
+void Model::processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent)
 {
-     GameObject* parent = meshData->addMeshRendererToScene(scene,parent);
+     GameObject* m_NewMesh = meshData->addMeshRendererToScene(scene,parent);
 
      for(auto& child : meshData->children)
      {
-        processMeshData(child,scene,parent);
+        processMeshData(child,scene, m_NewMesh);
      }
 }
 

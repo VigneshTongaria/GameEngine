@@ -4,6 +4,7 @@
 #include <typeindex>
 #include <memory>
 #include<glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include<functional>
 
 class Component;
@@ -20,11 +21,19 @@ struct Transform
     mutable glm::mat4 globalMatrix{1.0f};
     mutable glm::mat4 localMatrix{1.0f};
 
-    Transform() : position(glm::vec3(0.0f)), rotationXYZ(glm::vec3(0.0f)), scale(glm::vec3(1.0f)),parent(nullptr) {}
+    Transform() : position(glm::vec3(0.0f)), rotationXYZ(glm::vec3(0.0f)), scale(glm::vec3(1.0f)),parent(nullptr) 
+    {
+        localMatrix = glm::mat4(1.0f);
+        localMatrix = glm::translate(localMatrix, position);
+        localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.x), { 1,0,0 });
+        localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.y), { 0,1,0 });
+        localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.z), { 0,0,1 });
+        localMatrix = glm::scale(localMatrix, scale);
+    }
 
-    Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl) {}
+    Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl), parent(nullptr) {}
 
-    Transform(glm::mat4 localTransformMatrix)
+    Transform(glm::mat4 localTransformMatrix) : parent(nullptr)
     {
         localMatrix = localTransformMatrix;
     }

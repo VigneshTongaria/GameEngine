@@ -39,6 +39,7 @@
     <ClCompile Include="src\rendering\FrameBuffers\ShadowRenderTarget.cpp" />
     <ClCompile Include="src\rendering\Light\DirLight.cpp" />
     <ClCompile Include="src\rendering\Mesh.cpp" />
+    <ClCompile Include="src\rendering\MeshRenderer.cpp" />
     <ClCompile Include="src\rendering\Model.cpp" />
     <ClCompile Include="src\physics\collider.cpp" />
     <ClCompile Include="src\physics\Colliders\spherCollider.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="src\rendering\Light\DirLight.h" />
     <ClInclude Include="src\rendering\Light\ILight.h" />
     <ClInclude Include="src\rendering\Mesh.h" />
+    <ClInclude Include="src\rendering\MeshRenderer.h" />
     <ClInclude Include="src\rendering\Model.h" />
     <ClInclude Include="src\physics\collider.hpp" />
     <ClInclude Include="src\physics\Colliders\sphereCollider.hpp" />

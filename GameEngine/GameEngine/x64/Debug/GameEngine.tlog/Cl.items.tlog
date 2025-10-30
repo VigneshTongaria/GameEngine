@@ -18,6 +18,7 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\FrameBuffers\MSAA
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\FrameBuffers\ShadowRenderTarget.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\ShadowRenderTarget.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Light\DirLight.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\DirLight.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Mesh.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mesh.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\MeshRenderer.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\MeshRenderer.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Model.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\collider.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\collider.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\Colliders\spherCollider.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\spherCollider.obj
