@@ -41,7 +41,7 @@ public:
     float lastFrame = 0.0f; // Time of last frame
 
     MSAARenderTarget mSSARenderTarget;
-    std::vector<GameObject> gameObjects;
+    std::vector<std::unique_ptr<GameObject>> gameObjects;
     std::unordered_map<COMPONENT_TYPE,std::vector<std::shared_ptr<Component>>> componentsMap;
 
     template<typename T> 
@@ -57,8 +57,10 @@ public:
     Camera mainCamera;
     Shader* depthMapShader;
     Shader* lightingShadowShader;
-
+    
+    void start();
     void render();
+    void update();
     void draw(Shader* shader);
     void process_inputs();
 

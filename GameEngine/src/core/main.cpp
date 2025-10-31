@@ -554,11 +554,17 @@ int main()
 
 	scene.init();
 
-	// Loading model
-	
+	Model cityModel = Model("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 
+	cityModel.addModelToScene(&scene);
+
+	// Start
+	scene.start();
+	
+    
 	while (!glfwWindowShouldClose(window))
 	{
+		scene.update();
 		scene.render();
 		//calculate deltaTime
 		// float currentTime = float(glfwGetTime());

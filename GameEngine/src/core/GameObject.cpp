@@ -33,7 +33,8 @@ GameObject::GameObject(Scene* scene,GameObject* parent, Transform transform) : t
     }
     this->scene = scene;
     this->parent = parent;
-
+    
+    startCallbacks.emplace_back([&]() { this->transform.start();});
     updateCallbacks.emplace_back([&]() { this->transform.update();});
 
     GameplayManager::AddAwakeCallback([this]() {this->awake();});

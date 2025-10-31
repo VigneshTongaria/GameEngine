@@ -166,10 +166,6 @@ void Scene::init()
 
 	//dirLights.push_back(gameObjects.back().GetComponent<DirLight>());
 
-	Model cityModel = Model("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
-
-	cityModel.addModelToScene(this);
-
 	// gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(-90.0f,0.0f,0.0f),glm::vec3(0.4f,0.4f,0.4f)));
 	// gameObjects.back().AddComponent<Model>("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 	// sceneModels.push_back(gameObjects.back().GetComponent<Model>());
@@ -239,6 +235,20 @@ void Scene::init()
 	lightingShadowShader->setInt("shadowMap",10);
 
 	lastFrame = float(glfwGetTime());
+}
+void Scene::start()
+{
+    for(auto& go : gameObjects)
+	{
+		go.get()->start();
+	}
+}
+void Scene::update()
+{
+	for(auto& go : gameObjects)
+	{
+		go.get()->update();
+	}
 }
 void Scene::render()
 {

@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include <vector>
+#include <deque>
 #include "Shader.h"
 #include "Mesh.h"
 #include <assimp/Importer.hpp>
@@ -54,9 +55,8 @@ public :
 private:
    glm::mat4* instancesModels;
    std::vector<Mesh> meshes;
-   std::vector<MeshHierarchyData> meshHierarchyDatas;
+   std::deque<MeshHierarchyData> meshHierarchyDatas;
    std::string directory;
-   aiScene modelData;
    void loadModel(std::string path);
    void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
    void processNode(const aiNode* Parent,const aiNode* node,const aiScene *scene,MeshHierarchyData* parentMesh);

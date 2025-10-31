@@ -73,6 +73,7 @@
         "xtree": "cpp",
         "typeindex": "cpp",
         "*.rh": "cpp",
-        "irendertarget": "cpp"
+        "irendertarget": "cpp",
+        "deque": "cpp"
     }
 }

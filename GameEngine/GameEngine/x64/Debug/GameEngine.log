@@ -135,7 +135,7 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(59,53):
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(61,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(63,53): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(155,68): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(324,41): warning C4018: '>': signed/unsigned mismatch
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\rendering\Model.cpp(329,41): warning C4018: '>': signed/unsigned mismatch
   collider.cpp
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\physics\PhysicsCalculations\physicsCollision.hpp(29,14): warning C4091: 'static ': ignored on left of 'physicsCollision' when no variable is declared
   (compiling source file 'src/physics/collider.cpp')

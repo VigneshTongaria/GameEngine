@@ -172,7 +172,7 @@ void Model::loadModel(std::string path)
 
     std::cout<<" Texture count for the model : "<<directory<<" "<<scene->mNumTextures<<"\n";
 
-    modelData = *scene;
+    //modelData = *scene;
 
     processNode(nullptr, scene->mRootNode,scene,nullptr);
 }
@@ -184,8 +184,10 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
     // globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
     // std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
 
-    glm::mat4 localTransform = UtilitiesManger::convertToGLM(node->mTransformation);
-    std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
+    glm::mat4 localTransform{1.0f};
+
+    localTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
+    std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<"\n";
 
     MeshRenderer newMeshRenderer;
 
@@ -202,9 +204,12 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
     MeshHierarchyData* data = &meshHierarchyDatas.back();
     
     if(parentMesh != nullptr)
-      parentMesh->addChild(data);
+    {
+        std::cout<<"Assigning child to the parent mesh- "<<"\n";
+        parentMesh->addChild(data);
+    }
 
-   // std::cout<<"Number of children in node - "<<node->mNumChildren<<std::endl;
+    std::cout<<"Number of meshes added in mesh renderer - "<<newMeshRenderer.meshes.size()<<"\n";
     for(unsigned int i=0; i<node->mNumChildren; i++)
     {
         processNode(node,node->mChildren[i],scene, data);
