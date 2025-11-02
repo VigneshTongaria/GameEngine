@@ -184,7 +184,7 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
     // globalTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
     // std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<std::endl;
 
-    glm::mat4 localTransform{1.0f};
+    glm::mat4 localTransform = glm::mat4(1.0f);
 
     localTransform *= UtilitiesManger::convertToGLM(node->mTransformation);
     std::cout<<"Number of meshes in node - "<<node->mNumMeshes<<"\n";

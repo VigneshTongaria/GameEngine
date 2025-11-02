@@ -51,7 +51,27 @@ struct Transform
         return *this;
     }
 
-    void setScale(const glm::vec3& s) {
+    void setTranslatation(const glm::vec3 trans)
+    {
+        localMatrix = glm::translate(localMatrix,trans);
+
+        //globalMatrix = localMatrix * parent->getTransformationMatrix();
+    }
+    void setRotation(const glm::vec3 rot)
+    {
+        localMatrix = glm::rotate(localMatrix, glm::radians(rot.x), {1,0,0});
+        localMatrix = glm::rotate(localMatrix, glm::radians(rot.y), {0,1,0});
+        localMatrix = glm::rotate(localMatrix, glm::radians(rot.z), {0,0,1});
+
+        globalMatrix = localMatrix * parent->getTransformationMatrix();
+    }
+    void setScale(const glm::vec3 scale)
+    {
+        localMatrix = glm::scale(localMatrix,scale);
+        globalMatrix = localMatrix * parent->getTransformationMatrix();
+    }
+
+    /*void setScale(const glm::vec3& s) {
         scale = s;
         dirty = true;
     }
@@ -59,30 +79,28 @@ struct Transform
     void setRotation(const glm::vec3& r) {
         rotationXYZ = r;
         dirty = true;
-    }
+    }*/
     void start()
     {
-        std::cout<<"Starting Transform"<<"\n";
         if(parent == nullptr) 
         {
             globalMatrix = localMatrix;
         }
         else
         {
-            globalMatrix = localMatrix * parent->getTransformationMatrix();
+            globalMatrix = parent->getTransformationMatrix() * localMatrix;
         }
     }
 
     void update()
     {
-        std::cout<<"Updating Transform"<<"\n";
         if(parent == nullptr) 
         {
             globalMatrix = localMatrix;
         }
         else
         {
-            globalMatrix = localMatrix * parent->getTransformationMatrix();
+            globalMatrix = parent->getTransformationMatrix() * localMatrix;
         }
     }
 

@@ -30,6 +30,11 @@ struct MeshHierarchyData
 
    GameObject* addMeshRendererToScene(Scene* scene,GameObject* parent = nullptr)
    {
+      if(meshRenderer.meshes.size() == 0)
+      {
+         return scene->addNewGameObjectToScene<>(parent,Transform(globalTransform));
+      }
+
       MeshRenderer* newMeshRen =  scene->addNewGameObjectToScene<MeshRenderer>(parent,Transform(globalTransform))->GetComponent<MeshRenderer>();
 
       for(auto& mesh : meshRenderer.meshes)

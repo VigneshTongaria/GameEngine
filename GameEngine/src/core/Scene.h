@@ -29,10 +29,10 @@ public:
     Scene(int width,int height);
     void init();
     
-    unsigned int quadVBO,quadVAO;
-    unsigned int skyboxVAO,skyboxVBO;
-    unsigned int uboMatrices;
-    unsigned int SRC_WIDTH,SRC_HEIGHT;
+    unsigned int quadVBO = 0,quadVAO = 0;
+    unsigned int skyboxVAO = 0,skyboxVBO = 0;
+    unsigned int uboMatrices = 0;
+    unsigned int SRC_WIDTH = 1080,SRC_HEIGHT = 1920;
 
     float cameraSpeed = 0.1f;
     float Arrow_vertical_Input = 0.0f;

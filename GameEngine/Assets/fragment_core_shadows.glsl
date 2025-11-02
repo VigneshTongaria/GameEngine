@@ -127,7 +127,7 @@ void main()
 vec3 CalcDirLight(DirLight light)
 {  
     vec3 normalSurface = normalize(normal);
-    if(hasNormalMap)
+    if(true)
     {
          normalSurface = texture(material.texture_normal1,TextCords).rgb;
          normalSurface = normalSurface * 2.0 - 1.0; 
@@ -151,7 +151,8 @@ vec3 CalcDirLight(DirLight light)
     vec3 ambientLight = light.ambient *  texture(material.texture_diffuse1,TextCords).rgb;
     vec3 reflectionCube = 1 * smoothness * texture(reflection,viewReflectRay).rgb;
 
-    return ( (1.0 - shadow)*(diffusion) + ambientLight);
+    return ( (1.0 - shadow)*(diffusion + specular) + ambientLight);
+    //return normalSurface;
 }
 
 vec3 CalcPointLight(PointLight light,int index)
