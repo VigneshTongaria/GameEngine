@@ -21,13 +21,26 @@
   <ItemGroup>
     <ClCompile Include="lib\glad.c" />
     <ClCompile Include="lib\stb.cpp" />
-    <ClCompile Include="src\core\Camera.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Linking\include\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\core\Camera.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src;C:\Users\vigne\GithubRepos\GameEngine\Linking\include\imgui</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="src\core\Component.cpp" />
     <ClCompile Include="src\core\Component.h" />
-    <ClCompile Include="src\core\ComponentsType.cpp" />
+    <ClCompile Include="src\core\ComponentsType.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\imgui</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="src\core\Scene.cpp" />
     <ClCompile Include="src\data\GeometryData.cpp" />
-    <ClCompile Include="src\core\GameObject.cpp" />
+    <ClCompile Include="src\core\GameObject.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\imgui</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="src\io\KeyBoard.cpp" />
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\core\main.cpp" />
@@ -81,6 +94,15 @@
     <ClInclude Include="Linking\include\glad\glad.h" />
     <ClInclude Include="Linking\include\GLFW\glfw3.h" />
     <ClInclude Include="Linking\include\GLFW\glfw3native.h" />
+    <ClInclude Include="Linking\include\imgui\imconfig.h" />
+    <ClInclude Include="Linking\include\imgui\imgui.h" />
+    <ClInclude Include="Linking\include\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="Linking\include\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Linking\include\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Linking\include\imgui\imgui_internal.h" />
+    <ClInclude Include="Linking\include\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Linking\include\imgui\imstb_textedit.h" />
+    <ClInclude Include="Linking\include\imgui\imstb_truetype.h" />
     <ClInclude Include="Linking\include\KHR\khrplatform.h" />
     <ClInclude Include="src\core\Application.h" />
     <ClInclude Include="src\core\Camera.h" />
@@ -231,7 +253,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\imgui;</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>

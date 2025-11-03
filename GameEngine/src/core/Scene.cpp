@@ -1,5 +1,8 @@
 #include "Scene.h"
 #include "Scene.inl"
+#include <imgui/imgui.h>
+#include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_opengl3.h>
 #include "../managers/ShaderManager.hpp"
 #include "../io/KeyBoard.h"
 #include "../io/Mouse.h"
@@ -247,6 +250,7 @@ void Scene::update()
 {
 	for(auto& go : gameObjects)
 	{
+		go.get()->transform.setTranslatation(glm::vec3(0.0,0.0,0.001));
 		go.get()->update();
 	}
 }
@@ -314,6 +318,13 @@ void Scene::render()
 
 	glClearColor(0.1f, 0.4f, 0.4f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplGlfw_NewFrame();
+	ImGui::NewFrame();
+	ImGui::Begin("Scene 1");
+	ImGui::Text("Game Engine");
+	ImGui::End();
 
 	// Disable writing to stencil buffer
 	// glStencilMask(0x00);

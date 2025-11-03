@@ -1,4 +1,7 @@
 #include<iostream>
+#include <imgui/imgui.h>
+#include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_opengl3.h>
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -35,8 +38,6 @@ glm::mat4 Scale = glm::mat4(1.0f);
 float cameraSpeed = 0.1f;
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
-unsigned int NR_POINT_LIGHTS = 4;
-unsigned int asteriodInstances = 1000;
 unsigned int SRC_HEIGHT = 1080;
 unsigned int SRC_WIDTH = 1920;
 
@@ -91,146 +92,7 @@ int main()
 	glfwSetCursorPosCallback(window,Mouse::CursorButtonCallback);
 	glfwSetScrollCallback(window,Mouse::MouseScrollCallback);
 
-	//LoadTextures
-	// unsigned int texture_1 = loadTexture("Assets/Images/container2.png");
-	// unsigned int texture_2 = loadTexture("Assets/Images/container2_specular.png");
-	// unsigned int texture_3 = loadTexture("Assets/Images/container2_emissive.jpg");
 	
-	// Setting up camera
-	// MainCamera.height = SRC_HEIGHT;
-	// MainCamera.width = SRC_WIDTH;
-
-	// //Run_Shaders();
-	// //Vertex shader
-	// Shader LightingShader("Assets/vertex_core.glsl", "Assets/fragment_core.glsl");
-	// Shader LightnigSourceShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_lightSource.glsl");
-	// Shader ImageShader("Assets/vertex_core.glsl", "Assets/fragment_core_1.glsl");
-	// Shader HighlightShader("Assets/vertex_core_lightSource.glsl", "Assets/fragment_core_highlight.glsl");
-	// Shader PostShader("Assets/vertex_unlit.glsl", "Assets/fragment_Blending.glsl");
-	// Shader CubeMapShader("Assets/vertex_cubeMap.glsl", "Assets/fragment_cubeMap.glsl");
-	// Shader ExplosionShader("Assets/GeometryShaders/Vertex_unlit.glsl", 
-	// 	"Assets/fragment_core_highlight.glsl","Assets/GeometryShaders/Geometry_normals.glsl");
-	// Shader InstanceShader("Assets/vertex_Instance.glsl", "Assets/GeometryShaders/fragment_unlit.glsl");
-	// Shader DepthMapShader("Assets/vertex_depthMap.glsl", "Assets/fragment_depthMap.glsl");
-	// Shader LightingShadowShader("Assets/vertex_core_shadows.glsl", "Assets/fragment_core_shadows.glsl");
-	// Shader PointLightingShadowShader("Assets/vertex_pointLight.glsl","Assets/GeometryShaders/fragment_PointLightMap.glsl",
-	// 	"Assets/GeometryShaders/Geometry_PointLight.glsl");
-	// Shader BrightShader("Assets/vertex_unlit.glsl", "Assets/fragment_brightness.glsl");
-	// Shader BloomShader("Assets/vertex_unlit.glsl", "Assets/fragment_bloom.glsl");
-
-	// shaders.push_back(&LightingShader);
-	// shaders.push_back(&LightnigSourceShader);
-	// shaders.push_back(&ImageShader);
-	// shaders.push_back(&HighlightShader);
-	// shaders.push_back(&PostShader);
-	// shaders.push_back(&CubeMapShader);
-	// shaders.push_back(&ExplosionShader);
-	// shaders.push_back(&InstanceShader);
-	// shaders.push_back(&LightingShadowShader);
-
-	// // Adding uniform buffer index
-	// unsigned int uniformVertexCoreIndex = glGetUniformBlockIndex(LightingShader.m_ID,"Matrices");
-	// unsigned int uniformVertexSkyboxIndex = glGetUniformBlockIndex(CubeMapShader.m_ID,"Matrices");
-	// unsigned int uniformVertexLightingSourceIndex = glGetUniformBlockIndex(LightnigSourceShader.m_ID,"Matrices");
-	// unsigned int uniformVertexSimplendex = glGetUniformBlockIndex(ExplosionShader.m_ID,"Matrices");
-	// unsigned int uniformVertexInstanceIndex = glGetUniformBlockIndex(InstanceShader.m_ID,"Matrices");
-	// unsigned int uniformVertexCoreShadowsIndex = glGetUniformBlockIndex(LightingShadowShader.m_ID,"Matrices");
-
-	// glUniformBlockBinding(LightingShader.m_ID,uniformVertexCoreIndex,0);
-	// glUniformBlockBinding(CubeMapShader.m_ID,uniformVertexSkyboxIndex,0);
-	// glUniformBlockBinding(LightnigSourceShader.m_ID,uniformVertexLightingSourceIndex,0);
-	// glUniformBlockBinding(ExplosionShader.m_ID,uniformVertexSimplendex,0);
-	// glUniformBlockBinding(InstanceShader.m_ID,uniformVertexInstanceIndex,0);
-	// glUniformBlockBinding(LightingShadowShader.m_ID,uniformVertexCoreShadowsIndex,0);
-
-    // // Vertices data not used now added geometrydata class but still used in VBO 
-	// const float* vertices = GeometryData::cubeVertices;
-	// const float* skyboxVertices = GeometryData::skyboxVertices;
-	// const float* quadVertices = GeometryData::quadVertices;
-
-	// glm::vec3 cubePositions[] = {
-	// 	glm::vec3( 0.0f,  0.0f,  0.0f), 
-	// 	glm::vec3( 2.0f,  5.0f, -15.0f), 
-	// 	glm::vec3(-1.5f, -2.2f, -2.5f),  
-	// 	glm::vec3(-3.8f, -2.0f, -12.3f),  
-	// 	glm::vec3( 2.4f, -0.4f, -3.5f),  
-	// 	glm::vec3(-1.7f,  3.0f, -7.5f),  
-	// 	glm::vec3( 1.3f, -2.0f, -2.5f),  
-	// 	glm::vec3( 1.5f,  2.0f, -2.5f), 
-	// 	glm::vec3( 1.5f,  0.2f, -1.5f), 
-	// 	glm::vec3(-1.3f,  1.0f, -1.5f)  
-	// };
-	
-	// unsigned int indices[] = 
-	// {
-	// 	0,1,3, //first traingle
-	// 	1,2,3
-	// };
-	//Initializng buffers
-	// unsigned int VBO, VBO_1,VAO,VAO_1,EBO;
-	// glGenVertexArrays(1, &VAO);
-	// glGenVertexArrays(1, &VAO_1);
-	// glGenBuffers(1, &VBO);
-	// glGenBuffers(1, &VBO_1);
-	// glGenBuffers(1,&EBO);
-    
-	// //Binding buffers
-	// glBindVertexArray(VAO);
-	// glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
-
-	// glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	// glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices),indices,GL_STATIC_DRAW);
-
-    // //vertex attrbitue pointer assigning all types of data
-	// glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), (void*)0);
-	// glVertexAttribPointer(1,3,GL_FLOAT,false,8 * sizeof(float),(void*)(3*(sizeof(float))));
-	// glVertexAttribPointer(2,2,GL_FLOAT,false,8 * sizeof(float),(void*)(6*(sizeof(float))));
-	// //enabling all the attribute array
-	// glEnableVertexAttribArray(0);
-	// glEnableVertexAttribArray(1);
-	// glEnableVertexAttribArray(2);
-	//Assigning textures ID'S
-	//LightingShader.UseShaderProgram();
-
-	// Vertex data for quad
-
-	// unsigned int quadVBO,quadVAO;
-	// glGenVertexArrays(1,&quadVAO);
-	// glGenBuffers(1,&quadVBO);
-
-	// glBindVertexArray(quadVAO);
-	// glBindBuffer(GL_ARRAY_BUFFER,quadVBO);
-	// glBufferData(GL_ARRAY_BUFFER,sizeof(quadVertices),&quadVertices,GL_STATIC_DRAW);
-	// glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,4*sizeof(float),(void*)0);
-	// glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,4*sizeof(float),(void*)(2*sizeof(float)));
-	// glEnableVertexAttribArray(0);
-    // glEnableVertexAttribArray(1);
-
-
-	//Lighting VAO
-
-	// unsigned int lightVAO;
-	// glGenVertexArrays(1, &lightVAO);
-	// glBindVertexArray(lightVAO);
-	// // we only need to bind to the VBO, the container's VBO's data already contains the data.
-	// glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// // set the vertex attribute
-	// glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0);
-	// glEnableVertexAttribArray(0);
-
-	// Skybox VAO
-
-	// unsigned int skyboxVAO,skyboxVBO;
-    
-	// glGenVertexArrays(1,&skyboxVAO);
-	// glGenBuffers(1,&skyboxVBO);
-
-	// glBindVertexArray(skyboxVAO);
-	// glBindBuffer(GL_ARRAY_BUFFER,skyboxVBO);
-	// glBufferData(GL_ARRAY_BUFFER,sizeof(skyboxVertices),&skyboxVertices,GL_STATIC_DRAW);
-	// glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
-	// glEnableVertexAttribArray(0);
 
 	// Generating Frame buffers
 
@@ -548,6 +410,13 @@ int main()
 	// rb->start();
 	// ResourcesManager::VerticesCount = 0;
 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void) io;
+	ImGui::StyleColorsDark();
+	ImGui_ImplGlfw_InitForOpenGL(window,true);
+	ImGui_ImplOpenGL3_Init("#version 460");
+
 	startPhysicsThread();
     ShaderManager::init();
 	Scene scene(SRC_WIDTH,SRC_HEIGHT);
@@ -564,6 +433,7 @@ int main()
     
 	while (!glfwWindowShouldClose(window))
 	{
+
 		scene.update();
 		scene.render();
 		//calculate deltaTime
@@ -846,9 +716,17 @@ int main()
 
 
 		//Check for all events and swaps buffers
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	// Ending IMGUI
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	// Call OnDestroy/End functions here
 	stopPhysicsThread();
