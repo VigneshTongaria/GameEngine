@@ -11,9 +11,9 @@ void Scene::addComponentToScene(std::shared_ptr<T> comp)
 }
 
 template <typename T, typename... Args>
-GameObject* Scene::addNewGameObjectToScene(GameObject *parent, Transform transform, Args &&...args)
+GameObject* Scene::addNewGameObjectToScene(std::string& name, GameObject *parent, Transform transform, Args &&...args)
 {
-    gameObjects.emplace_back(std::make_unique<GameObject>(this, parent, transform));
+    gameObjects.emplace_back(std::make_unique<GameObject>(name,this, parent, transform));
     GameObject *_gO = gameObjects.back().get();
 
     if constexpr (!std::is_same_v<T, void>)

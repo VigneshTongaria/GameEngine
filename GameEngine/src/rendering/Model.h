@@ -14,16 +14,17 @@
 #include "../data/GeometryData.hpp"
 #include "MeshRenderer.h"
 
-struct MeshHierarchyData
+struct ModelHierarchyData
 {
+   std::string name;
    MeshRenderer meshRenderer;
    glm::mat4 globalTransform;
 
-   MeshHierarchyData(MeshRenderer m,glm::mat4 gT) : meshRenderer(m),globalTransform(gT) { };
+   ModelHierarchyData(MeshRenderer m,glm::mat4 gT) : meshRenderer(m),globalTransform(gT) { };
 
-   std::vector<MeshHierarchyData*> children;
+   std::vector<ModelHierarchyData*> children;
 
-   void addChild(MeshHierarchyData* data)
+   void addChild(ModelHierarchyData* data)
    {
        children.push_back(data);
    }
@@ -32,10 +33,10 @@ struct MeshHierarchyData
    {
       if(meshRenderer.meshes.size() == 0)
       {
-         return scene->addNewGameObjectToScene<>(parent,Transform(globalTransform));
+         return scene->addNewGameObjectToScene<>(name,parent,Transform(globalTransform));
       }
 
-      MeshRenderer* newMeshRen =  scene->addNewGameObjectToScene<MeshRenderer>(parent,Transform(globalTransform))->GetComponent<MeshRenderer>();
+      MeshRenderer* newMeshRen =  scene->addNewGameObjectToScene<MeshRenderer>(name,parent,Transform(globalTransform))->GetComponent<MeshRenderer>();
 
       for(auto& mesh : meshRenderer.meshes)
       {
@@ -60,12 +61,12 @@ public :
 private:
    glm::mat4* instancesModels;
    std::vector<Mesh> meshes;
-   std::deque<MeshHierarchyData> meshHierarchyDatas;
+   std::deque<ModelHierarchyData> modelHierarchyDatas;
    std::string directory;
    void loadModel(std::string path);
    void loadModel(DEFAULT_MODEL model,Material mat,std::vector<Texture> textures);
-   void processNode(const aiNode* Parent,const aiNode* node,const aiScene *scene,MeshHierarchyData* parentMesh);
+   void processNode(const aiNode* Parent,const aiNode* node,const aiScene *scene,ModelHierarchyData* parentMesh);
    Mesh processMesh(aiMesh* mesh,const aiScene *scene,glm::mat4 globalTransform);
-   void processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent = nullptr);
+   void processMeshData(ModelHierarchyData* meshData, Scene* scene,GameObject* parent = nullptr);
    std::vector<Texture> loadMaterialsTextures(const aiScene* scene,aiMaterial *mat,aiTextureType type,TEXTURE_TYPE tex_type);
 };

@@ -4,9 +4,10 @@
 #include "Component.h"
 #include "scene.h"
 
-GameObject::GameObject(Scene* scene,GameObject* parent, glm::vec3 position, glm::vec3 rotationXYZ, glm::vec3 scale)
+GameObject::GameObject(std::string name,Scene* scene,GameObject* parent, glm::vec3 position, glm::vec3 rotationXYZ, glm::vec3 scale)
  : transform(Transform(position,rotationXYZ,scale))
 {
+    this->name = name;
     // transform.position = position;
     // transform.rotationXYZ = rotationXYZ;
     // transform.scale = scale;
@@ -22,8 +23,9 @@ GameObject::GameObject(Scene* scene,GameObject* parent, glm::vec3 position, glm:
     GameplayManager::AddUpdateCallback([this]() {this->update();});
 }
 
-GameObject::GameObject(Scene* scene,GameObject* parent, Transform transform) : transform(transform)
+GameObject::GameObject(std::string name,Scene* scene,GameObject* parent, Transform transform) : transform(transform)
 {
+    this->name = name;
     // this->transform.position = transform.position;
     // this->transform.rotationXYZ = transform.rotationXYZ;
     // this->transform.scale = transform.scale;

@@ -118,10 +118,14 @@ struct Transform
     }
 };
 
-
+struct GameObjectData
+{
+    std::string name;
+};
 class GameObject{
 
     public :
+    std::string name;
     Transform transform;
     Scene* scene;
     GameObject* parent;
@@ -131,11 +135,11 @@ class GameObject{
     std::vector<std::function<void()>> startCallbacks;
     std::vector<std::function<void()>> updateCallbacks;
 
-    GameObject(Scene* scene, GameObject* parent,
+    GameObject(std::string name = "NewGameObject", Scene* scene, GameObject* parent,
         glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), 
         glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), 
         glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
-    GameObject(Scene* scene, GameObject* parent,Transform transform);
+    GameObject(std::string name = "NewGameObject",Scene* scene, GameObject* parent,Transform transform);
 
     template <typename T, typename... Args>
     void AddComponent(Args&&... args);

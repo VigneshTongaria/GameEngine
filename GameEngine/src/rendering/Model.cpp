@@ -82,9 +82,9 @@ Model::~Model()
 
 GameObject* Model::addModelToScene(Scene* scene,GameObject* parent, Transform transform)
 {
-    GameObject* modelPar = scene->addNewGameObjectToScene<>(parent, transform);
+    GameObject* modelPar = scene->addNewGameObjectToScene<>(modelHierarchyDatas[0].name,parent,transform);
     
-    processMeshData(&meshHierarchyDatas[0],scene,modelPar);
+    processMeshData(&modelHierarchyDatas[0],scene,modelPar);
 
     return modelPar;
 }
@@ -177,7 +177,7 @@ void Model::loadModel(std::string path)
     processNode(nullptr, scene->mRootNode,scene,nullptr);
 }
 
-void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* scene,MeshHierarchyData* parentMesh)
+void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* scene,ModelHierarchyData* parentMesh)
 {
     // glm::mat4 globalTransform = glm::mat4(1.0f);
     // if(Parent != nullptr) globalTransform *= UtilitiesManger::convertToGLM(Parent->mTransformation);
@@ -197,11 +197,11 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
         newMeshRenderer.meshes.emplace_back(processMesh(mesh,scene,localTransform));
     }
 
-    MeshHierarchyData newData = MeshHierarchyData(newMeshRenderer, localTransform);
+    ModelHierarchyData newData = ModelHierarchyData(newMeshRenderer, localTransform);
 
-    meshHierarchyDatas.emplace_back(newData);
+    modelHierarchyDatas.emplace_back(newData);
 
-    MeshHierarchyData* data = &meshHierarchyDatas.back();
+    ModelHierarchyData* data = &modelHierarchyDatas.back();
     
     if(parentMesh != nullptr)
     {
@@ -299,13 +299,13 @@ Mesh Model::processMesh(aiMesh* mesh,const aiScene* scene,glm::mat4 globalTransf
     return Mesh(vertices,mat, textures, indices);
 }
 
-void Model::processMeshData(MeshHierarchyData* meshData, Scene* scene,GameObject* parent)
+void Model::processMeshData(ModelHierarchyData* meshData, Scene* scene,GameObject* parent)
 {
-     GameObject* m_NewMesh = meshData->addMeshRendererToScene(scene,parent);
+     GameObject* m_Node = meshData->addMeshRendererToScene(scene,parent);
 
      for(auto& child : meshData->children)
      {
-        processMeshData(child,scene, m_NewMesh);
+        processMeshData(child,scene, m_Node);
      }
 }
 

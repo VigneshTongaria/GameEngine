@@ -48,7 +48,7 @@ public:
     void addComponentToScene(std::shared_ptr<T> comp);
 
     template<typename T = void,typename...Args> 
-    GameObject* addNewGameObjectToScene(GameObject* parent,Transform transform, Args&&... args);
+    GameObject* addNewGameObjectToScene(std::string& name,GameObject* parent,Transform transform, Args&&... args);
 
     std::vector<Model*> sceneModels;
     std::vector<MeshRenderer*> sceneMeshRenderers;

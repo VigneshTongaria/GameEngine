@@ -250,7 +250,7 @@ void Scene::update()
 {
 	for(auto& go : gameObjects)
 	{
-		go.get()->transform.setTranslatation(glm::vec3(0.0,0.0,0.001));
+		//go.get()->transform.setTranslatation(glm::vec3(0.0,0.0,0.001));
 		go.get()->update();
 	}
 }
