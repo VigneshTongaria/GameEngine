@@ -135,11 +135,10 @@ class GameObject{
     std::vector<std::function<void()>> startCallbacks;
     std::vector<std::function<void()>> updateCallbacks;
 
-    GameObject(std::string name = "NewGameObject", Scene* scene, GameObject* parent,
-        glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), 
-        glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), 
-        glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
-    GameObject(std::string name = "NewGameObject",Scene* scene, GameObject* parent,Transform transform);
+    GameObject(const std::string name,Scene* scene, GameObject* parent,glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 rotationXYZ = glm::vec3(0.0f,0.0f,0.0f), glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f));
+
+    GameObject(const std::string name,Scene* scene, GameObject* parent,Transform transform);
+    GameObject(Scene* scene, GameObject* parent,Transform transform);
 
     template <typename T, typename... Args>
     void AddComponent(Args&&... args);

@@ -164,7 +164,7 @@ void Scene::init()
 	// gameObjects.push_back(GameObject(this,nullptr,glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
 	// gameObjects.back().AddComponent<DirLight>();
 
-	addNewGameObjectToScene<DirLight>(nullptr,
+	addNewGameObjectToScene<DirLight>("DirLight",nullptr,
 		Transform(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(10.0f,30.0f,50.0f),glm::vec3(1.0f,1.0f,1.0f)));
 
 	//dirLights.push_back(gameObjects.back().GetComponent<DirLight>());
@@ -319,12 +319,12 @@ void Scene::render()
 	glClearColor(0.1f, 0.4f, 0.4f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
-	ImGui::Begin("Scene 1");
-	ImGui::Text("Game Engine");
-	ImGui::End();
+	// ImGui_ImplOpenGL3_NewFrame();
+	// ImGui_ImplGlfw_NewFrame();
+	// ImGui::NewFrame();
+	// ImGui::Begin("Scene 1");
+	// ImGui::Text("Game Engine");
+	// ImGui::End();
 
 	// Disable writing to stencil buffer
 	// glStencilMask(0x00);
@@ -638,6 +638,6 @@ void Scene::updateSceneComponentsType(COMPONENT_TYPE type)
 
 Scene::~Scene()
 {
-	delete(&mainCamera);
-	delete(&skybox);
+	// delete(&mainCamera);
+	// delete(&skybox);
 }

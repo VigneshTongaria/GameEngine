@@ -197,7 +197,7 @@ void Model::processNode(const aiNode* Parent,const aiNode* node,const aiScene* s
         newMeshRenderer.meshes.emplace_back(processMesh(mesh,scene,localTransform));
     }
 
-    ModelHierarchyData newData = ModelHierarchyData(newMeshRenderer, localTransform);
+    ModelHierarchyData newData = ModelHierarchyData(node->mName.C_Str(),newMeshRenderer, localTransform);
 
     modelHierarchyDatas.emplace_back(newData);
 

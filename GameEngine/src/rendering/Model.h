@@ -20,7 +20,7 @@ struct ModelHierarchyData
    MeshRenderer meshRenderer;
    glm::mat4 globalTransform;
 
-   ModelHierarchyData(MeshRenderer m,glm::mat4 gT) : meshRenderer(m),globalTransform(gT) { };
+   ModelHierarchyData(std::string n,MeshRenderer m,glm::mat4 gT) : name(n),meshRenderer(m),globalTransform(gT) { };
 
    std::vector<ModelHierarchyData*> children;
 

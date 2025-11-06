@@ -25,6 +25,7 @@
 #include "../physics/PhysicsThread.h"
 #include "../managers/ShaderManager.hpp"
 #include "Scene.h"
+#include "../GUI/HierarchyPanel.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
@@ -422,6 +423,7 @@ int main()
 	Scene scene(SRC_WIDTH,SRC_HEIGHT);
 
 	scene.init();
+	HierarchyPanel h_Panel(&scene);
 
 	Model cityModel = Model("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
 
@@ -716,6 +718,8 @@ int main()
 
 
 		//Check for all events and swaps buffers
+
+		h_Panel.OnImGuiRender();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

@@ -41,6 +41,9 @@
     <ClCompile Include="src\core\GameObject.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\vigne\source\repos\GameEngine\Linking\include\GLFW;C:\Users\vigne\source\repos\GameEngine\src;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\imgui</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="src\GUI\EditorPanel.cpp" />
+    <ClCompile Include="src\GUI\HierarchyPanel.cpp" />
+    <ClCompile Include="src\GUI\InspectorPanel.cpp" />
     <ClCompile Include="src\io\KeyBoard.cpp" />
     <ClCompile Include="src\io\Mouse.cpp" />
     <ClCompile Include="src\core\main.cpp" />
@@ -110,6 +113,9 @@
     <ClInclude Include="src\core\Scene.h" />
     <ClInclude Include="src\data\GeometryData.hpp" />
     <ClInclude Include="src\core\GameObject.h" />
+    <ClInclude Include="src\GUI\EditorPanel.h" />
+    <ClInclude Include="src\GUI\HierarchyPanel.h" />
+    <ClInclude Include="src\GUI\InspectorPanel.h" />
     <ClInclude Include="src\io\KeyBoard.h" />
     <ClInclude Include="src\io\Mouse.h" />
     <ClInclude Include="src\managers\GameplayManager.hpp" />

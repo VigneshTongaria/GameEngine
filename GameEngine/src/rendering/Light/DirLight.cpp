@@ -28,5 +28,5 @@ void DirLight::update()
 
 DirLight::~DirLight()
 {
-    delete(&shadowRenderTarget);
+    //delete(&shadowRenderTarget);
 }

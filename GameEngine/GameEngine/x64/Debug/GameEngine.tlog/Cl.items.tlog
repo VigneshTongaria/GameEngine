@@ -14,6 +14,9 @@ C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\ComponentsType.cpp;C:\
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\Scene.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Scene.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\data\GeometryData.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\GeometryData.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\GameObject.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\GameObject.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GUI\EditorPanel.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\EditorPanel.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GUI\HierarchyPanel.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\HierarchyPanel.obj
+C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\GUI\InspectorPanel.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\InspectorPanel.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\KeyBoard.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\KeyBoard.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\io\Mouse.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\Mouse.obj
 C:\Users\vigne\GithubRepos\GameEngine\GameEngine\src\core\main.cpp;C:\Users\vigne\GithubRepos\GameEngine\GameEngine\GameEngine\x64\Debug\main.obj
