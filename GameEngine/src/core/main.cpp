@@ -425,7 +425,7 @@ int main()
 	scene.init();
 	HierarchyPanel h_Panel(&scene);
 
-	Model cityModel = Model("C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/City/City.glb");
+	Model cityModel = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Door/shaw_hornet_-_hollow_knight_silksong/scene.gltf");
 
 	cityModel.addModelToScene(&scene);
 
