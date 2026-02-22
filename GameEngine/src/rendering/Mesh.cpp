@@ -2,7 +2,7 @@
 #include "../managers/ResourcesManager.hpp"
 #include "../core/GameObject.h"
 
-Mesh :: Mesh(std::vector<Vertex> vertices,Material material, std::vector<Texture> textures, std::vector<unsigned int> indices)
+Mesh::Mesh(std::vector<Vertex> vertices,Material material, std::vector<Texture> textures, std::vector<unsigned int> indices)
 {
     this->vertices = vertices;
     this->material = material;
@@ -114,6 +114,8 @@ void Mesh::AssignTextures(Shader &shader)
         }
 
         glActiveTexture(GL_TEXTURE0 + i);
+
+        glBindTexture(GL_TEXTURE_2D, 0);
 
         TEXTURE_TYPE type = textures[i].type;
         std::string number,t_name;

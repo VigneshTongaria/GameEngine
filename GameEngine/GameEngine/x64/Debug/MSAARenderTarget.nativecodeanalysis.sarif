@@ -1,0 +1,75 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.50.35724.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/src/rendering/framebuffers/msaarendertarget.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "57201a3a507bc88b37e1cf03c738d9ff85a2f7e61dd04d31ca2695b193f6de19"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/src/rendering/framebuffers/msaarendertarget.h"
+          },
+          "hashes": {
+            "sha-256": "1569f959ea4b763dfab4c6d0b93c18098465668f5521b832e94969bd7b04369c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/src/rendering/framebuffers/irendertarget.h"
+          },
+          "hashes": {
+            "sha-256": "b4134aae84f83dceb762470589eb796f3828cf8b9a1fb98a77563562316b5016"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/glad/glad.h"
+          },
+          "hashes": {
+            "sha-256": "acb15c341342a939e0c9c47aa38770d4af97bc8c2421bc735a7160148c9d3d8e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/khr/khrplatform.h"
+          },
+          "hashes": {
+            "sha-256": "5ee5d5c2c6b2abd028cec8dc1a24e995bb47b075654a6fc55f3a1293de36943f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/glfw/glfw3.h"
+          },
+          "hashes": {
+            "sha-256": "0fd04b330d92fc4bd6630c20d1006cef36d25b16ec9f911ec4041918482307bb"
+          }
+        }
+      ]
+    }
+  ]
+}

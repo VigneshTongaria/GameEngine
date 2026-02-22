@@ -425,9 +425,15 @@ int main()
 	scene.init();
 	HierarchyPanel h_Panel(&scene);
 
-	Model cityModel = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Door/shaw_hornet_-_hollow_knight_silksong/scene.gltf");
+	//Model cityModel = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Girl/a_contortionist_dancer.glb");
+
+	Model cityModel = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/the-armoury/source/armory/model.obj");
 
 	cityModel.addModelToScene(&scene);
+
+	Model underWearGirl = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Girl/in_underwear.glb");
+
+	underWearGirl.addModelToScene(&scene);
 
 	// Start
 	scene.start();

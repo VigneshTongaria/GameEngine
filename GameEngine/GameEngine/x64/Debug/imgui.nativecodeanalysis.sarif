@@ -1,0 +1,278 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6011",
+          "message": {
+            "text": "Dereferencing NULL pointer 'hovered_root'. ."
+          },
+          "analysisTarget": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/imgui/imgui.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                },
+                "region": {
+                  "startLine": 5235,
+                  "startColumn": 21,
+                  "endLine": 5235,
+                  "endColumn": 45
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ImGui::UpdateMouseMovingWindowEndFrame",
+                  "decoratedName": "?UpdateMouseMovingWindowEndFrame@ImGui@@YAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5207,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5208,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5212,
+                            "startColumn": 21
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5215,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5219,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5223,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5224,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'hovered_root' may be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5226,
+                            "startColumn": 36
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume '<branch condition>')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5228,
+                            "startColumn": 35
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5234,
+                            "startColumn": 79
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume '<branch condition>')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp"
+                          },
+                          "region": {
+                            "startLine": 5235,
+                            "startColumn": 21
+                          }
+                        },
+                        "message": {
+                          "text": "'hovered_root' is dereferenced, but may still be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.50.35724.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/imgui/imgui.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "c2da8950e5438d00cbed7120506a846d99ca323f84bc40b0bb99757d7419ba0e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/imgui/imgui.h"
+          },
+          "hashes": {
+            "sha-256": "eba277b03db5ff16600e44b7ce7e410a78101776cc5579325f9d6ce24c5a66a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/imgui/imconfig.h"
+          },
+          "hashes": {
+            "sha-256": "fb8e32b9af9aa7dad5ec5c5bc862537f5624cb39a814e6d3b36b4629a50b6599"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/imgui/imgui_internal.h"
+          },
+          "hashes": {
+            "sha-256": "d4ea76edb84cbbf11b77af1eeeb471e3fee9ba0d28cd6cabdbcef78a563504d1"
+          }
+        }
+      ]
+    }
+  ]
+}

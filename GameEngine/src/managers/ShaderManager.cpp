@@ -81,7 +81,7 @@ void ShaderManager::setShaderDirLightProperties(SHADER_TYPE type,DirLight* light
 	if(setColors)
 	{
 		s->setVec3("dirLight.ambient", glm::vec3(0.3f, 0.3f, 0.3f));
-		s->setVec3("dirLight.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+		s->setVec3("dirLight.diffuse", 2.0f * glm::vec3(1.0f, 1.0f, 1.0f));
 		s->setVec3("dirLight.specular", glm::vec3(0.4f, 0.4f, 0.4f));
 	}
 

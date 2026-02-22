@@ -1,0 +1,67 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.50.35724.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/src/io/mouse.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "369a8e75f182002b146bb617c1c7f0f88fd6929ccc7b45c33a8faff552e960a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/src/io/mouse.h"
+          },
+          "hashes": {
+            "sha-256": "0276ba1a910b4b83a21ba6b57cdd6cc0f55739cfd1ed3afbb25c1513ac6490d2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/glad/glad.h"
+          },
+          "hashes": {
+            "sha-256": "acb15c341342a939e0c9c47aa38770d4af97bc8c2421bc735a7160148c9d3d8e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/khr/khrplatform.h"
+          },
+          "hashes": {
+            "sha-256": "5ee5d5c2c6b2abd028cec8dc1a24e995bb47b075654a6fc55f3a1293de36943f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/github/gameengine/gameengine/gameengine/linking/include/glfw/glfw3.h"
+          },
+          "hashes": {
+            "sha-256": "0fd04b330d92fc4bd6630c20d1006cef36d25b16ec9f911ec4041918482307bb"
+          }
+        }
+      ]
+    }
+  ]
+}

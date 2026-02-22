@@ -22,6 +22,9 @@ Scene::Scene(int width,int height) : mSSARenderTarget(width,height,4)
 
 	mainCamera.width = width;
 	mainCamera.height = height;
+
+	depthMapShader = nullptr;
+	lightingShadowShader = nullptr;
 }
 
 void Scene::init()
@@ -260,7 +263,7 @@ void Scene::render()
 	float currentTime = float(glfwGetTime());
 	deltaTime = currentTime - lastFrame;
 
-	std::cout << "--[ Frame Time ] : " << deltaTime << std::endl;
+	//std::cout << "--[ Frame Time ] : " << deltaTime << std::endl;
 	lastFrame = currentTime;
 	// process inputs
 	process_inputs();
