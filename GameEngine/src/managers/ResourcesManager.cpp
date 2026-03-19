@@ -196,7 +196,7 @@ CubeMap ResourcesManager::loadCubeMap(std::vector<std::string> facesPath)
 
         if (data)
         {
-            GLenum format;
+            GLenum format = GL_RGBA;
             if (nrChannels == 1)
                 format = GL_RED;
             else if (nrChannels == 3)

@@ -431,9 +431,9 @@ int main()
 
 	cityModel.addModelToScene(&scene);
 
-	Model underWearGirl = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Girl/in_underwear.glb");
+	//Model underWearGirl = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Girl/in_underwear.glb");
 
-	underWearGirl.addModelToScene(&scene);
+	//underWearGirl.addModelToScene(&scene);
 
 	// Start
 	scene.start();

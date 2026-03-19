@@ -12,10 +12,10 @@ class Scene;
 
 struct Transform
 {
-    glm::vec3 position;
-    glm::vec3 rotationXYZ;
-    glm::vec3 scale;
-    Transform* parent;
+    glm::vec3 position = glm::vec3(0.0);
+    glm::vec3 rotationXYZ = glm::vec3(0.0);
+    glm::vec3 scale = glm::vec3(1.0);
+    Transform* parent = nullptr;
 
     bool dirty = false;
     glm::mat4 globalMatrix = glm::mat4(1.0f);
@@ -23,15 +23,19 @@ struct Transform
 
     Transform() : position(glm::vec3(0.0f)), rotationXYZ(glm::vec3(0.0f)), scale(glm::vec3(1.0f)),parent(nullptr) 
     {
-        localMatrix = glm::mat4(1.0f);
-        localMatrix = glm::translate(localMatrix, position);
-        localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.x), { 1,0,0 });
-        localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.y), { 0,1,0 });
-        localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.z), { 0,0,1 });
-        localMatrix = glm::scale(localMatrix, scale);
+        //localMatrix = glm::translate(localMatrix, position);
+        //localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.x), { 1,0,0 });
+        //localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.y), { 0,1,0 });
+        //localMatrix = glm::rotate(localMatrix, glm::radians(rotationXYZ.z), { 0,0,1 });
+        //localMatrix = glm::scale(localMatrix, scale);
     }
 
-    Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl), parent(nullptr) {}
+    Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scl) : position(pos), rotationXYZ(rot),scale(scl), parent(nullptr) 
+    {
+        setTranslatation(pos);
+        setRotation(rot);
+        setScale(scl);
+    }
 
     Transform(glm::mat4 localTransformMatrix) : position(glm::vec3(0.0)), rotationXYZ(glm::vec3(0.0)), scale(glm::vec3(1.0)), parent(nullptr)
     {
@@ -63,12 +67,12 @@ struct Transform
         localMatrix = glm::rotate(localMatrix, glm::radians(rot.y), {0,1,0});
         localMatrix = glm::rotate(localMatrix, glm::radians(rot.z), {0,0,1});
 
-        globalMatrix = localMatrix * parent->getTransformationMatrix();
+        //globalMatrix = localMatrix * parent->getTransformationMatrix();
     }
     void setScale(const glm::vec3 scale)
     {
         localMatrix = glm::scale(localMatrix,scale);
-        globalMatrix = localMatrix * parent->getTransformationMatrix();
+        //globalMatrix = localMatrix * parent->getTransformationMatrix();
     }
 
     /*void setScale(const glm::vec3& s) {
@@ -92,8 +96,14 @@ struct Transform
         }
     }
 
+    //float yRot = 0.0;
+
     void update()
     {
+        // Testing rotating all gameobjects
+        //setRotation(glm::vec3(0.0,yRot,0.0));
+        //yRot += 0.001;
+
         if(parent == nullptr) 
         {
             globalMatrix = localMatrix;
