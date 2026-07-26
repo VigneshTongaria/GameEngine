@@ -3,12 +3,36 @@
   "WorkspaceRootPath": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\GameObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\Model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\Model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\ResourcesManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\managers\\ResourcesManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -23,20 +47,8 @@
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\Scene.inl||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\ResourcesManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\managers\\ResourcesManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\MeshRenderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\MeshRenderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\Model.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\Model.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\MeshRenderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -67,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\Component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\GUI\\HierarchyPanel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\GUI\\HierarchyPanel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -89,10 +97,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.inl||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\core\\GameObject.inl||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|solutionrelative:src\\rendering\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F4D7913-C678-4B19-8DCF-600A39BEAF58}|GameEngine.vcxproj|C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\collisionsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -200,66 +204,26 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 236,
+          "DockedWidth": 196,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\main.cpp",
               "RelativeDocumentMoniker": "src\\core\\main.cpp",
               "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\main.cpp",
               "RelativeToolTip": "src\\core\\main.cpp",
-              "ViewState": "AgIAAHoBAAAAAAAAAAAmwI4BAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAANkAAAAAAAAAAAAiwOAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-22T23:30:40.938Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Scene.cpp",
-              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.cpp",
-              "RelativeDocumentMoniker": "src\\core\\Scene.cpp",
-              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.cpp",
-              "RelativeToolTip": "src\\core\\Scene.cpp",
-              "ViewState": "AgIAAAsCAAAAAAAAAAAAAKIAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-22T23:30:41.013Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Model.cpp",
-              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.cpp",
-              "RelativeDocumentMoniker": "src\\rendering\\Model.cpp",
-              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.cpp",
-              "RelativeToolTip": "src\\rendering\\Model.cpp",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAlwFYAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-22T23:30:41.038Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Model.h",
-              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.h",
-              "RelativeDocumentMoniker": "src\\rendering\\Model.h",
-              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.h",
-              "RelativeToolTip": "src\\rendering\\Model.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-22T23:30:41.037Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "MeshRenderer.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\MeshRenderer.cpp",
               "RelativeDocumentMoniker": "src\\rendering\\MeshRenderer.cpp",
@@ -271,7 +235,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
+              "Title": "Scene.cpp",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.cpp",
+              "RelativeDocumentMoniker": "src\\core\\Scene.cpp",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.cpp",
+              "RelativeToolTip": "src\\core\\Scene.cpp",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAewPsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-22T23:30:41.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Shader.h",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Shader.h",
+              "RelativeDocumentMoniker": "src\\rendering\\Shader.h",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Shader.h",
+              "RelativeToolTip": "src\\rendering\\Shader.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-22T23:30:41.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Camera.h",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Camera.h",
+              "RelativeDocumentMoniker": "src\\core\\Camera.h",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Camera.h",
+              "RelativeToolTip": "src\\core\\Camera.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAswCEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-07-26T05:08:13.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Scene.h",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.h",
               "RelativeDocumentMoniker": "src\\core\\Scene.h",
@@ -283,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Scene.inl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Scene.inl",
               "RelativeDocumentMoniker": "src\\core\\Scene.inl",
@@ -295,31 +296,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ResourcesManager.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\ResourcesManager.cpp",
               "RelativeDocumentMoniker": "src\\managers\\ResourcesManager.cpp",
               "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\ResourcesManager.cpp",
               "RelativeToolTip": "src\\managers\\ResourcesManager.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAMYAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-22T23:30:41.052Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GameObject.h",
-              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.h",
-              "RelativeDocumentMoniker": "src\\core\\GameObject.h",
-              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.h",
-              "RelativeToolTip": "src\\core\\GameObject.h",
-              "ViewState": "AgIAAFAAAAAAAAAAAAD4v2IAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-22T23:30:41.03Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "MeshRenderer.h",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\MeshRenderer.h",
               "RelativeDocumentMoniker": "src\\rendering\\MeshRenderer.h",
@@ -331,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Mesh.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Mesh.cpp",
               "RelativeDocumentMoniker": "src\\rendering\\Mesh.cpp",
@@ -343,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "fragment_core_shadows.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\fragment_core_shadows.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_core_shadows.glsl",
@@ -356,18 +345,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "HierarchyPanel.h",
-              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\GUI\\HierarchyPanel.h",
-              "RelativeDocumentMoniker": "src\\GUI\\HierarchyPanel.h",
-              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\GUI\\HierarchyPanel.h",
-              "RelativeToolTip": "src\\GUI\\HierarchyPanel.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-22T23:30:41.012Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "fragment_core.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\fragment_core.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_core.glsl",
@@ -379,7 +356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Component.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Component.cpp",
               "RelativeDocumentMoniker": "src\\core\\Component.cpp",
@@ -391,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "DirLight.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Light\\DirLight.cpp",
               "RelativeDocumentMoniker": "src\\rendering\\Light\\DirLight.cpp",
@@ -403,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "fragment_core_highlight.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\fragment_core_highlight.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_core_highlight.glsl",
@@ -415,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "GameObject.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.cpp",
               "RelativeDocumentMoniker": "src\\core\\GameObject.cpp",
@@ -427,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "rigidbody.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\rigidbody.hpp",
               "RelativeDocumentMoniker": "src\\physics\\rigidbody.hpp",
@@ -439,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "rigidbody.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\rigidbody.cpp",
               "RelativeDocumentMoniker": "src\\physics\\rigidbody.cpp",
@@ -451,7 +428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "collider.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\collider.cpp",
               "RelativeDocumentMoniker": "src\\physics\\collider.cpp",
@@ -463,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "GameObject.inl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\GameObject.inl",
               "RelativeDocumentMoniker": "src\\core\\GameObject.inl",
@@ -475,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "collisionsManager.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\collisionsManager.cpp",
               "RelativeDocumentMoniker": "src\\physics\\collisionsManager.cpp",
@@ -487,19 +464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Shader.h",
-              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Shader.h",
-              "RelativeDocumentMoniker": "src\\rendering\\Shader.h",
-              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Shader.h",
-              "RelativeToolTip": "src\\rendering\\Shader.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-22T23:30:41.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "vertex_core.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\vertex_core.glsl",
               "RelativeDocumentMoniker": "Assets\\vertex_core.glsl",
@@ -511,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "UtilitiesManager.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\UtilitiesManager.hpp",
               "RelativeDocumentMoniker": "src\\managers\\UtilitiesManager.hpp",
@@ -523,7 +488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "UtilitiesManger.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\UtilitiesManger.cpp",
               "RelativeDocumentMoniker": "src\\managers\\UtilitiesManger.cpp",
@@ -535,7 +500,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "fragment_post.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\fragment_post.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_post.glsl",
@@ -547,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "fragment_depthMap.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\fragment_depthMap.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_depthMap.glsl",
@@ -559,7 +524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "collisionsManager.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\collisionsManager.hpp",
               "RelativeDocumentMoniker": "src\\physics\\collisionsManager.hpp",
@@ -571,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "physicsCollision.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\PhysicsCalculations\\physicsCollision.hpp",
               "RelativeDocumentMoniker": "src\\physics\\PhysicsCalculations\\physicsCollision.hpp",
@@ -583,7 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "physicsCollision.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\PhysicsCalculations\\physicsCollision.cpp",
               "RelativeDocumentMoniker": "src\\physics\\PhysicsCalculations\\physicsCollision.cpp",
@@ -595,7 +560,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "collider.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\collider.hpp",
               "RelativeDocumentMoniker": "src\\physics\\collider.hpp",
@@ -607,7 +572,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "GameplayManager.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\GameplayManager.cpp",
               "RelativeDocumentMoniker": "src\\managers\\GameplayManager.cpp",
@@ -619,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "GameplayManager.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\managers\\GameplayManager.hpp",
               "RelativeDocumentMoniker": "src\\managers\\GameplayManager.hpp",
@@ -631,7 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "rigidbodyManager.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\rigidbodyManager.cpp",
               "RelativeDocumentMoniker": "src\\physics\\rigidbodyManager.cpp",
@@ -643,7 +608,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "rigidbodyManager.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\rigidbodyManager.hpp",
               "RelativeDocumentMoniker": "src\\physics\\rigidbodyManager.hpp",
@@ -655,7 +620,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "GeometryData.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\data\\GeometryData.hpp",
               "RelativeDocumentMoniker": "src\\data\\GeometryData.hpp",
@@ -667,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "spherCollider.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\Colliders\\spherCollider.cpp",
               "RelativeDocumentMoniker": "src\\physics\\Colliders\\spherCollider.cpp",
@@ -679,7 +644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "Mouse.h",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\io\\Mouse.h",
               "RelativeDocumentMoniker": "src\\io\\Mouse.h",
@@ -691,7 +656,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "xutility",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\xutility",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\xutility",
@@ -703,7 +668,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "PhysicsThread.h",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\PhysicsThread.h",
               "RelativeDocumentMoniker": "src\\physics\\PhysicsThread.h",
@@ -715,7 +680,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "KeyBoard.h",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\io\\KeyBoard.h",
               "RelativeDocumentMoniker": "src\\io\\KeyBoard.h",
@@ -727,7 +692,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "sphereCollider.hpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\physics\\Colliders\\sphereCollider.hpp",
               "RelativeDocumentMoniker": "src\\physics\\Colliders\\sphereCollider.hpp",
@@ -739,7 +704,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "fragment_core_1.glsl",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\Assets\\fragment_core_1.glsl",
               "RelativeDocumentMoniker": "Assets\\fragment_core_1.glsl",
@@ -751,7 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "GeometryData.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\data\\GeometryData.cpp",
               "RelativeDocumentMoniker": "src\\data\\GeometryData.cpp",
@@ -763,7 +728,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "KeyBoard.cpp",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\io\\KeyBoard.cpp",
               "RelativeDocumentMoniker": "src\\io\\KeyBoard.cpp",
@@ -775,7 +740,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "glad.c",
               "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\lib\\glad.c",
               "RelativeDocumentMoniker": "lib\\glad.c",
@@ -784,6 +749,61 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-11-22T23:30:41.054Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 276,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "CMakeLists.txt",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\CMakeLists.txt",
+              "RelativeToolTip": "CMakeLists.txt",
+              "ViewState": "AgIAAFkAAAAAAAAAAAASwHcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-07-26T06:29:04.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Camera.cpp",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Camera.cpp",
+              "RelativeDocumentMoniker": "src\\core\\Camera.cpp",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\core\\Camera.cpp",
+              "RelativeToolTip": "src\\core\\Camera.cpp",
+              "ViewState": "AgIAABEAAAAAAAAAAAAswCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-07-26T05:09:32.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Model.cpp",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.cpp",
+              "RelativeDocumentMoniker": "src\\rendering\\Model.cpp",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.cpp",
+              "RelativeToolTip": "src\\rendering\\Model.cpp",
+              "ViewState": "AgIAADwAAAAAAAAAAAAlwFIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-22T23:30:41.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Model.h",
+              "DocumentMoniker": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.h",
+              "RelativeDocumentMoniker": "src\\rendering\\Model.h",
+              "ToolTip": "C:\\Github\\GameEngine\\GameEngine\\GameEngine\\src\\rendering\\Model.h",
+              "RelativeToolTip": "src\\rendering\\Model.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-22T23:30:41.037Z"
             }
           ]
         }

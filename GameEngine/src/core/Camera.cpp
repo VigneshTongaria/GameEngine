@@ -28,6 +28,7 @@ Camera:: Camera(glm::vec3 CameraPos,glm::vec3 CameraUp,glm::vec3 CameraFront,flo
 glm::mat4 Camera :: GetViewMatrix()
 {
     return glm::lookAt(Position,Position + Front,Up);
+    //return glm::lookAt(Position, glm::vec3(0.0f), Up);
 }
 glm::mat4 Camera :: GetProjectionMatrix()
 {
@@ -45,6 +46,12 @@ glm::vec3 Camera :: GetCameraFront()
 {
     return Front;
 }
+
+void Camera::SetCameraPos(const glm::vec3 pos)
+{
+    Position = pos;
+}
+
 void Camera::ProcessWASD(CAMERA_MOVEMENT mov, float deltaTime)
 {
     float cameraSpeed = MovementSpeed*deltaTime;

@@ -1,0 +1,11 @@
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/CMakeFiles/GameEngine.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/CMakeFiles/edit_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/CMakeFiles/rebuild_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/CMakeFiles/edit_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/CMakeFiles/rebuild_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/contrib/zlib/CMakeFiles/zlibstatic.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/contrib/zlib/CMakeFiles/edit_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/contrib/zlib/CMakeFiles/rebuild_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/CMakeFiles/assimp.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/CMakeFiles/edit_cache.dir
+C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/CMakeFiles/rebuild_cache.dir

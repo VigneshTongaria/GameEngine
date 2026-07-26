@@ -29,8 +29,8 @@ public:
   float width;
   float nearPlane;
   float farPlane;
-  Camera(glm::vec3 CameraPos = glm::vec3(0.0f,0.0f,3.0f),
-  glm::vec3 CameraUp = glm::vec3(0.0f,1.0f,0.0f),
+  Camera(glm::vec3 CameraPos = glm::vec3(0.0f,0.0f,30.0f),
+  glm::vec3 CameraUp = glm::vec3(0.0f,0.0f,1.0f),
   glm::vec3 CameraFront = glm::vec3(0.0f,0.0f,1.0f),float yaw = 0.0f,float pitch = 89.0f,
   float perspectiveAnlge = glm::radians(60.0f),float height = 800.0f,float width = 600.0f,
   float nearPlane = 0.1f,float farPlane = 100.0f);
@@ -40,6 +40,7 @@ public:
   glm::mat4 GetProjectionViewMatrix();
   glm::vec3 GetCameraPos();
   glm::vec3 GetCameraFront();
+  void SetCameraPos(const glm::vec3 pos);
   void ProcessWASD(CAMERA_MOVEMENT mov, float deltaTime);
   void ProcessMouse(float dx, float dy);
   void SetZoom(float scrolldy);

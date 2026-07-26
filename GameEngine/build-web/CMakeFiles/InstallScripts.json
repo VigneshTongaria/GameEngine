@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Github/GameEngine/GameEngine/GameEngine/build-web/cmake_install.cmake",
+		"C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/cmake_install.cmake",
+		"C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/contrib/zlib/cmake_install.cmake",
+		"C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

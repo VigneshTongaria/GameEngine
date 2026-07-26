@@ -1,0 +1,9 @@
+libdir=C:/Github/emsdk/emsdk/upstream/emscripten/cache/sysroot/lib
+includedir=C:/Github/emsdk/emsdk/upstream/emscripten/cache/sysroot/include
+
+Name: GameEngine
+Description: Import various well-known 3D model formats in an uniform manner.
+Version: 6.0.5
+Libs: -L${libdir} -lassimp
+Libs.private:  
+Cflags: -I${includedir}
