@@ -27,11 +27,16 @@
 #include "Scene.h"
 #include "../GUI/HierarchyPanel.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#endif
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void process_inputs(GLFWwindow* window);
 void SetViewAndProjectionForAllShaders(unsigned int uboIndex);
 void RenderScene(Shader* shader,std::vector<Model*> models,int cubeVAO);
 void RenderAsteriods(Model* m,Shader* s);
+void MainLoop();
 float Arrow_vertical_Input = 0.0f;
 
 glm::mat4 Scale = glm::mat4(1.0f);
@@ -43,6 +48,7 @@ unsigned int SRC_HEIGHT = 1080;
 unsigned int SRC_WIDTH = 1920;
 
 Camera MainCamera;
+Scene* mainScene = nullptr;
 
 // Asteriods mattrices
 std::vector<glm::mat4> asteriodModelMats;
@@ -127,7 +133,11 @@ int main()
 	// Start
 	scene.start();
 
-    
+	mainScene = &scene;
+
+#ifdef __EMSCRIPTEN__
+	emscripten_set_main_loop(MainLoop, 0, true);
+#else
 	while (!glfwWindowShouldClose(window))
 	{
 
@@ -163,6 +173,8 @@ int main()
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 	glfwTerminate();
 	return 0;
+#endif
+	
 }
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -252,4 +264,9 @@ void SetViewAndProjectionForAllShaders(unsigned int uboIndex)
 	glBindBuffer(GL_UNIFORM_BUFFER,0);
 }
 
+void MainLoop()
+{
+	mainScene->update();
+	mainScene->render();
+}
 

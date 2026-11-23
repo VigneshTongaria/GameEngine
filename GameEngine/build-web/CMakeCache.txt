@@ -135,7 +135,7 @@ Assimp_IS_TOP_LEVEL:STATIC=OFF
 Assimp_SOURCE_DIR:STATIC=C:/Github/GameEngine/GameEngine/GameEngine/external/assimp
 
 //Build package with shared libraries.
-BUILD_SHARED_LIBS:BOOL=ON
+BUILD_SHARED_LIBS:BOOL=OFF
 
 //Path to a program.
 CCACHE_PATH:FILEPATH=CCACHE_PATH-NOTFOUND

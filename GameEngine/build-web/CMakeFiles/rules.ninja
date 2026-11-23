@@ -118,22 +118,14 @@ rule CXX_COMPILER__assimp_unscanned_
 
 
 #############################################
-# Rule for linking CXX shared library.
+# Rule for linking CXX static library.
 
-rule CXX_SHARED_LIBRARY_LINKER__assimp_
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && C:\Github\emsdk\emsdk\upstream\emscripten\em++.exe -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS $SONAME_FLAG$SONAME -o $TARGET_FILE @$RSP_FILE && $POST_BUILD"
-  description = Linking CXX shared library $TARGET_FILE
+rule CXX_STATIC_LIBRARY_LINKER__assimp_
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\Github\emsdk\emsdk\upstream\emscripten\emar.exe qc $TARGET_FILE $LINK_FLAGS @$RSP_FILE && C:\Github\emsdk\emsdk\upstream\emscripten\emranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking CXX static library $TARGET_FILE
   rspfile = $RSP_FILE
   rspfile_content = $in $LINK_PATH $LINK_LIBRARIES
   restat = $RESTAT
-
-
-#############################################
-# Rule for creating library symlink.
-
-rule CMAKE_SYMLINK_LIBRARY
-  command = C:\WINDOWS\system32\cmd.exe /C ""C:\Program Files\CMake\bin\cmake.exe" -E cmake_symlink_library $in $SONAME $out && $POST_BUILD"
-  description = Creating library symlink $out
 
 
 #############################################
