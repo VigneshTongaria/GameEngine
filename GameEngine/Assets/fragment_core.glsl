@@ -1,4 +1,6 @@
-#version 460 core
+#version 300 es
+
+precision highp float;
 
 struct Material {
     sampler2D texture_diffuse1;

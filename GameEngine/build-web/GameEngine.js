@@ -76,6 +76,159 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
+// include: C:\Users\vigne\AppData\Local\Temp\tmpr0h6e8co.js
+
+  if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
+  Module['expectedDataFileDownloads']++;
+  (() => {
+    // Do not attempt to redownload the virtual filesystem data when in a pthread or a Wasm Worker context.
+    var isPthread = typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD;
+    var isWasmWorker = typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER;
+    if (isPthread || isWasmWorker) return;
+    var isNode = globalThis.process && globalThis.process.versions && globalThis.process.versions.node && globalThis.process.type != 'renderer';
+    async function loadPackage(metadata) {
+
+      var PACKAGE_PATH = '';
+      if (typeof window === 'object') {
+        PACKAGE_PATH = window['encodeURIComponent'](window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + '/');
+      } else if (typeof process === 'undefined' && typeof location !== 'undefined') {
+        // web worker
+        PACKAGE_PATH = encodeURIComponent(location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/');
+      }
+      var PACKAGE_NAME = 'GameEngine.data';
+      var REMOTE_PACKAGE_BASE = 'GameEngine.data';
+      var REMOTE_PACKAGE_NAME = Module['locateFile'] ? Module['locateFile'](REMOTE_PACKAGE_BASE, '') : REMOTE_PACKAGE_BASE;
+      var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
+
+      async function fetchRemotePackage(packageName, packageSize) {
+        if (isNode) {
+          var contents = require('fs').readFileSync(packageName);
+          return new Uint8Array(contents).buffer;
+        }
+        if (!Module['dataFileDownloads']) Module['dataFileDownloads'] = {};
+        try {
+          var response = await fetch(packageName);
+        } catch (e) {
+          throw new Error(`Network Error: ${packageName}`, {e});
+        }
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.url}`);
+        }
+
+        const chunks = [];
+        const headers = response.headers;
+        const total = Number(headers.get('Content-Length') || packageSize);
+        let loaded = 0;
+
+        Module['setStatus'] && Module['setStatus']('Downloading data...');
+        const reader = response.body.getReader();
+
+        while (1) {
+          var {done, value} = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          loaded += value.length;
+          Module['dataFileDownloads'][packageName] = {loaded, total};
+
+          let totalLoaded = 0;
+          let totalSize = 0;
+
+          for (const download of Object.values(Module['dataFileDownloads'])) {
+            totalLoaded += download.loaded;
+            totalSize += download.total;
+          }
+
+          Module['setStatus'] && Module['setStatus'](`Downloading data... (${totalLoaded}/${totalSize})`);
+        }
+
+        const packageData = new Uint8Array(chunks.map((c) => c.length).reduce((a, b) => a + b, 0));
+        let offset = 0;
+        for (const chunk of chunks) {
+          packageData.set(chunk, offset);
+          offset += chunk.length;
+        }
+        return packageData.buffer;
+      }
+
+      var fetchPromise;
+      var fetched = Module['getPreloadedPackage'] && Module['getPreloadedPackage'](REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE);
+
+      if (!fetched) {
+        // Note that we don't use await here because we want to execute the
+        // the rest of this function immediately.
+        fetchPromise = fetchRemotePackage(REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE);
+      }
+
+    async function runWithFS(Module) {
+
+      function assert(check, msg) {
+        if (!check) throw new Error(msg);
+      }
+Module['FS_createPath']("/", "Assets", true, true);
+Module['FS_createPath']("/Assets", "GeometryShaders", true, true);
+Module['FS_createPath']("/Assets", "resources", true, true);
+Module['FS_createPath']("/Assets/resources", "Girl", true, true);
+Module['FS_createPath']("/Assets/resources", "Spartan", true, true);
+Module['FS_createPath']("/Assets/resources/Spartan", "source", true, true);
+Module['FS_createPath']("/Assets/resources", "skybox", true, true);
+Module['FS_createPath']("/Assets/resources", "the-armoury", true, true);
+Module['FS_createPath']("/Assets/resources/the-armoury", "source", true, true);
+Module['FS_createPath']("/Assets/resources/the-armoury/source", "armory", true, true);
+Module['FS_createPath']("/Assets/resources/the-armoury", "textures", true, true);
+
+      async function processPackageData(arrayBuffer) {
+        assert(arrayBuffer, 'Loading data file failed.');
+        assert(arrayBuffer.constructor.name === ArrayBuffer.name, 'bad input to processPackageData ' + arrayBuffer.constructor.name);
+        var byteArray = new Uint8Array(arrayBuffer);
+        var curr;
+        // Reuse the bytearray from the XHR as the source for file reads.
+          for (var file of metadata['files']) {
+            var name = file['filename'];
+            var data = byteArray.subarray(file['start'], file['end']);
+            // canOwn this data in the filesystem, it is a slice into the heap that will never change
+        Module['FS_createDataFile'](name, null, data, true, true, true);
+          }
+          Module['removeRunDependency']('datafile_GameEngine.data');
+      }
+      Module['addRunDependency']('datafile_GameEngine.data');
+
+      if (!Module['preloadResults']) Module['preloadResults'] = {};
+
+      Module['preloadResults'][PACKAGE_NAME] = {fromCache: false};
+      if (!fetched) {
+        fetched = await fetchPromise;
+      }
+      await processPackageData(fetched);
+
+    }
+    // Detect whether the module JS file has already been loaded.
+    if (Module['FS_createPath']) {
+      runWithFS(Module);
+    } else {
+      if (!Module['preRun']) Module['preRun'] = [];
+      Module['preRun'].push(runWithFS); // FS is not initialized yet, wait for it
+    }
+
+    }
+    loadPackage({"files": [{"filename": "/Assets/GeometryShaders/Geometry_PointLight.glsl", "start": 0, "end": 468}, {"filename": "/Assets/GeometryShaders/Geometry_explode.glsl", "start": 468, "end": 1477}, {"filename": "/Assets/GeometryShaders/Geometry_normals.glsl", "start": 1477, "end": 1994}, {"filename": "/Assets/GeometryShaders/Vertex_unlit.glsl", "start": 1994, "end": 2528}, {"filename": "/Assets/GeometryShaders/fragment_PointLightMap.glsl", "start": 2528, "end": 2807}, {"filename": "/Assets/GeometryShaders/fragment_unlit.glsl", "start": 2807, "end": 3137}, {"filename": "/Assets/Vertex_pointLight.glsl", "start": 3137, "end": 3289}, {"filename": "/Assets/fragment_Blending.glsl", "start": 3289, "end": 3880}, {"filename": "/Assets/fragment_bloom.glsl", "start": 3880, "end": 4848}, {"filename": "/Assets/fragment_brightness.glsl", "start": 4848, "end": 5403}, {"filename": "/Assets/fragment_core.glsl", "start": 5403, "end": 10157}, {"filename": "/Assets/fragment_core_1.glsl", "start": 10157, "end": 10511}, {"filename": "/Assets/fragment_core_BW.glsl", "start": 10511, "end": 10849}, {"filename": "/Assets/fragment_core_highlight.glsl", "start": 10849, "end": 10951}, {"filename": "/Assets/fragment_core_lightSource.glsl", "start": 10951, "end": 11038}, {"filename": "/Assets/fragment_core_shadows.glsl", "start": 11038, "end": 20765}, {"filename": "/Assets/fragment_cubeMap.glsl", "start": 20765, "end": 20950}, {"filename": "/Assets/fragment_depthMap.glsl", "start": 20950, "end": 21042}, {"filename": "/Assets/fragment_post.glsl", "start": 21042, "end": 21704}, {"filename": "/Assets/fragment_reflective.glsl", "start": 21704, "end": 22043}, {"filename": "/Assets/resources/Girl/a_contortionist_dancer.glb", "start": 22043, "end": 18819803}, {"filename": "/Assets/resources/Girl/in_underwear.glb", "start": 18819803, "end": 68804339}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_AO.png", "start": 68804339, "end": 69668796}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_BaseColor.png", "start": 69668796, "end": 73285123}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Metallic.png", "start": 73285123, "end": 74388612}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Normal.png", "start": 74388612, "end": 78338946}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Roughness.png", "start": 78338946, "end": 80128748}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Specular.png", "start": 80128748, "end": 80908230}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_AO.png", "start": 80908230, "end": 82392204}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_BaseColor.png", "start": 82392204, "end": 86607764}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Metallic.png", "start": 86607764, "end": 87434159}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Normal.png", "start": 87434159, "end": 93589530}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Roughness.png", "start": 93589530, "end": 95214686}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Specular.png", "start": 95214686, "end": 95843297}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_AO.png", "start": 95843297, "end": 97678031}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_BaseColor.png", "start": 97678031, "end": 102753310}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Metallic.png", "start": 102753310, "end": 104100403}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Normal.png", "start": 104100403, "end": 108767373}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Roughness.png", "start": 108767373, "end": 111030634}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Specular.png", "start": 111030634, "end": 111936712}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_AO.png", "start": 111936712, "end": 112034765}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_BaseColor.png", "start": 112034765, "end": 113208925}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Metallic.png", "start": 113208925, "end": 113645441}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Normal.png", "start": 113645441, "end": 114651639}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Roughness.png", "start": 114651639, "end": 115147804}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Specular.png", "start": 115147804, "end": 115433327}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_AO.png", "start": 115433327, "end": 116386088}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_BaseColor.png", "start": 116386088, "end": 120513643}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Metallic.png", "start": 120513643, "end": 121899996}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Normal.png", "start": 121899996, "end": 126476576}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Roughness.png", "start": 126476576, "end": 128243503}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Specular.png", "start": 128243503, "end": 129125810}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_AO.png", "start": 129125810, "end": 130625024}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_BaseColor.png", "start": 130625024, "end": 134791655}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Metallic.png", "start": 134791655, "end": 135823846}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Normal.png", "start": 135823846, "end": 140851015}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Roughness.png", "start": 140851015, "end": 142777188}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Specular.png", "start": 142777188, "end": 143430256}, {"filename": "/Assets/resources/Spartan/source/Spartan_Sketchfab.fbx", "start": 143430256, "end": 147796752}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_AO.png", "start": 147796752, "end": 151024088}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_BaseColor.png", "start": 151024088, "end": 165377378}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Metallic.png", "start": 165377378, "end": 168033244}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Normal.png", "start": 168033244, "end": 193508504}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Roughness.png", "start": 193508504, "end": 198650115}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Specular.png", "start": 198650115, "end": 199784831}, {"filename": "/Assets/resources/Spartan/source/lambert1_Colour-Opacity.png", "start": 199784831, "end": 207963921}, {"filename": "/Assets/resources/Spartan/source/lambert1_Nrm.png", "start": 207963921, "end": 212519707}, {"filename": "/Assets/resources/Spartan/source/lambert1_Roughness.png", "start": 212519707, "end": 214490712}, {"filename": "/Assets/resources/blending_transparent_window.png", "start": 214490712, "end": 214496202}, {"filename": "/Assets/resources/grass.png", "start": 214496202, "end": 214695998}, {"filename": "/Assets/resources/skybox/back.jpg", "start": 214695998, "end": 215436066}, {"filename": "/Assets/resources/skybox/bottom.jpg", "start": 215436066, "end": 215716655}, {"filename": "/Assets/resources/skybox/front.jpg", "start": 215716655, "end": 216189984}, {"filename": "/Assets/resources/skybox/left.jpg", "start": 216189984, "end": 216791869}, {"filename": "/Assets/resources/skybox/right.jpg", "start": 216791869, "end": 217329907}, {"filename": "/Assets/resources/skybox/top.jpg", "start": 217329907, "end": 217676046}, {"filename": "/Assets/resources/the-armoury/source/armory/model.mtl", "start": 217676046, "end": 217676240}, {"filename": "/Assets/resources/the-armoury/source/armory/model.obj", "start": 217676240, "end": 316487013}, {"filename": "/Assets/resources/the-armoury/source/armory/tex_u1_v1.jpg", "start": 316487013, "end": 318414513}, {"filename": "/Assets/resources/the-armoury/textures/tex_u1_v1.jpeg", "start": 318414513, "end": 327381817}, {"filename": "/Assets/vertex_Instance.glsl", "start": 327381817, "end": 327382565}, {"filename": "/Assets/vertex_core.glsl", "start": 327382565, "end": 327383265}, {"filename": "/Assets/vertex_core_lightSource.glsl", "start": 327383265, "end": 327383575}, {"filename": "/Assets/vertex_core_shadows.glsl", "start": 327383575, "end": 327385005}, {"filename": "/Assets/vertex_cubeMap.glsl", "start": 327385005, "end": 327385365}, {"filename": "/Assets/vertex_depthMap.glsl", "start": 327385365, "end": 327385564}, {"filename": "/Assets/vertex_unlit.glsl", "start": 327385564, "end": 327385782}], "remote_package_size": 327385782});
+
+  })();
+
+// end include: C:\Users\vigne\AppData\Local\Temp\tmpr0h6e8co.js
+// include: C:\Users\vigne\AppData\Local\Temp\tmp9j_e7wyl.js
+
+    // All the pre-js content up to here must remain later on, we need to run
+    // it.
+    if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
+    var necessaryPreJSTasks = Module['preRun'].slice();
+  // end include: C:\Users\vigne\AppData\Local\Temp\tmp9j_e7wyl.js
+// include: C:\Users\vigne\AppData\Local\Temp\tmpsb288i_0.js
+
+    if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
+    necessaryPreJSTasks.forEach((task) => {
+      if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
+    });
+  // end include: C:\Users\vigne\AppData\Local\Temp\tmpsb288i_0.js
 
 
 var programArgs = [];
@@ -4171,9 +4324,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     ;
   }
 
-  var _emscripten_err = (str) => err(UTF8ToString(str));
-
-
   var GLctx;
   
   var webgl_enable_ANGLE_instanced_arrays = (ctx) => {
@@ -7893,7 +8043,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       return 0;
     };
 
-
   function _fd_close(fd) {
   try {
   
@@ -8046,8 +8195,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _glGetShaderInfoLog = _emscripten_glGetShaderInfoLog;
 
   var _glGetShaderiv = _emscripten_glGetShaderiv;
-
-  var _glGetString = _emscripten_glGetString;
 
   var _glGetUniformLocation = _emscripten_glGetUniformLocation;
 
@@ -9674,11 +9821,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return table[param];
       },
   };
-  var _glfwCreateStandardCursor = (shape) => 0;
-
   var _glfwCreateWindow = (width, height, title, monitor, share) => GLFW.createWindow(width, height, title, monitor, share);
-
-  var _glfwGetClipboardString = (win) => 0;
 
   var _glfwGetCursorPos = (winid, x, y) => GLFW.getCursorPos(winid, x, y);
 
@@ -9747,8 +9890,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       return state.buttons;
     };
 
-  var _glfwGetKey = (winid, key) => GLFW.getKey(winid, key);
-
   var _glfwGetTime = () => GLFW.getTime() - GLFW.initialTime;
 
   var _glfwGetWindowSize = (winid, width, height) => GLFW.getWindowSize(winid, width, height);
@@ -9807,29 +9948,11 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glfwMakeContextCurrent = (winid) => 0;
 
-  var _glfwSetCharCallback = (winid, cbfun) => GLFW.setCharCallback(winid, cbfun);
-
-  var _glfwSetClipboardString = (win, string) => 0;
-
   var _glfwSetCursor = (winid, cursor) => 0;
-
-  var _glfwSetCursorEnterCallback = (winid, cbfun) => {
-      var win = GLFW.WindowFromId(winid);
-      if (!win) return null;
-      var prevcbfun = win.cursorEnterFunc;
-      win.cursorEnterFunc = cbfun;
-      return prevcbfun;
-    };
 
   var _glfwSetCursorPos = (winid, x, y) => GLFW.setCursorPos(winid, x, y);
 
   var _glfwSetCursorPosCallback = (winid, cbfun) => GLFW.setCursorPosCallback(winid, cbfun);
-
-  var _glfwSetErrorCallback = (cbfun) => {
-      var prevcbfun = GLFW.errorFunc;
-      GLFW.errorFunc = cbfun;
-      return prevcbfun;
-    };
 
   var _glfwSetFramebufferSizeCallback = (winid, cbfun) => {
       var win = GLFW.WindowFromId(winid);
@@ -9845,23 +9968,9 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glfwSetKeyCallback = (winid, cbfun) => GLFW.setKeyCallback(winid, cbfun);
 
-  var _glfwSetMonitorCallback = (cbfun) => {
-      var prevcbfun = GLFW.monitorFunc;
-      GLFW.monitorFunc = cbfun;
-      return prevcbfun;
-    };
-
   var _glfwSetMouseButtonCallback = (winid, cbfun) => GLFW.setMouseButtonCallback(winid, cbfun);
 
   var _glfwSetScrollCallback = (winid, cbfun) => GLFW.setScrollCallback(winid, cbfun);
-
-  var _glfwSetWindowFocusCallback = (winid, cbfun) => {
-      var win = GLFW.WindowFromId(winid);
-      if (!win) return null;
-      var prevcbfun = win.windowFocusFunc;
-      win.windowFocusFunc = cbfun;
-      return prevcbfun;
-    };
 
   var _glfwTerminate = () => {
       window.removeEventListener('gamepadconnected', GLFW.onGamepadConnected, true);
@@ -9900,7 +10009,20 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
 
 
+
   var requestFullscreen = Browser.requestFullscreen;
+
+  var FS_createPath = (...args) => FS.createPath(...args);
+
+
+
+  var FS_unlink = (...args) => FS.unlink(...args);
+
+  var FS_createLazyFile = (...args) => FS.createLazyFile(...args);
+
+  var FS_createDevice = (...args) => FS.createDevice(...args);
+
+
 
   FS.createPreloadedFile = FS_createPreloadedFile;
   FS.preloadFile = FS_preloadFile;
@@ -9975,7 +10097,15 @@ if (Module['printErr']) err = Module['printErr'];
 }
 
 // Begin runtime exports
+  Module['addRunDependency'] = addRunDependency;
+  Module['removeRunDependency'] = removeRunDependency;
   Module['requestFullscreen'] = requestFullscreen;
+  Module['FS_preloadFile'] = FS_preloadFile;
+  Module['FS_unlink'] = FS_unlink;
+  Module['FS_createPath'] = FS_createPath;
+  Module['FS_createDevice'] = FS_createDevice;
+  Module['FS_createDataFile'] = FS_createDataFile;
+  Module['FS_createLazyFile'] = FS_createLazyFile;
   var missingLibrarySymbols = [
   'writeI53ToI64Clamped',
   'writeI53ToI64Signaling',
@@ -10167,8 +10297,6 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'wasmMemory',
   'getUniqueRunDependency',
   'noExitRuntime',
-  'addRunDependency',
-  'removeRunDependency',
   'addOnPreRun',
   'addOnPostRun',
   'freeTableIndexes',
@@ -10218,15 +10346,11 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'SYSCALLS',
   'preloadPlugins',
   'FS_createPreloadedFile',
-  'FS_preloadFile',
   'FS_modeStringToFlags',
   'FS_getMode',
   'FS_fileDataToTypedArray',
   'FS_stdin_getChar_buffer',
   'FS_stdin_getChar',
-  'FS_unlink',
-  'FS_createPath',
-  'FS_createDevice',
   'FS_readFile',
   'FS',
   'FS_root',
@@ -10332,9 +10456,7 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'FS_findObject',
   'FS_analyzePath',
   'FS_createFile',
-  'FS_createDataFile',
   'FS_forceLoadFile',
-  'FS_createLazyFile',
   'MEMFS',
   'TTY',
   'PIPEFS',
@@ -10471,8 +10593,6 @@ function assignWasmExports(wasmExports) {
 
 var wasmImports = {
   /** @export */
-  ImGui_ImplGlfw_EmscriptenOpenURL,
-  /** @export */
   __assert_fail: ___assert_fail,
   /** @export */
   __cxa_throw: ___cxa_throw,
@@ -10508,10 +10628,6 @@ var wasmImports = {
   _tzset_js: __tzset_js,
   /** @export */
   clock_time_get: _clock_time_get,
-  /** @export */
-  emscripten_err: _emscripten_err,
-  /** @export */
-  emscripten_get_now: _emscripten_get_now,
   /** @export */
   emscripten_glActiveTexture: _emscripten_glActiveTexture,
   /** @export */
@@ -11077,8 +11193,6 @@ var wasmImports = {
   /** @export */
   environ_sizes_get: _environ_sizes_get,
   /** @export */
-  exit: _exit,
-  /** @export */
   fd_close: _fd_close,
   /** @export */
   fd_read: _fd_read,
@@ -11119,19 +11233,13 @@ var wasmImports = {
   /** @export */
   glGetShaderiv: _glGetShaderiv,
   /** @export */
-  glGetString: _glGetString,
-  /** @export */
   glGetUniformLocation: _glGetUniformLocation,
   /** @export */
   glLinkProgram: _glLinkProgram,
   /** @export */
   glShaderSource: _glShaderSource,
   /** @export */
-  glfwCreateStandardCursor: _glfwCreateStandardCursor,
-  /** @export */
   glfwCreateWindow: _glfwCreateWindow,
-  /** @export */
-  glfwGetClipboardString: _glfwGetClipboardString,
   /** @export */
   glfwGetCursorPos: _glfwGetCursorPos,
   /** @export */
@@ -11143,8 +11251,6 @@ var wasmImports = {
   /** @export */
   glfwGetJoystickButtons: _glfwGetJoystickButtons,
   /** @export */
-  glfwGetKey: _glfwGetKey,
-  /** @export */
   glfwGetTime: _glfwGetTime,
   /** @export */
   glfwGetWindowSize: _glfwGetWindowSize,
@@ -11153,19 +11259,11 @@ var wasmImports = {
   /** @export */
   glfwMakeContextCurrent: _glfwMakeContextCurrent,
   /** @export */
-  glfwSetCharCallback: _glfwSetCharCallback,
-  /** @export */
-  glfwSetClipboardString: _glfwSetClipboardString,
-  /** @export */
   glfwSetCursor: _glfwSetCursor,
-  /** @export */
-  glfwSetCursorEnterCallback: _glfwSetCursorEnterCallback,
   /** @export */
   glfwSetCursorPos: _glfwSetCursorPos,
   /** @export */
   glfwSetCursorPosCallback: _glfwSetCursorPosCallback,
-  /** @export */
-  glfwSetErrorCallback: _glfwSetErrorCallback,
   /** @export */
   glfwSetFramebufferSizeCallback: _glfwSetFramebufferSizeCallback,
   /** @export */
@@ -11173,13 +11271,9 @@ var wasmImports = {
   /** @export */
   glfwSetKeyCallback: _glfwSetKeyCallback,
   /** @export */
-  glfwSetMonitorCallback: _glfwSetMonitorCallback,
-  /** @export */
   glfwSetMouseButtonCallback: _glfwSetMouseButtonCallback,
   /** @export */
   glfwSetScrollCallback: _glfwSetScrollCallback,
-  /** @export */
-  glfwSetWindowFocusCallback: _glfwSetWindowFocusCallback,
   /** @export */
   glfwTerminate: _glfwTerminate,
   /** @export */

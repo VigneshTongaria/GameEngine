@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "GameEngine\\x64\\Debug\\Shader.obj",
+            "outputs": [
+                "GameEngine\\x64\\Debug\\Shader.cpp.obj.dt.module.json",
+                "GameEngine\\x64\\Debug\\Shader.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

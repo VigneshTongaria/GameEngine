@@ -60,21 +60,31 @@ std::vector<Model*> SceneModels;
 std::vector<Shader*> shaders;
 std::vector<std::string> cubeFaces
 {
-    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/right.jpg",
-    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/left.jpg",
-    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/top.jpg",
-    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/bottom.jpg",
-    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/front.jpg",
-    "C:/Users/vigne/GithubRepos/GameEngine/GameEngine/Assets/resources/skybox/back.jpg"
+    "Assets/resources/skybox/right.jpg",
+    "Assets/resources/skybox/left.jpg",
+    "Assets/resources/skybox/top.jpg",
+    "Assets/resources/skybox/bottom.jpg",
+    "Assets/resources/skybox/front.jpg",
+    "Assets/resources/skybox/back.jpg"
 };
 
 
 int main()
 {
 	glfwInit();
+
+#ifdef __EMSCRIPTEN__
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+	//std::cout << "GL VERSION:" << glGetString(GL_VERSION) << std::endl;
+	//std::cout << "GLSL VERSION:"<< glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
+#else
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glGetString(GL_VERSION);
+#endif
 
 	GLFWwindow* window = glfwCreateWindow(SRC_WIDTH, SRC_HEIGHT, "OpenGL", NULL, NULL);
 	if (window == NULL)
@@ -104,14 +114,14 @@ int main()
 	// rb->start();
 	// ResourcesManager::VerticesCount = 0;
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void) io;
-	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(window,true);
-	ImGui_ImplOpenGL3_Init("#version 460");
+	//IMGUI_CHECKVERSION();
+	//ImGui::CreateContext();
+	//ImGuiIO& io = ImGui::GetIO(); (void) io;
+	//ImGui::StyleColorsDark();
+	//ImGui_ImplGlfw_InitForOpenGL(window,true);
+	//ImGui_ImplOpenGL3_Init("#version 460");
 
-	startPhysicsThread();
+	//startPhysicsThread();
     ShaderManager::init();
 	Scene scene(SRC_WIDTH,SRC_HEIGHT);
 
@@ -126,7 +136,7 @@ int main()
 
 	MainCamera.SetCameraPos(glm::vec3(0.0f));
 
-	Model underWearGirl = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Girl/in_underwear.glb");
+	Model underWearGirl = Model("Assets/resources/Girl/in_underwear.glb");
 
 	underWearGirl.addModelToScene(&scene);
 
@@ -168,9 +178,9 @@ int main()
 	ImGui::DestroyContext();
 
 	// Call OnDestroy/End functions here
-	stopPhysicsThread();
+	//stopPhysicsThread();
 
-	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+	//std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
 	glfwTerminate();
 	return 0;
 #endif

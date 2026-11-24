@@ -91,6 +91,8 @@ if(EMSCRIPTEN)
 
         "-sUSE_WEBGL2=1"
 
+        "--preload-file"
+        "${CMAKE_SOURCE_DIR}/Assets@Assets"
     )
 
     set_target_properties(GameEngine PROPERTIES
@@ -121,11 +123,13 @@ target_include_directories(GameEngine PRIVATE
 
 if(EMSCRIPTEN)
 
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+
 set(ASSIMP_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(ASSIMP_INSTALL OFF CACHE BOOL "" FORCE)
 set(ASSIMP_WARNINGS_AS_ERRORS OFF CACHE BOOL "" FORCE)
+set(ASSIMP_BUILD_ZLIB ON CACHE BOOL "" FORCE)
 
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(external/assimp)
 

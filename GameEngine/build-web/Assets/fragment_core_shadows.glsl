@@ -1,4 +1,6 @@
-#version 460 core
+#version 300 es
+
+precision highp float;
 
 #define NR_POINT_LIGHTS 4  
 struct Material {
