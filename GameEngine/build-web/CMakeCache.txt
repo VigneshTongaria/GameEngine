@@ -382,10 +382,8 @@ CMAKE_STRIP:FILEPATH=CMAKE_STRIP-NOTFOUND
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
-//Path to a CMake toolchain file, read early in the CMake run,
-// that specifies the compilers, toolchain utilities, and target-platform
-// information used when cross-compiling.
-CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=C:\Github\emsdk\emsdk\upstream\emscripten\cmake\Modules\Platform\Emscripten.cmake
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=C:/Github/emsdk/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -409,23 +407,8 @@ GameEngine_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 GameEngine_SOURCE_DIR:STATIC=C:/Github/GameEngine/GameEngine/GameEngine
 
-//Arguments to supply to pkg-config
-PKG_CONFIG_ARGN:STRING=
-
-//pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
-
 //Path to a library.
 RT_LIBRARY:FILEPATH=RT_LIBRARY-NOTFOUND
-
-//Path to a file.
-ZLIB_INCLUDE_DIR:PATH=ZLIB_INCLUDE_DIR-NOTFOUND
-
-//Path to a library.
-ZLIB_LIBRARY_DBG:FILEPATH=ZLIB_LIBRARY_DBG-NOTFOUND
-
-//Path to a library.
-ZLIB_LIBRARY_REL:FILEPATH=ZLIB_LIBRARY_REL-NOTFOUND
 
 //Value Computed by CMake
 zlib_BINARY_DIR:STATIC=C:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/contrib/zlib
@@ -629,20 +612,8 @@ HAVE_STDINT_H:INTERNAL=1
 HAVE_SYS_TYPES_H:INTERNAL=1
 //CHECK_TYPE_SIZE: sizeof(off64_t)
 OFF64_T:INTERNAL=8
-//ADVANCED property for variable: PKG_CONFIG_ARGN
-PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
-PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: RT_LIBRARY
 RT_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: ZLIB_INCLUDE_DIR
-ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: ZLIB_LIBRARY_DBG
-ZLIB_LIBRARY_DBG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: ZLIB_LIBRARY_REL
-ZLIB_LIBRARY_REL-ADVANCED:INTERNAL=1
-//x
-ZLIB_PREFIX_PATH_INT_CHECK:INTERNAL=
 //Have include unistd.h
 Z_HAVE_UNISTD_H:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run

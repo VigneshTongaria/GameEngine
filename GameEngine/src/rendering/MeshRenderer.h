@@ -2,7 +2,7 @@
 
 #include"../core/Component.h"
 #include <vector>
-#include <glad/glad.h>
+#include "../core/OpenGLHeaders.h"
 class Mesh;
 class Shader;
 

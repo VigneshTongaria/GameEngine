@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\github\\gameengine\\gameengine\\gameengine\\src\\core\\application.h",
+        "ProvidedModule": "",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,5 +1,6 @@
 #include "MSAARenderTarget.h"
 #include <iostream>
+#include "../../core/OpenGLHeaders.h"
 
 MSAARenderTarget::MSAARenderTarget(int width,int height,int samples)
 {

@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "GameEngine\\x64\\Debug\\OpenGLHeaders.obj",
+            "outputs": [
+                "GameEngine\\x64\\Debug\\OpenGLHeaders.h.obj.dt.module.json",
+                "GameEngine\\x64\\Debug\\OpenGLHeaders.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

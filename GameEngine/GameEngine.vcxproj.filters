@@ -298,6 +298,9 @@
     <ClInclude Include="src\GUI\InspectorPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\OpenGLHeaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Linking\lib\GLFW\glfw3.lib" />
@@ -374,5 +377,8 @@
     <Image Include="Assets\resources\grass.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

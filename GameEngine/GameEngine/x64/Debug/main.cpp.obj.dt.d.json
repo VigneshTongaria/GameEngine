@@ -129,6 +129,7 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\assert.h",
             "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\imgui\\imgui_impl_glfw.h",
             "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\imgui\\imgui_impl_opengl3.h",
+            "c:\\github\\gameengine\\gameengine\\gameengine\\src\\core\\openglheaders.h",
             "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\glad\\glad.h",
             "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\khr\\khrplatform.h",
             "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\glfw\\glfw3.h",

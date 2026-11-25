@@ -1,5 +1,6 @@
 #pragma once
 #include "IRenderTarget.h"
+#include "../../core/OpenGLHeaders.h"
 
 class ShadowRenderTarget : public IRenderTarget
 {

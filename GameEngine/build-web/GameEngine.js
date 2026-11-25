@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\vigne\AppData\Local\Temp\tmpr0h6e8co.js
+// include: C:\Users\vigne\AppData\Local\Temp\tmp_al14tyi.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -210,25 +210,25 @@ Module['FS_createPath']("/Assets/resources/the-armoury", "textures", true, true)
     }
 
     }
-    loadPackage({"files": [{"filename": "/Assets/GeometryShaders/Geometry_PointLight.glsl", "start": 0, "end": 468}, {"filename": "/Assets/GeometryShaders/Geometry_explode.glsl", "start": 468, "end": 1477}, {"filename": "/Assets/GeometryShaders/Geometry_normals.glsl", "start": 1477, "end": 1994}, {"filename": "/Assets/GeometryShaders/Vertex_unlit.glsl", "start": 1994, "end": 2528}, {"filename": "/Assets/GeometryShaders/fragment_PointLightMap.glsl", "start": 2528, "end": 2807}, {"filename": "/Assets/GeometryShaders/fragment_unlit.glsl", "start": 2807, "end": 3137}, {"filename": "/Assets/Vertex_pointLight.glsl", "start": 3137, "end": 3289}, {"filename": "/Assets/fragment_Blending.glsl", "start": 3289, "end": 3880}, {"filename": "/Assets/fragment_bloom.glsl", "start": 3880, "end": 4848}, {"filename": "/Assets/fragment_brightness.glsl", "start": 4848, "end": 5403}, {"filename": "/Assets/fragment_core.glsl", "start": 5403, "end": 10157}, {"filename": "/Assets/fragment_core_1.glsl", "start": 10157, "end": 10511}, {"filename": "/Assets/fragment_core_BW.glsl", "start": 10511, "end": 10849}, {"filename": "/Assets/fragment_core_highlight.glsl", "start": 10849, "end": 10951}, {"filename": "/Assets/fragment_core_lightSource.glsl", "start": 10951, "end": 11038}, {"filename": "/Assets/fragment_core_shadows.glsl", "start": 11038, "end": 20765}, {"filename": "/Assets/fragment_cubeMap.glsl", "start": 20765, "end": 20950}, {"filename": "/Assets/fragment_depthMap.glsl", "start": 20950, "end": 21042}, {"filename": "/Assets/fragment_post.glsl", "start": 21042, "end": 21704}, {"filename": "/Assets/fragment_reflective.glsl", "start": 21704, "end": 22043}, {"filename": "/Assets/resources/Girl/a_contortionist_dancer.glb", "start": 22043, "end": 18819803}, {"filename": "/Assets/resources/Girl/in_underwear.glb", "start": 18819803, "end": 68804339}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_AO.png", "start": 68804339, "end": 69668796}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_BaseColor.png", "start": 69668796, "end": 73285123}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Metallic.png", "start": 73285123, "end": 74388612}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Normal.png", "start": 74388612, "end": 78338946}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Roughness.png", "start": 78338946, "end": 80128748}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Specular.png", "start": 80128748, "end": 80908230}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_AO.png", "start": 80908230, "end": 82392204}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_BaseColor.png", "start": 82392204, "end": 86607764}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Metallic.png", "start": 86607764, "end": 87434159}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Normal.png", "start": 87434159, "end": 93589530}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Roughness.png", "start": 93589530, "end": 95214686}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Specular.png", "start": 95214686, "end": 95843297}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_AO.png", "start": 95843297, "end": 97678031}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_BaseColor.png", "start": 97678031, "end": 102753310}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Metallic.png", "start": 102753310, "end": 104100403}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Normal.png", "start": 104100403, "end": 108767373}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Roughness.png", "start": 108767373, "end": 111030634}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Specular.png", "start": 111030634, "end": 111936712}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_AO.png", "start": 111936712, "end": 112034765}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_BaseColor.png", "start": 112034765, "end": 113208925}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Metallic.png", "start": 113208925, "end": 113645441}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Normal.png", "start": 113645441, "end": 114651639}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Roughness.png", "start": 114651639, "end": 115147804}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Specular.png", "start": 115147804, "end": 115433327}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_AO.png", "start": 115433327, "end": 116386088}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_BaseColor.png", "start": 116386088, "end": 120513643}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Metallic.png", "start": 120513643, "end": 121899996}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Normal.png", "start": 121899996, "end": 126476576}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Roughness.png", "start": 126476576, "end": 128243503}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Specular.png", "start": 128243503, "end": 129125810}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_AO.png", "start": 129125810, "end": 130625024}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_BaseColor.png", "start": 130625024, "end": 134791655}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Metallic.png", "start": 134791655, "end": 135823846}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Normal.png", "start": 135823846, "end": 140851015}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Roughness.png", "start": 140851015, "end": 142777188}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Specular.png", "start": 142777188, "end": 143430256}, {"filename": "/Assets/resources/Spartan/source/Spartan_Sketchfab.fbx", "start": 143430256, "end": 147796752}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_AO.png", "start": 147796752, "end": 151024088}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_BaseColor.png", "start": 151024088, "end": 165377378}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Metallic.png", "start": 165377378, "end": 168033244}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Normal.png", "start": 168033244, "end": 193508504}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Roughness.png", "start": 193508504, "end": 198650115}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Specular.png", "start": 198650115, "end": 199784831}, {"filename": "/Assets/resources/Spartan/source/lambert1_Colour-Opacity.png", "start": 199784831, "end": 207963921}, {"filename": "/Assets/resources/Spartan/source/lambert1_Nrm.png", "start": 207963921, "end": 212519707}, {"filename": "/Assets/resources/Spartan/source/lambert1_Roughness.png", "start": 212519707, "end": 214490712}, {"filename": "/Assets/resources/blending_transparent_window.png", "start": 214490712, "end": 214496202}, {"filename": "/Assets/resources/grass.png", "start": 214496202, "end": 214695998}, {"filename": "/Assets/resources/skybox/back.jpg", "start": 214695998, "end": 215436066}, {"filename": "/Assets/resources/skybox/bottom.jpg", "start": 215436066, "end": 215716655}, {"filename": "/Assets/resources/skybox/front.jpg", "start": 215716655, "end": 216189984}, {"filename": "/Assets/resources/skybox/left.jpg", "start": 216189984, "end": 216791869}, {"filename": "/Assets/resources/skybox/right.jpg", "start": 216791869, "end": 217329907}, {"filename": "/Assets/resources/skybox/top.jpg", "start": 217329907, "end": 217676046}, {"filename": "/Assets/resources/the-armoury/source/armory/model.mtl", "start": 217676046, "end": 217676240}, {"filename": "/Assets/resources/the-armoury/source/armory/model.obj", "start": 217676240, "end": 316487013}, {"filename": "/Assets/resources/the-armoury/source/armory/tex_u1_v1.jpg", "start": 316487013, "end": 318414513}, {"filename": "/Assets/resources/the-armoury/textures/tex_u1_v1.jpeg", "start": 318414513, "end": 327381817}, {"filename": "/Assets/vertex_Instance.glsl", "start": 327381817, "end": 327382565}, {"filename": "/Assets/vertex_core.glsl", "start": 327382565, "end": 327383265}, {"filename": "/Assets/vertex_core_lightSource.glsl", "start": 327383265, "end": 327383575}, {"filename": "/Assets/vertex_core_shadows.glsl", "start": 327383575, "end": 327385005}, {"filename": "/Assets/vertex_cubeMap.glsl", "start": 327385005, "end": 327385365}, {"filename": "/Assets/vertex_depthMap.glsl", "start": 327385365, "end": 327385564}, {"filename": "/Assets/vertex_unlit.glsl", "start": 327385564, "end": 327385782}], "remote_package_size": 327385782});
+    loadPackage({"files": [{"filename": "/Assets/GeometryShaders/Geometry_PointLight.glsl", "start": 0, "end": 468}, {"filename": "/Assets/GeometryShaders/Geometry_explode.glsl", "start": 468, "end": 1477}, {"filename": "/Assets/GeometryShaders/Geometry_normals.glsl", "start": 1477, "end": 1994}, {"filename": "/Assets/GeometryShaders/Vertex_unlit.glsl", "start": 1994, "end": 2528}, {"filename": "/Assets/GeometryShaders/fragment_PointLightMap.glsl", "start": 2528, "end": 2807}, {"filename": "/Assets/GeometryShaders/fragment_unlit.glsl", "start": 2807, "end": 3137}, {"filename": "/Assets/Vertex_pointLight.glsl", "start": 3137, "end": 3289}, {"filename": "/Assets/fragment_Blending.glsl", "start": 3289, "end": 3880}, {"filename": "/Assets/fragment_bloom.glsl", "start": 3880, "end": 4848}, {"filename": "/Assets/fragment_brightness.glsl", "start": 4848, "end": 5403}, {"filename": "/Assets/fragment_core.glsl", "start": 5403, "end": 10157}, {"filename": "/Assets/fragment_core_1.glsl", "start": 10157, "end": 10511}, {"filename": "/Assets/fragment_core_BW.glsl", "start": 10511, "end": 10849}, {"filename": "/Assets/fragment_core_highlight.glsl", "start": 10849, "end": 10951}, {"filename": "/Assets/fragment_core_lightSource.glsl", "start": 10951, "end": 11038}, {"filename": "/Assets/fragment_core_shadows.glsl", "start": 11038, "end": 20747}, {"filename": "/Assets/fragment_cubeMap.glsl", "start": 20747, "end": 20932}, {"filename": "/Assets/fragment_depthMap.glsl", "start": 20932, "end": 21048}, {"filename": "/Assets/fragment_post.glsl", "start": 21048, "end": 21710}, {"filename": "/Assets/fragment_reflective.glsl", "start": 21710, "end": 22049}, {"filename": "/Assets/resources/Girl/a_contortionist_dancer.glb", "start": 22049, "end": 18819809}, {"filename": "/Assets/resources/Girl/in_underwear.glb", "start": 18819809, "end": 68804345}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_AO.png", "start": 68804345, "end": 69668802}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_BaseColor.png", "start": 69668802, "end": 73285129}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Metallic.png", "start": 73285129, "end": 74388618}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Normal.png", "start": 74388618, "end": 78338952}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Roughness.png", "start": 78338952, "end": 80128754}, {"filename": "/Assets/resources/Spartan/source/ODST_Shoulder_Mat_Specular.png", "start": 80128754, "end": 80908236}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_AO.png", "start": 80908236, "end": 82392210}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_BaseColor.png", "start": 82392210, "end": 86607770}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Metallic.png", "start": 86607770, "end": 87434165}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Normal.png", "start": 87434165, "end": 93589536}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Roughness.png", "start": 93589536, "end": 95214692}, {"filename": "/Assets/resources/Spartan/source/Spartan_Arms_Mat_Specular.png", "start": 95214692, "end": 95843303}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_AO.png", "start": 95843303, "end": 97678037}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_BaseColor.png", "start": 97678037, "end": 102753316}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Metallic.png", "start": 102753316, "end": 104100409}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Normal.png", "start": 104100409, "end": 108767379}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Roughness.png", "start": 108767379, "end": 111030640}, {"filename": "/Assets/resources/Spartan/source/Spartan_Chest_Mat_Specular.png", "start": 111030640, "end": 111936718}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_AO.png", "start": 111936718, "end": 112034771}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_BaseColor.png", "start": 112034771, "end": 113208931}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Metallic.png", "start": 113208931, "end": 113645447}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Normal.png", "start": 113645447, "end": 114651645}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Roughness.png", "start": 114651645, "end": 115147810}, {"filename": "/Assets/resources/Spartan/source/Spartan_Ears_Mat_Specular.png", "start": 115147810, "end": 115433333}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_AO.png", "start": 115433333, "end": 116386094}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_BaseColor.png", "start": 116386094, "end": 120513649}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Metallic.png", "start": 120513649, "end": 121900002}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Normal.png", "start": 121900002, "end": 126476582}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Roughness.png", "start": 126476582, "end": 128243509}, {"filename": "/Assets/resources/Spartan/source/Spartan_Helmet_Mat_Specular.png", "start": 128243509, "end": 129125816}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_AO.png", "start": 129125816, "end": 130625030}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_BaseColor.png", "start": 130625030, "end": 134791661}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Metallic.png", "start": 134791661, "end": 135823852}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Normal.png", "start": 135823852, "end": 140851021}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Roughness.png", "start": 140851021, "end": 142777194}, {"filename": "/Assets/resources/Spartan/source/Spartan_Legs_Mat_Specular.png", "start": 142777194, "end": 143430262}, {"filename": "/Assets/resources/Spartan/source/Spartan_Sketchfab.fbx", "start": 143430262, "end": 147796758}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_AO.png", "start": 147796758, "end": 151024094}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_BaseColor.png", "start": 151024094, "end": 165377384}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Metallic.png", "start": 165377384, "end": 168033250}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Normal.png", "start": 168033250, "end": 193508510}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Roughness.png", "start": 193508510, "end": 198650121}, {"filename": "/Assets/resources/Spartan/source/Spartan_Undersuit_Mat_Specular.png", "start": 198650121, "end": 199784837}, {"filename": "/Assets/resources/Spartan/source/lambert1_Colour-Opacity.png", "start": 199784837, "end": 207963927}, {"filename": "/Assets/resources/Spartan/source/lambert1_Nrm.png", "start": 207963927, "end": 212519713}, {"filename": "/Assets/resources/Spartan/source/lambert1_Roughness.png", "start": 212519713, "end": 214490718}, {"filename": "/Assets/resources/blending_transparent_window.png", "start": 214490718, "end": 214496208}, {"filename": "/Assets/resources/grass.png", "start": 214496208, "end": 214696004}, {"filename": "/Assets/resources/skybox/back.jpg", "start": 214696004, "end": 215436072}, {"filename": "/Assets/resources/skybox/bottom.jpg", "start": 215436072, "end": 215716661}, {"filename": "/Assets/resources/skybox/front.jpg", "start": 215716661, "end": 216189990}, {"filename": "/Assets/resources/skybox/left.jpg", "start": 216189990, "end": 216791875}, {"filename": "/Assets/resources/skybox/right.jpg", "start": 216791875, "end": 217329913}, {"filename": "/Assets/resources/skybox/top.jpg", "start": 217329913, "end": 217676052}, {"filename": "/Assets/resources/the-armoury/source/armory/model.mtl", "start": 217676052, "end": 217676246}, {"filename": "/Assets/resources/the-armoury/source/armory/model.obj", "start": 217676246, "end": 316487019}, {"filename": "/Assets/resources/the-armoury/source/armory/tex_u1_v1.jpg", "start": 316487019, "end": 318414519}, {"filename": "/Assets/resources/the-armoury/textures/tex_u1_v1.jpeg", "start": 318414519, "end": 327381823}, {"filename": "/Assets/vertex_Instance.glsl", "start": 327381823, "end": 327382571}, {"filename": "/Assets/vertex_core.glsl", "start": 327382571, "end": 327383271}, {"filename": "/Assets/vertex_core_lightSource.glsl", "start": 327383271, "end": 327383581}, {"filename": "/Assets/vertex_core_shadows.glsl", "start": 327383581, "end": 327385011}, {"filename": "/Assets/vertex_cubeMap.glsl", "start": 327385011, "end": 327385371}, {"filename": "/Assets/vertex_depthMap.glsl", "start": 327385371, "end": 327385594}, {"filename": "/Assets/vertex_unlit.glsl", "start": 327385594, "end": 327385812}], "remote_package_size": 327385812});
 
   })();
 
-// end include: C:\Users\vigne\AppData\Local\Temp\tmpr0h6e8co.js
-// include: C:\Users\vigne\AppData\Local\Temp\tmp9j_e7wyl.js
+// end include: C:\Users\vigne\AppData\Local\Temp\tmp_al14tyi.js
+// include: C:\Users\vigne\AppData\Local\Temp\tmppy669dz1.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\vigne\AppData\Local\Temp\tmp9j_e7wyl.js
-// include: C:\Users\vigne\AppData\Local\Temp\tmpsb288i_0.js
+  // end include: C:\Users\vigne\AppData\Local\Temp\tmppy669dz1.js
+// include: C:\Users\vigne\AppData\Local\Temp\tmpn0947lhx.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\vigne\AppData\Local\Temp\tmpsb288i_0.js
+  // end include: C:\Users\vigne\AppData\Local\Temp\tmpn0947lhx.js
 
 
 var programArgs = [];
@@ -653,7 +653,7 @@ function updateMemoryViews() {
   HEAP8 = new Int8Array(b);
   HEAP16 = new Int16Array(b);
   HEAPU8 = new Uint8Array(b);
-  HEAPU16 = new Uint16Array(b);
+  
   HEAP32 = new Int32Array(b);
   HEAPU32 = new Uint32Array(b);
   HEAPF32 = new Float32Array(b);
@@ -4324,3259 +4324,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     ;
   }
 
-  var GLctx;
-  
-  var webgl_enable_ANGLE_instanced_arrays = (ctx) => {
-      // Extension available in WebGL 1 from Firefox 26 and Google Chrome 30 onwards. Core feature in WebGL 2.
-      var ext = ctx.getExtension('ANGLE_instanced_arrays');
-      // Because this extension is a core function in WebGL 2, assign the extension entry points in place of
-      // where the core functions will reside in WebGL 2. This way the calling code can call these without
-      // having to dynamically branch depending if running against WebGL 1 or WebGL 2.
-      if (ext) {
-        ctx['vertexAttribDivisor'] = (index, divisor) => ext['vertexAttribDivisorANGLE'](index, divisor);
-        ctx['drawArraysInstanced'] = (mode, first, count, primcount) => ext['drawArraysInstancedANGLE'](mode, first, count, primcount);
-        ctx['drawElementsInstanced'] = (mode, count, type, indices, primcount) => ext['drawElementsInstancedANGLE'](mode, count, type, indices, primcount);
-        return 1;
-      }
-    };
-  
-  var webgl_enable_OES_vertex_array_object = (ctx) => {
-      // Extension available in WebGL 1 from Firefox 25 and WebKit 536.28/desktop Safari 6.0.3 onwards. Core feature in WebGL 2.
-      var ext = ctx.getExtension('OES_vertex_array_object');
-      if (ext) {
-        ctx['createVertexArray'] = () => ext['createVertexArrayOES']();
-        ctx['deleteVertexArray'] = (vao) => ext['deleteVertexArrayOES'](vao);
-        ctx['bindVertexArray'] = (vao) => ext['bindVertexArrayOES'](vao);
-        ctx['isVertexArray'] = (vao) => ext['isVertexArrayOES'](vao);
-        return 1;
-      }
-    };
-  
-  var webgl_enable_WEBGL_draw_buffers = (ctx) => {
-      // Extension available in WebGL 1 from Firefox 28 onwards. Core feature in WebGL 2.
-      var ext = ctx.getExtension('WEBGL_draw_buffers');
-      if (ext) {
-        ctx['drawBuffers'] = (n, bufs) => ext['drawBuffersWEBGL'](n, bufs);
-        return 1;
-      }
-    };
-  
-  var webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance = (ctx) =>
-      // Closure is expected to be allowed to minify the '.dibvbi' property, so not accessing it quoted.
-      !!(ctx.dibvbi = ctx.getExtension('WEBGL_draw_instanced_base_vertex_base_instance'));
-  
-  var webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance = (ctx) => {
-      // Closure is expected to be allowed to minify the '.mdibvbi' property, so not accessing it quoted.
-      return !!(ctx.mdibvbi = ctx.getExtension('WEBGL_multi_draw_instanced_base_vertex_base_instance'));
-    };
-  
-  var webgl_enable_EXT_polygon_offset_clamp = (ctx) =>
-      !!(ctx.extPolygonOffsetClamp = ctx.getExtension('EXT_polygon_offset_clamp'));
-  
-  var webgl_enable_EXT_clip_control = (ctx) =>
-      !!(ctx.extClipControl = ctx.getExtension('EXT_clip_control'));
-  
-  var webgl_enable_WEBGL_polygon_mode = (ctx) =>
-      !!(ctx.webglPolygonMode = ctx.getExtension('WEBGL_polygon_mode'));
-  
-  var webgl_enable_WEBGL_multi_draw = (ctx) =>
-      // Closure is expected to be allowed to minify the '.multiDrawWebgl' property, so not accessing it quoted.
-      !!(ctx.multiDrawWebgl = ctx.getExtension('WEBGL_multi_draw'));
-  
-  var getEmscriptenSupportedExtensions = (ctx) => {
-      // Restrict the list of advertised extensions to those that we actually
-      // support.
-      var supportedExtensions = [
-        // WebGL 1 extensions
-        'ANGLE_instanced_arrays',
-        'EXT_blend_minmax',
-        'EXT_disjoint_timer_query',
-        'EXT_frag_depth',
-        'EXT_shader_texture_lod',
-        'EXT_sRGB',
-        'OES_element_index_uint',
-        'OES_fbo_render_mipmap',
-        'OES_standard_derivatives',
-        'OES_texture_float',
-        'OES_texture_half_float',
-        'OES_texture_half_float_linear',
-        'OES_vertex_array_object',
-        'WEBGL_color_buffer_float',
-        'WEBGL_depth_texture',
-        'WEBGL_draw_buffers',
-        // WebGL 2 extensions
-        'EXT_color_buffer_float',
-        'EXT_conservative_depth',
-        'EXT_disjoint_timer_query_webgl2',
-        'EXT_texture_norm16',
-        'NV_shader_noperspective_interpolation',
-        'WEBGL_clip_cull_distance',
-        // WebGL 1 and WebGL 2 extensions
-        'EXT_clip_control',
-        'EXT_color_buffer_half_float',
-        'EXT_depth_clamp',
-        'EXT_float_blend',
-        'EXT_polygon_offset_clamp',
-        'EXT_texture_compression_bptc',
-        'EXT_texture_compression_rgtc',
-        'EXT_texture_filter_anisotropic',
-        'KHR_parallel_shader_compile',
-        'OES_texture_float_linear',
-        'WEBGL_blend_func_extended',
-        'WEBGL_compressed_texture_astc',
-        'WEBGL_compressed_texture_etc',
-        'WEBGL_compressed_texture_etc1',
-        'WEBGL_compressed_texture_s3tc',
-        'WEBGL_compressed_texture_s3tc_srgb',
-        'WEBGL_debug_renderer_info',
-        'WEBGL_debug_shaders',
-        'WEBGL_lose_context',
-        'WEBGL_multi_draw',
-        'WEBGL_polygon_mode'
-      ];
-      // .getSupportedExtensions() can return null if context is lost, so coerce to empty array.
-      return ctx.getSupportedExtensions()?.filter(ext => supportedExtensions.includes(ext)) ?? [];
-    };
-  
-  var registerPreMainLoop = (f) => {
-      // Does nothing unless $MainLoop is included/used.
-      typeof MainLoop != 'undefined' && MainLoop.preMainLoop.push(f);
-    };
-  
-  
-  var webglBufferSubData = (target, offset, size, data, src = HEAPU8) => {
-      if (GL.currentContext.version >= 2) {
-        size && GLctx.bufferSubData(target, offset, src, data, size);
-        return;
-      }
-      GLctx.bufferSubData(target, offset, src.subarray(data, data + size));
-    };
-  
-  
-  
-  
-  var GL = {
-  counter:1,
-  buffers:[],
-  mappedBuffers:{
-  },
-  programs:[],
-  framebuffers:[],
-  renderbuffers:[],
-  textures:[],
-  shaders:[],
-  vaos:[],
-  contexts:[],
-  offscreenCanvases:{
-  },
-  queries:[],
-  samplers:[],
-  transformFeedbacks:[],
-  syncs:[],
-  byteSizeByTypeRoot:5120,
-  byteSizeByType:[1,1,2,2,4,4,4,2,3,4,8],
-  stringCache:{
-  },
-  stringiCache:{
-  },
-  unpackAlignment:4,
-  unpackRowLength:0,
-  recordError:(errorCode) => {
-        if (!GL.lastError) {
-          GL.lastError = errorCode;
-        }
-      },
-  getNewId:(table) => {
-        var ret = GL.counter++;
-        for (var i = table.length; i < ret; i++) {
-          table[i] = null;
-        }
-        // Skip over any non-null elements that might have been created by
-        // glBindBuffer.
-        while (table[ret]) {
-          ret = GL.counter++;
-        }
-        return ret;
-      },
-  genObject:(n, buffers, createFunction, objectTable
-        ) => {
-        for (var i = 0; i < n; i++) {
-          var buffer = GLctx[createFunction]();
-          var id = buffer && GL.getNewId(objectTable);
-          if (buffer) {
-            buffer.name = id;
-            objectTable[id] = buffer;
-          } else {
-            GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-          }
-          HEAP32[(((buffers)+(i*4))>>2)] = id;
-        }
-      },
-  MAX_TEMP_BUFFER_SIZE:2097152,
-  numTempVertexBuffersPerSize:64,
-  log2ceilLookup:(i) => 32 - Math.clz32(i === 0 ? 0 : i - 1),
-  generateTempBuffers:(quads, context) => {
-        var largestIndex = GL.log2ceilLookup(GL.MAX_TEMP_BUFFER_SIZE);
-        context.tempVertexBufferCounters1 = [];
-        context.tempVertexBufferCounters2 = [];
-        context.tempVertexBufferCounters1.length = context.tempVertexBufferCounters2.length = largestIndex+1;
-        context.tempVertexBuffers1 = [];
-        context.tempVertexBuffers2 = [];
-        context.tempVertexBuffers1.length = context.tempVertexBuffers2.length = largestIndex+1;
-        context.tempIndexBuffers = [];
-        context.tempIndexBuffers.length = largestIndex+1;
-        for (var i = 0; i <= largestIndex; ++i) {
-          context.tempIndexBuffers[i] = null; // Created on-demand
-          context.tempVertexBufferCounters1[i] = context.tempVertexBufferCounters2[i] = 0;
-          var ringbufferLength = GL.numTempVertexBuffersPerSize;
-          context.tempVertexBuffers1[i] = [];
-          context.tempVertexBuffers2[i] = [];
-          var ringbuffer1 = context.tempVertexBuffers1[i];
-          var ringbuffer2 = context.tempVertexBuffers2[i];
-          ringbuffer1.length = ringbuffer2.length = ringbufferLength;
-          for (var j = 0; j < ringbufferLength; ++j) {
-            ringbuffer1[j] = ringbuffer2[j] = null; // Created on-demand
-          }
-        }
-  
-        if (quads) {
-          // GL_QUAD indexes can be precalculated
-          context.tempQuadIndexBuffer = GLctx.createBuffer();
-          context.GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, context.tempQuadIndexBuffer);
-          var numIndexes = GL.MAX_TEMP_BUFFER_SIZE >> 1;
-          var quadIndexes = new Uint16Array(numIndexes);
-          var i = 0, v = 0;
-          while (1) {
-            quadIndexes[i++] = v;
-            if (i >= numIndexes) break;
-            quadIndexes[i++] = v+1;
-            if (i >= numIndexes) break;
-            quadIndexes[i++] = v+2;
-            if (i >= numIndexes) break;
-            quadIndexes[i++] = v;
-            if (i >= numIndexes) break;
-            quadIndexes[i++] = v+2;
-            if (i >= numIndexes) break;
-            quadIndexes[i++] = v+3;
-            if (i >= numIndexes) break;
-            v += 4;
-          }
-          context.GLctx.bufferData(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, quadIndexes, 0x88E4 /*GL_STATIC_DRAW*/);
-          context.GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, null);
-        }
-      },
-  getTempVertexBuffer:(sizeBytes) => {
-        var idx = GL.log2ceilLookup(sizeBytes);
-        var ringbuffer = GL.currentContext.tempVertexBuffers1[idx];
-        var nextFreeBufferIndex = GL.currentContext.tempVertexBufferCounters1[idx];
-        GL.currentContext.tempVertexBufferCounters1[idx] = (GL.currentContext.tempVertexBufferCounters1[idx]+1) & (GL.numTempVertexBuffersPerSize-1);
-        var vbo = ringbuffer[nextFreeBufferIndex];
-        if (vbo) {
-          return vbo;
-        }
-        var prevVBO = GLctx.getParameter(0x8894 /*GL_ARRAY_BUFFER_BINDING*/);
-        ringbuffer[nextFreeBufferIndex] = GLctx.createBuffer();
-        GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, ringbuffer[nextFreeBufferIndex]);
-        GLctx.bufferData(0x8892 /*GL_ARRAY_BUFFER*/, 1 << idx, 0x88E8 /*GL_DYNAMIC_DRAW*/);
-        GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, prevVBO);
-        return ringbuffer[nextFreeBufferIndex];
-      },
-  getTempIndexBuffer:(sizeBytes) => {
-        var idx = GL.log2ceilLookup(sizeBytes);
-        var ibo = GL.currentContext.tempIndexBuffers[idx];
-        if (ibo) {
-          return ibo;
-        }
-        var prevIBO = GLctx.getParameter(0x8895 /*ELEMENT_ARRAY_BUFFER_BINDING*/);
-        GL.currentContext.tempIndexBuffers[idx] = GLctx.createBuffer();
-        GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, GL.currentContext.tempIndexBuffers[idx]);
-        GLctx.bufferData(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, 1 << idx, 0x88E8 /*GL_DYNAMIC_DRAW*/);
-        GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, prevIBO);
-        return GL.currentContext.tempIndexBuffers[idx];
-      },
-  newRenderingFrameStarted:() => {
-        if (!GL.currentContext) {
-          return;
-        }
-        var vb = GL.currentContext.tempVertexBuffers1;
-        GL.currentContext.tempVertexBuffers1 = GL.currentContext.tempVertexBuffers2;
-        GL.currentContext.tempVertexBuffers2 = vb;
-        vb = GL.currentContext.tempVertexBufferCounters1;
-        GL.currentContext.tempVertexBufferCounters1 = GL.currentContext.tempVertexBufferCounters2;
-        GL.currentContext.tempVertexBufferCounters2 = vb;
-        var largestIndex = GL.log2ceilLookup(GL.MAX_TEMP_BUFFER_SIZE);
-        for (var i = 0; i <= largestIndex; ++i) {
-          GL.currentContext.tempVertexBufferCounters1[i] = 0;
-        }
-      },
-  getSource:(shader, count, string, length) => {
-        var source = '';
-        for (var i = 0; i < count; ++i) {
-          var len = length ? HEAPU32[(((length)+(i*4))>>2)] : undefined;
-          source += UTF8ToString(HEAPU32[(((string)+(i*4))>>2)], len);
-        }
-        return source;
-      },
-  calcBufLength:(size, type, stride, count) => {
-        if (stride > 0) {
-          return count * stride;  // XXXvlad this is not exactly correct I don't think
-        }
-        var typeSize = GL.byteSizeByType[type - GL.byteSizeByTypeRoot];
-        return size * typeSize * count;
-      },
-  usedTempBuffers:[],
-  preDrawHandleClientVertexAttribBindings:(count) => {
-        GL.resetBufferBinding = false;
-  
-        // TODO: initial pass to detect ranges we need to upload, might not need
-        // an upload per attrib
-        for (var i = 0; i < GL.currentContext.maxVertexAttribs; ++i) {
-          var cb = GL.currentContext.clientBuffers[i];
-          if (!cb.clientside || !cb.enabled) continue;
-  
-          assert(count || !GLctx.currentElementArrayBufferBinding, 'must use array buffers when using element buffer');
-  
-          GL.resetBufferBinding = true;
-  
-          var size = GL.calcBufLength(cb.size, cb.type, cb.stride, count);
-          var buf = GL.getTempVertexBuffer(size);
-          GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, buf);
-          webglBufferSubData(0x8892 /*GL_ARRAY_BUFFER*/, 0, size, cb.ptr);
-          cb.vertexAttribPointerAdaptor.call(GLctx, i, cb.size, cb.type, cb.normalized, cb.stride, 0);
-        }
-      },
-  postDrawHandleClientVertexAttribBindings:() => {
-        if (GL.resetBufferBinding) {
-          GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, GL.buffers[GLctx.currentArrayBufferBinding]);
-        }
-      },
-  createContext:(/** @type {HTMLCanvasElement} */ canvas, webGLContextAttributes) => {
-  
-        // BUG: Workaround Safari WebGL issue: After successfully acquiring WebGL
-        // context on a canvas, calling .getContext() will always return that
-        // context independent of which 'webgl' or 'webgl2'
-        // context version was passed. See:
-        //   https://webkit.org/b/222758
-        // and:
-        //   https://github.com/emscripten-core/emscripten/issues/13295.
-        // TODO: Once the bug is fixed and shipped in Safari, adjust the Safari
-        // version field in above check.
-        if (!canvas.getContextSafariWebGL2Fixed) {
-          canvas.getContextSafariWebGL2Fixed = canvas.getContext;
-          /** @type {function(this:HTMLCanvasElement, string, (Object|null)=): (Object|null)} */
-          function fixedGetContext(ver, attrs) {
-            var gl = canvas.getContextSafariWebGL2Fixed(ver, attrs);
-            return ((ver == 'webgl') == (gl instanceof WebGLRenderingContext)) ? gl : null;
-          }
-          canvas.getContext = fixedGetContext;
-        }
-  
-        var ctx =
-          (webGLContextAttributes.majorVersion > 1)
-          ? canvas.getContext('webgl2', webGLContextAttributes) :
-          canvas.getContext('webgl', webGLContextAttributes);
-  
-        if (!ctx) return 0;
-  
-        var handle = GL.registerContext(ctx, webGLContextAttributes);
-  
-        return handle;
-      },
-  registerContext:(ctx, webGLContextAttributes) => {
-        // without pthreads a context is just an integer ID
-        var handle = GL.getNewId(GL.contexts);
-  
-        var context = {
-          handle,
-          attributes: webGLContextAttributes,
-          version: webGLContextAttributes.majorVersion,
-          GLctx: ctx
-        };
-  
-        // Store the created context object so that we can access the context
-        // given a canvas without having to pass the parameters again.
-        if (ctx.canvas) ctx.canvas.GLctxObject = context;
-        GL.contexts[handle] = context;
-        if (typeof webGLContextAttributes.enableExtensionsByDefault == 'undefined' || webGLContextAttributes.enableExtensionsByDefault) {
-          GL.initExtensions(context);
-        }
-  
-        context.maxVertexAttribs = context.GLctx.getParameter(0x8869 /*GL_MAX_VERTEX_ATTRIBS*/);
-        context.clientBuffers = [];
-        for (var i = 0; i < context.maxVertexAttribs; i++) {
-          context.clientBuffers[i] = {
-            enabled: false,
-            clientside: false,
-            size: 0,
-            type: 0,
-            normalized: 0,
-            stride: 0,
-            ptr: 0,
-            vertexAttribPointerAdaptor: null,
-          };
-        }
-  
-        GL.generateTempBuffers(false, context);
-  
-        return handle;
-      },
-  makeContextCurrent:(contextHandle) => {
-  
-        // Active Emscripten GL layer context object.
-        GL.currentContext = GL.contexts[contextHandle];
-        // Active WebGL context object.
-        Module['ctx'] = GLctx = GL.currentContext?.GLctx;
-        return !(contextHandle && !GLctx);
-      },
-  getContext:(contextHandle) => {
-        return GL.contexts[contextHandle];
-      },
-  deleteContext:(contextHandle) => {
-        if (GL.currentContext === GL.contexts[contextHandle]) {
-          GL.currentContext = null;
-        }
-        if (typeof JSEvents == 'object') {
-          // Release all JS event handlers on the DOM element that the GL context is
-          // associated with since the context is now deleted.
-          JSEvents.removeAllHandlersOnTarget(GL.contexts[contextHandle].GLctx.canvas);
-        }
-        // Make sure the canvas object no longer refers to the context object so
-        // there are no GC surprises.
-        if (GL.contexts[contextHandle]?.GLctx.canvas) {
-          GL.contexts[contextHandle].GLctx.canvas.GLctxObject = undefined;
-        }
-        GL.contexts[contextHandle] = null;
-      },
-  initExtensions:(context) => {
-        // If this function is called without a specific context object, init the
-        // extensions of the currently active context.
-        context ||= GL.currentContext;
-  
-        if (context.initExtensionsDone) return;
-        context.initExtensionsDone = true;
-  
-        var GLctx = context.GLctx;
-  
-        // Detect the presence of a few extensions manually, since the GL interop
-        // layer itself will need to know if they exist.
-  
-        // Extensions that are available in both WebGL 1 and WebGL 2
-        webgl_enable_WEBGL_multi_draw(GLctx);
-        webgl_enable_EXT_polygon_offset_clamp(GLctx);
-        webgl_enable_EXT_clip_control(GLctx);
-        webgl_enable_WEBGL_polygon_mode(GLctx);
-        // Extensions that are only available in WebGL 1 (the calls will be no-ops
-        // if called on a WebGL 2 context active)
-        webgl_enable_ANGLE_instanced_arrays(GLctx);
-        webgl_enable_OES_vertex_array_object(GLctx);
-        webgl_enable_WEBGL_draw_buffers(GLctx);
-        // Extensions that are available from WebGL >= 2 (no-op if called on a WebGL 1 context active)
-        webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance(GLctx);
-        webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance(GLctx);
-  
-        // On WebGL 2, EXT_disjoint_timer_query is replaced with an alternative
-        // that's based on core APIs, and exposes only the queryCounterEXT()
-        // entrypoint.
-        if (context.version >= 2) {
-          GLctx.disjointTimerQueryExt = GLctx.getExtension('EXT_disjoint_timer_query_webgl2');
-        }
-  
-        // However, Firefox exposes the WebGL 1 version on WebGL 2 as well and
-        // thus we look for the WebGL 1 version again if the WebGL 2 version
-        // isn't present. https://bugzil.la/1328882
-        if (context.version < 2 || !GLctx.disjointTimerQueryExt)
-        {
-          GLctx.disjointTimerQueryExt = GLctx.getExtension('EXT_disjoint_timer_query');
-        }
-  
-        for (var ext of getEmscriptenSupportedExtensions(GLctx)) {
-          // WEBGL_lose_context, WEBGL_debug_renderer_info and WEBGL_debug_shaders
-          // are not enabled by default.
-          if (!ext.includes('lose_context') && !ext.includes('debug')) {
-            // Call .getExtension() to enable that extension permanently.
-            GLctx.getExtension(ext);
-          }
-        }
-      },
-  };
-  var _emscripten_glActiveTexture = (x0) => GLctx.activeTexture(x0);
-
-  var _emscripten_glAttachShader = (program, shader) => {
-      GLctx.attachShader(GL.programs[program], GL.shaders[shader]);
-    };
-
-  var _emscripten_glBeginQuery = (target, id) => {
-      GLctx.beginQuery(target, GL.queries[id]);
-    };
-
-  var _emscripten_glBeginQueryEXT = (target, id) => {
-      GLctx.disjointTimerQueryExt['beginQueryEXT'](target, GL.queries[id]);
-    };
-
-  var _emscripten_glBeginTransformFeedback = (x0) => GLctx.beginTransformFeedback(x0);
-
-  
-  var _emscripten_glBindAttribLocation = (program, index, name) => {
-      GLctx.bindAttribLocation(GL.programs[program], index, UTF8ToString(name));
-    };
-
-  var _emscripten_glBindBuffer = (target, buffer) => {
-      // Calling glBindBuffer with an unknown buffer will implicitly create a
-      // new one.  Here we bypass `GL.counter` and directly using the ID passed
-      // in.
-      if (buffer && !GL.buffers[buffer]) {
-        var b = GLctx.createBuffer();
-        b.name = buffer;
-        GL.buffers[buffer] = b;
-      }
-      if (target == 0x8892 /*GL_ARRAY_BUFFER*/) {
-        GLctx.currentArrayBufferBinding = buffer;
-      } else if (target == 0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/) {
-        GLctx.currentElementArrayBufferBinding = buffer;
-      }
-  
-      if (target == 0x88EB /*GL_PIXEL_PACK_BUFFER*/) {
-        // In WebGL 2 glReadPixels entry point, we need to use a different WebGL 2
-        // API function call when a buffer is bound to
-        // GL_PIXEL_PACK_BUFFER_BINDING point, so must keep track whether that
-        // binding point is non-null to know what is the proper API function to
-        // call.
-        GLctx.currentPixelPackBufferBinding = buffer;
-      } else if (target == 0x88EC /*GL_PIXEL_UNPACK_BUFFER*/) {
-        // In WebGL 2 gl(Compressed)Tex(Sub)Image[23]D entry points, we need to
-        // use a different WebGL 2 API function call when a buffer is bound to
-        // GL_PIXEL_UNPACK_BUFFER_BINDING point, so must keep track whether that
-        // binding point is non-null to know what is the proper API function to
-        // call.
-        GLctx.currentPixelUnpackBufferBinding = buffer;
-      }
-      GLctx.bindBuffer(target, GL.buffers[buffer]);
-    };
-
-  var _emscripten_glBindBufferBase = (target, index, buffer) => {
-      GLctx.bindBufferBase(target, index, GL.buffers[buffer]);
-    };
-
-  var _emscripten_glBindBufferRange = (target, index, buffer, offset, ptrsize) => {
-      GLctx.bindBufferRange(target, index, GL.buffers[buffer], offset, ptrsize);
-    };
-
-  var _emscripten_glBindFramebuffer = (target, framebuffer) => {
-  
-      GLctx.bindFramebuffer(target, GL.framebuffers[framebuffer]);
-  
-    };
-
-  var _emscripten_glBindRenderbuffer = (target, renderbuffer) => {
-      GLctx.bindRenderbuffer(target, GL.renderbuffers[renderbuffer]);
-    };
-
-  var _emscripten_glBindSampler = (unit, sampler) => {
-      GLctx.bindSampler(unit, GL.samplers[sampler]);
-    };
-
-  var _emscripten_glBindTexture = (target, texture) => {
-      GLctx.bindTexture(target, GL.textures[texture]);
-    };
-
-  var _emscripten_glBindTransformFeedback = (target, id) => {
-      GLctx.bindTransformFeedback(target, GL.transformFeedbacks[id]);
-    };
-
-  var _emscripten_glBindVertexArray = (vao) => {
-      GLctx.bindVertexArray(GL.vaos[vao]);
-      var ibo = GLctx.getParameter(0x8895 /*ELEMENT_ARRAY_BUFFER_BINDING*/);
-      GLctx.currentElementArrayBufferBinding = ibo ? (ibo.name | 0) : 0;
-    };
-
-  
-  var _glBindVertexArray = _emscripten_glBindVertexArray;
-  var _emscripten_glBindVertexArrayOES = _glBindVertexArray;
-
-  var _emscripten_glBlendColor = (x0, x1, x2, x3) => GLctx.blendColor(x0, x1, x2, x3);
-
-  var _emscripten_glBlendEquation = (x0) => GLctx.blendEquation(x0);
-
-  var _emscripten_glBlendEquationSeparate = (x0, x1) => GLctx.blendEquationSeparate(x0, x1);
-
-  var _emscripten_glBlendFunc = (x0, x1) => GLctx.blendFunc(x0, x1);
-
-  var _emscripten_glBlendFuncSeparate = (x0, x1, x2, x3) => GLctx.blendFuncSeparate(x0, x1, x2, x3);
-
-  var _emscripten_glBlitFramebuffer = (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) => GLctx.blitFramebuffer(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9);
-
-  
-  var _emscripten_glBufferData = (target, size, data, usage) => {
-  
-      if (GL.currentContext.version >= 2) {
-        // If size is zero, WebGL would interpret uploading the whole input
-        // arraybuffer (starting from given offset), which would not make sense in
-        // WebAssembly, so avoid uploading if size is zero. However we must still
-        // call bufferData to establish a backing storage of zero bytes.
-        if (data && size) {
-          GLctx.bufferData(target, HEAPU8, usage, data, size);
-        } else {
-          GLctx.bufferData(target, size, usage);
-        }
-        return;
-      }
-      // N.b. here first form specifies a heap subarray, second form an integer
-      // size, so the ?: code here is polymorphic. It is advised to avoid
-      // randomly mixing both uses in calling code, to avoid any potential JS
-      // engine JIT issues.
-      GLctx.bufferData(target, data ? HEAPU8.subarray(data, data+size) : size, usage);
-    };
-
-  
-  var _emscripten_glBufferSubData = (target, offset, size, data) => webglBufferSubData(target, offset, size, data);
-
-  var _emscripten_glCheckFramebufferStatus = (x0) => GLctx.checkFramebufferStatus(x0);
-
-  var _emscripten_glClear = (x0) => GLctx.clear(x0);
-
-  var _emscripten_glClearBufferfi = (x0, x1, x2, x3) => GLctx.clearBufferfi(x0, x1, x2, x3);
-
-  /** @type {!Float32Array} */
-  var HEAPF32;
-  var _emscripten_glClearBufferfv = (buffer, drawbuffer, value) => {
-  
-      GLctx.clearBufferfv(buffer, drawbuffer, HEAPF32, ((value)>>2));
-    };
-
-  var _emscripten_glClearBufferiv = (buffer, drawbuffer, value) => {
-  
-      GLctx.clearBufferiv(buffer, drawbuffer, HEAP32, ((value)>>2));
-    };
-
-  var _emscripten_glClearBufferuiv = (buffer, drawbuffer, value) => {
-  
-      GLctx.clearBufferuiv(buffer, drawbuffer, HEAPU32, ((value)>>2));
-    };
-
-  var _emscripten_glClearColor = (x0, x1, x2, x3) => GLctx.clearColor(x0, x1, x2, x3);
-
-  var _emscripten_glClearDepthf = (x0) => GLctx.clearDepth(x0);
-
-  var _emscripten_glClearStencil = (x0) => GLctx.clearStencil(x0);
-
-  var _emscripten_glClientWaitSync = (sync, flags, timeout) => {
-      // WebGL2 vs GLES3 differences: in GLES3, the timeout parameter is a uint64, where 0xFFFFFFFFFFFFFFFFULL means GL_TIMEOUT_IGNORED.
-      // In JS, there's no 64-bit value types, so instead timeout is taken to be signed, and GL_TIMEOUT_IGNORED is given value -1.
-      // Inherently the value accepted in the timeout is lossy, and can't take in arbitrary u64 bit pattern (but most likely doesn't matter)
-      // See https://www.khronos.org/registry/webgl/specs/latest/2.0/#5.15
-      timeout = Number(timeout);
-      return GLctx.clientWaitSync(GL.syncs[sync], flags, timeout);
-    };
-
-  var _emscripten_glClipControlEXT = (origin, depth) => {
-      GLctx.extClipControl['clipControlEXT'](origin, depth);
-    };
-
-  var _emscripten_glColorMask = (red, green, blue, alpha) => {
-      GLctx.colorMask(!!red, !!green, !!blue, !!alpha);
-    };
-
-  var _emscripten_glCompileShader = (shader) => {
-      GLctx.compileShader(GL.shaders[shader]);
-    };
-
-  
-  var _emscripten_glCompressedTexImage2D = (target, level, internalFormat, width, height, border, imageSize, data) => {
-      // `data` may be null here, which means "allocate uninitialized space but
-      // don't upload" in GLES parlance, but `compressedTexImage2D` requires the
-      // final data parameter, so we simply pass a heap view starting at zero
-      // effectively uploading whatever happens to be near address zero.  See
-      // https://github.com/emscripten-core/emscripten/issues/19300.
-      if (GL.currentContext.version >= 2) {
-        if (GLctx.currentPixelUnpackBufferBinding || !imageSize) {
-          GLctx.compressedTexImage2D(target, level, internalFormat, width, height, border, imageSize, data);
-          return;
-        }
-        GLctx.compressedTexImage2D(target, level, internalFormat, width, height, border, HEAPU8, data, imageSize);
-        return;
-      }
-      GLctx.compressedTexImage2D(target, level, internalFormat, width, height, border, HEAPU8.subarray(data, data + imageSize));
-    };
-
-  var _emscripten_glCompressedTexImage3D = (target, level, internalFormat, width, height, depth, border, imageSize, data) => {
-      if (GLctx.currentPixelUnpackBufferBinding) {
-        GLctx.compressedTexImage3D(target, level, internalFormat, width, height, depth, border, imageSize, data);
-      } else {
-        GLctx.compressedTexImage3D(target, level, internalFormat, width, height, depth, border, HEAPU8, data, imageSize);
-      }
-    };
-
-  
-  var _emscripten_glCompressedTexSubImage2D = (target, level, xoffset, yoffset, width, height, format, imageSize, data) => {
-      if (GL.currentContext.version >= 2) {
-        if (GLctx.currentPixelUnpackBufferBinding || !imageSize) {
-          GLctx.compressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
-          return;
-        }
-        GLctx.compressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, HEAPU8, data, imageSize);
-        return;
-      }
-      GLctx.compressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, HEAPU8.subarray(data, data + imageSize));
-    };
-
-  var _emscripten_glCompressedTexSubImage3D = (target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data) => {
-      if (GLctx.currentPixelUnpackBufferBinding) {
-        GLctx.compressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
-      } else {
-        GLctx.compressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, HEAPU8, data, imageSize);
-      }
-    };
-
-  var _emscripten_glCopyBufferSubData = (x0, x1, x2, x3, x4) => GLctx.copyBufferSubData(x0, x1, x2, x3, x4);
-
-  var _emscripten_glCopyTexImage2D = (x0, x1, x2, x3, x4, x5, x6, x7) => GLctx.copyTexImage2D(x0, x1, x2, x3, x4, x5, x6, x7);
-
-  var _emscripten_glCopyTexSubImage2D = (x0, x1, x2, x3, x4, x5, x6, x7) => GLctx.copyTexSubImage2D(x0, x1, x2, x3, x4, x5, x6, x7);
-
-  var _emscripten_glCopyTexSubImage3D = (x0, x1, x2, x3, x4, x5, x6, x7, x8) => GLctx.copyTexSubImage3D(x0, x1, x2, x3, x4, x5, x6, x7, x8);
-
-  var _emscripten_glCreateProgram = () => {
-      var id = GL.getNewId(GL.programs);
-      var program = GLctx.createProgram();
-      // Store additional information needed for each shader program:
-      program.name = id;
-      // Lazy cache results of
-      // glGetProgramiv(GL_ACTIVE_UNIFORM_MAX_LENGTH/GL_ACTIVE_ATTRIBUTE_MAX_LENGTH/GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH)
-      program.maxUniformLength = program.maxAttributeLength = program.maxUniformBlockNameLength = 0;
-      program.uniformIdCounter = 1;
-      GL.programs[id] = program;
-      return id;
-    };
-
-  var _emscripten_glCreateShader = (shaderType) => {
-      var id = GL.getNewId(GL.shaders);
-      GL.shaders[id] = GLctx.createShader(shaderType);
-  
-      return id;
-    };
-
-  var _emscripten_glCullFace = (x0) => GLctx.cullFace(x0);
-
-  
-  var _emscripten_glDeleteBuffers = (n, buffers) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((buffers)+(i*4))>>2)];
-        var buffer = GL.buffers[id];
-  
-        // From spec: "glDeleteBuffers silently ignores 0's and names that do not
-        // correspond to existing buffer objects."
-        if (!buffer) continue;
-  
-        GLctx.deleteBuffer(buffer);
-        buffer.name = 0;
-        GL.buffers[id] = null;
-  
-        if (id == GLctx.currentArrayBufferBinding) GLctx.currentArrayBufferBinding = 0;
-        if (id == GLctx.currentElementArrayBufferBinding) GLctx.currentElementArrayBufferBinding = 0;
-        if (id == GLctx.currentPixelPackBufferBinding) GLctx.currentPixelPackBufferBinding = 0;
-        if (id == GLctx.currentPixelUnpackBufferBinding) GLctx.currentPixelUnpackBufferBinding = 0;
-      }
-    };
-
-  
-  var _emscripten_glDeleteFramebuffers = (n, framebuffers) => {
-      for (var i = 0; i < n; ++i) {
-        var id = HEAP32[(((framebuffers)+(i*4))>>2)];
-        var framebuffer = GL.framebuffers[id];
-        if (!framebuffer) continue; // GL spec: "glDeleteFramebuffers silently ignores 0s and names that do not correspond to existing framebuffer objects".
-        GLctx.deleteFramebuffer(framebuffer);
-        framebuffer.name = 0;
-        GL.framebuffers[id] = null;
-      }
-    };
-
-  var _emscripten_glDeleteProgram = (id) => {
-      if (!id) return;
-      var program = GL.programs[id];
-      if (!program) {
-        // glDeleteProgram actually signals an error when deleting a nonexisting
-        // object, unlike some other GL delete functions.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      GLctx.deleteProgram(program);
-      program.name = 0;
-      GL.programs[id] = null;
-    };
-
-  var _emscripten_glDeleteQueries = (n, ids) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((ids)+(i*4))>>2)];
-        var query = GL.queries[id];
-        if (!query) continue; // GL spec: "unused names in ids are ignored, as is the name zero."
-        GLctx.deleteQuery(query);
-        GL.queries[id] = null;
-      }
-    };
-
-  
-  var _emscripten_glDeleteQueriesEXT = (n, ids) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((ids)+(i*4))>>2)];
-        var query = GL.queries[id];
-        if (!query) continue; // GL spec: "unused names in ids are ignored, as is the name zero."
-        GLctx.disjointTimerQueryExt['deleteQueryEXT'](query);
-        GL.queries[id] = null;
-      }
-    };
-
-  
-  var _emscripten_glDeleteRenderbuffers = (n, renderbuffers) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((renderbuffers)+(i*4))>>2)];
-        var renderbuffer = GL.renderbuffers[id];
-        if (!renderbuffer) continue; // GL spec: "glDeleteRenderbuffers silently ignores 0s and names that do not correspond to existing renderbuffer objects".
-        GLctx.deleteRenderbuffer(renderbuffer);
-        renderbuffer.name = 0;
-        GL.renderbuffers[id] = null;
-      }
-    };
-
-  var _emscripten_glDeleteSamplers = (n, samplers) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((samplers)+(i*4))>>2)];
-        var sampler = GL.samplers[id];
-        if (!sampler) continue;
-        GLctx.deleteSampler(sampler);
-        sampler.name = 0;
-        GL.samplers[id] = null;
-      }
-    };
-
-  var _emscripten_glDeleteShader = (id) => {
-      if (!id) return;
-      var shader = GL.shaders[id];
-      if (!shader) {
-        // glDeleteShader actually signals an error when deleting a nonexisting
-        // object, unlike some other GL delete functions.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      GLctx.deleteShader(shader);
-      GL.shaders[id] = null;
-    };
-
-  var _emscripten_glDeleteSync = (id) => {
-      if (!id) return;
-      var sync = GL.syncs[id];
-      if (!sync) { // glDeleteSync signals an error when deleting a nonexisting object, unlike some other GL delete functions.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      GLctx.deleteSync(sync);
-      sync.name = 0;
-      GL.syncs[id] = null;
-    };
-
-  
-  var _emscripten_glDeleteTextures = (n, textures) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((textures)+(i*4))>>2)];
-        var texture = GL.textures[id];
-        // GL spec: "glDeleteTextures silently ignores 0s and names that do not
-        // correspond to existing textures".
-        if (!texture) continue;
-        GLctx.deleteTexture(texture);
-        texture.name = 0;
-        GL.textures[id] = null;
-      }
-    };
-
-  var _emscripten_glDeleteTransformFeedbacks = (n, ids) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((ids)+(i*4))>>2)];
-        var transformFeedback = GL.transformFeedbacks[id];
-        if (!transformFeedback) continue; // GL spec: "unused names in ids are ignored, as is the name zero."
-        GLctx.deleteTransformFeedback(transformFeedback);
-        transformFeedback.name = 0;
-        GL.transformFeedbacks[id] = null;
-      }
-    };
-
-  
-  var _emscripten_glDeleteVertexArrays = (n, vaos) => {
-      for (var i = 0; i < n; i++) {
-        var id = HEAP32[(((vaos)+(i*4))>>2)];
-        GLctx.deleteVertexArray(GL.vaos[id]);
-        GL.vaos[id] = null;
-      }
-    };
-
-  
-  var _glDeleteVertexArrays = _emscripten_glDeleteVertexArrays;
-  var _emscripten_glDeleteVertexArraysOES = _glDeleteVertexArrays;
-
-  var _emscripten_glDepthFunc = (x0) => GLctx.depthFunc(x0);
-
-  var _emscripten_glDepthMask = (flag) => {
-      GLctx.depthMask(!!flag);
-    };
-
-  var _emscripten_glDepthRangef = (x0, x1) => GLctx.depthRange(x0, x1);
-
-  var _emscripten_glDetachShader = (program, shader) => {
-      GLctx.detachShader(GL.programs[program], GL.shaders[shader]);
-    };
-
-  var _emscripten_glDisable = (x0) => GLctx.disable(x0);
-
-  var _emscripten_glDisableVertexAttribArray = (index) => {
-      var cb = GL.currentContext.clientBuffers[index];
-      cb.enabled = false;
-      GLctx.disableVertexAttribArray(index);
-    };
-
-  var _emscripten_glDrawArrays = (mode, first, count) => {
-      // bind any client-side buffers
-      GL.preDrawHandleClientVertexAttribBindings(first + count);
-  
-      GLctx.drawArrays(mode, first, count);
-  
-      GL.postDrawHandleClientVertexAttribBindings();
-    };
-
-  var _emscripten_glDrawArraysInstanced = (mode, first, count, primcount) => {
-      GLctx.drawArraysInstanced(mode, first, count, primcount);
-    };
-
-  
-  var _glDrawArraysInstanced = _emscripten_glDrawArraysInstanced;
-  var _emscripten_glDrawArraysInstancedANGLE = _glDrawArraysInstanced;
-
-  
-  var _emscripten_glDrawArraysInstancedARB = _glDrawArraysInstanced;
-
-  
-  var _emscripten_glDrawArraysInstancedEXT = _glDrawArraysInstanced;
-
-  
-  var _emscripten_glDrawArraysInstancedNV = _glDrawArraysInstanced;
-
-  var tempFixedLengthArray = [];
-  
-  
-  var _emscripten_glDrawBuffers = (n, bufs) => {
-  
-      var bufArray = tempFixedLengthArray[n];
-      for (var i = 0; i < n; i++) {
-        bufArray[i] = HEAP32[(((bufs)+(i*4))>>2)];
-      }
-  
-      GLctx.drawBuffers(bufArray);
-    };
-
-  
-  var _glDrawBuffers = _emscripten_glDrawBuffers;
-  var _emscripten_glDrawBuffersEXT = _glDrawBuffers;
-
-  
-  var _emscripten_glDrawBuffersWEBGL = _glDrawBuffers;
-
-  
-  
-  var _emscripten_glDrawElements = (mode, count, type, indices) => {
-      var buf;
-      var vertexes = 0;
-      if (!GLctx.currentElementArrayBufferBinding) {
-        var size = GL.calcBufLength(1, type, 0, count);
-        buf = GL.getTempIndexBuffer(size);
-        GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, buf);
-        webglBufferSubData(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, 0, size, indices);
-  
-        // Calculating vertex count if shader's attribute data is on client side
-        if (count > 0) {
-          for (var i = 0; i < GL.currentContext.maxVertexAttribs; ++i) {
-            var cb = GL.currentContext.clientBuffers[i];
-            if (cb.clientside && cb.enabled) {
-              let arrayClass;
-              switch(type) {
-                case 0x1401 /* GL_UNSIGNED_BYTE */: arrayClass = Uint8Array; break;
-                case 0x1403 /* GL_UNSIGNED_SHORT */: arrayClass = Uint16Array; break;
-                case 0x1405 /* GL_UNSIGNED_INT */: arrayClass = Uint32Array; break;
-                default:
-                  GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-                  return;
-              }
-  
-              vertexes = new arrayClass(HEAPU8.buffer, indices, count).reduce((max, current) => Math.max(max, current)) + 1;
-              break;
-            }
-          }
-        }
-  
-        // the index is now 0
-        indices = 0;
-      }
-  
-      // bind any client-side buffers
-      GL.preDrawHandleClientVertexAttribBindings(vertexes);
-  
-      GLctx.drawElements(mode, count, type, indices);
-  
-      GL.postDrawHandleClientVertexAttribBindings(count);
-  
-      if (!GLctx.currentElementArrayBufferBinding) {
-        GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, null);
-      }
-    };
-
-  var _emscripten_glDrawElementsInstanced = (mode, count, type, indices, primcount) => {
-      GLctx.drawElementsInstanced(mode, count, type, indices, primcount);
-    };
-
-  
-  var _glDrawElementsInstanced = _emscripten_glDrawElementsInstanced;
-  var _emscripten_glDrawElementsInstancedANGLE = _glDrawElementsInstanced;
-
-  
-  var _emscripten_glDrawElementsInstancedARB = _glDrawElementsInstanced;
-
-  
-  var _emscripten_glDrawElementsInstancedEXT = _glDrawElementsInstanced;
-
-  
-  var _emscripten_glDrawElementsInstancedNV = _glDrawElementsInstanced;
-
-  var _glDrawElements = _emscripten_glDrawElements;
-  var _emscripten_glDrawRangeElements = (mode, start, end, count, type, indices) => {
-      // TODO: This should be a trivial pass-through function registered at the bottom of this page as
-      // glFuncs[6][1] += ' drawRangeElements';
-      // but due to https://bugzil.la/1202427,
-      // we work around by ignoring the range.
-      _glDrawElements(mode, count, type, indices);
-    };
-
-  var _emscripten_glEnable = (x0) => GLctx.enable(x0);
-
-  var _emscripten_glEnableVertexAttribArray = (index) => {
-      var cb = GL.currentContext.clientBuffers[index];
-      cb.enabled = true;
-      GLctx.enableVertexAttribArray(index);
-    };
-
-  var _emscripten_glEndQuery = (x0) => GLctx.endQuery(x0);
-
-  var _emscripten_glEndQueryEXT = (target) => {
-      GLctx.disjointTimerQueryExt['endQueryEXT'](target);
-    };
-
-  var _emscripten_glEndTransformFeedback = () => GLctx.endTransformFeedback();
-
-  var _emscripten_glFenceSync = (condition, flags) => {
-      var sync = GLctx.fenceSync(condition, flags);
-      if (sync) {
-        var id = GL.getNewId(GL.syncs);
-        sync.name = id;
-        GL.syncs[id] = sync;
-        return id;
-      }
-      return 0; // Failed to create a sync object
-    };
-
-  var _emscripten_glFinish = () => GLctx.finish();
-
-  var _emscripten_glFlush = () => GLctx.flush();
-
-  var emscriptenWebGLGetBufferBinding = (target) => {
-      switch (target) {
-        case 0x8892 /*GL_ARRAY_BUFFER*/: target = 0x8894 /*GL_ARRAY_BUFFER_BINDING*/; break;
-        case 0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/: target = 0x8895 /*GL_ELEMENT_ARRAY_BUFFER_BINDING*/; break;
-        case 0x88EB /*GL_PIXEL_PACK_BUFFER*/: target = 0x88ED /*GL_PIXEL_PACK_BUFFER_BINDING*/; break;
-        case 0x88EC /*GL_PIXEL_UNPACK_BUFFER*/: target = 0x88EF /*GL_PIXEL_UNPACK_BUFFER_BINDING*/; break;
-        case 0x8C8E /*GL_TRANSFORM_FEEDBACK_BUFFER*/: target = 0x8C8F /*GL_TRANSFORM_FEEDBACK_BUFFER_BINDING*/; break;
-        case 0x8F36 /*GL_COPY_READ_BUFFER*/: target = 0x8F36 /*GL_COPY_READ_BUFFER_BINDING*/; break;
-        case 0x8F37 /*GL_COPY_WRITE_BUFFER*/: target = 0x8F37 /*GL_COPY_WRITE_BUFFER_BINDING*/; break;
-        case 0x8A11 /*GL_UNIFORM_BUFFER*/: target = 0x8A28 /*GL_UNIFORM_BUFFER_BINDING*/; break;
-        // In default case, fall through and assume passed one of the _BINDING enums directly.
-      }
-      var buffer = GLctx.getParameter(target);
-      if (buffer) return buffer.name|0;
-      else return 0;
-    };
-  
-  var emscriptenWebGLValidateMapBufferTarget = (target) => {
-      switch (target) {
-        case 0x8892: // GL_ARRAY_BUFFER
-        case 0x8893: // GL_ELEMENT_ARRAY_BUFFER
-        case 0x8F36: // GL_COPY_READ_BUFFER
-        case 0x8F37: // GL_COPY_WRITE_BUFFER
-        case 0x88EB: // GL_PIXEL_PACK_BUFFER
-        case 0x88EC: // GL_PIXEL_UNPACK_BUFFER
-        case 0x8C2A: // GL_TEXTURE_BUFFER
-        case 0x8C8E: // GL_TRANSFORM_FEEDBACK_BUFFER
-        case 0x8A11: // GL_UNIFORM_BUFFER
-          return true;
-        default:
-          return false;
-      }
-    };
-  
-  
-  var _emscripten_glFlushMappedBufferRange = (target, offset, length) => {
-      if (!emscriptenWebGLValidateMapBufferTarget(target)) {
-        GL.recordError(0x500/*GL_INVALID_ENUM*/);
-        err('GL_INVALID_ENUM in glFlushMappedBufferRange');
-        return;
-      }
-  
-      var mapping = GL.mappedBuffers[emscriptenWebGLGetBufferBinding(target)];
-      if (!mapping) {
-        GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-        err('buffer was never mapped in glFlushMappedBufferRange');
-        return;
-      }
-  
-      if (!(mapping.access & 0x10)) {
-        GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-        err('buffer was not mapped with GL_MAP_FLUSH_EXPLICIT_BIT in glFlushMappedBufferRange');
-        return;
-      }
-      if (offset < 0 || length < 0 || offset + length > mapping.length) {
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        err('invalid range in glFlushMappedBufferRange');
-        return;
-      }
-  
-      webglBufferSubData(target, mapping.offset, length, mapping.mem + offset);
-    };
-
-  var _emscripten_glFramebufferRenderbuffer = (target, attachment, renderbuffertarget, renderbuffer) => {
-      GLctx.framebufferRenderbuffer(target, attachment, renderbuffertarget,
-                                         GL.renderbuffers[renderbuffer]);
-    };
-
-  var _emscripten_glFramebufferTexture2D = (target, attachment, textarget, texture, level) => {
-      GLctx.framebufferTexture2D(target, attachment, textarget,
-                                      GL.textures[texture], level);
-    };
-
-  var _emscripten_glFramebufferTextureLayer = (target, attachment, texture, level, layer) => {
-      GLctx.framebufferTextureLayer(target, attachment, GL.textures[texture], level, layer);
-    };
-
-  var _emscripten_glFrontFace = (x0) => GLctx.frontFace(x0);
-
-  var _emscripten_glGenBuffers = (n, buffers) => {
-      GL.genObject(n, buffers, 'createBuffer', GL.buffers
-        );
-    };
-
-  var _emscripten_glGenFramebuffers = (n, ids) => {
-      GL.genObject(n, ids, 'createFramebuffer', GL.framebuffers
-        );
-    };
-
-  var _emscripten_glGenQueries = (n, ids) => {
-      GL.genObject(n, ids, 'createQuery', GL.queries
-        );
-    };
-
-  
-  var _emscripten_glGenQueriesEXT = (n, ids) => {
-      for (var i = 0; i < n; i++) {
-        var query = GLctx.disjointTimerQueryExt['createQueryEXT']();
-        if (!query) {
-          GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-          while (i < n) HEAP32[(((ids)+(i++*4))>>2)] = 0;
-          return;
-        }
-        var id = GL.getNewId(GL.queries);
-        query.name = id;
-        GL.queries[id] = query;
-        HEAP32[(((ids)+(i*4))>>2)] = id;
-      }
-    };
-
-  var _emscripten_glGenRenderbuffers = (n, renderbuffers) => {
-      GL.genObject(n, renderbuffers, 'createRenderbuffer', GL.renderbuffers
-        );
-    };
-
-  var _emscripten_glGenSamplers = (n, samplers) => {
-      GL.genObject(n, samplers, 'createSampler', GL.samplers
-        );
-    };
-
-  var _emscripten_glGenTextures = (n, textures) => {
-      GL.genObject(n, textures, 'createTexture', GL.textures
-        );
-    };
-
-  var _emscripten_glGenTransformFeedbacks = (n, ids) => {
-      GL.genObject(n, ids, 'createTransformFeedback', GL.transformFeedbacks
-        );
-    };
-
-  var _emscripten_glGenVertexArrays = (n, arrays) => {
-      GL.genObject(n, arrays, 'createVertexArray', GL.vaos
-        );
-    };
-
-  
-  var _glGenVertexArrays = _emscripten_glGenVertexArrays;
-  var _emscripten_glGenVertexArraysOES = _glGenVertexArrays;
-
-  var _emscripten_glGenerateMipmap = (x0) => GLctx.generateMipmap(x0);
-
-  
-  
-  var __glGetActiveAttribOrUniform = (funcName, program, index, bufSize, length, size, type, name) => {
-      program = GL.programs[program];
-      var info = GLctx[funcName](program, index);
-      if (info) {
-        // If an error occurs, nothing will be written to length, size and type and name.
-        var numBytesWrittenExclNull = name && stringToUTF8(info.name, name, bufSize);
-        if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
-        if (size) HEAP32[((size)>>2)] = info.size;
-        if (type) HEAP32[((type)>>2)] = info.type;
-      }
-    };
-  
-  var _emscripten_glGetActiveAttrib = (program, index, bufSize, length, size, type, name) =>
-      __glGetActiveAttribOrUniform('getActiveAttrib', program, index, bufSize, length, size, type, name);
-
-  
-  var _emscripten_glGetActiveUniform = (program, index, bufSize, length, size, type, name) =>
-      __glGetActiveAttribOrUniform('getActiveUniform', program, index, bufSize, length, size, type, name);
-
-  var _emscripten_glGetActiveUniformBlockName = (program, uniformBlockIndex, bufSize, length, uniformBlockName) => {
-      program = GL.programs[program];
-  
-      var result = GLctx.getActiveUniformBlockName(program, uniformBlockIndex);
-      if (!result) return; // If an error occurs, nothing will be written to uniformBlockName or length.
-      if (uniformBlockName && bufSize > 0) {
-        var numBytesWrittenExclNull = stringToUTF8(result, uniformBlockName, bufSize);
-        if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
-      } else {
-        if (length) HEAP32[((length)>>2)] = 0;
-      }
-    };
-
-  var _emscripten_glGetActiveUniformBlockiv = (program, uniformBlockIndex, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if params == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      program = GL.programs[program];
-  
-      if (pname == 0x8A41 /* GL_UNIFORM_BLOCK_NAME_LENGTH */) {
-        var name = GLctx.getActiveUniformBlockName(program, uniformBlockIndex);
-        HEAP32[((params)>>2)] = name.length+1;
-        return;
-      }
-  
-      var result = GLctx.getActiveUniformBlockParameter(program, uniformBlockIndex, pname);
-      if (result === null) return; // If an error occurs, nothing should be written to params.
-      if (pname == 0x8A43 /*GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES*/) {
-        for (var i = 0; i < result.length; i++) {
-          HEAP32[(((params)+(i*4))>>2)] = result[i];
-        }
-      } else {
-        HEAP32[((params)>>2)] = result;
-      }
-    };
-
-  var _emscripten_glGetActiveUniformsiv = (program, uniformCount, uniformIndices, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if params == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (uniformCount > 0 && uniformIndices == 0) {
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      program = GL.programs[program];
-      var ids = [];
-      for (var i = 0; i < uniformCount; i++) {
-        ids.push(HEAP32[(((uniformIndices)+(i*4))>>2)]);
-      }
-  
-      var result = GLctx.getActiveUniforms(program, ids, pname);
-      if (!result) return; // GL spec: If an error is generated, nothing is written out to params.
-  
-      var len = result.length;
-      for (var i = 0; i < len; i++) {
-        HEAP32[(((params)+(i*4))>>2)] = result[i];
-      }
-    };
-
-  
-  var _emscripten_glGetAttachedShaders = (program, maxCount, count, shaders) => {
-      var result = GLctx.getAttachedShaders(GL.programs[program]);
-      var len = result.length;
-      if (len > maxCount) {
-        len = maxCount;
-      }
-      HEAP32[((count)>>2)] = len;
-      for (var i = 0; i < len; ++i) {
-        var id = GL.shaders.indexOf(result[i]);
-        HEAP32[(((shaders)+(i*4))>>2)] = id;
-      }
-    };
-
-  
-  var _emscripten_glGetAttribLocation = (program, name) =>
-      GLctx.getAttribLocation(GL.programs[program], UTF8ToString(name));
-
-  
-  var readI53FromI64 = (ptr) => {
-      return HEAPU32[((ptr)>>2)] + HEAP32[(((ptr)+(4))>>2)] * 4294967296;
-    };
-  
-  var readI53FromU64 = (ptr) => {
-      return HEAPU32[((ptr)>>2)] + HEAPU32[(((ptr)+(4))>>2)] * 4294967296;
-    };
-  
-  var writeI53ToI64 = (ptr, num) => {
-      HEAPU32[((ptr)>>2)] = num;
-      var lower = HEAPU32[((ptr)>>2)];
-      HEAPU32[(((ptr)+(4))>>2)] = (num - lower)/4294967296;
-      var deserialized = (num >= 0) ? readI53FromU64(ptr) : readI53FromI64(ptr);
-      var offset = ((ptr)>>2);
-      if (deserialized != num) warnOnce(`writeI53ToI64() out of range: serialized JS Number ${num} to Wasm heap as bytes lo=${ptrToString(HEAPU32[offset])}, hi=${ptrToString(HEAPU32[offset+1])}, which deserializes back to ${deserialized} instead!`);
-    };
-  
-  
-  var webglGetExtensions = () => {
-      var exts = getEmscriptenSupportedExtensions(GLctx);
-      exts = exts.concat(exts.map((e) => 'GL_' + e));
-      return exts;
-    };
-  
-  
-  
-  
-  var emscriptenWebGLGet = (name_, p, type) => {
-      // Guard against user passing a null pointer.
-      // Note that GLES2 spec does not say anything about how passing a null
-      // pointer should be treated.  Testing on desktop core GL 3, the application
-      // crashes on glGetIntegerv to a null pointer, but better to report an error
-      // instead of doing anything random.
-      if (!p) {
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var ret = undefined;
-      switch (name_) { // Handle a few trivial GLES values
-        case 0x8DFA: // GL_SHADER_COMPILER
-          ret = 1;
-          break;
-        case 0x8DF8: // GL_SHADER_BINARY_FORMATS
-          if (type != 0 && type != 1) {
-            GL.recordError(0x500); // GL_INVALID_ENUM
-          }
-          // Do not write anything to the out pointer, since no binary formats are
-          // supported.
-          return;
-        case 0x87FE: // GL_NUM_PROGRAM_BINARY_FORMATS
-        case 0x8DF9: // GL_NUM_SHADER_BINARY_FORMATS
-          ret = 0;
-          break;
-        case 0x86A2: // GL_NUM_COMPRESSED_TEXTURE_FORMATS
-          // WebGL doesn't have GL_NUM_COMPRESSED_TEXTURE_FORMATS (it's obsolete
-          // since GL_COMPRESSED_TEXTURE_FORMATS returns a JS array that can be
-          // queried for length), so implement it ourselves to allow C++ GLES2
-          // code to get the length.
-          var formats = GLctx.getParameter(0x86A3 /*GL_COMPRESSED_TEXTURE_FORMATS*/);
-          ret = formats ? formats.length : 0;
-          break;
-  
-        case 0x821D: // GL_NUM_EXTENSIONS
-          if (GL.currentContext.version < 2) {
-            // Calling GLES3/WebGL2 function with a GLES2/WebGL1 context
-            GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-            return;
-          }
-          ret = webglGetExtensions().length;
-          break;
-        case 0x821B: // GL_MAJOR_VERSION
-        case 0x821C: // GL_MINOR_VERSION
-          if (GL.currentContext.version < 2) {
-            GL.recordError(0x500); // GL_INVALID_ENUM
-            return;
-          }
-          ret = name_ == 0x821B ? 3 : 0; // return version 3.0
-          break;
-      }
-  
-      if (ret === undefined) {
-        var result = GLctx.getParameter(name_);
-        switch (typeof result) {
-          case 'number':
-            ret = result;
-            break;
-          case 'boolean':
-            ret = result ? 1 : 0;
-            break;
-          case 'string':
-            GL.recordError(0x500); // GL_INVALID_ENUM
-            return;
-          case 'object':
-            if (result === null) {
-              // null is a valid result for some (e.g., which buffer is bound -
-              // perhaps nothing is bound), but otherwise can mean an invalid
-              // name_, which we need to report as an error
-              switch (name_) {
-                case 0x8894: // ARRAY_BUFFER_BINDING
-                case 0x8B8D: // CURRENT_PROGRAM
-                case 0x8895: // ELEMENT_ARRAY_BUFFER_BINDING
-                case 0x8CA6: // FRAMEBUFFER_BINDING or DRAW_FRAMEBUFFER_BINDING
-                case 0x8CA7: // RENDERBUFFER_BINDING
-                case 0x8069: // TEXTURE_BINDING_2D
-                case 0x85B5: // WebGL 2 GL_VERTEX_ARRAY_BINDING, or WebGL 1 extension OES_vertex_array_object GL_VERTEX_ARRAY_BINDING_OES
-                case 0x8F36: // COPY_READ_BUFFER_BINDING or COPY_READ_BUFFER
-                case 0x8F37: // COPY_WRITE_BUFFER_BINDING or COPY_WRITE_BUFFER
-                case 0x88ED: // PIXEL_PACK_BUFFER_BINDING
-                case 0x88EF: // PIXEL_UNPACK_BUFFER_BINDING
-                case 0x8CAA: // READ_FRAMEBUFFER_BINDING
-                case 0x8919: // SAMPLER_BINDING
-                case 0x8C1D: // TEXTURE_BINDING_2D_ARRAY
-                case 0x806A: // TEXTURE_BINDING_3D
-                case 0x8E25: // TRANSFORM_FEEDBACK_BINDING
-                case 0x8C8F: // TRANSFORM_FEEDBACK_BUFFER_BINDING
-                case 0x8A28: // UNIFORM_BUFFER_BINDING
-                case 0x8514: { // TEXTURE_BINDING_CUBE_MAP
-                  ret = 0;
-                  break;
-                }
-                default: {
-                  GL.recordError(0x500); // GL_INVALID_ENUM
-                  return;
-                }
-              }
-            } else if (result instanceof Float32Array ||
-                       result instanceof Uint32Array ||
-                       result instanceof Int32Array ||
-                       result instanceof Array) {
-              for (var i = 0; i < result.length; ++i) {
-                switch (type) {
-                  case 0: HEAP32[(((p)+(i*4))>>2)] = result[i]; break;
-                  case 2: HEAPF32[(((p)+(i*4))>>2)] = result[i]; break;
-                  case 4: HEAP8[(p)+(i)] = result[i] ? 1 : 0; break;
-                }
-              }
-              return;
-            } else {
-              try {
-                ret = result.name | 0;
-              } catch(e) {
-                GL.recordError(0x500); // GL_INVALID_ENUM
-                err(`GL_INVALID_ENUM in glGet${type}v: Unknown object returned from WebGL getParameter(${name_})! (error: ${e})`);
-                return;
-              }
-            }
-            break;
-          default:
-            GL.recordError(0x500); // GL_INVALID_ENUM
-            err(`GL_INVALID_ENUM in glGet${type}v: Native code calling glGet${type}v(${name_}) and it returns ${result} of type ${typeof(result)}!`);
-            return;
-        }
-      }
-  
-      switch (type) {
-        case 1: writeI53ToI64(p, ret); break;
-        case 0: HEAP32[((p)>>2)] = ret; break;
-        case 2:   HEAPF32[((p)>>2)] = ret; break;
-        case 4: HEAP8[p] = ret ? 1 : 0; break;
-      }
-    };
-  
-  var _emscripten_glGetBooleanv = (name_, p) => emscriptenWebGLGet(name_, p, 4);
-
-  var _emscripten_glGetBufferParameteri64v = (target, value, data) => {
-      if (!data) {
-        // GLES2 specification does not specify how to behave if data is a null pointer. Since calling this function does not make sense
-        // if data == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      writeI53ToI64(data, GLctx.getBufferParameter(target, value));
-    };
-
-  
-  var _emscripten_glGetBufferParameteriv = (target, value, data) => {
-      if (!data) {
-        // GLES2 specification does not specify how to behave if data is a null
-        // pointer. Since calling this function does not make sense if data ==
-        // null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAP32[((data)>>2)] = GLctx.getBufferParameter(target, value);
-    };
-
-  
-  
-  var _emscripten_glGetBufferPointerv = (target, pname, params) => {
-      if (pname == 0x88BD/*GL_BUFFER_MAP_POINTER*/) {
-        var ptr = 0;
-        var mappedBuffer = GL.mappedBuffers[emscriptenWebGLGetBufferBinding(target)];
-        if (mappedBuffer) {
-          ptr = mappedBuffer.mem;
-        }
-        HEAP32[((params)>>2)] = ptr;
-      } else {
-        GL.recordError(0x500/*GL_INVALID_ENUM*/);
-        err('GL_INVALID_ENUM in glGetBufferPointerv');
-      }
-    };
-
-  var _emscripten_glGetError = () => {
-      var error = GLctx.getError() || GL.lastError;
-      GL.lastError = 0/*GL_NO_ERROR*/;
-      return error;
-    };
-
-  
-  var _emscripten_glGetFloatv = (name_, p) => emscriptenWebGLGet(name_, p, 2);
-
-  var _emscripten_glGetFragDataLocation = (program, name) => {
-      return GLctx.getFragDataLocation(GL.programs[program], UTF8ToString(name));
-    };
-
-  
-  var _emscripten_glGetFramebufferAttachmentParameteriv = (target, attachment, pname, params) => {
-      var result = GLctx.getFramebufferAttachmentParameter(target, attachment, pname);
-      if (result instanceof WebGLRenderbuffer ||
-          result instanceof WebGLTexture) {
-        result = result.name | 0;
-      }
-      HEAP32[((params)>>2)] = result;
-    };
-
-  
-  
-  
-  var emscriptenWebGLGetIndexed = (target, index, data, type) => {
-      if (!data) {
-        // GLES2 specification does not specify how to behave if data is a null pointer. Since calling this function does not make sense
-        // if data == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var result = GLctx.getIndexedParameter(target, index);
-      var ret;
-      switch (typeof result) {
-        case 'boolean':
-          ret = result ? 1 : 0;
-          break;
-        case 'number':
-          ret = result;
-          break;
-        case 'object':
-          if (result === null) {
-            switch (target) {
-              case 0x8C8F: // TRANSFORM_FEEDBACK_BUFFER_BINDING
-              case 0x8A28: // UNIFORM_BUFFER_BINDING
-                ret = 0;
-                break;
-              default: {
-                GL.recordError(0x500); // GL_INVALID_ENUM
-                return;
-              }
-            }
-          } else if (result instanceof WebGLBuffer) {
-            ret = result.name | 0;
-          } else {
-            GL.recordError(0x500); // GL_INVALID_ENUM
-            return;
-          }
-          break;
-        default:
-          GL.recordError(0x500); // GL_INVALID_ENUM
-          return;
-      }
-  
-      switch (type) {
-        case 1: writeI53ToI64(data, ret); break;
-        case 0: HEAP32[((data)>>2)] = ret; break;
-        case 2: HEAPF32[((data)>>2)] = ret; break;
-        case 4: HEAP8[data] = ret ? 1 : 0; break;
-        default: abort('internal emscriptenWebGLGetIndexed() error, bad type: ' + type);
-      }
-    };
-  var _emscripten_glGetInteger64i_v = (target, index, data) =>
-      emscriptenWebGLGetIndexed(target, index, data, 1);
-
-  var _emscripten_glGetInteger64v = (name_, p) => {
-      emscriptenWebGLGet(name_, p, 1);
-    };
-
-  var _emscripten_glGetIntegeri_v = (target, index, data) =>
-      emscriptenWebGLGetIndexed(target, index, data, 0);
-
-  
-  var _emscripten_glGetIntegerv = (name_, p) => emscriptenWebGLGet(name_, p, 0);
-
-  var _emscripten_glGetInternalformativ = (target, internalformat, pname, bufSize, params) => {
-      if (bufSize < 0) {
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (!params) {
-        // GLES3 specification does not specify how to behave if values is a null pointer. Since calling this function does not make sense
-        // if values == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var ret = GLctx.getInternalformatParameter(target, internalformat, pname);
-      if (ret === null) return;
-      for (var i = 0; i < ret.length && i < bufSize; ++i) {
-        HEAP32[(((params)+(i*4))>>2)] = ret[i];
-      }
-    };
-
-  var _emscripten_glGetProgramBinary = (program, bufSize, length, binaryFormat, binary) => {
-      GL.recordError(0x502/*GL_INVALID_OPERATION*/);
-    };
-
-  
-  var _emscripten_glGetProgramInfoLog = (program, maxLength, length, infoLog) => {
-      var log = GLctx.getProgramInfoLog(GL.programs[program]);
-      if (log === null) log = '(unknown error)';
-      var numBytesWrittenExclNull = (maxLength > 0 && infoLog) ? stringToUTF8(log, infoLog, maxLength) : 0;
-      if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
-    };
-
-  
-  var _emscripten_glGetProgramiv = (program, pname, p) => {
-      if (!p) {
-        // GLES2 specification does not specify how to behave if p is a null
-        // pointer. Since calling this function does not make sense if p == null,
-        // issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-  
-      if (program >= GL.counter) {
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-  
-      program = GL.programs[program];
-  
-      if (pname == 0x8B84) { // GL_INFO_LOG_LENGTH
-        var log = GLctx.getProgramInfoLog(program);
-        if (log === null) log = '(unknown error)';
-        HEAP32[((p)>>2)] = log.length + 1;
-      } else if (pname == 0x8B87 /* GL_ACTIVE_UNIFORM_MAX_LENGTH */) {
-        if (!program.maxUniformLength) {
-          var numActiveUniforms = GLctx.getProgramParameter(program, 0x8B86/*GL_ACTIVE_UNIFORMS*/);
-          for (var i = 0; i < numActiveUniforms; ++i) {
-            program.maxUniformLength = Math.max(program.maxUniformLength, GLctx.getActiveUniform(program, i).name.length+1);
-          }
-        }
-        HEAP32[((p)>>2)] = program.maxUniformLength;
-      } else if (pname == 0x8B8A /* GL_ACTIVE_ATTRIBUTE_MAX_LENGTH */) {
-        if (!program.maxAttributeLength) {
-          var numActiveAttributes = GLctx.getProgramParameter(program, 0x8B89/*GL_ACTIVE_ATTRIBUTES*/);
-          for (var i = 0; i < numActiveAttributes; ++i) {
-            program.maxAttributeLength = Math.max(program.maxAttributeLength, GLctx.getActiveAttrib(program, i).name.length+1);
-          }
-        }
-        HEAP32[((p)>>2)] = program.maxAttributeLength;
-      } else if (pname == 0x8A35 /* GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH */) {
-        if (!program.maxUniformBlockNameLength) {
-          var numActiveUniformBlocks = GLctx.getProgramParameter(program, 0x8A36/*GL_ACTIVE_UNIFORM_BLOCKS*/);
-          for (var i = 0; i < numActiveUniformBlocks; ++i) {
-            program.maxUniformBlockNameLength = Math.max(program.maxUniformBlockNameLength, GLctx.getActiveUniformBlockName(program, i).length+1);
-          }
-        }
-        HEAP32[((p)>>2)] = program.maxUniformBlockNameLength;
-      } else {
-        HEAP32[((p)>>2)] = GLctx.getProgramParameter(program, pname);
-      }
-    };
-
-  
-  var _emscripten_glGetQueryObjecti64vEXT = (id, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var query = GL.queries[id];
-      var param;
-      if (GL.currentContext.version < 2)
-      {
-        param = GLctx.disjointTimerQueryExt['getQueryObjectEXT'](query, pname);
-      }
-      else {
-        param = GLctx.getQueryParameter(query, pname);
-      }
-      var ret;
-      if (typeof param == 'boolean') {
-        ret = param ? 1 : 0;
-      } else {
-        ret = param;
-      }
-      writeI53ToI64(params, ret);
-    };
-
-  
-  var _emscripten_glGetQueryObjectivEXT = (id, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var query = GL.queries[id];
-      var param = GLctx.disjointTimerQueryExt['getQueryObjectEXT'](query, pname);
-      var ret;
-      if (typeof param == 'boolean') {
-        ret = param ? 1 : 0;
-      } else {
-        ret = param;
-      }
-      HEAP32[((params)>>2)] = ret;
-    };
-
-  
-  var _glGetQueryObjecti64vEXT = _emscripten_glGetQueryObjecti64vEXT;
-  var _emscripten_glGetQueryObjectui64vEXT = _glGetQueryObjecti64vEXT;
-
-  var _emscripten_glGetQueryObjectuiv = (id, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var query = GL.queries[id];
-      var param = GLctx.getQueryParameter(query, pname);
-      var ret;
-      if (typeof param == 'boolean') {
-        ret = param ? 1 : 0;
-      } else {
-        ret = param;
-      }
-      HEAP32[((params)>>2)] = ret;
-    };
-
-  
-  var _glGetQueryObjectivEXT = _emscripten_glGetQueryObjectivEXT;
-  var _emscripten_glGetQueryObjectuivEXT = _glGetQueryObjectivEXT;
-
-  var _emscripten_glGetQueryiv = (target, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAP32[((params)>>2)] = GLctx.getQuery(target, pname);
-    };
-
-  
-  var _emscripten_glGetQueryivEXT = (target, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAP32[((params)>>2)] = GLctx.disjointTimerQueryExt['getQueryEXT'](target, pname);
-    };
-
-  
-  var _emscripten_glGetRenderbufferParameteriv = (target, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if params == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAP32[((params)>>2)] = GLctx.getRenderbufferParameter(target, pname);
-    };
-
-  var _emscripten_glGetSamplerParameterfv = (sampler, pname, params) => {
-      if (!params) {
-        // GLES3 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAPF32[((params)>>2)] = GLctx.getSamplerParameter(GL.samplers[sampler], pname);
-    };
-
-  var _emscripten_glGetSamplerParameteriv = (sampler, pname, params) => {
-      if (!params) {
-        // GLES3 specification does not specify how to behave if params is a null pointer. Since calling this function does not make sense
-        // if p == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAP32[((params)>>2)] = GLctx.getSamplerParameter(GL.samplers[sampler], pname);
-    };
-
-  
-  
-  var _emscripten_glGetShaderInfoLog = (shader, maxLength, length, infoLog) => {
-      var log = GLctx.getShaderInfoLog(GL.shaders[shader]);
-      if (log === null) log = '(unknown error)';
-      var numBytesWrittenExclNull = (maxLength > 0 && infoLog) ? stringToUTF8(log, infoLog, maxLength) : 0;
-      if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
-    };
-
-  
-  var _emscripten_glGetShaderPrecisionFormat = (shaderType, precisionType, range, precision) => {
-      var result = GLctx.getShaderPrecisionFormat(shaderType, precisionType);
-      HEAP32[((range)>>2)] = result.rangeMin;
-      HEAP32[(((range)+(4))>>2)] = result.rangeMax;
-      HEAP32[((precision)>>2)] = result.precision;
-    };
-
-  
-  var _emscripten_glGetShaderSource = (shader, bufSize, length, source) => {
-      var result = GLctx.getShaderSource(GL.shaders[shader]);
-      if (!result) return; // If an error occurs, nothing will be written to length or source.
-      var numBytesWrittenExclNull = (bufSize > 0 && source) ? stringToUTF8(result, source, bufSize) : 0;
-      if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
-    };
-
-  
-  var _emscripten_glGetShaderiv = (shader, pname, p) => {
-      if (!p) {
-        // GLES2 specification does not specify how to behave if p is a null
-        // pointer. Since calling this function does not make sense if p == null,
-        // issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (pname == 0x8B84) { // GL_INFO_LOG_LENGTH
-        var log = GLctx.getShaderInfoLog(GL.shaders[shader]);
-        if (log === null) log = '(unknown error)';
-        // The GLES2 specification says that if the shader has an empty info log,
-        // a value of 0 is returned. Otherwise the log has a null char appended.
-        // (An empty string is falsey, so we can just check that instead of
-        // looking at log.length.)
-        var logLength = log ? log.length + 1 : 0;
-        HEAP32[((p)>>2)] = logLength;
-      } else if (pname == 0x8B88) { // GL_SHADER_SOURCE_LENGTH
-        var source = GLctx.getShaderSource(GL.shaders[shader]);
-        // source may be a null, or the empty string, both of which are falsey
-        // values that we report a 0 length for.
-        var sourceLength = source ? source.length + 1 : 0;
-        HEAP32[((p)>>2)] = sourceLength;
-      } else {
-        HEAP32[((p)>>2)] = GLctx.getShaderParameter(GL.shaders[shader], pname);
-      }
-    };
-
-  
-  
-  var stringToNewUTF8 = (str) => {
-      var size = lengthBytesUTF8(str) + 1;
-      var ret = _malloc(size);
-      if (ret) stringToUTF8(str, ret, size);
-      return ret;
-    };
-  
-  
-  var _emscripten_glGetString = (name_) => {
-      var ret = GL.stringCache[name_];
-      if (!ret) {
-        switch (name_) {
-          case 0x1F03 /* GL_EXTENSIONS */:
-            ret = stringToNewUTF8(webglGetExtensions().join(' '));
-            break;
-          case 0x1F00 /* GL_VENDOR */:
-          case 0x1F01 /* GL_RENDERER */:
-          case 0x9245 /* UNMASKED_VENDOR_WEBGL */:
-          case 0x9246 /* UNMASKED_RENDERER_WEBGL */:
-            var s = GLctx.getParameter(name_);
-            if (!s) {
-              GL.recordError(0x500/*GL_INVALID_ENUM*/);
-            }
-            ret = s ? stringToNewUTF8(s) : 0;
-            break;
-  
-          case 0x1F02 /* GL_VERSION */:
-            var webGLVersion = GLctx.getParameter(0x1F02 /*GL_VERSION*/);
-            // return GLES version string corresponding to the version of the WebGL context
-            var glVersion = `OpenGL ES 2.0 (${webGLVersion})`;
-            if (GL.currentContext.version >= 2) glVersion = `OpenGL ES 3.0 (${webGLVersion})`;
-            ret = stringToNewUTF8(glVersion);
-            break;
-          case 0x8B8C /* GL_SHADING_LANGUAGE_VERSION */:
-            var glslVersion = GLctx.getParameter(0x8B8C /*GL_SHADING_LANGUAGE_VERSION*/);
-            // extract the version number 'N.M' from the string 'WebGL GLSL ES N.M ...'
-            var ver_re = /^WebGL GLSL ES ([0-9]\.[0-9][0-9]?)(?:$| .*)/;
-            var ver_num = glslVersion.match(ver_re);
-            if (ver_num !== null) {
-              if (ver_num[1].length == 3) ver_num[1] = ver_num[1] + '0'; // ensure minor version has 2 digits
-              glslVersion = `OpenGL ES GLSL ES ${ver_num[1]} (${glslVersion})`;
-            }
-            ret = stringToNewUTF8(glslVersion);
-            break;
-          default:
-            GL.recordError(0x500/*GL_INVALID_ENUM*/);
-            // fall through
-        }
-        GL.stringCache[name_] = ret;
-      }
-      return ret;
-    };
-
-  
-  var _emscripten_glGetStringi = (name, index) => {
-      if (GL.currentContext.version < 2) {
-        GL.recordError(0x502 /* GL_INVALID_OPERATION */); // Calling GLES3/WebGL2 function with a GLES2/WebGL1 context
-        return 0;
-      }
-      var stringiCache = GL.stringiCache[name];
-      if (stringiCache) {
-        if (index < 0 || index >= stringiCache.length) {
-          GL.recordError(0x501/*GL_INVALID_VALUE*/);
-          return 0;
-        }
-        return stringiCache[index];
-      }
-      switch (name) {
-        case 0x1F03 /* GL_EXTENSIONS */:
-          var exts = webglGetExtensions().map(stringToNewUTF8);
-          stringiCache = GL.stringiCache[name] = exts;
-          if (index < 0 || index >= stringiCache.length) {
-            GL.recordError(0x501/*GL_INVALID_VALUE*/);
-            return 0;
-          }
-          return stringiCache[index];
-        default:
-          GL.recordError(0x500/*GL_INVALID_ENUM*/);
-          return 0;
-      }
-    };
-
-  var _emscripten_glGetSynciv = (sync, pname, bufSize, length, values) => {
-      if (bufSize < 0) {
-        // GLES3 specification does not specify how to behave if bufSize < 0, however in the spec wording for glGetInternalformativ, it does say that GL_INVALID_VALUE should be raised,
-        // so raise GL_INVALID_VALUE here as well.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (!values) {
-        // GLES3 specification does not specify how to behave if values is a null pointer. Since calling this function does not make sense
-        // if values == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      var ret = GLctx.getSyncParameter(GL.syncs[sync], pname);
-      if (ret !== null) {
-        HEAP32[((values)>>2)] = ret;
-        if (length) HEAP32[((length)>>2)] = 1; // Report a single value outputted.
-      }
-    };
-
-  
-  var _emscripten_glGetTexParameterfv = (target, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null
-        // pointer. Since calling this function does not make sense if p == null,
-        // issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAPF32[((params)>>2)] = GLctx.getTexParameter(target, pname);
-    };
-
-  
-  var _emscripten_glGetTexParameteriv = (target, pname, params) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null
-        // pointer. Since calling this function does not make sense if p == null,
-        // issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      HEAP32[((params)>>2)] = GLctx.getTexParameter(target, pname);
-    };
-
-  var _emscripten_glGetTransformFeedbackVarying = (program, index, bufSize, length, size, type, name) => {
-      program = GL.programs[program];
-      var info = GLctx.getTransformFeedbackVarying(program, index);
-      if (!info) return; // If an error occurred, the return parameters length, size, type and name will be unmodified.
-  
-      if (name && bufSize > 0) {
-        var numBytesWrittenExclNull = stringToUTF8(info.name, name, bufSize);
-        if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
-      } else {
-        if (length) HEAP32[((length)>>2)] = 0;
-      }
-  
-      if (size) HEAP32[((size)>>2)] = info.size;
-      if (type) HEAP32[((type)>>2)] = info.type;
-    };
-
-  var _emscripten_glGetUniformBlockIndex = (program, uniformBlockName) => {
-      return GLctx.getUniformBlockIndex(GL.programs[program], UTF8ToString(uniformBlockName));
-    };
-
-  
-  
-  var _emscripten_glGetUniformIndices = (program, uniformCount, uniformNames, uniformIndices) => {
-      if (!uniformIndices) {
-        // GLES2 specification does not specify how to behave if uniformIndices is a null pointer. Since calling this function does not make sense
-        // if uniformIndices == null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (uniformCount > 0 && (uniformNames == 0 || uniformIndices == 0)) {
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      program = GL.programs[program];
-      var names = [];
-      for (var i = 0; i < uniformCount; i++)
-        names.push(UTF8ToString(HEAPU32[(((uniformNames)+(i*4))>>2)]));
-  
-      var result = GLctx.getUniformIndices(program, names);
-      if (!result) return; // GL spec: If an error is generated, nothing is written out to uniformIndices.
-  
-      var len = result.length;
-      for (var i = 0; i < len; i++) {
-        HEAP32[(((uniformIndices)+(i*4))>>2)] = result[i];
-      }
-    };
-
-  /** @suppress {checkTypes} */
-  var jstoi_q = (str) => parseInt(str);
-  
-  /** @noinline */
-  var webglGetLeftBracePos = (name) => name.slice(-1) == ']' && name.lastIndexOf('[');
-  
-  var webglPrepareUniformLocationsBeforeFirstUse = (program) => {
-      var uniformLocsById = program.uniformLocsById, // Maps GLuint -> WebGLUniformLocation
-        uniformSizeAndIdsByName = program.uniformSizeAndIdsByName, // Maps name -> [uniform array length, GLuint]
-        i, j;
-  
-      // On the first time invocation of glGetUniformLocation on this shader program:
-      // initialize cache data structures and discover which uniforms are arrays.
-      if (!uniformLocsById) {
-        // maps GLint integer locations to WebGLUniformLocations
-        program.uniformLocsById = uniformLocsById = {};
-        // maps integer locations back to uniform name strings, so that we can lazily fetch uniform array locations
-        program.uniformArrayNamesById = {};
-  
-        var numActiveUniforms = GLctx.getProgramParameter(program, 0x8B86/*GL_ACTIVE_UNIFORMS*/);
-        for (i = 0; i < numActiveUniforms; ++i) {
-          var u = GLctx.getActiveUniform(program, i);
-          var nm = u.name;
-          var sz = u.size;
-          var lb = webglGetLeftBracePos(nm);
-          var arrayName = lb > 0 ? nm.slice(0, lb) : nm;
-  
-          // Assign a new location.
-          var id = program.uniformIdCounter;
-          program.uniformIdCounter += sz;
-          // Eagerly get the location of the uniformArray[0] base element.
-          // The remaining indices >0 will be left for lazy evaluation to
-          // improve performance. Those may never be needed to fetch, if the
-          // application fills arrays always in full starting from the first
-          // element of the array.
-          uniformSizeAndIdsByName[arrayName] = [sz, id];
-  
-          // Store placeholder integers in place that highlight that these
-          // >0 index locations are array indices pending population.
-          for (j = 0; j < sz; ++j) {
-            uniformLocsById[id] = j;
-            program.uniformArrayNamesById[id++] = arrayName;
-          }
-        }
-      }
-    };
-  
-  
-  
-  var _emscripten_glGetUniformLocation = (program, name) => {
-  
-      name = UTF8ToString(name);
-  
-      if (program = GL.programs[program]) {
-        webglPrepareUniformLocationsBeforeFirstUse(program);
-        var uniformLocsById = program.uniformLocsById; // Maps GLuint -> WebGLUniformLocation
-        var arrayIndex = 0;
-        var uniformBaseName = name;
-  
-        // Invariant: when populating integer IDs for uniform locations, we must
-        // maintain the precondition that arrays reside in contiguous addresses,
-        // i.e. for a 'vec4 colors[10];', colors[4] must be at location
-        // colors[0]+4.  However, user might call glGetUniformLocation(program,
-        // "colors") for an array, so we cannot discover based on the user input
-        // arguments whether the uniform we are dealing with is an array. The only
-        // way to discover which uniforms are arrays is to enumerate over all the
-        // active uniforms in the program.
-        var leftBrace = webglGetLeftBracePos(name);
-  
-        // If user passed an array accessor "[index]", parse the array index off the accessor.
-        if (leftBrace > 0) {
-          arrayIndex = jstoi_q(name.slice(leftBrace + 1)) >>> 0; // "index]", coerce parseInt(']') with >>>0 to treat "foo[]" as "foo[0]" and foo[-1] as unsigned out-of-bounds.
-          uniformBaseName = name.slice(0, leftBrace);
-        }
-  
-        // Have we cached the location of this uniform before?
-        // A pair [array length, GLint of the uniform location]
-        var sizeAndId = program.uniformSizeAndIdsByName[uniformBaseName];
-  
-        // If a uniform with this name exists, and if its index is within the
-        // array limits (if it's even an array), query the WebGLlocation, or
-        // return an existing cached location.
-        if (sizeAndId && arrayIndex < sizeAndId[0]) {
-          arrayIndex += sizeAndId[1]; // Add the base location of the uniform to the array index offset.
-          if ((uniformLocsById[arrayIndex] = uniformLocsById[arrayIndex] || GLctx.getUniformLocation(program, name))) {
-            return arrayIndex;
-          }
-        }
-      }
-      else {
-        // N.b. we are currently unable to distinguish between GL program IDs that
-        // never existed vs GL program IDs that have been deleted, so report
-        // GL_INVALID_VALUE in both cases.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-      }
-      return -1;
-    };
-
-  
-  var webglGetProgramUniformLocation = (program, location) => {
-  
-      if (program) {
-        var webglLoc = program.uniformLocsById[location];
-        // program.uniformLocsById[location] stores either an integer, or a
-        // WebGLUniformLocation.
-        // If an integer, we have not yet bound the location, so do it now. The
-        // integer value specifies the array index we should bind to.
-        if (typeof webglLoc == 'number') {
-          program.uniformLocsById[location] = webglLoc = GLctx.getUniformLocation(program, program.uniformArrayNamesById[location] + (webglLoc > 0 ? `[${webglLoc}]` : ''));
-        }
-        // Else an already cached WebGLUniformLocation, return it.
-        return webglLoc;
-      } else {
-        GL.recordError(0x502/*GL_INVALID_OPERATION*/);
-      }
-    };
-  
-  
-  
-  
-  /** @suppress{checkTypes} */
-  var emscriptenWebGLGetUniform = (program, location, params, type) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null
-        // pointer. Since calling this function does not make sense if params ==
-        // null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      program = GL.programs[program];
-      webglPrepareUniformLocationsBeforeFirstUse(program);
-      var data = GLctx.getUniform(program, webglGetProgramUniformLocation(program, location));
-      if (typeof data == 'number' || typeof data == 'boolean') {
-        switch (type) {
-          case 0: HEAP32[((params)>>2)] = data; break;
-          case 2: HEAPF32[((params)>>2)] = data; break;
-        }
-      } else {
-        for (var i = 0; i < data.length; i++) {
-          switch (type) {
-            case 0: HEAP32[(((params)+(i*4))>>2)] = data[i]; break;
-            case 2: HEAPF32[(((params)+(i*4))>>2)] = data[i]; break;
-          }
-        }
-      }
-    };
-  
-  var _emscripten_glGetUniformfv = (program, location, params) => {
-      emscriptenWebGLGetUniform(program, location, params, 2);
-    };
-
-  
-  var _emscripten_glGetUniformiv = (program, location, params) => {
-      emscriptenWebGLGetUniform(program, location, params, 0);
-    };
-
-  var _emscripten_glGetUniformuiv = (program, location, params) =>
-      emscriptenWebGLGetUniform(program, location, params, 0);
-
-  
-  
-  /** @suppress{checkTypes} */
-  var emscriptenWebGLGetVertexAttrib = (index, pname, params, type) => {
-      if (!params) {
-        // GLES2 specification does not specify how to behave if params is a null
-        // pointer. Since calling this function does not make sense if params ==
-        // null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (GL.currentContext.clientBuffers[index].enabled) {
-        err('glGetVertexAttrib*v on client-side array: not supported, bad data returned');
-      }
-      var data = GLctx.getVertexAttrib(index, pname);
-      if (pname == 0x889F/*VERTEX_ATTRIB_ARRAY_BUFFER_BINDING*/) {
-        HEAP32[((params)>>2)] = data && data["name"];
-      } else if (typeof data == 'number' || typeof data == 'boolean') {
-        switch (type) {
-          case 0: HEAP32[((params)>>2)] = data; break;
-          case 2: HEAPF32[((params)>>2)] = data; break;
-          case 5: HEAP32[((params)>>2)] = Math.fround(data); break;
-        }
-      } else {
-        for (var i = 0; i < data.length; i++) {
-          switch (type) {
-            case 0: HEAP32[(((params)+(i*4))>>2)] = data[i]; break;
-            case 2: HEAPF32[(((params)+(i*4))>>2)] = data[i]; break;
-            case 5: HEAP32[(((params)+(i*4))>>2)] = Math.fround(data[i]); break;
-          }
-        }
-      }
-    };
-  var _emscripten_glGetVertexAttribIiv = (index, pname, params) => {
-      // N.B. This function may only be called if the vertex attribute was specified using the function glVertexAttribI4iv(),
-      // otherwise the results are undefined. (GLES3 spec 6.1.12)
-      emscriptenWebGLGetVertexAttrib(index, pname, params, 0);
-    };
-
-  
-  var _glGetVertexAttribIiv = _emscripten_glGetVertexAttribIiv;
-  var _emscripten_glGetVertexAttribIuiv = _glGetVertexAttribIiv;
-
-  
-  var _emscripten_glGetVertexAttribPointerv = (index, pname, pointer) => {
-      if (!pointer) {
-        // GLES2 specification does not specify how to behave if pointer is a null
-        // pointer. Since calling this function does not make sense if pointer ==
-        // null, issue a GL error to notify user about it.
-        GL.recordError(0x501 /* GL_INVALID_VALUE */);
-        return;
-      }
-      if (GL.currentContext.clientBuffers[index].enabled) {
-        err('glGetVertexAttribPointer on client-side array: not supported, bad data returned');
-      }
-      HEAP32[((pointer)>>2)] = GLctx.getVertexAttribOffset(index, pname);
-    };
-
-  
-  var _emscripten_glGetVertexAttribfv = (index, pname, params) => {
-      // N.B. This function may only be called if the vertex attribute was
-      // specified using the function glVertexAttrib*f(), otherwise the results
-      // are undefined. (GLES3 spec 6.1.12)
-      emscriptenWebGLGetVertexAttrib(index, pname, params, 2);
-    };
-
-  
-  var _emscripten_glGetVertexAttribiv = (index, pname, params) => {
-      // N.B. This function may only be called if the vertex attribute was
-      // specified using the function glVertexAttrib*f(), otherwise the results
-      // are undefined. (GLES3 spec 6.1.12)
-      emscriptenWebGLGetVertexAttrib(index, pname, params, 5);
-    };
-
-  var _emscripten_glHint = (x0, x1) => GLctx.hint(x0, x1);
-
-  
-  var _emscripten_glInvalidateFramebuffer = (target, numAttachments, attachments) => {
-      var list = tempFixedLengthArray[numAttachments];
-      for (var i = 0; i < numAttachments; i++) {
-        list[i] = HEAP32[(((attachments)+(i*4))>>2)];
-      }
-  
-      GLctx.invalidateFramebuffer(target, list);
-    };
-
-  
-  var _emscripten_glInvalidateSubFramebuffer = (target, numAttachments, attachments, x, y, width, height) => {
-      var list = tempFixedLengthArray[numAttachments];
-      for (var i = 0; i < numAttachments; i++) {
-        list[i] = HEAP32[(((attachments)+(i*4))>>2)];
-      }
-  
-      GLctx.invalidateSubFramebuffer(target, list, x, y, width, height);
-    };
-
-  var _emscripten_glIsBuffer = (buffer) => {
-      var b = GL.buffers[buffer];
-      if (!b) return 0;
-      return GLctx.isBuffer(b);
-    };
-
-  var _emscripten_glIsEnabled = (x0) => GLctx.isEnabled(x0);
-
-  var _emscripten_glIsFramebuffer = (framebuffer) => {
-      var fb = GL.framebuffers[framebuffer];
-      if (!fb) return 0;
-      return GLctx.isFramebuffer(fb);
-    };
-
-  var _emscripten_glIsProgram = (program) => {
-      program = GL.programs[program];
-      if (!program) return 0;
-      return GLctx.isProgram(program);
-    };
-
-  var _emscripten_glIsQuery = (id) => {
-      var query = GL.queries[id];
-      if (!query) return 0;
-      return GLctx.isQuery(query);
-    };
-
-  var _emscripten_glIsQueryEXT = (id) => {
-      var query = GL.queries[id];
-      if (!query) return 0;
-      return GLctx.disjointTimerQueryExt['isQueryEXT'](query);
-    };
-
-  var _emscripten_glIsRenderbuffer = (renderbuffer) => {
-      var rb = GL.renderbuffers[renderbuffer];
-      if (!rb) return 0;
-      return GLctx.isRenderbuffer(rb);
-    };
-
-  var _emscripten_glIsSampler = (id) => {
-      var sampler = GL.samplers[id];
-      if (!sampler) return 0;
-      return GLctx.isSampler(sampler);
-    };
-
-  var _emscripten_glIsShader = (shader) => {
-      var s = GL.shaders[shader];
-      if (!s) return 0;
-      return GLctx.isShader(s);
-    };
-
-  var _emscripten_glIsSync = (sync) => GLctx.isSync(GL.syncs[sync]);
-
-  var _emscripten_glIsTexture = (id) => {
-      var texture = GL.textures[id];
-      if (!texture) return 0;
-      return GLctx.isTexture(texture);
-    };
-
-  var _emscripten_glIsTransformFeedback = (id) => GLctx.isTransformFeedback(GL.transformFeedbacks[id]);
-
-  var _emscripten_glIsVertexArray = (array) => {
-  
-      var vao = GL.vaos[array];
-      if (!vao) return 0;
-      return GLctx.isVertexArray(vao);
-    };
-
-  
-  var _glIsVertexArray = _emscripten_glIsVertexArray;
-  var _emscripten_glIsVertexArrayOES = _glIsVertexArray;
-
-  var _emscripten_glLineWidth = (x0) => GLctx.lineWidth(x0);
-
-  var _emscripten_glLinkProgram = (program) => {
-      program = GL.programs[program];
-      GLctx.linkProgram(program);
-      // Invalidate earlier computed uniform->ID mappings, those have now become stale
-      program.uniformLocsById = 0; // Mark as null-like so that glGetUniformLocation() knows to populate this again.
-      program.uniformSizeAndIdsByName = {};
-  
-    };
-
-  
-  
-  
-  var _emscripten_glMapBufferRange = (target, offset, length, access) => {
-      if ((access & (0x1/*GL_MAP_READ_BIT*/ | 0x20/*GL_MAP_UNSYNCHRONIZED_BIT*/)) != 0) {
-        err('glMapBufferRange access does not support MAP_READ or MAP_UNSYNCHRONIZED');
-        return 0;
-      }
-  
-      if ((access & 0x2/*GL_MAP_WRITE_BIT*/) == 0) {
-        err('glMapBufferRange access must include MAP_WRITE');
-        return 0;
-      }
-  
-      if ((access & (0x4/*GL_MAP_INVALIDATE_BUFFER_BIT*/ | 0x8/*GL_MAP_INVALIDATE_RANGE_BIT*/)) == 0) {
-        err('glMapBufferRange access must include INVALIDATE_BUFFER or INVALIDATE_RANGE');
-        return 0;
-      }
-  
-      if (!emscriptenWebGLValidateMapBufferTarget(target)) {
-        GL.recordError(0x500/*GL_INVALID_ENUM*/);
-        err('GL_INVALID_ENUM in glMapBufferRange');
-        return 0;
-      }
-  
-      var mem = _malloc(length), binding = emscriptenWebGLGetBufferBinding(target);
-      if (!mem) return 0;
-  
-      binding = GL.mappedBuffers[binding] ??= {};
-      binding.offset = offset;
-      binding.length = length;
-      binding.mem = mem;
-      binding.access = access;
-      return mem;
-    };
-
-  var _emscripten_glPauseTransformFeedback = () => GLctx.pauseTransformFeedback();
-
-  var _emscripten_glPixelStorei = (pname, param) => {
-      if (pname == 3317) {
-        GL.unpackAlignment = param;
-      } else if (pname == 3314) {
-        GL.unpackRowLength = param;
-      }
-      GLctx.pixelStorei(pname, param);
-    };
-
-  var _emscripten_glPolygonModeWEBGL = (face, mode) => {
-      GLctx.webglPolygonMode['polygonModeWEBGL'](face, mode);
-    };
-
-  var _emscripten_glPolygonOffset = (x0, x1) => GLctx.polygonOffset(x0, x1);
-
-  var _emscripten_glPolygonOffsetClampEXT = (factor, units, clamp) => {
-      GLctx.extPolygonOffsetClamp['polygonOffsetClampEXT'](factor, units, clamp);
-    };
-
-  var _emscripten_glProgramBinary = (program, binaryFormat, binary, length) => {
-      GL.recordError(0x500/*GL_INVALID_ENUM*/);
-    };
-
-  var _emscripten_glProgramParameteri = (program, pname, value) => {
-      GL.recordError(0x500/*GL_INVALID_ENUM*/);
-    };
-
-  var _emscripten_glQueryCounterEXT = (id, target) => {
-      GLctx.disjointTimerQueryExt['queryCounterEXT'](GL.queries[id], target);
-    };
-
-  var _emscripten_glReadBuffer = (x0) => GLctx.readBuffer(x0);
-
-  var computeUnpackAlignedImageSize = (width, height, sizePerPixel) => {
-      function roundedToNextMultipleOf(x, y) {
-        return (x + y - 1) & -y;
-      }
-      var plainRowSize = (GL.unpackRowLength || width) * sizePerPixel;
-      var alignedRowSize = roundedToNextMultipleOf(plainRowSize, GL.unpackAlignment);
-      return height * alignedRowSize;
-    };
-  
-  var colorChannelsInGlTextureFormat = (format) => {
-      // Micro-optimizations for size: map format to size by subtracting smallest
-      // enum value (0x1902) from all values first.  Also omit the most common
-      // size value (1) from the list, which is assumed by formats not on the
-      // list.
-      var colorChannels = {
-        // 0x1902 /* GL_DEPTH_COMPONENT */ - 0x1902: 1,
-        // 0x1906 /* GL_ALPHA */ - 0x1902: 1,
-        5: 3,
-        6: 4,
-        // 0x1909 /* GL_LUMINANCE */ - 0x1902: 1,
-        8: 2,
-        29502: 3,
-        29504: 4,
-        // 0x1903 /* GL_RED */ - 0x1902: 1,
-        26917: 2,
-        26918: 2,
-        // 0x8D94 /* GL_RED_INTEGER */ - 0x1902: 1,
-        29846: 3,
-        29847: 4
-      };
-      return colorChannels[format - 0x1902]||1;
-    };
-  
-  
-  
-  
-  
-  /** @type {!Uint16Array} */
-  var HEAPU16;
-  
-  
-  
-  var heapObjectForWebGLType = (type) => {
-      // Micro-optimization for size: Subtract lowest GL enum number (0x1400/* GL_BYTE */) from type to compare
-      // smaller values for the heap, for shorter generated code size.
-      // Also the type HEAPU16 is not tested for explicitly, but any unrecognized type will return out HEAPU16.
-      // (since most types are HEAPU16)
-      type -= 0x1400;
-      if (type == 0) return HEAP8;
-  
-      if (type == 1) return HEAPU8;
-  
-      if (type == 2) return HEAP16;
-  
-      if (type == 4) return HEAP32;
-  
-      if (type == 6) return HEAPF32;
-  
-      if (type == 5
-        || type == 28922
-        || type == 28520
-        || type == 30779
-        || type == 30782
-        )
-        return HEAPU32;
-  
-      return HEAPU16;
-    };
-  
-  var toTypedArrayIndex = (pointer, heap) =>
-      pointer >>> (31 - Math.clz32(heap.BYTES_PER_ELEMENT));
-  
-  var emscriptenWebGLGetTexPixelData = (type, format, width, height, pixels) => {
-      var heap = heapObjectForWebGLType(type);
-      var sizePerPixel = colorChannelsInGlTextureFormat(format) * heap.BYTES_PER_ELEMENT;
-      var bytes = computeUnpackAlignedImageSize(width, height, sizePerPixel);
-      return heap.subarray(toTypedArrayIndex(pixels, heap), toTypedArrayIndex(pixels + bytes, heap));
-    };
-  
-  
-  
-  var _emscripten_glReadPixels = (x, y, width, height, format, type, pixels) => {
-      if (GL.currentContext.version >= 2) {
-        if (GLctx.currentPixelPackBufferBinding) {
-          GLctx.readPixels(x, y, width, height, format, type, pixels);
-          return;
-        }
-        var heap = heapObjectForWebGLType(type);
-        var target = toTypedArrayIndex(pixels, heap);
-        GLctx.readPixels(x, y, width, height, format, type, heap, target);
-        return;
-      }
-      var pixelData = emscriptenWebGLGetTexPixelData(type, format, width, height, pixels);
-      if (!pixelData) {
-        GL.recordError(0x500/*GL_INVALID_ENUM*/);
-        return;
-      }
-      GLctx.readPixels(x, y, width, height, format, type, pixelData);
-    };
-
-  var _emscripten_glReleaseShaderCompiler = () => {
-      // NOP (as allowed by GLES 2.0 spec)
-    };
-
-  var _emscripten_glRenderbufferStorage = (x0, x1, x2, x3) => GLctx.renderbufferStorage(x0, x1, x2, x3);
-
-  var _emscripten_glRenderbufferStorageMultisample = (x0, x1, x2, x3, x4) => GLctx.renderbufferStorageMultisample(x0, x1, x2, x3, x4);
-
-  var _emscripten_glResumeTransformFeedback = () => GLctx.resumeTransformFeedback();
-
-  var _emscripten_glSampleCoverage = (value, invert) => {
-      GLctx.sampleCoverage(value, !!invert);
-    };
-
-  var _emscripten_glSamplerParameterf = (sampler, pname, param) => {
-      GLctx.samplerParameterf(GL.samplers[sampler], pname, param);
-    };
-
-  var _emscripten_glSamplerParameterfv = (sampler, pname, params) => {
-      var param = HEAPF32[((params)>>2)];
-      GLctx.samplerParameterf(GL.samplers[sampler], pname, param);
-    };
-
-  var _emscripten_glSamplerParameteri = (sampler, pname, param) => {
-      GLctx.samplerParameteri(GL.samplers[sampler], pname, param);
-    };
-
-  var _emscripten_glSamplerParameteriv = (sampler, pname, params) => {
-      var param = HEAP32[((params)>>2)];
-      GLctx.samplerParameteri(GL.samplers[sampler], pname, param);
-    };
-
-  var _emscripten_glScissor = (x0, x1, x2, x3) => GLctx.scissor(x0, x1, x2, x3);
-
-  var _emscripten_glShaderBinary = (count, shaders, binaryformat, binary, length) => {
-      GL.recordError(0x500/*GL_INVALID_ENUM*/);
-    };
-
-  var _emscripten_glShaderSource = (shader, count, string, length) => {
-      var source = GL.getSource(shader, count, string, length);
-  
-      GLctx.shaderSource(GL.shaders[shader], source);
-    };
-
-  var _emscripten_glStencilFunc = (x0, x1, x2) => GLctx.stencilFunc(x0, x1, x2);
-
-  var _emscripten_glStencilFuncSeparate = (x0, x1, x2, x3) => GLctx.stencilFuncSeparate(x0, x1, x2, x3);
-
-  var _emscripten_glStencilMask = (x0) => GLctx.stencilMask(x0);
-
-  var _emscripten_glStencilMaskSeparate = (x0, x1) => GLctx.stencilMaskSeparate(x0, x1);
-
-  var _emscripten_glStencilOp = (x0, x1, x2) => GLctx.stencilOp(x0, x1, x2);
-
-  var _emscripten_glStencilOpSeparate = (x0, x1, x2, x3) => GLctx.stencilOpSeparate(x0, x1, x2, x3);
-
-  
-  
-  
-  var _emscripten_glTexImage2D = (target, level, internalFormat, width, height, border, format, type, pixels) => {
-      if (GL.currentContext.version >= 2) {
-        if (GLctx.currentPixelUnpackBufferBinding) {
-          GLctx.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
-          return;
-        }
-        if (pixels) {
-          var heap = heapObjectForWebGLType(type);
-          var index = toTypedArrayIndex(pixels, heap);
-          GLctx.texImage2D(target, level, internalFormat, width, height, border, format, type, heap, index);
-          return;
-        }
-      }
-      var pixelData = pixels ? emscriptenWebGLGetTexPixelData(type, format, width, height, pixels) : null;
-      GLctx.texImage2D(target, level, internalFormat, width, height, border, format, type, pixelData);
-    };
-
-  
-  var _emscripten_glTexImage3D = (target, level, internalFormat, width, height, depth, border, format, type, pixels) => {
-      if (GLctx.currentPixelUnpackBufferBinding) {
-        GLctx.texImage3D(target, level, internalFormat, width, height, depth, border, format, type, pixels);
-      } else if (pixels) {
-        var heap = heapObjectForWebGLType(type);
-        GLctx.texImage3D(target, level, internalFormat, width, height, depth, border, format, type, heap, toTypedArrayIndex(pixels, heap));
-      } else {
-        GLctx.texImage3D(target, level, internalFormat, width, height, depth, border, format, type, null);
-      }
-    };
-
-  var _emscripten_glTexParameterf = (x0, x1, x2) => GLctx.texParameterf(x0, x1, x2);
-
-  
-  var _emscripten_glTexParameterfv = (target, pname, params) => {
-      var param = HEAPF32[((params)>>2)];
-      GLctx.texParameterf(target, pname, param);
-    };
-
-  var _emscripten_glTexParameteri = (x0, x1, x2) => GLctx.texParameteri(x0, x1, x2);
-
-  
-  var _emscripten_glTexParameteriv = (target, pname, params) => {
-      var param = HEAP32[((params)>>2)];
-      GLctx.texParameteri(target, pname, param);
-    };
-
-  var _emscripten_glTexStorage2D = (x0, x1, x2, x3, x4) => GLctx.texStorage2D(x0, x1, x2, x3, x4);
-
-  var _emscripten_glTexStorage3D = (x0, x1, x2, x3, x4, x5) => GLctx.texStorage3D(x0, x1, x2, x3, x4, x5);
-
-  
-  
-  
-  var _emscripten_glTexSubImage2D = (target, level, xoffset, yoffset, width, height, format, type, pixels) => {
-      if (GL.currentContext.version >= 2) {
-        if (GLctx.currentPixelUnpackBufferBinding) {
-          GLctx.texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
-          return;
-        }
-        if (pixels) {
-          var heap = heapObjectForWebGLType(type);
-          GLctx.texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, heap, toTypedArrayIndex(pixels, heap));
-          return;
-        }
-      }
-      var pixelData = pixels ? emscriptenWebGLGetTexPixelData(type, format, width, height, pixels) : null;
-      GLctx.texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixelData);
-    };
-
-  
-  var _emscripten_glTexSubImage3D = (target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels) => {
-      if (GLctx.currentPixelUnpackBufferBinding) {
-        GLctx.texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
-      } else if (pixels) {
-        var heap = heapObjectForWebGLType(type);
-        GLctx.texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, heap, toTypedArrayIndex(pixels, heap));
-      } else {
-        GLctx.texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, null);
-      }
-    };
-
-  
-  var _emscripten_glTransformFeedbackVaryings = (program, count, varyings, bufferMode) => {
-      program = GL.programs[program];
-      var vars = [];
-      for (var i = 0; i < count; i++)
-        vars.push(UTF8ToString(HEAPU32[(((varyings)+(i*4))>>2)]));
-  
-      GLctx.transformFeedbackVaryings(program, vars, bufferMode);
-    };
-
-  
-  var webglGetUniformLocation = (location) => {
-  
-      return webglGetProgramUniformLocation(GLctx.currentProgram, location);
-    };
-  
-  var _emscripten_glUniform1f = (location, v0) => {
-      GLctx.uniform1f(webglGetUniformLocation(location), v0);
-    };
-
-  
-  var miniTempWebGLFloatBuffers = [];
-  
-  
-  var _emscripten_glUniform1fv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform1fv(webglGetUniformLocation(location), HEAPF32, ((value)>>2), count);
-        return;
-      }
-  
-      if (count <= 288) {
-        // avoid allocation when uploading few enough uniforms
-        var view = miniTempWebGLFloatBuffers[count];
-        for (var i = 0; i < count; ++i) {
-          view[i] = HEAPF32[(((value)+(4*i))>>2)];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*4)>>2));
-      }
-      GLctx.uniform1fv(webglGetUniformLocation(location), view);
-    };
-
-  
-  var _emscripten_glUniform1i = (location, v0) => {
-      GLctx.uniform1i(webglGetUniformLocation(location), v0);
-    };
-
-  
-  var miniTempWebGLIntBuffers = [];
-  
-  
-  var _emscripten_glUniform1iv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform1iv(webglGetUniformLocation(location), HEAP32, ((value)>>2), count);
-        return;
-      }
-  
-      if (count <= 288) {
-        // avoid allocation when uploading few enough uniforms
-        var view = miniTempWebGLIntBuffers[count];
-        for (var i = 0; i < count; ++i) {
-          view[i] = HEAP32[(((value)+(4*i))>>2)];
-        }
-      } else
-      {
-        var view = HEAP32.subarray((((value)>>2)), ((value+count*4)>>2));
-      }
-      GLctx.uniform1iv(webglGetUniformLocation(location), view);
-    };
-
-  var _emscripten_glUniform1ui = (location, v0) => {
-      GLctx.uniform1ui(webglGetUniformLocation(location), v0);
-    };
-
-  
-  var _emscripten_glUniform1uiv = (location, count, value) => {
-      count && GLctx.uniform1uiv(webglGetUniformLocation(location), HEAPU32, ((value)>>2), count);
-    };
-
-  
-  var _emscripten_glUniform2f = (location, v0, v1) => {
-      GLctx.uniform2f(webglGetUniformLocation(location), v0, v1);
-    };
-
-  
-  
-  
-  var _emscripten_glUniform2fv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform2fv(webglGetUniformLocation(location), HEAPF32, ((value)>>2), count*2);
-        return;
-      }
-  
-      if (count <= 144) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 2;
-        var view = miniTempWebGLFloatBuffers[count];
-        for (var i = 0; i < count; i += 2) {
-          view[i] = HEAPF32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAPF32[(((value)+(4*i+4))>>2)];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*8)>>2));
-      }
-      GLctx.uniform2fv(webglGetUniformLocation(location), view);
-    };
-
-  
-  var _emscripten_glUniform2i = (location, v0, v1) => {
-      GLctx.uniform2i(webglGetUniformLocation(location), v0, v1);
-    };
-
-  
-  
-  
-  var _emscripten_glUniform2iv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform2iv(webglGetUniformLocation(location), HEAP32, ((value)>>2), count*2);
-        return;
-      }
-  
-      if (count <= 144) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 2;
-        var view = miniTempWebGLIntBuffers[count];
-        for (var i = 0; i < count; i += 2) {
-          view[i] = HEAP32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAP32[(((value)+(4*i+4))>>2)];
-        }
-      } else
-      {
-        var view = HEAP32.subarray((((value)>>2)), ((value+count*8)>>2));
-      }
-      GLctx.uniform2iv(webglGetUniformLocation(location), view);
-    };
-
-  var _emscripten_glUniform2ui = (location, v0, v1) => {
-      GLctx.uniform2ui(webglGetUniformLocation(location), v0, v1);
-    };
-
-  
-  var _emscripten_glUniform2uiv = (location, count, value) => {
-      count && GLctx.uniform2uiv(webglGetUniformLocation(location), HEAPU32, ((value)>>2), count*2);
-    };
-
-  
-  var _emscripten_glUniform3f = (location, v0, v1, v2) => {
-      GLctx.uniform3f(webglGetUniformLocation(location), v0, v1, v2);
-    };
-
-  
-  
-  
-  var _emscripten_glUniform3fv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform3fv(webglGetUniformLocation(location), HEAPF32, ((value)>>2), count*3);
-        return;
-      }
-  
-      if (count <= 96) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 3;
-        var view = miniTempWebGLFloatBuffers[count];
-        for (var i = 0; i < count; i += 3) {
-          view[i] = HEAPF32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAPF32[(((value)+(4*i+4))>>2)];
-          view[i+2] = HEAPF32[(((value)+(4*i+8))>>2)];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*12)>>2));
-      }
-      GLctx.uniform3fv(webglGetUniformLocation(location), view);
-    };
-
-  
-  var _emscripten_glUniform3i = (location, v0, v1, v2) => {
-      GLctx.uniform3i(webglGetUniformLocation(location), v0, v1, v2);
-    };
-
-  
-  
-  
-  var _emscripten_glUniform3iv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform3iv(webglGetUniformLocation(location), HEAP32, ((value)>>2), count*3);
-        return;
-      }
-  
-      if (count <= 96) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 3;
-        var view = miniTempWebGLIntBuffers[count];
-        for (var i = 0; i < count; i += 3) {
-          view[i] = HEAP32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAP32[(((value)+(4*i+4))>>2)];
-          view[i+2] = HEAP32[(((value)+(4*i+8))>>2)];
-        }
-      } else
-      {
-        var view = HEAP32.subarray((((value)>>2)), ((value+count*12)>>2));
-      }
-      GLctx.uniform3iv(webglGetUniformLocation(location), view);
-    };
-
-  var _emscripten_glUniform3ui = (location, v0, v1, v2) => {
-      GLctx.uniform3ui(webglGetUniformLocation(location), v0, v1, v2);
-    };
-
-  
-  var _emscripten_glUniform3uiv = (location, count, value) => {
-      count && GLctx.uniform3uiv(webglGetUniformLocation(location), HEAPU32, ((value)>>2), count*3);
-    };
-
-  
-  var _emscripten_glUniform4f = (location, v0, v1, v2, v3) => {
-      GLctx.uniform4f(webglGetUniformLocation(location), v0, v1, v2, v3);
-    };
-
-  
-  
-  
-  var _emscripten_glUniform4fv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform4fv(webglGetUniformLocation(location), HEAPF32, ((value)>>2), count*4);
-        return;
-      }
-  
-      if (count <= 72) {
-        // avoid allocation when uploading few enough uniforms
-        var view = miniTempWebGLFloatBuffers[4*count];
-        // hoist the heap out of the loop for size and for pthreads+growth.
-        var heap = HEAPF32;
-        value = ((value)>>2);
-        count *= 4;
-        for (var i = 0; i < count; i += 4) {
-          var dst = value + i;
-          view[i] = heap[dst];
-          view[i + 1] = heap[dst + 1];
-          view[i + 2] = heap[dst + 2];
-          view[i + 3] = heap[dst + 3];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*16)>>2));
-      }
-      GLctx.uniform4fv(webglGetUniformLocation(location), view);
-    };
-
-  
-  var _emscripten_glUniform4i = (location, v0, v1, v2, v3) => {
-      GLctx.uniform4i(webglGetUniformLocation(location), v0, v1, v2, v3);
-    };
-
-  
-  
-  
-  var _emscripten_glUniform4iv = (location, count, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniform4iv(webglGetUniformLocation(location), HEAP32, ((value)>>2), count*4);
-        return;
-      }
-  
-      if (count <= 72) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 4;
-        var view = miniTempWebGLIntBuffers[count];
-        for (var i = 0; i < count; i += 4) {
-          view[i] = HEAP32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAP32[(((value)+(4*i+4))>>2)];
-          view[i+2] = HEAP32[(((value)+(4*i+8))>>2)];
-          view[i+3] = HEAP32[(((value)+(4*i+12))>>2)];
-        }
-      } else
-      {
-        var view = HEAP32.subarray((((value)>>2)), ((value+count*16)>>2));
-      }
-      GLctx.uniform4iv(webglGetUniformLocation(location), view);
-    };
-
-  var _emscripten_glUniform4ui = (location, v0, v1, v2, v3) => {
-      GLctx.uniform4ui(webglGetUniformLocation(location), v0, v1, v2, v3);
-    };
-
-  
-  var _emscripten_glUniform4uiv = (location, count, value) => {
-      count && GLctx.uniform4uiv(webglGetUniformLocation(location), HEAPU32, ((value)>>2), count*4);
-    };
-
-  var _emscripten_glUniformBlockBinding = (program, uniformBlockIndex, uniformBlockBinding) => {
-      program = GL.programs[program];
-  
-      GLctx.uniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
-    };
-
-  
-  
-  
-  var _emscripten_glUniformMatrix2fv = (location, count, transpose, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniformMatrix2fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*4);
-        return;
-      }
-  
-      if (count <= 72) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 4;
-        var view = miniTempWebGLFloatBuffers[count];
-        for (var i = 0; i < count; i += 4) {
-          view[i] = HEAPF32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAPF32[(((value)+(4*i+4))>>2)];
-          view[i+2] = HEAPF32[(((value)+(4*i+8))>>2)];
-          view[i+3] = HEAPF32[(((value)+(4*i+12))>>2)];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*16)>>2));
-      }
-      GLctx.uniformMatrix2fv(webglGetUniformLocation(location), !!transpose, view);
-    };
-
-  
-  var _emscripten_glUniformMatrix2x3fv = (location, count, transpose, value) => {
-      count && GLctx.uniformMatrix2x3fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*6);
-    };
-
-  
-  var _emscripten_glUniformMatrix2x4fv = (location, count, transpose, value) => {
-      count && GLctx.uniformMatrix2x4fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*8);
-    };
-
-  
-  
-  
-  var _emscripten_glUniformMatrix3fv = (location, count, transpose, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniformMatrix3fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*9);
-        return;
-      }
-  
-      if (count <= 32) {
-        // avoid allocation when uploading few enough uniforms
-        count *= 9;
-        var view = miniTempWebGLFloatBuffers[count];
-        for (var i = 0; i < count; i += 9) {
-          view[i] = HEAPF32[(((value)+(4*i))>>2)];
-          view[i+1] = HEAPF32[(((value)+(4*i+4))>>2)];
-          view[i+2] = HEAPF32[(((value)+(4*i+8))>>2)];
-          view[i+3] = HEAPF32[(((value)+(4*i+12))>>2)];
-          view[i+4] = HEAPF32[(((value)+(4*i+16))>>2)];
-          view[i+5] = HEAPF32[(((value)+(4*i+20))>>2)];
-          view[i+6] = HEAPF32[(((value)+(4*i+24))>>2)];
-          view[i+7] = HEAPF32[(((value)+(4*i+28))>>2)];
-          view[i+8] = HEAPF32[(((value)+(4*i+32))>>2)];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*36)>>2));
-      }
-      GLctx.uniformMatrix3fv(webglGetUniformLocation(location), !!transpose, view);
-    };
-
-  
-  var _emscripten_glUniformMatrix3x2fv = (location, count, transpose, value) => {
-      count && GLctx.uniformMatrix3x2fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*6);
-    };
-
-  
-  var _emscripten_glUniformMatrix3x4fv = (location, count, transpose, value) => {
-      count && GLctx.uniformMatrix3x4fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*12);
-    };
-
-  
-  
-  
-  var _emscripten_glUniformMatrix4fv = (location, count, transpose, value) => {
-  
-      if (GL.currentContext.version >= 2) {
-        count && GLctx.uniformMatrix4fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*16);
-        return;
-      }
-  
-      if (count <= 18) {
-        // avoid allocation when uploading few enough uniforms
-        var view = miniTempWebGLFloatBuffers[16*count];
-        // hoist the heap out of the loop for size and for pthreads+growth.
-        var heap = HEAPF32;
-        value = ((value)>>2);
-        count *= 16;
-        for (var i = 0; i < count; i += 16) {
-          var dst = value + i;
-          view[i] = heap[dst];
-          view[i + 1] = heap[dst + 1];
-          view[i + 2] = heap[dst + 2];
-          view[i + 3] = heap[dst + 3];
-          view[i + 4] = heap[dst + 4];
-          view[i + 5] = heap[dst + 5];
-          view[i + 6] = heap[dst + 6];
-          view[i + 7] = heap[dst + 7];
-          view[i + 8] = heap[dst + 8];
-          view[i + 9] = heap[dst + 9];
-          view[i + 10] = heap[dst + 10];
-          view[i + 11] = heap[dst + 11];
-          view[i + 12] = heap[dst + 12];
-          view[i + 13] = heap[dst + 13];
-          view[i + 14] = heap[dst + 14];
-          view[i + 15] = heap[dst + 15];
-        }
-      } else
-      {
-        var view = HEAPF32.subarray((((value)>>2)), ((value+count*64)>>2));
-      }
-      GLctx.uniformMatrix4fv(webglGetUniformLocation(location), !!transpose, view);
-    };
-
-  
-  var _emscripten_glUniformMatrix4x2fv = (location, count, transpose, value) => {
-      count && GLctx.uniformMatrix4x2fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*8);
-    };
-
-  
-  var _emscripten_glUniformMatrix4x3fv = (location, count, transpose, value) => {
-      count && GLctx.uniformMatrix4x3fv(webglGetUniformLocation(location), !!transpose, HEAPF32, ((value)>>2), count*12);
-    };
-
-  
-  
-  
-  var _emscripten_glUnmapBuffer = (target) => {
-      if (!emscriptenWebGLValidateMapBufferTarget(target)) {
-        GL.recordError(0x500/*GL_INVALID_ENUM*/);
-        err('GL_INVALID_ENUM in glUnmapBuffer');
-        return 0;
-      }
-  
-      var buffer = emscriptenWebGLGetBufferBinding(target);
-      var mapping = GL.mappedBuffers[buffer];
-      if (!mapping || !mapping.mem) {
-        GL.recordError(0x502 /* GL_INVALID_OPERATION */);
-        err('buffer was never mapped in glUnmapBuffer');
-        return 0;
-      }
-  
-      if (!(mapping.access & 0x10)) { /* GL_MAP_FLUSH_EXPLICIT_BIT */
-        webglBufferSubData(target, mapping.offset, mapping.length, mapping.mem);
-      }
-  
-      _free(mapping.mem);
-      mapping.mem = 0;
-      return 1;
-    };
-
-  var _emscripten_glUseProgram = (program) => {
-      program = GL.programs[program];
-      GLctx.useProgram(program);
-      // Record the currently active program so that we can access the uniform
-      // mapping table of that program.
-      GLctx.currentProgram = program;
-    };
-
-  var _emscripten_glValidateProgram = (program) => {
-      GLctx.validateProgram(GL.programs[program]);
-    };
-
-  var _emscripten_glVertexAttrib1f = (x0, x1) => GLctx.vertexAttrib1f(x0, x1);
-
-  
-  var _emscripten_glVertexAttrib1fv = (index, v) => {
-  
-      GLctx.vertexAttrib1f(index, HEAPF32[v>>2]);
-    };
-
-  var _emscripten_glVertexAttrib2f = (x0, x1, x2) => GLctx.vertexAttrib2f(x0, x1, x2);
-
-  
-  var _emscripten_glVertexAttrib2fv = (index, v) => {
-  
-      GLctx.vertexAttrib2f(index, HEAPF32[v>>2], HEAPF32[v+4>>2]);
-    };
-
-  var _emscripten_glVertexAttrib3f = (x0, x1, x2, x3) => GLctx.vertexAttrib3f(x0, x1, x2, x3);
-
-  
-  var _emscripten_glVertexAttrib3fv = (index, v) => {
-  
-      GLctx.vertexAttrib3f(index, HEAPF32[v>>2], HEAPF32[v+4>>2], HEAPF32[v+8>>2]);
-    };
-
-  var _emscripten_glVertexAttrib4f = (x0, x1, x2, x3, x4) => GLctx.vertexAttrib4f(x0, x1, x2, x3, x4);
-
-  
-  var _emscripten_glVertexAttrib4fv = (index, v) => {
-  
-      GLctx.vertexAttrib4f(index, HEAPF32[v>>2], HEAPF32[v+4>>2], HEAPF32[v+8>>2], HEAPF32[v+12>>2]);
-    };
-
-  var _emscripten_glVertexAttribDivisor = (index, divisor) => {
-      GLctx.vertexAttribDivisor(index, divisor);
-    };
-
-  
-  var _glVertexAttribDivisor = _emscripten_glVertexAttribDivisor;
-  var _emscripten_glVertexAttribDivisorANGLE = _glVertexAttribDivisor;
-
-  
-  var _emscripten_glVertexAttribDivisorARB = _glVertexAttribDivisor;
-
-  
-  var _emscripten_glVertexAttribDivisorEXT = _glVertexAttribDivisor;
-
-  
-  var _emscripten_glVertexAttribDivisorNV = _glVertexAttribDivisor;
-
-  var _emscripten_glVertexAttribI4i = (x0, x1, x2, x3, x4) => GLctx.vertexAttribI4i(x0, x1, x2, x3, x4);
-
-  var _emscripten_glVertexAttribI4iv = (index, v) => {
-      GLctx.vertexAttribI4i(index, HEAP32[v>>2], HEAP32[v+4>>2], HEAP32[v+8>>2], HEAP32[v+12>>2]);
-    };
-
-  var _emscripten_glVertexAttribI4ui = (x0, x1, x2, x3, x4) => GLctx.vertexAttribI4ui(x0, x1, x2, x3, x4);
-
-  var _emscripten_glVertexAttribI4uiv = (index, v) => {
-      GLctx.vertexAttribI4ui(index, HEAPU32[v>>2], HEAPU32[v+4>>2], HEAPU32[v+8>>2], HEAPU32[v+12>>2]);
-    };
-
-  var _emscripten_glVertexAttribIPointer = (index, size, type, stride, ptr) => {
-      var cb = GL.currentContext.clientBuffers[index];
-      if (!GLctx.currentArrayBufferBinding) {
-        cb.size = size;
-        cb.type = type;
-        cb.normalized = false;
-        cb.stride = stride;
-        cb.ptr = ptr;
-        cb.clientside = true;
-        cb.vertexAttribPointerAdaptor = /** @this {WebGLRenderingContext} */ function(index, size, type, normalized, stride, ptr) {
-          this.vertexAttribIPointer(index, size, type, stride, ptr);
-        };
-        return;
-      }
-      cb.clientside = false;
-      GLctx.vertexAttribIPointer(index, size, type, stride, ptr);
-    };
-
-  var _emscripten_glVertexAttribPointer = (index, size, type, normalized, stride, ptr) => {
-      var cb = GL.currentContext.clientBuffers[index];
-      if (!GLctx.currentArrayBufferBinding) {
-        cb.size = size;
-        cb.type = type;
-        cb.normalized = normalized;
-        cb.stride = stride;
-        cb.ptr = ptr;
-        cb.clientside = true;
-        cb.vertexAttribPointerAdaptor = /** @this {WebGLRenderingContext} */ function(index, size, type, normalized, stride, ptr) {
-          this.vertexAttribPointer(index, size, type, normalized, stride, ptr);
-        };
-        return;
-      }
-      cb.clientside = false;
-      GLctx.vertexAttribPointer(index, size, type, !!normalized, stride, ptr);
-    };
-
-  var _emscripten_glViewport = (x0, x1, x2, x3) => GLctx.viewport(x0, x1, x2, x3);
-
-  var _emscripten_glWaitSync = (sync, flags, timeout) => {
-      // See WebGL2 vs GLES3 difference on GL_TIMEOUT_IGNORED above (https://www.khronos.org/registry/webgl/specs/latest/2.0/#5.15)
-      timeout = Number(timeout);
-      GLctx.waitSync(GL.syncs[sync], flags, timeout);
-    };
-
   var getHeapMax = () =>
       // Stay one Wasm page short of 4GB: while e.g. Chrome is able to allocate
       // full 4GB Wasm memories, the size will wrap back to 0 bytes in Wasm side
@@ -8164,42 +4911,974 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   }
   
 
+  var GLctx;
+  
+  var webgl_enable_ANGLE_instanced_arrays = (ctx) => {
+      // Extension available in WebGL 1 from Firefox 26 and Google Chrome 30 onwards. Core feature in WebGL 2.
+      var ext = ctx.getExtension('ANGLE_instanced_arrays');
+      // Because this extension is a core function in WebGL 2, assign the extension entry points in place of
+      // where the core functions will reside in WebGL 2. This way the calling code can call these without
+      // having to dynamically branch depending if running against WebGL 1 or WebGL 2.
+      if (ext) {
+        ctx['vertexAttribDivisor'] = (index, divisor) => ext['vertexAttribDivisorANGLE'](index, divisor);
+        ctx['drawArraysInstanced'] = (mode, first, count, primcount) => ext['drawArraysInstancedANGLE'](mode, first, count, primcount);
+        ctx['drawElementsInstanced'] = (mode, count, type, indices, primcount) => ext['drawElementsInstancedANGLE'](mode, count, type, indices, primcount);
+        return 1;
+      }
+    };
+  
+  var webgl_enable_OES_vertex_array_object = (ctx) => {
+      // Extension available in WebGL 1 from Firefox 25 and WebKit 536.28/desktop Safari 6.0.3 onwards. Core feature in WebGL 2.
+      var ext = ctx.getExtension('OES_vertex_array_object');
+      if (ext) {
+        ctx['createVertexArray'] = () => ext['createVertexArrayOES']();
+        ctx['deleteVertexArray'] = (vao) => ext['deleteVertexArrayOES'](vao);
+        ctx['bindVertexArray'] = (vao) => ext['bindVertexArrayOES'](vao);
+        ctx['isVertexArray'] = (vao) => ext['isVertexArrayOES'](vao);
+        return 1;
+      }
+    };
+  
+  var webgl_enable_WEBGL_draw_buffers = (ctx) => {
+      // Extension available in WebGL 1 from Firefox 28 onwards. Core feature in WebGL 2.
+      var ext = ctx.getExtension('WEBGL_draw_buffers');
+      if (ext) {
+        ctx['drawBuffers'] = (n, bufs) => ext['drawBuffersWEBGL'](n, bufs);
+        return 1;
+      }
+    };
+  
+  var webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance = (ctx) =>
+      // Closure is expected to be allowed to minify the '.dibvbi' property, so not accessing it quoted.
+      !!(ctx.dibvbi = ctx.getExtension('WEBGL_draw_instanced_base_vertex_base_instance'));
+  
+  var webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance = (ctx) => {
+      // Closure is expected to be allowed to minify the '.mdibvbi' property, so not accessing it quoted.
+      return !!(ctx.mdibvbi = ctx.getExtension('WEBGL_multi_draw_instanced_base_vertex_base_instance'));
+    };
+  
+  var webgl_enable_EXT_polygon_offset_clamp = (ctx) =>
+      !!(ctx.extPolygonOffsetClamp = ctx.getExtension('EXT_polygon_offset_clamp'));
+  
+  var webgl_enable_EXT_clip_control = (ctx) =>
+      !!(ctx.extClipControl = ctx.getExtension('EXT_clip_control'));
+  
+  var webgl_enable_WEBGL_polygon_mode = (ctx) =>
+      !!(ctx.webglPolygonMode = ctx.getExtension('WEBGL_polygon_mode'));
+  
+  var webgl_enable_WEBGL_multi_draw = (ctx) =>
+      // Closure is expected to be allowed to minify the '.multiDrawWebgl' property, so not accessing it quoted.
+      !!(ctx.multiDrawWebgl = ctx.getExtension('WEBGL_multi_draw'));
+  
+  var getEmscriptenSupportedExtensions = (ctx) => {
+      // Restrict the list of advertised extensions to those that we actually
+      // support.
+      var supportedExtensions = [
+        // WebGL 1 extensions
+        'ANGLE_instanced_arrays',
+        'EXT_blend_minmax',
+        'EXT_disjoint_timer_query',
+        'EXT_frag_depth',
+        'EXT_shader_texture_lod',
+        'EXT_sRGB',
+        'OES_element_index_uint',
+        'OES_fbo_render_mipmap',
+        'OES_standard_derivatives',
+        'OES_texture_float',
+        'OES_texture_half_float',
+        'OES_texture_half_float_linear',
+        'OES_vertex_array_object',
+        'WEBGL_color_buffer_float',
+        'WEBGL_depth_texture',
+        'WEBGL_draw_buffers',
+        // WebGL 2 extensions
+        'EXT_color_buffer_float',
+        'EXT_conservative_depth',
+        'EXT_disjoint_timer_query_webgl2',
+        'EXT_texture_norm16',
+        'NV_shader_noperspective_interpolation',
+        'WEBGL_clip_cull_distance',
+        // WebGL 1 and WebGL 2 extensions
+        'EXT_clip_control',
+        'EXT_color_buffer_half_float',
+        'EXT_depth_clamp',
+        'EXT_float_blend',
+        'EXT_polygon_offset_clamp',
+        'EXT_texture_compression_bptc',
+        'EXT_texture_compression_rgtc',
+        'EXT_texture_filter_anisotropic',
+        'KHR_parallel_shader_compile',
+        'OES_texture_float_linear',
+        'WEBGL_blend_func_extended',
+        'WEBGL_compressed_texture_astc',
+        'WEBGL_compressed_texture_etc',
+        'WEBGL_compressed_texture_etc1',
+        'WEBGL_compressed_texture_s3tc',
+        'WEBGL_compressed_texture_s3tc_srgb',
+        'WEBGL_debug_renderer_info',
+        'WEBGL_debug_shaders',
+        'WEBGL_lose_context',
+        'WEBGL_multi_draw',
+        'WEBGL_polygon_mode'
+      ];
+      // .getSupportedExtensions() can return null if context is lost, so coerce to empty array.
+      return ctx.getSupportedExtensions()?.filter(ext => supportedExtensions.includes(ext)) ?? [];
+    };
+  
+  var registerPreMainLoop = (f) => {
+      // Does nothing unless $MainLoop is included/used.
+      typeof MainLoop != 'undefined' && MainLoop.preMainLoop.push(f);
+    };
+  
+  
+  var webglBufferSubData = (target, offset, size, data, src = HEAPU8) => {
+      if (GL.currentContext.version >= 2) {
+        size && GLctx.bufferSubData(target, offset, src, data, size);
+        return;
+      }
+      GLctx.bufferSubData(target, offset, src.subarray(data, data + size));
+    };
+  
+  
+  
+  
+  var GL = {
+  counter:1,
+  buffers:[],
+  mappedBuffers:{
+  },
+  programs:[],
+  framebuffers:[],
+  renderbuffers:[],
+  textures:[],
+  shaders:[],
+  vaos:[],
+  contexts:[],
+  offscreenCanvases:{
+  },
+  queries:[],
+  samplers:[],
+  transformFeedbacks:[],
+  syncs:[],
+  byteSizeByTypeRoot:5120,
+  byteSizeByType:[1,1,2,2,4,4,4,2,3,4,8],
+  stringCache:{
+  },
+  stringiCache:{
+  },
+  unpackAlignment:4,
+  unpackRowLength:0,
+  recordError:(errorCode) => {
+        if (!GL.lastError) {
+          GL.lastError = errorCode;
+        }
+      },
+  getNewId:(table) => {
+        var ret = GL.counter++;
+        for (var i = table.length; i < ret; i++) {
+          table[i] = null;
+        }
+        // Skip over any non-null elements that might have been created by
+        // glBindBuffer.
+        while (table[ret]) {
+          ret = GL.counter++;
+        }
+        return ret;
+      },
+  genObject:(n, buffers, createFunction, objectTable
+        ) => {
+        for (var i = 0; i < n; i++) {
+          var buffer = GLctx[createFunction]();
+          var id = buffer && GL.getNewId(objectTable);
+          if (buffer) {
+            buffer.name = id;
+            objectTable[id] = buffer;
+          } else {
+            GL.recordError(0x502 /* GL_INVALID_OPERATION */);
+          }
+          HEAP32[(((buffers)+(i*4))>>2)] = id;
+        }
+      },
+  MAX_TEMP_BUFFER_SIZE:2097152,
+  numTempVertexBuffersPerSize:64,
+  log2ceilLookup:(i) => 32 - Math.clz32(i === 0 ? 0 : i - 1),
+  generateTempBuffers:(quads, context) => {
+        var largestIndex = GL.log2ceilLookup(GL.MAX_TEMP_BUFFER_SIZE);
+        context.tempVertexBufferCounters1 = [];
+        context.tempVertexBufferCounters2 = [];
+        context.tempVertexBufferCounters1.length = context.tempVertexBufferCounters2.length = largestIndex+1;
+        context.tempVertexBuffers1 = [];
+        context.tempVertexBuffers2 = [];
+        context.tempVertexBuffers1.length = context.tempVertexBuffers2.length = largestIndex+1;
+        context.tempIndexBuffers = [];
+        context.tempIndexBuffers.length = largestIndex+1;
+        for (var i = 0; i <= largestIndex; ++i) {
+          context.tempIndexBuffers[i] = null; // Created on-demand
+          context.tempVertexBufferCounters1[i] = context.tempVertexBufferCounters2[i] = 0;
+          var ringbufferLength = GL.numTempVertexBuffersPerSize;
+          context.tempVertexBuffers1[i] = [];
+          context.tempVertexBuffers2[i] = [];
+          var ringbuffer1 = context.tempVertexBuffers1[i];
+          var ringbuffer2 = context.tempVertexBuffers2[i];
+          ringbuffer1.length = ringbuffer2.length = ringbufferLength;
+          for (var j = 0; j < ringbufferLength; ++j) {
+            ringbuffer1[j] = ringbuffer2[j] = null; // Created on-demand
+          }
+        }
+  
+        if (quads) {
+          // GL_QUAD indexes can be precalculated
+          context.tempQuadIndexBuffer = GLctx.createBuffer();
+          context.GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, context.tempQuadIndexBuffer);
+          var numIndexes = GL.MAX_TEMP_BUFFER_SIZE >> 1;
+          var quadIndexes = new Uint16Array(numIndexes);
+          var i = 0, v = 0;
+          while (1) {
+            quadIndexes[i++] = v;
+            if (i >= numIndexes) break;
+            quadIndexes[i++] = v+1;
+            if (i >= numIndexes) break;
+            quadIndexes[i++] = v+2;
+            if (i >= numIndexes) break;
+            quadIndexes[i++] = v;
+            if (i >= numIndexes) break;
+            quadIndexes[i++] = v+2;
+            if (i >= numIndexes) break;
+            quadIndexes[i++] = v+3;
+            if (i >= numIndexes) break;
+            v += 4;
+          }
+          context.GLctx.bufferData(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, quadIndexes, 0x88E4 /*GL_STATIC_DRAW*/);
+          context.GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, null);
+        }
+      },
+  getTempVertexBuffer:(sizeBytes) => {
+        var idx = GL.log2ceilLookup(sizeBytes);
+        var ringbuffer = GL.currentContext.tempVertexBuffers1[idx];
+        var nextFreeBufferIndex = GL.currentContext.tempVertexBufferCounters1[idx];
+        GL.currentContext.tempVertexBufferCounters1[idx] = (GL.currentContext.tempVertexBufferCounters1[idx]+1) & (GL.numTempVertexBuffersPerSize-1);
+        var vbo = ringbuffer[nextFreeBufferIndex];
+        if (vbo) {
+          return vbo;
+        }
+        var prevVBO = GLctx.getParameter(0x8894 /*GL_ARRAY_BUFFER_BINDING*/);
+        ringbuffer[nextFreeBufferIndex] = GLctx.createBuffer();
+        GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, ringbuffer[nextFreeBufferIndex]);
+        GLctx.bufferData(0x8892 /*GL_ARRAY_BUFFER*/, 1 << idx, 0x88E8 /*GL_DYNAMIC_DRAW*/);
+        GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, prevVBO);
+        return ringbuffer[nextFreeBufferIndex];
+      },
+  getTempIndexBuffer:(sizeBytes) => {
+        var idx = GL.log2ceilLookup(sizeBytes);
+        var ibo = GL.currentContext.tempIndexBuffers[idx];
+        if (ibo) {
+          return ibo;
+        }
+        var prevIBO = GLctx.getParameter(0x8895 /*ELEMENT_ARRAY_BUFFER_BINDING*/);
+        GL.currentContext.tempIndexBuffers[idx] = GLctx.createBuffer();
+        GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, GL.currentContext.tempIndexBuffers[idx]);
+        GLctx.bufferData(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, 1 << idx, 0x88E8 /*GL_DYNAMIC_DRAW*/);
+        GLctx.bindBuffer(0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/, prevIBO);
+        return GL.currentContext.tempIndexBuffers[idx];
+      },
+  newRenderingFrameStarted:() => {
+        if (!GL.currentContext) {
+          return;
+        }
+        var vb = GL.currentContext.tempVertexBuffers1;
+        GL.currentContext.tempVertexBuffers1 = GL.currentContext.tempVertexBuffers2;
+        GL.currentContext.tempVertexBuffers2 = vb;
+        vb = GL.currentContext.tempVertexBufferCounters1;
+        GL.currentContext.tempVertexBufferCounters1 = GL.currentContext.tempVertexBufferCounters2;
+        GL.currentContext.tempVertexBufferCounters2 = vb;
+        var largestIndex = GL.log2ceilLookup(GL.MAX_TEMP_BUFFER_SIZE);
+        for (var i = 0; i <= largestIndex; ++i) {
+          GL.currentContext.tempVertexBufferCounters1[i] = 0;
+        }
+      },
+  getSource:(shader, count, string, length) => {
+        var source = '';
+        for (var i = 0; i < count; ++i) {
+          var len = length ? HEAPU32[(((length)+(i*4))>>2)] : undefined;
+          source += UTF8ToString(HEAPU32[(((string)+(i*4))>>2)], len);
+        }
+        return source;
+      },
+  calcBufLength:(size, type, stride, count) => {
+        if (stride > 0) {
+          return count * stride;  // XXXvlad this is not exactly correct I don't think
+        }
+        var typeSize = GL.byteSizeByType[type - GL.byteSizeByTypeRoot];
+        return size * typeSize * count;
+      },
+  usedTempBuffers:[],
+  preDrawHandleClientVertexAttribBindings:(count) => {
+        GL.resetBufferBinding = false;
+  
+        // TODO: initial pass to detect ranges we need to upload, might not need
+        // an upload per attrib
+        for (var i = 0; i < GL.currentContext.maxVertexAttribs; ++i) {
+          var cb = GL.currentContext.clientBuffers[i];
+          if (!cb.clientside || !cb.enabled) continue;
+  
+          assert(count || !GLctx.currentElementArrayBufferBinding, 'must use array buffers when using element buffer');
+  
+          GL.resetBufferBinding = true;
+  
+          var size = GL.calcBufLength(cb.size, cb.type, cb.stride, count);
+          var buf = GL.getTempVertexBuffer(size);
+          GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, buf);
+          webglBufferSubData(0x8892 /*GL_ARRAY_BUFFER*/, 0, size, cb.ptr);
+          cb.vertexAttribPointerAdaptor.call(GLctx, i, cb.size, cb.type, cb.normalized, cb.stride, 0);
+        }
+      },
+  postDrawHandleClientVertexAttribBindings:() => {
+        if (GL.resetBufferBinding) {
+          GLctx.bindBuffer(0x8892 /*GL_ARRAY_BUFFER*/, GL.buffers[GLctx.currentArrayBufferBinding]);
+        }
+      },
+  createContext:(/** @type {HTMLCanvasElement} */ canvas, webGLContextAttributes) => {
+  
+        // BUG: Workaround Safari WebGL issue: After successfully acquiring WebGL
+        // context on a canvas, calling .getContext() will always return that
+        // context independent of which 'webgl' or 'webgl2'
+        // context version was passed. See:
+        //   https://webkit.org/b/222758
+        // and:
+        //   https://github.com/emscripten-core/emscripten/issues/13295.
+        // TODO: Once the bug is fixed and shipped in Safari, adjust the Safari
+        // version field in above check.
+        if (!canvas.getContextSafariWebGL2Fixed) {
+          canvas.getContextSafariWebGL2Fixed = canvas.getContext;
+          /** @type {function(this:HTMLCanvasElement, string, (Object|null)=): (Object|null)} */
+          function fixedGetContext(ver, attrs) {
+            var gl = canvas.getContextSafariWebGL2Fixed(ver, attrs);
+            return ((ver == 'webgl') == (gl instanceof WebGLRenderingContext)) ? gl : null;
+          }
+          canvas.getContext = fixedGetContext;
+        }
+  
+        var ctx =
+          (webGLContextAttributes.majorVersion > 1)
+          ? canvas.getContext('webgl2', webGLContextAttributes) :
+          canvas.getContext('webgl', webGLContextAttributes);
+  
+        if (!ctx) return 0;
+  
+        var handle = GL.registerContext(ctx, webGLContextAttributes);
+  
+        return handle;
+      },
+  registerContext:(ctx, webGLContextAttributes) => {
+        // without pthreads a context is just an integer ID
+        var handle = GL.getNewId(GL.contexts);
+  
+        var context = {
+          handle,
+          attributes: webGLContextAttributes,
+          version: webGLContextAttributes.majorVersion,
+          GLctx: ctx
+        };
+  
+        // Store the created context object so that we can access the context
+        // given a canvas without having to pass the parameters again.
+        if (ctx.canvas) ctx.canvas.GLctxObject = context;
+        GL.contexts[handle] = context;
+        if (typeof webGLContextAttributes.enableExtensionsByDefault == 'undefined' || webGLContextAttributes.enableExtensionsByDefault) {
+          GL.initExtensions(context);
+        }
+  
+        context.maxVertexAttribs = context.GLctx.getParameter(0x8869 /*GL_MAX_VERTEX_ATTRIBS*/);
+        context.clientBuffers = [];
+        for (var i = 0; i < context.maxVertexAttribs; i++) {
+          context.clientBuffers[i] = {
+            enabled: false,
+            clientside: false,
+            size: 0,
+            type: 0,
+            normalized: 0,
+            stride: 0,
+            ptr: 0,
+            vertexAttribPointerAdaptor: null,
+          };
+        }
+  
+        GL.generateTempBuffers(false, context);
+  
+        return handle;
+      },
+  makeContextCurrent:(contextHandle) => {
+  
+        // Active Emscripten GL layer context object.
+        GL.currentContext = GL.contexts[contextHandle];
+        // Active WebGL context object.
+        Module['ctx'] = GLctx = GL.currentContext?.GLctx;
+        return !(contextHandle && !GLctx);
+      },
+  getContext:(contextHandle) => {
+        return GL.contexts[contextHandle];
+      },
+  deleteContext:(contextHandle) => {
+        if (GL.currentContext === GL.contexts[contextHandle]) {
+          GL.currentContext = null;
+        }
+        if (typeof JSEvents == 'object') {
+          // Release all JS event handlers on the DOM element that the GL context is
+          // associated with since the context is now deleted.
+          JSEvents.removeAllHandlersOnTarget(GL.contexts[contextHandle].GLctx.canvas);
+        }
+        // Make sure the canvas object no longer refers to the context object so
+        // there are no GC surprises.
+        if (GL.contexts[contextHandle]?.GLctx.canvas) {
+          GL.contexts[contextHandle].GLctx.canvas.GLctxObject = undefined;
+        }
+        GL.contexts[contextHandle] = null;
+      },
+  initExtensions:(context) => {
+        // If this function is called without a specific context object, init the
+        // extensions of the currently active context.
+        context ||= GL.currentContext;
+  
+        if (context.initExtensionsDone) return;
+        context.initExtensionsDone = true;
+  
+        var GLctx = context.GLctx;
+  
+        // Detect the presence of a few extensions manually, since the GL interop
+        // layer itself will need to know if they exist.
+  
+        // Extensions that are available in both WebGL 1 and WebGL 2
+        webgl_enable_WEBGL_multi_draw(GLctx);
+        webgl_enable_EXT_polygon_offset_clamp(GLctx);
+        webgl_enable_EXT_clip_control(GLctx);
+        webgl_enable_WEBGL_polygon_mode(GLctx);
+        // Extensions that are only available in WebGL 1 (the calls will be no-ops
+        // if called on a WebGL 2 context active)
+        webgl_enable_ANGLE_instanced_arrays(GLctx);
+        webgl_enable_OES_vertex_array_object(GLctx);
+        webgl_enable_WEBGL_draw_buffers(GLctx);
+        // Extensions that are available from WebGL >= 2 (no-op if called on a WebGL 1 context active)
+        webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance(GLctx);
+        webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance(GLctx);
+  
+        // On WebGL 2, EXT_disjoint_timer_query is replaced with an alternative
+        // that's based on core APIs, and exposes only the queryCounterEXT()
+        // entrypoint.
+        if (context.version >= 2) {
+          GLctx.disjointTimerQueryExt = GLctx.getExtension('EXT_disjoint_timer_query_webgl2');
+        }
+  
+        // However, Firefox exposes the WebGL 1 version on WebGL 2 as well and
+        // thus we look for the WebGL 1 version again if the WebGL 2 version
+        // isn't present. https://bugzil.la/1328882
+        if (context.version < 2 || !GLctx.disjointTimerQueryExt)
+        {
+          GLctx.disjointTimerQueryExt = GLctx.getExtension('EXT_disjoint_timer_query');
+        }
+  
+        for (var ext of getEmscriptenSupportedExtensions(GLctx)) {
+          // WEBGL_lose_context, WEBGL_debug_renderer_info and WEBGL_debug_shaders
+          // are not enabled by default.
+          if (!ext.includes('lose_context') && !ext.includes('debug')) {
+            // Call .getExtension() to enable that extension permanently.
+            GLctx.getExtension(ext);
+          }
+        }
+      },
+  };
+  var _emscripten_glAttachShader = (program, shader) => {
+      GLctx.attachShader(GL.programs[program], GL.shaders[shader]);
+    };
   var _glAttachShader = _emscripten_glAttachShader;
 
+  var _emscripten_glBindBuffer = (target, buffer) => {
+      // Calling glBindBuffer with an unknown buffer will implicitly create a
+      // new one.  Here we bypass `GL.counter` and directly using the ID passed
+      // in.
+      if (buffer && !GL.buffers[buffer]) {
+        var b = GLctx.createBuffer();
+        b.name = buffer;
+        GL.buffers[buffer] = b;
+      }
+      if (target == 0x8892 /*GL_ARRAY_BUFFER*/) {
+        GLctx.currentArrayBufferBinding = buffer;
+      } else if (target == 0x8893 /*GL_ELEMENT_ARRAY_BUFFER*/) {
+        GLctx.currentElementArrayBufferBinding = buffer;
+      }
+  
+      if (target == 0x88EB /*GL_PIXEL_PACK_BUFFER*/) {
+        // In WebGL 2 glReadPixels entry point, we need to use a different WebGL 2
+        // API function call when a buffer is bound to
+        // GL_PIXEL_PACK_BUFFER_BINDING point, so must keep track whether that
+        // binding point is non-null to know what is the proper API function to
+        // call.
+        GLctx.currentPixelPackBufferBinding = buffer;
+      } else if (target == 0x88EC /*GL_PIXEL_UNPACK_BUFFER*/) {
+        // In WebGL 2 gl(Compressed)Tex(Sub)Image[23]D entry points, we need to
+        // use a different WebGL 2 API function call when a buffer is bound to
+        // GL_PIXEL_UNPACK_BUFFER_BINDING point, so must keep track whether that
+        // binding point is non-null to know what is the proper API function to
+        // call.
+        GLctx.currentPixelUnpackBufferBinding = buffer;
+      }
+      GLctx.bindBuffer(target, GL.buffers[buffer]);
+    };
   var _glBindBuffer = _emscripten_glBindBuffer;
 
+  var _emscripten_glBindTexture = (target, texture) => {
+      GLctx.bindTexture(target, GL.textures[texture]);
+    };
   var _glBindTexture = _emscripten_glBindTexture;
 
+  
+  var _emscripten_glBindVertexArray = (vao) => {
+      GLctx.bindVertexArray(GL.vaos[vao]);
+      var ibo = GLctx.getParameter(0x8895 /*ELEMENT_ARRAY_BUFFER_BINDING*/);
+      GLctx.currentElementArrayBufferBinding = ibo ? (ibo.name | 0) : 0;
+    };
+  var _glBindVertexArray = _emscripten_glBindVertexArray;
+  var _emscripten_glBindVertexArrayOES = _glBindVertexArray;
   var _glBindVertexArrayOES = _emscripten_glBindVertexArrayOES;
 
+  var _emscripten_glCompileShader = (shader) => {
+      GLctx.compileShader(GL.shaders[shader]);
+    };
   var _glCompileShader = _emscripten_glCompileShader;
 
+  var _emscripten_glCreateProgram = () => {
+      var id = GL.getNewId(GL.programs);
+      var program = GLctx.createProgram();
+      // Store additional information needed for each shader program:
+      program.name = id;
+      // Lazy cache results of
+      // glGetProgramiv(GL_ACTIVE_UNIFORM_MAX_LENGTH/GL_ACTIVE_ATTRIBUTE_MAX_LENGTH/GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH)
+      program.maxUniformLength = program.maxAttributeLength = program.maxUniformBlockNameLength = 0;
+      program.uniformIdCounter = 1;
+      GL.programs[id] = program;
+      return id;
+    };
   var _glCreateProgram = _emscripten_glCreateProgram;
 
+  var _emscripten_glCreateShader = (shaderType) => {
+      var id = GL.getNewId(GL.shaders);
+      GL.shaders[id] = GLctx.createShader(shaderType);
+  
+      return id;
+    };
   var _glCreateShader = _emscripten_glCreateShader;
 
+  var _emscripten_glDeleteShader = (id) => {
+      if (!id) return;
+      var shader = GL.shaders[id];
+      if (!shader) {
+        // glDeleteShader actually signals an error when deleting a nonexisting
+        // object, unlike some other GL delete functions.
+        GL.recordError(0x501 /* GL_INVALID_VALUE */);
+        return;
+      }
+      GLctx.deleteShader(shader);
+      GL.shaders[id] = null;
+    };
   var _glDeleteShader = _emscripten_glDeleteShader;
 
+  var _emscripten_glDetachShader = (program, shader) => {
+      GLctx.detachShader(GL.programs[program], GL.shaders[shader]);
+    };
   var _glDetachShader = _emscripten_glDetachShader;
 
+  var _emscripten_glGenBuffers = (n, buffers) => {
+      GL.genObject(n, buffers, 'createBuffer', GL.buffers
+        );
+    };
   var _glGenBuffers = _emscripten_glGenBuffers;
 
+  
+  var _emscripten_glGetAttribLocation = (program, name) =>
+      GLctx.getAttribLocation(GL.programs[program], UTF8ToString(name));
   var _glGetAttribLocation = _emscripten_glGetAttribLocation;
 
+  
+  var readI53FromI64 = (ptr) => {
+      return HEAPU32[((ptr)>>2)] + HEAP32[(((ptr)+(4))>>2)] * 4294967296;
+    };
+  
+  var readI53FromU64 = (ptr) => {
+      return HEAPU32[((ptr)>>2)] + HEAPU32[(((ptr)+(4))>>2)] * 4294967296;
+    };
+  
+  var writeI53ToI64 = (ptr, num) => {
+      HEAPU32[((ptr)>>2)] = num;
+      var lower = HEAPU32[((ptr)>>2)];
+      HEAPU32[(((ptr)+(4))>>2)] = (num - lower)/4294967296;
+      var deserialized = (num >= 0) ? readI53FromU64(ptr) : readI53FromI64(ptr);
+      var offset = ((ptr)>>2);
+      if (deserialized != num) warnOnce(`writeI53ToI64() out of range: serialized JS Number ${num} to Wasm heap as bytes lo=${ptrToString(HEAPU32[offset])}, hi=${ptrToString(HEAPU32[offset+1])}, which deserializes back to ${deserialized} instead!`);
+    };
+  
+  
+  var webglGetExtensions = () => {
+      var exts = getEmscriptenSupportedExtensions(GLctx);
+      exts = exts.concat(exts.map((e) => 'GL_' + e));
+      return exts;
+    };
+  
+  
+  
+  
+  /** @type {!Float32Array} */
+  var HEAPF32;
+  var emscriptenWebGLGet = (name_, p, type) => {
+      // Guard against user passing a null pointer.
+      // Note that GLES2 spec does not say anything about how passing a null
+      // pointer should be treated.  Testing on desktop core GL 3, the application
+      // crashes on glGetIntegerv to a null pointer, but better to report an error
+      // instead of doing anything random.
+      if (!p) {
+        GL.recordError(0x501 /* GL_INVALID_VALUE */);
+        return;
+      }
+      var ret = undefined;
+      switch (name_) { // Handle a few trivial GLES values
+        case 0x8DFA: // GL_SHADER_COMPILER
+          ret = 1;
+          break;
+        case 0x8DF8: // GL_SHADER_BINARY_FORMATS
+          if (type != 0 && type != 1) {
+            GL.recordError(0x500); // GL_INVALID_ENUM
+          }
+          // Do not write anything to the out pointer, since no binary formats are
+          // supported.
+          return;
+        case 0x87FE: // GL_NUM_PROGRAM_BINARY_FORMATS
+        case 0x8DF9: // GL_NUM_SHADER_BINARY_FORMATS
+          ret = 0;
+          break;
+        case 0x86A2: // GL_NUM_COMPRESSED_TEXTURE_FORMATS
+          // WebGL doesn't have GL_NUM_COMPRESSED_TEXTURE_FORMATS (it's obsolete
+          // since GL_COMPRESSED_TEXTURE_FORMATS returns a JS array that can be
+          // queried for length), so implement it ourselves to allow C++ GLES2
+          // code to get the length.
+          var formats = GLctx.getParameter(0x86A3 /*GL_COMPRESSED_TEXTURE_FORMATS*/);
+          ret = formats ? formats.length : 0;
+          break;
+  
+        case 0x821D: // GL_NUM_EXTENSIONS
+          if (GL.currentContext.version < 2) {
+            // Calling GLES3/WebGL2 function with a GLES2/WebGL1 context
+            GL.recordError(0x502 /* GL_INVALID_OPERATION */);
+            return;
+          }
+          ret = webglGetExtensions().length;
+          break;
+        case 0x821B: // GL_MAJOR_VERSION
+        case 0x821C: // GL_MINOR_VERSION
+          if (GL.currentContext.version < 2) {
+            GL.recordError(0x500); // GL_INVALID_ENUM
+            return;
+          }
+          ret = name_ == 0x821B ? 3 : 0; // return version 3.0
+          break;
+      }
+  
+      if (ret === undefined) {
+        var result = GLctx.getParameter(name_);
+        switch (typeof result) {
+          case 'number':
+            ret = result;
+            break;
+          case 'boolean':
+            ret = result ? 1 : 0;
+            break;
+          case 'string':
+            GL.recordError(0x500); // GL_INVALID_ENUM
+            return;
+          case 'object':
+            if (result === null) {
+              // null is a valid result for some (e.g., which buffer is bound -
+              // perhaps nothing is bound), but otherwise can mean an invalid
+              // name_, which we need to report as an error
+              switch (name_) {
+                case 0x8894: // ARRAY_BUFFER_BINDING
+                case 0x8B8D: // CURRENT_PROGRAM
+                case 0x8895: // ELEMENT_ARRAY_BUFFER_BINDING
+                case 0x8CA6: // FRAMEBUFFER_BINDING or DRAW_FRAMEBUFFER_BINDING
+                case 0x8CA7: // RENDERBUFFER_BINDING
+                case 0x8069: // TEXTURE_BINDING_2D
+                case 0x85B5: // WebGL 2 GL_VERTEX_ARRAY_BINDING, or WebGL 1 extension OES_vertex_array_object GL_VERTEX_ARRAY_BINDING_OES
+                case 0x8F36: // COPY_READ_BUFFER_BINDING or COPY_READ_BUFFER
+                case 0x8F37: // COPY_WRITE_BUFFER_BINDING or COPY_WRITE_BUFFER
+                case 0x88ED: // PIXEL_PACK_BUFFER_BINDING
+                case 0x88EF: // PIXEL_UNPACK_BUFFER_BINDING
+                case 0x8CAA: // READ_FRAMEBUFFER_BINDING
+                case 0x8919: // SAMPLER_BINDING
+                case 0x8C1D: // TEXTURE_BINDING_2D_ARRAY
+                case 0x806A: // TEXTURE_BINDING_3D
+                case 0x8E25: // TRANSFORM_FEEDBACK_BINDING
+                case 0x8C8F: // TRANSFORM_FEEDBACK_BUFFER_BINDING
+                case 0x8A28: // UNIFORM_BUFFER_BINDING
+                case 0x8514: { // TEXTURE_BINDING_CUBE_MAP
+                  ret = 0;
+                  break;
+                }
+                default: {
+                  GL.recordError(0x500); // GL_INVALID_ENUM
+                  return;
+                }
+              }
+            } else if (result instanceof Float32Array ||
+                       result instanceof Uint32Array ||
+                       result instanceof Int32Array ||
+                       result instanceof Array) {
+              for (var i = 0; i < result.length; ++i) {
+                switch (type) {
+                  case 0: HEAP32[(((p)+(i*4))>>2)] = result[i]; break;
+                  case 2: HEAPF32[(((p)+(i*4))>>2)] = result[i]; break;
+                  case 4: HEAP8[(p)+(i)] = result[i] ? 1 : 0; break;
+                }
+              }
+              return;
+            } else {
+              try {
+                ret = result.name | 0;
+              } catch(e) {
+                GL.recordError(0x500); // GL_INVALID_ENUM
+                err(`GL_INVALID_ENUM in glGet${type}v: Unknown object returned from WebGL getParameter(${name_})! (error: ${e})`);
+                return;
+              }
+            }
+            break;
+          default:
+            GL.recordError(0x500); // GL_INVALID_ENUM
+            err(`GL_INVALID_ENUM in glGet${type}v: Native code calling glGet${type}v(${name_}) and it returns ${result} of type ${typeof(result)}!`);
+            return;
+        }
+      }
+  
+      switch (type) {
+        case 1: writeI53ToI64(p, ret); break;
+        case 0: HEAP32[((p)>>2)] = ret; break;
+        case 2:   HEAPF32[((p)>>2)] = ret; break;
+        case 4: HEAP8[p] = ret ? 1 : 0; break;
+      }
+    };
+  
+  var _emscripten_glGetIntegerv = (name_, p) => emscriptenWebGLGet(name_, p, 0);
   var _glGetIntegerv = _emscripten_glGetIntegerv;
 
+  
+  var _emscripten_glGetProgramInfoLog = (program, maxLength, length, infoLog) => {
+      var log = GLctx.getProgramInfoLog(GL.programs[program]);
+      if (log === null) log = '(unknown error)';
+      var numBytesWrittenExclNull = (maxLength > 0 && infoLog) ? stringToUTF8(log, infoLog, maxLength) : 0;
+      if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
+    };
   var _glGetProgramInfoLog = _emscripten_glGetProgramInfoLog;
 
+  
+  var _emscripten_glGetProgramiv = (program, pname, p) => {
+      if (!p) {
+        // GLES2 specification does not specify how to behave if p is a null
+        // pointer. Since calling this function does not make sense if p == null,
+        // issue a GL error to notify user about it.
+        GL.recordError(0x501 /* GL_INVALID_VALUE */);
+        return;
+      }
+  
+      if (program >= GL.counter) {
+        GL.recordError(0x501 /* GL_INVALID_VALUE */);
+        return;
+      }
+  
+      program = GL.programs[program];
+  
+      if (pname == 0x8B84) { // GL_INFO_LOG_LENGTH
+        var log = GLctx.getProgramInfoLog(program);
+        if (log === null) log = '(unknown error)';
+        HEAP32[((p)>>2)] = log.length + 1;
+      } else if (pname == 0x8B87 /* GL_ACTIVE_UNIFORM_MAX_LENGTH */) {
+        if (!program.maxUniformLength) {
+          var numActiveUniforms = GLctx.getProgramParameter(program, 0x8B86/*GL_ACTIVE_UNIFORMS*/);
+          for (var i = 0; i < numActiveUniforms; ++i) {
+            program.maxUniformLength = Math.max(program.maxUniformLength, GLctx.getActiveUniform(program, i).name.length+1);
+          }
+        }
+        HEAP32[((p)>>2)] = program.maxUniformLength;
+      } else if (pname == 0x8B8A /* GL_ACTIVE_ATTRIBUTE_MAX_LENGTH */) {
+        if (!program.maxAttributeLength) {
+          var numActiveAttributes = GLctx.getProgramParameter(program, 0x8B89/*GL_ACTIVE_ATTRIBUTES*/);
+          for (var i = 0; i < numActiveAttributes; ++i) {
+            program.maxAttributeLength = Math.max(program.maxAttributeLength, GLctx.getActiveAttrib(program, i).name.length+1);
+          }
+        }
+        HEAP32[((p)>>2)] = program.maxAttributeLength;
+      } else if (pname == 0x8A35 /* GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH */) {
+        if (!program.maxUniformBlockNameLength) {
+          var numActiveUniformBlocks = GLctx.getProgramParameter(program, 0x8A36/*GL_ACTIVE_UNIFORM_BLOCKS*/);
+          for (var i = 0; i < numActiveUniformBlocks; ++i) {
+            program.maxUniformBlockNameLength = Math.max(program.maxUniformBlockNameLength, GLctx.getActiveUniformBlockName(program, i).length+1);
+          }
+        }
+        HEAP32[((p)>>2)] = program.maxUniformBlockNameLength;
+      } else {
+        HEAP32[((p)>>2)] = GLctx.getProgramParameter(program, pname);
+      }
+    };
   var _glGetProgramiv = _emscripten_glGetProgramiv;
 
+  
+  
+  var _emscripten_glGetShaderInfoLog = (shader, maxLength, length, infoLog) => {
+      var log = GLctx.getShaderInfoLog(GL.shaders[shader]);
+      if (log === null) log = '(unknown error)';
+      var numBytesWrittenExclNull = (maxLength > 0 && infoLog) ? stringToUTF8(log, infoLog, maxLength) : 0;
+      if (length) HEAP32[((length)>>2)] = numBytesWrittenExclNull;
+    };
   var _glGetShaderInfoLog = _emscripten_glGetShaderInfoLog;
 
+  
+  var _emscripten_glGetShaderiv = (shader, pname, p) => {
+      if (!p) {
+        // GLES2 specification does not specify how to behave if p is a null
+        // pointer. Since calling this function does not make sense if p == null,
+        // issue a GL error to notify user about it.
+        GL.recordError(0x501 /* GL_INVALID_VALUE */);
+        return;
+      }
+      if (pname == 0x8B84) { // GL_INFO_LOG_LENGTH
+        var log = GLctx.getShaderInfoLog(GL.shaders[shader]);
+        if (log === null) log = '(unknown error)';
+        // The GLES2 specification says that if the shader has an empty info log,
+        // a value of 0 is returned. Otherwise the log has a null char appended.
+        // (An empty string is falsey, so we can just check that instead of
+        // looking at log.length.)
+        var logLength = log ? log.length + 1 : 0;
+        HEAP32[((p)>>2)] = logLength;
+      } else if (pname == 0x8B88) { // GL_SHADER_SOURCE_LENGTH
+        var source = GLctx.getShaderSource(GL.shaders[shader]);
+        // source may be a null, or the empty string, both of which are falsey
+        // values that we report a 0 length for.
+        var sourceLength = source ? source.length + 1 : 0;
+        HEAP32[((p)>>2)] = sourceLength;
+      } else {
+        HEAP32[((p)>>2)] = GLctx.getShaderParameter(GL.shaders[shader], pname);
+      }
+    };
   var _glGetShaderiv = _emscripten_glGetShaderiv;
 
+  /** @suppress {checkTypes} */
+  var jstoi_q = (str) => parseInt(str);
+  
+  /** @noinline */
+  var webglGetLeftBracePos = (name) => name.slice(-1) == ']' && name.lastIndexOf('[');
+  
+  var webglPrepareUniformLocationsBeforeFirstUse = (program) => {
+      var uniformLocsById = program.uniformLocsById, // Maps GLuint -> WebGLUniformLocation
+        uniformSizeAndIdsByName = program.uniformSizeAndIdsByName, // Maps name -> [uniform array length, GLuint]
+        i, j;
+  
+      // On the first time invocation of glGetUniformLocation on this shader program:
+      // initialize cache data structures and discover which uniforms are arrays.
+      if (!uniformLocsById) {
+        // maps GLint integer locations to WebGLUniformLocations
+        program.uniformLocsById = uniformLocsById = {};
+        // maps integer locations back to uniform name strings, so that we can lazily fetch uniform array locations
+        program.uniformArrayNamesById = {};
+  
+        var numActiveUniforms = GLctx.getProgramParameter(program, 0x8B86/*GL_ACTIVE_UNIFORMS*/);
+        for (i = 0; i < numActiveUniforms; ++i) {
+          var u = GLctx.getActiveUniform(program, i);
+          var nm = u.name;
+          var sz = u.size;
+          var lb = webglGetLeftBracePos(nm);
+          var arrayName = lb > 0 ? nm.slice(0, lb) : nm;
+  
+          // Assign a new location.
+          var id = program.uniformIdCounter;
+          program.uniformIdCounter += sz;
+          // Eagerly get the location of the uniformArray[0] base element.
+          // The remaining indices >0 will be left for lazy evaluation to
+          // improve performance. Those may never be needed to fetch, if the
+          // application fills arrays always in full starting from the first
+          // element of the array.
+          uniformSizeAndIdsByName[arrayName] = [sz, id];
+  
+          // Store placeholder integers in place that highlight that these
+          // >0 index locations are array indices pending population.
+          for (j = 0; j < sz; ++j) {
+            uniformLocsById[id] = j;
+            program.uniformArrayNamesById[id++] = arrayName;
+          }
+        }
+      }
+    };
+  
+  
+  
+  var _emscripten_glGetUniformLocation = (program, name) => {
+  
+      name = UTF8ToString(name);
+  
+      if (program = GL.programs[program]) {
+        webglPrepareUniformLocationsBeforeFirstUse(program);
+        var uniformLocsById = program.uniformLocsById; // Maps GLuint -> WebGLUniformLocation
+        var arrayIndex = 0;
+        var uniformBaseName = name;
+  
+        // Invariant: when populating integer IDs for uniform locations, we must
+        // maintain the precondition that arrays reside in contiguous addresses,
+        // i.e. for a 'vec4 colors[10];', colors[4] must be at location
+        // colors[0]+4.  However, user might call glGetUniformLocation(program,
+        // "colors") for an array, so we cannot discover based on the user input
+        // arguments whether the uniform we are dealing with is an array. The only
+        // way to discover which uniforms are arrays is to enumerate over all the
+        // active uniforms in the program.
+        var leftBrace = webglGetLeftBracePos(name);
+  
+        // If user passed an array accessor "[index]", parse the array index off the accessor.
+        if (leftBrace > 0) {
+          arrayIndex = jstoi_q(name.slice(leftBrace + 1)) >>> 0; // "index]", coerce parseInt(']') with >>>0 to treat "foo[]" as "foo[0]" and foo[-1] as unsigned out-of-bounds.
+          uniformBaseName = name.slice(0, leftBrace);
+        }
+  
+        // Have we cached the location of this uniform before?
+        // A pair [array length, GLint of the uniform location]
+        var sizeAndId = program.uniformSizeAndIdsByName[uniformBaseName];
+  
+        // If a uniform with this name exists, and if its index is within the
+        // array limits (if it's even an array), query the WebGLlocation, or
+        // return an existing cached location.
+        if (sizeAndId && arrayIndex < sizeAndId[0]) {
+          arrayIndex += sizeAndId[1]; // Add the base location of the uniform to the array index offset.
+          if ((uniformLocsById[arrayIndex] = uniformLocsById[arrayIndex] || GLctx.getUniformLocation(program, name))) {
+            return arrayIndex;
+          }
+        }
+      }
+      else {
+        // N.b. we are currently unable to distinguish between GL program IDs that
+        // never existed vs GL program IDs that have been deleted, so report
+        // GL_INVALID_VALUE in both cases.
+        GL.recordError(0x501 /* GL_INVALID_VALUE */);
+      }
+      return -1;
+    };
   var _glGetUniformLocation = _emscripten_glGetUniformLocation;
 
+  var _emscripten_glLinkProgram = (program) => {
+      program = GL.programs[program];
+      GLctx.linkProgram(program);
+      // Invalidate earlier computed uniform->ID mappings, those have now become stale
+      program.uniformLocsById = 0; // Mark as null-like so that glGetUniformLocation() knows to populate this again.
+      program.uniformSizeAndIdsByName = {};
+  
+    };
   var _glLinkProgram = _emscripten_glLinkProgram;
 
+  var _emscripten_glShaderSource = (shader, count, string, length) => {
+      var source = GL.getSource(shader, count, string, length);
+  
+      GLctx.shaderSource(GL.shaders[shader], source);
+    };
   var _glShaderSource = _emscripten_glShaderSource;
 
   
@@ -8710,6 +6389,14 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
   
   
+  
+  
+  var stringToNewUTF8 = (str) => {
+      var size = lengthBytesUTF8(str) + 1;
+      var ret = _malloc(size);
+      if (ret) stringToUTF8(str, ret, size);
+      return ret;
+    };
   
   
   
@@ -10028,26 +7715,15 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   FS.preloadFile = FS_preloadFile;
   FS.staticInit();;
 
-      // Signal GL rendering layer that processing of a new frame is about to
-      // start. This helps it optimize VBO double-buffering and reduce GPU stalls.
-      registerPreMainLoop(() => GL.newRenderingFrameStarted());
-    ;
-for (let i = 0; i < 32; ++i) tempFixedLengthArray.push(new Array(i));;
-var miniTempWebGLFloatBuffersStorage = new Float32Array(288);
-  // Create GL_POOL_TEMP_BUFFERS_SIZE+1 temporary buffers, for uploads of size 0 through GL_POOL_TEMP_BUFFERS_SIZE inclusive
-  for (/**@suppress{duplicate}*/var i = 0; i <= 288; ++i) {
-    miniTempWebGLFloatBuffers[i] = miniTempWebGLFloatBuffersStorage.subarray(0, i);
-  };
-var miniTempWebGLIntBuffersStorage = new Int32Array(288);
-  // Create GL_POOL_TEMP_BUFFERS_SIZE+1 temporary buffers, for uploads of size 0 through GL_POOL_TEMP_BUFFERS_SIZE inclusive
-  for (/**@suppress{duplicate}*/var i = 0; i <= 288; ++i) {
-    miniTempWebGLIntBuffers[i] = miniTempWebGLIntBuffersStorage.subarray(0, i);
-  };
-
       Module['requestAnimationFrame'] = MainLoop.requestAnimationFrame;
       Module['pauseMainLoop'] = MainLoop.pause;
       Module['resumeMainLoop'] = MainLoop.resume;
       MainLoop.init();;
+
+      // Signal GL rendering layer that processing of a new frame is about to
+      // start. This helps it optimize VBO double-buffering and reduce GPU stalls.
+      registerPreMainLoop(() => GL.newRenderingFrameStarted());
+    ;
 // End JS library code
 
 // include: postlibrary.js
@@ -10231,9 +7907,22 @@ if (Module['printErr']) err = Module['printErr'];
   'getSocketAddress',
   'FS_mkdirTree',
   '_setNetworkCallback',
+  'heapObjectForWebGLType',
+  'toTypedArrayIndex',
+  'computeUnpackAlignedImageSize',
+  'colorChannelsInGlTextureFormat',
+  'emscriptenWebGLGetTexPixelData',
+  'emscriptenWebGLGetUniform',
+  'webglGetProgramUniformLocation',
+  'webglGetUniformLocation',
+  'emscriptenWebGLGetVertexAttrib',
+  '__glGetActiveAttribOrUniform',
+  'emscriptenWebGLGetBufferBinding',
+  'emscriptenWebGLValidateMapBufferTarget',
   'writeGLArray',
   'registerWebGlEventCallback',
   'runAndAbortIfError',
+  'emscriptenWebGLGetIndexed',
   'writeStringToMemory',
   'writeAsciiToMemory',
   'allocateUTF8',
@@ -10464,8 +8153,6 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'tempFixedLengthArray',
   'miniTempWebGLFloatBuffers',
   'miniTempWebGLIntBuffers',
-  'heapObjectForWebGLType',
-  'toTypedArrayIndex',
   'webgl_enable_ANGLE_instanced_arrays',
   'webgl_enable_OES_vertex_array_object',
   'webgl_enable_WEBGL_draw_buffers',
@@ -10475,18 +8162,8 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'webgl_enable_WEBGL_polygon_mode',
   'GL',
   'emscriptenWebGLGet',
-  'computeUnpackAlignedImageSize',
-  'colorChannelsInGlTextureFormat',
-  'emscriptenWebGLGetTexPixelData',
-  'emscriptenWebGLGetUniform',
-  'webglGetProgramUniformLocation',
-  'webglGetUniformLocation',
   'webglPrepareUniformLocationsBeforeFirstUse',
   'webglGetLeftBracePos',
-  'emscriptenWebGLGetVertexAttrib',
-  '__glGetActiveAttribOrUniform',
-  'emscriptenWebGLGetBufferBinding',
-  'emscriptenWebGLValidateMapBufferTarget',
   'AL',
   'GLUT',
   'EGL',
@@ -10496,7 +8173,6 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'SDL_gfx',
   'GLFW_Window',
   'GLFW',
-  'emscriptenWebGLGetIndexed',
   'webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance',
   'webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance',
   'print',
@@ -10628,562 +8304,6 @@ var wasmImports = {
   _tzset_js: __tzset_js,
   /** @export */
   clock_time_get: _clock_time_get,
-  /** @export */
-  emscripten_glActiveTexture: _emscripten_glActiveTexture,
-  /** @export */
-  emscripten_glAttachShader: _emscripten_glAttachShader,
-  /** @export */
-  emscripten_glBeginQuery: _emscripten_glBeginQuery,
-  /** @export */
-  emscripten_glBeginQueryEXT: _emscripten_glBeginQueryEXT,
-  /** @export */
-  emscripten_glBeginTransformFeedback: _emscripten_glBeginTransformFeedback,
-  /** @export */
-  emscripten_glBindAttribLocation: _emscripten_glBindAttribLocation,
-  /** @export */
-  emscripten_glBindBuffer: _emscripten_glBindBuffer,
-  /** @export */
-  emscripten_glBindBufferBase: _emscripten_glBindBufferBase,
-  /** @export */
-  emscripten_glBindBufferRange: _emscripten_glBindBufferRange,
-  /** @export */
-  emscripten_glBindFramebuffer: _emscripten_glBindFramebuffer,
-  /** @export */
-  emscripten_glBindRenderbuffer: _emscripten_glBindRenderbuffer,
-  /** @export */
-  emscripten_glBindSampler: _emscripten_glBindSampler,
-  /** @export */
-  emscripten_glBindTexture: _emscripten_glBindTexture,
-  /** @export */
-  emscripten_glBindTransformFeedback: _emscripten_glBindTransformFeedback,
-  /** @export */
-  emscripten_glBindVertexArray: _emscripten_glBindVertexArray,
-  /** @export */
-  emscripten_glBindVertexArrayOES: _emscripten_glBindVertexArrayOES,
-  /** @export */
-  emscripten_glBlendColor: _emscripten_glBlendColor,
-  /** @export */
-  emscripten_glBlendEquation: _emscripten_glBlendEquation,
-  /** @export */
-  emscripten_glBlendEquationSeparate: _emscripten_glBlendEquationSeparate,
-  /** @export */
-  emscripten_glBlendFunc: _emscripten_glBlendFunc,
-  /** @export */
-  emscripten_glBlendFuncSeparate: _emscripten_glBlendFuncSeparate,
-  /** @export */
-  emscripten_glBlitFramebuffer: _emscripten_glBlitFramebuffer,
-  /** @export */
-  emscripten_glBufferData: _emscripten_glBufferData,
-  /** @export */
-  emscripten_glBufferSubData: _emscripten_glBufferSubData,
-  /** @export */
-  emscripten_glCheckFramebufferStatus: _emscripten_glCheckFramebufferStatus,
-  /** @export */
-  emscripten_glClear: _emscripten_glClear,
-  /** @export */
-  emscripten_glClearBufferfi: _emscripten_glClearBufferfi,
-  /** @export */
-  emscripten_glClearBufferfv: _emscripten_glClearBufferfv,
-  /** @export */
-  emscripten_glClearBufferiv: _emscripten_glClearBufferiv,
-  /** @export */
-  emscripten_glClearBufferuiv: _emscripten_glClearBufferuiv,
-  /** @export */
-  emscripten_glClearColor: _emscripten_glClearColor,
-  /** @export */
-  emscripten_glClearDepthf: _emscripten_glClearDepthf,
-  /** @export */
-  emscripten_glClearStencil: _emscripten_glClearStencil,
-  /** @export */
-  emscripten_glClientWaitSync: _emscripten_glClientWaitSync,
-  /** @export */
-  emscripten_glClipControlEXT: _emscripten_glClipControlEXT,
-  /** @export */
-  emscripten_glColorMask: _emscripten_glColorMask,
-  /** @export */
-  emscripten_glCompileShader: _emscripten_glCompileShader,
-  /** @export */
-  emscripten_glCompressedTexImage2D: _emscripten_glCompressedTexImage2D,
-  /** @export */
-  emscripten_glCompressedTexImage3D: _emscripten_glCompressedTexImage3D,
-  /** @export */
-  emscripten_glCompressedTexSubImage2D: _emscripten_glCompressedTexSubImage2D,
-  /** @export */
-  emscripten_glCompressedTexSubImage3D: _emscripten_glCompressedTexSubImage3D,
-  /** @export */
-  emscripten_glCopyBufferSubData: _emscripten_glCopyBufferSubData,
-  /** @export */
-  emscripten_glCopyTexImage2D: _emscripten_glCopyTexImage2D,
-  /** @export */
-  emscripten_glCopyTexSubImage2D: _emscripten_glCopyTexSubImage2D,
-  /** @export */
-  emscripten_glCopyTexSubImage3D: _emscripten_glCopyTexSubImage3D,
-  /** @export */
-  emscripten_glCreateProgram: _emscripten_glCreateProgram,
-  /** @export */
-  emscripten_glCreateShader: _emscripten_glCreateShader,
-  /** @export */
-  emscripten_glCullFace: _emscripten_glCullFace,
-  /** @export */
-  emscripten_glDeleteBuffers: _emscripten_glDeleteBuffers,
-  /** @export */
-  emscripten_glDeleteFramebuffers: _emscripten_glDeleteFramebuffers,
-  /** @export */
-  emscripten_glDeleteProgram: _emscripten_glDeleteProgram,
-  /** @export */
-  emscripten_glDeleteQueries: _emscripten_glDeleteQueries,
-  /** @export */
-  emscripten_glDeleteQueriesEXT: _emscripten_glDeleteQueriesEXT,
-  /** @export */
-  emscripten_glDeleteRenderbuffers: _emscripten_glDeleteRenderbuffers,
-  /** @export */
-  emscripten_glDeleteSamplers: _emscripten_glDeleteSamplers,
-  /** @export */
-  emscripten_glDeleteShader: _emscripten_glDeleteShader,
-  /** @export */
-  emscripten_glDeleteSync: _emscripten_glDeleteSync,
-  /** @export */
-  emscripten_glDeleteTextures: _emscripten_glDeleteTextures,
-  /** @export */
-  emscripten_glDeleteTransformFeedbacks: _emscripten_glDeleteTransformFeedbacks,
-  /** @export */
-  emscripten_glDeleteVertexArrays: _emscripten_glDeleteVertexArrays,
-  /** @export */
-  emscripten_glDeleteVertexArraysOES: _emscripten_glDeleteVertexArraysOES,
-  /** @export */
-  emscripten_glDepthFunc: _emscripten_glDepthFunc,
-  /** @export */
-  emscripten_glDepthMask: _emscripten_glDepthMask,
-  /** @export */
-  emscripten_glDepthRangef: _emscripten_glDepthRangef,
-  /** @export */
-  emscripten_glDetachShader: _emscripten_glDetachShader,
-  /** @export */
-  emscripten_glDisable: _emscripten_glDisable,
-  /** @export */
-  emscripten_glDisableVertexAttribArray: _emscripten_glDisableVertexAttribArray,
-  /** @export */
-  emscripten_glDrawArrays: _emscripten_glDrawArrays,
-  /** @export */
-  emscripten_glDrawArraysInstanced: _emscripten_glDrawArraysInstanced,
-  /** @export */
-  emscripten_glDrawArraysInstancedANGLE: _emscripten_glDrawArraysInstancedANGLE,
-  /** @export */
-  emscripten_glDrawArraysInstancedARB: _emscripten_glDrawArraysInstancedARB,
-  /** @export */
-  emscripten_glDrawArraysInstancedEXT: _emscripten_glDrawArraysInstancedEXT,
-  /** @export */
-  emscripten_glDrawArraysInstancedNV: _emscripten_glDrawArraysInstancedNV,
-  /** @export */
-  emscripten_glDrawBuffers: _emscripten_glDrawBuffers,
-  /** @export */
-  emscripten_glDrawBuffersEXT: _emscripten_glDrawBuffersEXT,
-  /** @export */
-  emscripten_glDrawBuffersWEBGL: _emscripten_glDrawBuffersWEBGL,
-  /** @export */
-  emscripten_glDrawElements: _emscripten_glDrawElements,
-  /** @export */
-  emscripten_glDrawElementsInstanced: _emscripten_glDrawElementsInstanced,
-  /** @export */
-  emscripten_glDrawElementsInstancedANGLE: _emscripten_glDrawElementsInstancedANGLE,
-  /** @export */
-  emscripten_glDrawElementsInstancedARB: _emscripten_glDrawElementsInstancedARB,
-  /** @export */
-  emscripten_glDrawElementsInstancedEXT: _emscripten_glDrawElementsInstancedEXT,
-  /** @export */
-  emscripten_glDrawElementsInstancedNV: _emscripten_glDrawElementsInstancedNV,
-  /** @export */
-  emscripten_glDrawRangeElements: _emscripten_glDrawRangeElements,
-  /** @export */
-  emscripten_glEnable: _emscripten_glEnable,
-  /** @export */
-  emscripten_glEnableVertexAttribArray: _emscripten_glEnableVertexAttribArray,
-  /** @export */
-  emscripten_glEndQuery: _emscripten_glEndQuery,
-  /** @export */
-  emscripten_glEndQueryEXT: _emscripten_glEndQueryEXT,
-  /** @export */
-  emscripten_glEndTransformFeedback: _emscripten_glEndTransformFeedback,
-  /** @export */
-  emscripten_glFenceSync: _emscripten_glFenceSync,
-  /** @export */
-  emscripten_glFinish: _emscripten_glFinish,
-  /** @export */
-  emscripten_glFlush: _emscripten_glFlush,
-  /** @export */
-  emscripten_glFlushMappedBufferRange: _emscripten_glFlushMappedBufferRange,
-  /** @export */
-  emscripten_glFramebufferRenderbuffer: _emscripten_glFramebufferRenderbuffer,
-  /** @export */
-  emscripten_glFramebufferTexture2D: _emscripten_glFramebufferTexture2D,
-  /** @export */
-  emscripten_glFramebufferTextureLayer: _emscripten_glFramebufferTextureLayer,
-  /** @export */
-  emscripten_glFrontFace: _emscripten_glFrontFace,
-  /** @export */
-  emscripten_glGenBuffers: _emscripten_glGenBuffers,
-  /** @export */
-  emscripten_glGenFramebuffers: _emscripten_glGenFramebuffers,
-  /** @export */
-  emscripten_glGenQueries: _emscripten_glGenQueries,
-  /** @export */
-  emscripten_glGenQueriesEXT: _emscripten_glGenQueriesEXT,
-  /** @export */
-  emscripten_glGenRenderbuffers: _emscripten_glGenRenderbuffers,
-  /** @export */
-  emscripten_glGenSamplers: _emscripten_glGenSamplers,
-  /** @export */
-  emscripten_glGenTextures: _emscripten_glGenTextures,
-  /** @export */
-  emscripten_glGenTransformFeedbacks: _emscripten_glGenTransformFeedbacks,
-  /** @export */
-  emscripten_glGenVertexArrays: _emscripten_glGenVertexArrays,
-  /** @export */
-  emscripten_glGenVertexArraysOES: _emscripten_glGenVertexArraysOES,
-  /** @export */
-  emscripten_glGenerateMipmap: _emscripten_glGenerateMipmap,
-  /** @export */
-  emscripten_glGetActiveAttrib: _emscripten_glGetActiveAttrib,
-  /** @export */
-  emscripten_glGetActiveUniform: _emscripten_glGetActiveUniform,
-  /** @export */
-  emscripten_glGetActiveUniformBlockName: _emscripten_glGetActiveUniformBlockName,
-  /** @export */
-  emscripten_glGetActiveUniformBlockiv: _emscripten_glGetActiveUniformBlockiv,
-  /** @export */
-  emscripten_glGetActiveUniformsiv: _emscripten_glGetActiveUniformsiv,
-  /** @export */
-  emscripten_glGetAttachedShaders: _emscripten_glGetAttachedShaders,
-  /** @export */
-  emscripten_glGetAttribLocation: _emscripten_glGetAttribLocation,
-  /** @export */
-  emscripten_glGetBooleanv: _emscripten_glGetBooleanv,
-  /** @export */
-  emscripten_glGetBufferParameteri64v: _emscripten_glGetBufferParameteri64v,
-  /** @export */
-  emscripten_glGetBufferParameteriv: _emscripten_glGetBufferParameteriv,
-  /** @export */
-  emscripten_glGetBufferPointerv: _emscripten_glGetBufferPointerv,
-  /** @export */
-  emscripten_glGetError: _emscripten_glGetError,
-  /** @export */
-  emscripten_glGetFloatv: _emscripten_glGetFloatv,
-  /** @export */
-  emscripten_glGetFragDataLocation: _emscripten_glGetFragDataLocation,
-  /** @export */
-  emscripten_glGetFramebufferAttachmentParameteriv: _emscripten_glGetFramebufferAttachmentParameteriv,
-  /** @export */
-  emscripten_glGetInteger64i_v: _emscripten_glGetInteger64i_v,
-  /** @export */
-  emscripten_glGetInteger64v: _emscripten_glGetInteger64v,
-  /** @export */
-  emscripten_glGetIntegeri_v: _emscripten_glGetIntegeri_v,
-  /** @export */
-  emscripten_glGetIntegerv: _emscripten_glGetIntegerv,
-  /** @export */
-  emscripten_glGetInternalformativ: _emscripten_glGetInternalformativ,
-  /** @export */
-  emscripten_glGetProgramBinary: _emscripten_glGetProgramBinary,
-  /** @export */
-  emscripten_glGetProgramInfoLog: _emscripten_glGetProgramInfoLog,
-  /** @export */
-  emscripten_glGetProgramiv: _emscripten_glGetProgramiv,
-  /** @export */
-  emscripten_glGetQueryObjecti64vEXT: _emscripten_glGetQueryObjecti64vEXT,
-  /** @export */
-  emscripten_glGetQueryObjectivEXT: _emscripten_glGetQueryObjectivEXT,
-  /** @export */
-  emscripten_glGetQueryObjectui64vEXT: _emscripten_glGetQueryObjectui64vEXT,
-  /** @export */
-  emscripten_glGetQueryObjectuiv: _emscripten_glGetQueryObjectuiv,
-  /** @export */
-  emscripten_glGetQueryObjectuivEXT: _emscripten_glGetQueryObjectuivEXT,
-  /** @export */
-  emscripten_glGetQueryiv: _emscripten_glGetQueryiv,
-  /** @export */
-  emscripten_glGetQueryivEXT: _emscripten_glGetQueryivEXT,
-  /** @export */
-  emscripten_glGetRenderbufferParameteriv: _emscripten_glGetRenderbufferParameteriv,
-  /** @export */
-  emscripten_glGetSamplerParameterfv: _emscripten_glGetSamplerParameterfv,
-  /** @export */
-  emscripten_glGetSamplerParameteriv: _emscripten_glGetSamplerParameteriv,
-  /** @export */
-  emscripten_glGetShaderInfoLog: _emscripten_glGetShaderInfoLog,
-  /** @export */
-  emscripten_glGetShaderPrecisionFormat: _emscripten_glGetShaderPrecisionFormat,
-  /** @export */
-  emscripten_glGetShaderSource: _emscripten_glGetShaderSource,
-  /** @export */
-  emscripten_glGetShaderiv: _emscripten_glGetShaderiv,
-  /** @export */
-  emscripten_glGetString: _emscripten_glGetString,
-  /** @export */
-  emscripten_glGetStringi: _emscripten_glGetStringi,
-  /** @export */
-  emscripten_glGetSynciv: _emscripten_glGetSynciv,
-  /** @export */
-  emscripten_glGetTexParameterfv: _emscripten_glGetTexParameterfv,
-  /** @export */
-  emscripten_glGetTexParameteriv: _emscripten_glGetTexParameteriv,
-  /** @export */
-  emscripten_glGetTransformFeedbackVarying: _emscripten_glGetTransformFeedbackVarying,
-  /** @export */
-  emscripten_glGetUniformBlockIndex: _emscripten_glGetUniformBlockIndex,
-  /** @export */
-  emscripten_glGetUniformIndices: _emscripten_glGetUniformIndices,
-  /** @export */
-  emscripten_glGetUniformLocation: _emscripten_glGetUniformLocation,
-  /** @export */
-  emscripten_glGetUniformfv: _emscripten_glGetUniformfv,
-  /** @export */
-  emscripten_glGetUniformiv: _emscripten_glGetUniformiv,
-  /** @export */
-  emscripten_glGetUniformuiv: _emscripten_glGetUniformuiv,
-  /** @export */
-  emscripten_glGetVertexAttribIiv: _emscripten_glGetVertexAttribIiv,
-  /** @export */
-  emscripten_glGetVertexAttribIuiv: _emscripten_glGetVertexAttribIuiv,
-  /** @export */
-  emscripten_glGetVertexAttribPointerv: _emscripten_glGetVertexAttribPointerv,
-  /** @export */
-  emscripten_glGetVertexAttribfv: _emscripten_glGetVertexAttribfv,
-  /** @export */
-  emscripten_glGetVertexAttribiv: _emscripten_glGetVertexAttribiv,
-  /** @export */
-  emscripten_glHint: _emscripten_glHint,
-  /** @export */
-  emscripten_glInvalidateFramebuffer: _emscripten_glInvalidateFramebuffer,
-  /** @export */
-  emscripten_glInvalidateSubFramebuffer: _emscripten_glInvalidateSubFramebuffer,
-  /** @export */
-  emscripten_glIsBuffer: _emscripten_glIsBuffer,
-  /** @export */
-  emscripten_glIsEnabled: _emscripten_glIsEnabled,
-  /** @export */
-  emscripten_glIsFramebuffer: _emscripten_glIsFramebuffer,
-  /** @export */
-  emscripten_glIsProgram: _emscripten_glIsProgram,
-  /** @export */
-  emscripten_glIsQuery: _emscripten_glIsQuery,
-  /** @export */
-  emscripten_glIsQueryEXT: _emscripten_glIsQueryEXT,
-  /** @export */
-  emscripten_glIsRenderbuffer: _emscripten_glIsRenderbuffer,
-  /** @export */
-  emscripten_glIsSampler: _emscripten_glIsSampler,
-  /** @export */
-  emscripten_glIsShader: _emscripten_glIsShader,
-  /** @export */
-  emscripten_glIsSync: _emscripten_glIsSync,
-  /** @export */
-  emscripten_glIsTexture: _emscripten_glIsTexture,
-  /** @export */
-  emscripten_glIsTransformFeedback: _emscripten_glIsTransformFeedback,
-  /** @export */
-  emscripten_glIsVertexArray: _emscripten_glIsVertexArray,
-  /** @export */
-  emscripten_glIsVertexArrayOES: _emscripten_glIsVertexArrayOES,
-  /** @export */
-  emscripten_glLineWidth: _emscripten_glLineWidth,
-  /** @export */
-  emscripten_glLinkProgram: _emscripten_glLinkProgram,
-  /** @export */
-  emscripten_glMapBufferRange: _emscripten_glMapBufferRange,
-  /** @export */
-  emscripten_glPauseTransformFeedback: _emscripten_glPauseTransformFeedback,
-  /** @export */
-  emscripten_glPixelStorei: _emscripten_glPixelStorei,
-  /** @export */
-  emscripten_glPolygonModeWEBGL: _emscripten_glPolygonModeWEBGL,
-  /** @export */
-  emscripten_glPolygonOffset: _emscripten_glPolygonOffset,
-  /** @export */
-  emscripten_glPolygonOffsetClampEXT: _emscripten_glPolygonOffsetClampEXT,
-  /** @export */
-  emscripten_glProgramBinary: _emscripten_glProgramBinary,
-  /** @export */
-  emscripten_glProgramParameteri: _emscripten_glProgramParameteri,
-  /** @export */
-  emscripten_glQueryCounterEXT: _emscripten_glQueryCounterEXT,
-  /** @export */
-  emscripten_glReadBuffer: _emscripten_glReadBuffer,
-  /** @export */
-  emscripten_glReadPixels: _emscripten_glReadPixels,
-  /** @export */
-  emscripten_glReleaseShaderCompiler: _emscripten_glReleaseShaderCompiler,
-  /** @export */
-  emscripten_glRenderbufferStorage: _emscripten_glRenderbufferStorage,
-  /** @export */
-  emscripten_glRenderbufferStorageMultisample: _emscripten_glRenderbufferStorageMultisample,
-  /** @export */
-  emscripten_glResumeTransformFeedback: _emscripten_glResumeTransformFeedback,
-  /** @export */
-  emscripten_glSampleCoverage: _emscripten_glSampleCoverage,
-  /** @export */
-  emscripten_glSamplerParameterf: _emscripten_glSamplerParameterf,
-  /** @export */
-  emscripten_glSamplerParameterfv: _emscripten_glSamplerParameterfv,
-  /** @export */
-  emscripten_glSamplerParameteri: _emscripten_glSamplerParameteri,
-  /** @export */
-  emscripten_glSamplerParameteriv: _emscripten_glSamplerParameteriv,
-  /** @export */
-  emscripten_glScissor: _emscripten_glScissor,
-  /** @export */
-  emscripten_glShaderBinary: _emscripten_glShaderBinary,
-  /** @export */
-  emscripten_glShaderSource: _emscripten_glShaderSource,
-  /** @export */
-  emscripten_glStencilFunc: _emscripten_glStencilFunc,
-  /** @export */
-  emscripten_glStencilFuncSeparate: _emscripten_glStencilFuncSeparate,
-  /** @export */
-  emscripten_glStencilMask: _emscripten_glStencilMask,
-  /** @export */
-  emscripten_glStencilMaskSeparate: _emscripten_glStencilMaskSeparate,
-  /** @export */
-  emscripten_glStencilOp: _emscripten_glStencilOp,
-  /** @export */
-  emscripten_glStencilOpSeparate: _emscripten_glStencilOpSeparate,
-  /** @export */
-  emscripten_glTexImage2D: _emscripten_glTexImage2D,
-  /** @export */
-  emscripten_glTexImage3D: _emscripten_glTexImage3D,
-  /** @export */
-  emscripten_glTexParameterf: _emscripten_glTexParameterf,
-  /** @export */
-  emscripten_glTexParameterfv: _emscripten_glTexParameterfv,
-  /** @export */
-  emscripten_glTexParameteri: _emscripten_glTexParameteri,
-  /** @export */
-  emscripten_glTexParameteriv: _emscripten_glTexParameteriv,
-  /** @export */
-  emscripten_glTexStorage2D: _emscripten_glTexStorage2D,
-  /** @export */
-  emscripten_glTexStorage3D: _emscripten_glTexStorage3D,
-  /** @export */
-  emscripten_glTexSubImage2D: _emscripten_glTexSubImage2D,
-  /** @export */
-  emscripten_glTexSubImage3D: _emscripten_glTexSubImage3D,
-  /** @export */
-  emscripten_glTransformFeedbackVaryings: _emscripten_glTransformFeedbackVaryings,
-  /** @export */
-  emscripten_glUniform1f: _emscripten_glUniform1f,
-  /** @export */
-  emscripten_glUniform1fv: _emscripten_glUniform1fv,
-  /** @export */
-  emscripten_glUniform1i: _emscripten_glUniform1i,
-  /** @export */
-  emscripten_glUniform1iv: _emscripten_glUniform1iv,
-  /** @export */
-  emscripten_glUniform1ui: _emscripten_glUniform1ui,
-  /** @export */
-  emscripten_glUniform1uiv: _emscripten_glUniform1uiv,
-  /** @export */
-  emscripten_glUniform2f: _emscripten_glUniform2f,
-  /** @export */
-  emscripten_glUniform2fv: _emscripten_glUniform2fv,
-  /** @export */
-  emscripten_glUniform2i: _emscripten_glUniform2i,
-  /** @export */
-  emscripten_glUniform2iv: _emscripten_glUniform2iv,
-  /** @export */
-  emscripten_glUniform2ui: _emscripten_glUniform2ui,
-  /** @export */
-  emscripten_glUniform2uiv: _emscripten_glUniform2uiv,
-  /** @export */
-  emscripten_glUniform3f: _emscripten_glUniform3f,
-  /** @export */
-  emscripten_glUniform3fv: _emscripten_glUniform3fv,
-  /** @export */
-  emscripten_glUniform3i: _emscripten_glUniform3i,
-  /** @export */
-  emscripten_glUniform3iv: _emscripten_glUniform3iv,
-  /** @export */
-  emscripten_glUniform3ui: _emscripten_glUniform3ui,
-  /** @export */
-  emscripten_glUniform3uiv: _emscripten_glUniform3uiv,
-  /** @export */
-  emscripten_glUniform4f: _emscripten_glUniform4f,
-  /** @export */
-  emscripten_glUniform4fv: _emscripten_glUniform4fv,
-  /** @export */
-  emscripten_glUniform4i: _emscripten_glUniform4i,
-  /** @export */
-  emscripten_glUniform4iv: _emscripten_glUniform4iv,
-  /** @export */
-  emscripten_glUniform4ui: _emscripten_glUniform4ui,
-  /** @export */
-  emscripten_glUniform4uiv: _emscripten_glUniform4uiv,
-  /** @export */
-  emscripten_glUniformBlockBinding: _emscripten_glUniformBlockBinding,
-  /** @export */
-  emscripten_glUniformMatrix2fv: _emscripten_glUniformMatrix2fv,
-  /** @export */
-  emscripten_glUniformMatrix2x3fv: _emscripten_glUniformMatrix2x3fv,
-  /** @export */
-  emscripten_glUniformMatrix2x4fv: _emscripten_glUniformMatrix2x4fv,
-  /** @export */
-  emscripten_glUniformMatrix3fv: _emscripten_glUniformMatrix3fv,
-  /** @export */
-  emscripten_glUniformMatrix3x2fv: _emscripten_glUniformMatrix3x2fv,
-  /** @export */
-  emscripten_glUniformMatrix3x4fv: _emscripten_glUniformMatrix3x4fv,
-  /** @export */
-  emscripten_glUniformMatrix4fv: _emscripten_glUniformMatrix4fv,
-  /** @export */
-  emscripten_glUniformMatrix4x2fv: _emscripten_glUniformMatrix4x2fv,
-  /** @export */
-  emscripten_glUniformMatrix4x3fv: _emscripten_glUniformMatrix4x3fv,
-  /** @export */
-  emscripten_glUnmapBuffer: _emscripten_glUnmapBuffer,
-  /** @export */
-  emscripten_glUseProgram: _emscripten_glUseProgram,
-  /** @export */
-  emscripten_glValidateProgram: _emscripten_glValidateProgram,
-  /** @export */
-  emscripten_glVertexAttrib1f: _emscripten_glVertexAttrib1f,
-  /** @export */
-  emscripten_glVertexAttrib1fv: _emscripten_glVertexAttrib1fv,
-  /** @export */
-  emscripten_glVertexAttrib2f: _emscripten_glVertexAttrib2f,
-  /** @export */
-  emscripten_glVertexAttrib2fv: _emscripten_glVertexAttrib2fv,
-  /** @export */
-  emscripten_glVertexAttrib3f: _emscripten_glVertexAttrib3f,
-  /** @export */
-  emscripten_glVertexAttrib3fv: _emscripten_glVertexAttrib3fv,
-  /** @export */
-  emscripten_glVertexAttrib4f: _emscripten_glVertexAttrib4f,
-  /** @export */
-  emscripten_glVertexAttrib4fv: _emscripten_glVertexAttrib4fv,
-  /** @export */
-  emscripten_glVertexAttribDivisor: _emscripten_glVertexAttribDivisor,
-  /** @export */
-  emscripten_glVertexAttribDivisorANGLE: _emscripten_glVertexAttribDivisorANGLE,
-  /** @export */
-  emscripten_glVertexAttribDivisorARB: _emscripten_glVertexAttribDivisorARB,
-  /** @export */
-  emscripten_glVertexAttribDivisorEXT: _emscripten_glVertexAttribDivisorEXT,
-  /** @export */
-  emscripten_glVertexAttribDivisorNV: _emscripten_glVertexAttribDivisorNV,
-  /** @export */
-  emscripten_glVertexAttribI4i: _emscripten_glVertexAttribI4i,
-  /** @export */
-  emscripten_glVertexAttribI4iv: _emscripten_glVertexAttribI4iv,
-  /** @export */
-  emscripten_glVertexAttribI4ui: _emscripten_glVertexAttribI4ui,
-  /** @export */
-  emscripten_glVertexAttribI4uiv: _emscripten_glVertexAttribI4uiv,
-  /** @export */
-  emscripten_glVertexAttribIPointer: _emscripten_glVertexAttribIPointer,
-  /** @export */
-  emscripten_glVertexAttribPointer: _emscripten_glVertexAttribPointer,
-  /** @export */
-  emscripten_glViewport: _emscripten_glViewport,
-  /** @export */
-  emscripten_glWaitSync: _emscripten_glWaitSync,
   /** @export */
   emscripten_resize_heap: _emscripten_resize_heap,
   /** @export */

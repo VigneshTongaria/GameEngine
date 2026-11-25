@@ -53,6 +53,9 @@ void ShaderManager::init()
 
 	// Adding uniform buffer index
 	unsigned int uniformVertexCoreIndex = glGetUniformBlockIndex(LightingShader->m_ID,"Matrices");
+
+	std::cout << "Loaded scene" << std::endl;
+
 	// unsigned int uniformVertexSkyboxIndex = glGetUniformBlockIndex(CubeMapShader.m_ID,"Matrices");
 	// unsigned int uniformVertexLightingSourceIndex = glGetUniformBlockIndex(LightnigSourceShader.m_ID,"Matrices");
 	// unsigned int uniformVertexSimplendex = glGetUniformBlockIndex(ExplosionShader.m_ID,"Matrices");

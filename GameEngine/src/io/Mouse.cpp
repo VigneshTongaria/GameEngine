@@ -1,5 +1,4 @@
 #include "Mouse.h"
-#include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
 double Mouse::_x = 0;

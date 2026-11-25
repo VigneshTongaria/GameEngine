@@ -93,6 +93,7 @@ if(EMSCRIPTEN)
 
         "--preload-file"
         "${CMAKE_SOURCE_DIR}/Assets@Assets"
+        "${CMAKE_SOURCE_DIR}/src"
     )
 
     set_target_properties(GameEngine PROPERTIES

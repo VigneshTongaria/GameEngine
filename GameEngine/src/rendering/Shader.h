@@ -1,5 +1,5 @@
 #pragma once
-#include <glad/glad.h> // Include OpenGL headers
+#include "../core/OpenGLHeaders.h"
 #include <string>
 #include <iostream>
 #include <glm/glm.hpp>

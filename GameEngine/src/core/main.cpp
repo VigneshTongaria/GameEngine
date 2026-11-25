@@ -2,7 +2,13 @@
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
-#include<glad/glad.h>
+
+//#ifdef __EMSCRIPTEN__
+//#include <GLES3/gl3.h>
+//#else
+//#include <glad/glad.h>
+//#endif
+#include "OpenGLHeaders.h"
 #include<GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -72,13 +78,10 @@ std::vector<std::string> cubeFaces
 int main()
 {
 	glfwInit();
-
 #ifdef __EMSCRIPTEN__
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-	//std::cout << "GL VERSION:" << glGetString(GL_VERSION) << std::endl;
-	//std::cout << "GLSL VERSION:"<< glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
 #else
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -94,11 +97,13 @@ int main()
 	}
 	glfwMakeContextCurrent(window);
 
+#ifndef __EMSCRIPTEN__
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
+#endif
 
 	stbi_set_flip_vertically_on_load(true);
 	
@@ -124,7 +129,6 @@ int main()
 	//startPhysicsThread();
     ShaderManager::init();
 	Scene scene(SRC_WIDTH,SRC_HEIGHT);
-
 	scene.init();
 	HierarchyPanel h_Panel(&scene);
 

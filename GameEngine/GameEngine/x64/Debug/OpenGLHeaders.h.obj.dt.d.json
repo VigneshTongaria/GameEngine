@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\github\\gameengine\\gameengine\\gameengine\\src\\core\\openglheaders.h",
+        "ProvidedModule": "",
+        "Includes": [
+            "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\glad\\glad.h",
+            "c:\\github\\gameengine\\gameengine\\gameengine\\linking\\include\\khr\\khrplatform.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
