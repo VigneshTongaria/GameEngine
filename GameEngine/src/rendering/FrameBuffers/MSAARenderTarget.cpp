@@ -34,6 +34,7 @@ void MSAARenderTarget::resize(int newWidth,int newHeight,int samples)
 {   
     glBindFramebuffer(GL_FRAMEBUFFER,m_msaa_fbo);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, m_msaa_m);
+    glRenderbufferStorageMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, GL_SRGB, newWidth, newHeight);
     glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, GL_SRGB,newWidth, newHeight, GL_TRUE);
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
     

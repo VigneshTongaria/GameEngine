@@ -1,7 +1,14 @@
 {
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "build-web"
+    ]
+  },
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\core"
   ],
-  "SelectedNode": "\\GameEngine.sln",
+  "SelectedNode": "\\GameEngine.vcxproj",
   "PreviewInSolutionExplorer": false
 }

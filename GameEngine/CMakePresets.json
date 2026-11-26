@@ -1,0 +1,19 @@
+{
+	"version": 6,
+	"configurePresets": [
+		{
+			"name": "Emscripten",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/build-web",
+			"toolchainFile": "C:/Github/emsdk/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+			"vendor": {
+				"microsoft.com/VisualStudioSettings/CMake/1.0": {
+					"intelliSenseMode": "windows-clang-x64",
+					"intelliSenseOptions": {
+						"useCompilerDefaults": true
+					}
+				}
+			}
+		}
+	]
+}

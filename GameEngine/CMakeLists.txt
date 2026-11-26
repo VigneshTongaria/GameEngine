@@ -25,6 +25,9 @@ file(GLOB_RECURSE ENGINE_SRC
 
 add_executable(GameEngine ${ENGINE_SRC})
 
+target_include_directories(GameEngine PRIVATE
+        "C:/Github/emsdk/emsdk/upstream/emscripten/cache/sysroot/include"
+    )
 # --------------------------------------------
 # Include Directories
 # --------------------------------------------
@@ -78,7 +81,6 @@ endif()
 # --------------------------------------------
 
 if(EMSCRIPTEN)
-
     target_link_options(GameEngine PRIVATE
 
         "-sUSE_GLFW=3"
@@ -90,6 +92,9 @@ if(EMSCRIPTEN)
         "-sALLOW_MEMORY_GROWTH=1"
 
         "-sUSE_WEBGL2=1"
+
+        "-sMIN_WEBGL_VERSION=2"
+        "-sMAX_WEBGL_VERSION=2"
 
         "--preload-file"
         "${CMAKE_SOURCE_DIR}/Assets@Assets"
@@ -111,7 +116,6 @@ add_custom_command(TARGET GameEngine POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
 
     ${CMAKE_SOURCE_DIR}/Assets
-
     $<TARGET_FILE_DIR:GameEngine>/Assets
 
 )
@@ -136,4 +140,11 @@ add_subdirectory(external/assimp)
 
 target_link_libraries(GameEngine PRIVATE assimp)
 
+endif()
+
+if(EMSCRIPTEN)
+    message(STATUS "EMSCRIPTEN ACTIVE")
+    message(STATUS "C++ COMPILER: ${CMAKE_CXX_COMPILER}")
+else()
+    message(STATUS "EMSCRIPTEN NOT ACTIVE")
 endif()
