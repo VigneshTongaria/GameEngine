@@ -30,39 +30,76 @@ void MSAARenderTarget::unbindTexture() const
 {
     glBindTexture(GL_TEXTURE_2D,0);
 }
-void MSAARenderTarget::resize(int newWidth,int newHeight,int samples)
-{   
-    glBindFramebuffer(GL_FRAMEBUFFER,m_msaa_fbo);
+void MSAARenderTarget::resize(int newWidth, int newHeight, int samples)
+{
+    if (newWidth <= 0 || newHeight <= 0)
+        return;
+
+    glBindFramebuffer(GL_FRAMEBUFFER, m_msaa_fbo);
+
+#ifdef __EMSCRIPTEN__
+
+    glGenRenderbuffers(1, &m_msaa_m);
+
+    glBindRenderbuffer(GL_RENDERBUFFER, m_msaa_m);
+
+    glRenderbufferStorageMultisample(
+        GL_RENDERBUFFER, samples,
+        GL_SRGB8_ALPHA8,
+        newWidth, newHeight
+    );
+
+    glFramebufferRenderbuffer(
+        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+        GL_RENDERBUFFER, m_msaa_m
+    );
+#else
+    // Desktop: multisampled color texture
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, m_msaa_m);
-    glRenderbufferStorageMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, GL_SRGB, newWidth, newHeight);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, GL_SRGB,newWidth, newHeight, GL_TRUE);
+
+    glTexImage2DMultisample(
+        GL_TEXTURE_2D_MULTISAMPLE, samples,
+        GL_SRGB8_ALPHA8,
+        newWidth, newHeight, GL_TRUE
+    );
+
+    glFramebufferTexture2D(
+        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+        GL_TEXTURE_2D_MULTISAMPLE, m_msaa_m, 0
+    );
+
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
-    
-	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D_MULTISAMPLE,m_msaa_m,0);
+#endif
 
-	glGenRenderbuffers(1,&m_mssa_rbo);
-	glBindRenderbuffer(GL_RENDERBUFFER,m_mssa_rbo);
-	glRenderbufferStorageMultisample(GL_RENDERBUFFER,4,GL_DEPTH24_STENCIL8,newWidth, newHeight);
+    // Depth/stencil renderbuffer (both platforms)
+    if (m_mssa_rbo == 0)
+        glGenRenderbuffers(1, &m_mssa_rbo);
 
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_STENCIL_ATTACHMENT,GL_RENDERBUFFER,m_mssa_rbo);
-	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-	  std::cout<<"Frame buffers not generated"<<std::endl;
-	
-    glBindRenderbuffer(GL_RENDERBUFFER,0);
-    glBindFramebuffer(GL_FRAMEBUFFER,0);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE,0);
+    glBindRenderbuffer(GL_RENDERBUFFER, m_mssa_rbo);
+
+    glRenderbufferStorageMultisample(
+        GL_RENDERBUFFER, samples,
+        GL_DEPTH24_STENCIL8,
+        newWidth, newHeight
+    );
+
+    glFramebufferRenderbuffer(
+        GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
+        GL_RENDERBUFFER, m_mssa_rbo
+    );
+
+    GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+
+    if (status != GL_FRAMEBUFFER_COMPLETE)
+        std::cout << "MSAA framebuffer incomplete: 0x"
+        << std::hex << status << std::dec << std::endl;
+
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 void MSAARenderTarget::resize(int newWidth,int newHeight)
 {   
-    glBindFramebuffer(GL_FRAMEBUFFER,m_msaa_fbo);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, m_msaa_m);
-    glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, 4, GL_RGB,newWidth, newHeight, GL_TRUE);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
-    
-	glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D_MULTISAMPLE,m_msaa_m,0);
-
-    glBindFramebuffer(GL_FRAMEBUFFER,0);
-    glBindTexture(GL_TEXTURE_2D_MULTISAMPLE,0);
+    resize(newWidth, newHeight, 4);
 }
 
 unsigned int MSAARenderTarget::getFramebufferID() const

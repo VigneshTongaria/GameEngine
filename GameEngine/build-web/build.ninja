@@ -46,7 +46,7 @@ build cmake_object_order_depends_target_GameEngine: phony || cmake_object_order_
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
@@ -54,7 +54,7 @@ build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui.cpp.o: CXX_COMPILER_
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_demo.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui_demo.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui_demo.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
@@ -62,7 +62,7 @@ build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_demo.cpp.o: CXX_COMP
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_draw.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui_draw.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui_draw.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
@@ -70,7 +70,7 @@ build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_draw.cpp.o: CXX_COMP
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_glfw.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui_impl_glfw.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui_impl_glfw.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
@@ -78,7 +78,7 @@ build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_glfw.cpp.o: CXX
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_opengl3.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui_impl_opengl3.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
@@ -86,7 +86,7 @@ build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_opengl3.cpp.o: 
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_tables.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui_tables.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui_tables.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
@@ -94,22 +94,15 @@ build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_tables.cpp.o: CXX_CO
 
 build CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_widgets.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\Linking\include\imgui\imgui_widgets.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\Linking\include\imgui
   TARGET_SUPPORT_DIR = CMakeFiles\GameEngine.dir
 
-build CMakeFiles/GameEngine.dir/lib/glad.c.o: C_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/lib/glad.c || cmake_object_order_depends_target_GameEngine
-  DEP_FILE = CMakeFiles\GameEngine.dir\lib\glad.c.o.d
-  INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
-  OBJECT_DIR = CMakeFiles\GameEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\lib
-  TARGET_SUPPORT_DIR = CMakeFiles\GameEngine.dir
-
 build CMakeFiles/GameEngine.dir/lib/stb.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/lib/stb.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\lib\stb.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\lib
@@ -117,7 +110,7 @@ build CMakeFiles/GameEngine.dir/lib/stb.cpp.o: CXX_COMPILER__GameEngine_unscanne
 
 build CMakeFiles/GameEngine.dir/src/GUI/EditorPanel.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/GUI/EditorPanel.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\GUI\EditorPanel.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\GUI
@@ -125,7 +118,7 @@ build CMakeFiles/GameEngine.dir/src/GUI/EditorPanel.cpp.o: CXX_COMPILER__GameEng
 
 build CMakeFiles/GameEngine.dir/src/GUI/HierarchyPanel.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/GUI/HierarchyPanel.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\GUI\HierarchyPanel.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\GUI
@@ -133,7 +126,7 @@ build CMakeFiles/GameEngine.dir/src/GUI/HierarchyPanel.cpp.o: CXX_COMPILER__Game
 
 build CMakeFiles/GameEngine.dir/src/GUI/InspectorPanel.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/GUI/InspectorPanel.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\GUI\InspectorPanel.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\GUI
@@ -141,7 +134,7 @@ build CMakeFiles/GameEngine.dir/src/GUI/InspectorPanel.cpp.o: CXX_COMPILER__Game
 
 build CMakeFiles/GameEngine.dir/src/core/Camera.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/core/Camera.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\core\Camera.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\core
@@ -149,7 +142,7 @@ build CMakeFiles/GameEngine.dir/src/core/Camera.cpp.o: CXX_COMPILER__GameEngine_
 
 build CMakeFiles/GameEngine.dir/src/core/Component.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/core/Component.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\core\Component.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\core
@@ -157,7 +150,7 @@ build CMakeFiles/GameEngine.dir/src/core/Component.cpp.o: CXX_COMPILER__GameEngi
 
 build CMakeFiles/GameEngine.dir/src/core/ComponentsType.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/core/ComponentsType.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\core\ComponentsType.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\core
@@ -165,7 +158,7 @@ build CMakeFiles/GameEngine.dir/src/core/ComponentsType.cpp.o: CXX_COMPILER__Gam
 
 build CMakeFiles/GameEngine.dir/src/core/GameObject.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/core/GameObject.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\core\GameObject.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\core
@@ -173,7 +166,7 @@ build CMakeFiles/GameEngine.dir/src/core/GameObject.cpp.o: CXX_COMPILER__GameEng
 
 build CMakeFiles/GameEngine.dir/src/core/Scene.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/core/Scene.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\core\Scene.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\core
@@ -181,7 +174,7 @@ build CMakeFiles/GameEngine.dir/src/core/Scene.cpp.o: CXX_COMPILER__GameEngine_u
 
 build CMakeFiles/GameEngine.dir/src/core/main.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/core/main.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\core\main.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\core
@@ -189,7 +182,7 @@ build CMakeFiles/GameEngine.dir/src/core/main.cpp.o: CXX_COMPILER__GameEngine_un
 
 build CMakeFiles/GameEngine.dir/src/data/GeometryData.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/data/GeometryData.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\data\GeometryData.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\data
@@ -197,7 +190,7 @@ build CMakeFiles/GameEngine.dir/src/data/GeometryData.cpp.o: CXX_COMPILER__GameE
 
 build CMakeFiles/GameEngine.dir/src/io/KeyBoard.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/io/KeyBoard.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\io\KeyBoard.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\io
@@ -205,7 +198,7 @@ build CMakeFiles/GameEngine.dir/src/io/KeyBoard.cpp.o: CXX_COMPILER__GameEngine_
 
 build CMakeFiles/GameEngine.dir/src/io/Mouse.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/io/Mouse.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\io\Mouse.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\io
@@ -213,7 +206,7 @@ build CMakeFiles/GameEngine.dir/src/io/Mouse.cpp.o: CXX_COMPILER__GameEngine_uns
 
 build CMakeFiles/GameEngine.dir/src/managers/GameplayManager.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/managers/GameplayManager.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\managers\GameplayManager.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\managers
@@ -221,7 +214,7 @@ build CMakeFiles/GameEngine.dir/src/managers/GameplayManager.cpp.o: CXX_COMPILER
 
 build CMakeFiles/GameEngine.dir/src/managers/ResourcesManager.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/managers/ResourcesManager.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\managers\ResourcesManager.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\managers
@@ -229,7 +222,7 @@ build CMakeFiles/GameEngine.dir/src/managers/ResourcesManager.cpp.o: CXX_COMPILE
 
 build CMakeFiles/GameEngine.dir/src/managers/ShaderManager.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/managers/ShaderManager.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\managers\ShaderManager.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\managers
@@ -237,7 +230,7 @@ build CMakeFiles/GameEngine.dir/src/managers/ShaderManager.cpp.o: CXX_COMPILER__
 
 build CMakeFiles/GameEngine.dir/src/managers/UtilitiesManger.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/managers/UtilitiesManger.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\managers\UtilitiesManger.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\managers
@@ -245,7 +238,7 @@ build CMakeFiles/GameEngine.dir/src/managers/UtilitiesManger.cpp.o: CXX_COMPILER
 
 build CMakeFiles/GameEngine.dir/src/physics/Colliders/spherCollider.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/physics/Colliders/spherCollider.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\physics\Colliders\spherCollider.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\physics\Colliders
@@ -253,7 +246,7 @@ build CMakeFiles/GameEngine.dir/src/physics/Colliders/spherCollider.cpp.o: CXX_C
 
 build CMakeFiles/GameEngine.dir/src/physics/PhysicsCalculations/physicsCollision.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/physics/PhysicsCalculations/physicsCollision.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\physics\PhysicsCalculations\physicsCollision.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\physics\PhysicsCalculations
@@ -261,7 +254,7 @@ build CMakeFiles/GameEngine.dir/src/physics/PhysicsCalculations/physicsCollision
 
 build CMakeFiles/GameEngine.dir/src/physics/collider.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/physics/collider.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\physics\collider.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\physics
@@ -269,7 +262,7 @@ build CMakeFiles/GameEngine.dir/src/physics/collider.cpp.o: CXX_COMPILER__GameEn
 
 build CMakeFiles/GameEngine.dir/src/physics/collisionsManager.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/physics/collisionsManager.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\physics\collisionsManager.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\physics
@@ -277,7 +270,7 @@ build CMakeFiles/GameEngine.dir/src/physics/collisionsManager.cpp.o: CXX_COMPILE
 
 build CMakeFiles/GameEngine.dir/src/physics/rigidbody.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/physics/rigidbody.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\physics\rigidbody.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\physics
@@ -285,7 +278,7 @@ build CMakeFiles/GameEngine.dir/src/physics/rigidbody.cpp.o: CXX_COMPILER__GameE
 
 build CMakeFiles/GameEngine.dir/src/physics/rigidbodyManager.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/physics/rigidbodyManager.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\physics\rigidbodyManager.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\physics
@@ -293,7 +286,7 @@ build CMakeFiles/GameEngine.dir/src/physics/rigidbodyManager.cpp.o: CXX_COMPILER
 
 build CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/MSAARenderTarget.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/FrameBuffers/MSAARenderTarget.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\FrameBuffers\MSAARenderTarget.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering\FrameBuffers
@@ -301,7 +294,7 @@ build CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/MSAARenderTarget.cpp.
 
 build CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/ShadowRenderTarget.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/FrameBuffers/ShadowRenderTarget.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\FrameBuffers\ShadowRenderTarget.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering\FrameBuffers
@@ -309,7 +302,7 @@ build CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/ShadowRenderTarget.cp
 
 build CMakeFiles/GameEngine.dir/src/rendering/Light/DirLight.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/Light/DirLight.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\Light\DirLight.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering\Light
@@ -317,7 +310,7 @@ build CMakeFiles/GameEngine.dir/src/rendering/Light/DirLight.cpp.o: CXX_COMPILER
 
 build CMakeFiles/GameEngine.dir/src/rendering/Mesh.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/Mesh.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\Mesh.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering
@@ -325,7 +318,7 @@ build CMakeFiles/GameEngine.dir/src/rendering/Mesh.cpp.o: CXX_COMPILER__GameEngi
 
 build CMakeFiles/GameEngine.dir/src/rendering/MeshRenderer.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/MeshRenderer.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\MeshRenderer.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering
@@ -333,7 +326,7 @@ build CMakeFiles/GameEngine.dir/src/rendering/MeshRenderer.cpp.o: CXX_COMPILER__
 
 build CMakeFiles/GameEngine.dir/src/rendering/Model.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/Model.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\Model.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering
@@ -341,7 +334,7 @@ build CMakeFiles/GameEngine.dir/src/rendering/Model.cpp.o: CXX_COMPILER__GameEng
 
 build CMakeFiles/GameEngine.dir/src/rendering/Shader.cpp.o: CXX_COMPILER__GameEngine_unscanned_ C$:/Github/GameEngine/GameEngine/GameEngine/src/rendering/Shader.cpp || cmake_object_order_depends_target_GameEngine
   DEP_FILE = CMakeFiles\GameEngine.dir\src\rendering\Shader.cpp.o.d
-  FLAGS = -std=gnu++20
+  FLAGS = -std=gnu++20 -fexceptions
   INCLUDES = -IC:/Github/GameEngine/GameEngine/GameEngine/src -IC:/Github/GameEngine/GameEngine/GameEngine/lib -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/glad -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/GLFW -IC:/Github/GameEngine/GameEngine/GameEngine/Linking/include/imgui -IC:/Github/GameEngine/GameEngine/GameEngine/external/assimp/code/../include -IC:/Github/GameEngine/GameEngine/GameEngine/build-web/external/assimp/code/../include
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\GameEngine.dir\src\rendering
@@ -355,8 +348,8 @@ build CMakeFiles/GameEngine.dir/src/rendering/Shader.cpp.o: CXX_COMPILER__GameEn
 #############################################
 # Link the executable GameEngine.html
 
-build GameEngine.html: CXX_EXECUTABLE_LINKER__GameEngine_ CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_demo.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_draw.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_glfw.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_opengl3.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_tables.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_widgets.cpp.o CMakeFiles/GameEngine.dir/lib/glad.c.o CMakeFiles/GameEngine.dir/lib/stb.cpp.o CMakeFiles/GameEngine.dir/src/GUI/EditorPanel.cpp.o CMakeFiles/GameEngine.dir/src/GUI/HierarchyPanel.cpp.o CMakeFiles/GameEngine.dir/src/GUI/InspectorPanel.cpp.o CMakeFiles/GameEngine.dir/src/core/Camera.cpp.o CMakeFiles/GameEngine.dir/src/core/Component.cpp.o CMakeFiles/GameEngine.dir/src/core/ComponentsType.cpp.o CMakeFiles/GameEngine.dir/src/core/GameObject.cpp.o CMakeFiles/GameEngine.dir/src/core/Scene.cpp.o CMakeFiles/GameEngine.dir/src/core/main.cpp.o CMakeFiles/GameEngine.dir/src/data/GeometryData.cpp.o CMakeFiles/GameEngine.dir/src/io/KeyBoard.cpp.o CMakeFiles/GameEngine.dir/src/io/Mouse.cpp.o CMakeFiles/GameEngine.dir/src/managers/GameplayManager.cpp.o CMakeFiles/GameEngine.dir/src/managers/ResourcesManager.cpp.o CMakeFiles/GameEngine.dir/src/managers/ShaderManager.cpp.o CMakeFiles/GameEngine.dir/src/managers/UtilitiesManger.cpp.o CMakeFiles/GameEngine.dir/src/physics/Colliders/spherCollider.cpp.o CMakeFiles/GameEngine.dir/src/physics/PhysicsCalculations/physicsCollision.cpp.o CMakeFiles/GameEngine.dir/src/physics/collider.cpp.o CMakeFiles/GameEngine.dir/src/physics/collisionsManager.cpp.o CMakeFiles/GameEngine.dir/src/physics/rigidbody.cpp.o CMakeFiles/GameEngine.dir/src/physics/rigidbodyManager.cpp.o CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/MSAARenderTarget.cpp.o CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/ShadowRenderTarget.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Light/DirLight.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Mesh.cpp.o CMakeFiles/GameEngine.dir/src/rendering/MeshRenderer.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Model.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Shader.cpp.o | external/assimp/lib/libassimp.a external/assimp/contrib/zlib/libzlibstatic.a || external/assimp/contrib/zlib/libzlibstatic.a external/assimp/lib/libassimp.a
-  LINK_FLAGS = -sUSE_GLFW=3 -sFULL_ES3=1 -sWASM=1 -sALLOW_MEMORY_GROWTH=1 -sUSE_WEBGL2=1 -sMIN_WEBGL_VERSION=2 -sMAX_WEBGL_VERSION=2 --preload-file C:/Github/GameEngine/GameEngine/GameEngine/Assets@Assets C:/Github/GameEngine/GameEngine/GameEngine/src
+build GameEngine.html: CXX_EXECUTABLE_LINKER__GameEngine_ CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_demo.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_draw.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_glfw.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_impl_opengl3.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_tables.cpp.o CMakeFiles/GameEngine.dir/Linking/include/imgui/imgui_widgets.cpp.o CMakeFiles/GameEngine.dir/lib/stb.cpp.o CMakeFiles/GameEngine.dir/src/GUI/EditorPanel.cpp.o CMakeFiles/GameEngine.dir/src/GUI/HierarchyPanel.cpp.o CMakeFiles/GameEngine.dir/src/GUI/InspectorPanel.cpp.o CMakeFiles/GameEngine.dir/src/core/Camera.cpp.o CMakeFiles/GameEngine.dir/src/core/Component.cpp.o CMakeFiles/GameEngine.dir/src/core/ComponentsType.cpp.o CMakeFiles/GameEngine.dir/src/core/GameObject.cpp.o CMakeFiles/GameEngine.dir/src/core/Scene.cpp.o CMakeFiles/GameEngine.dir/src/core/main.cpp.o CMakeFiles/GameEngine.dir/src/data/GeometryData.cpp.o CMakeFiles/GameEngine.dir/src/io/KeyBoard.cpp.o CMakeFiles/GameEngine.dir/src/io/Mouse.cpp.o CMakeFiles/GameEngine.dir/src/managers/GameplayManager.cpp.o CMakeFiles/GameEngine.dir/src/managers/ResourcesManager.cpp.o CMakeFiles/GameEngine.dir/src/managers/ShaderManager.cpp.o CMakeFiles/GameEngine.dir/src/managers/UtilitiesManger.cpp.o CMakeFiles/GameEngine.dir/src/physics/Colliders/spherCollider.cpp.o CMakeFiles/GameEngine.dir/src/physics/PhysicsCalculations/physicsCollision.cpp.o CMakeFiles/GameEngine.dir/src/physics/collider.cpp.o CMakeFiles/GameEngine.dir/src/physics/collisionsManager.cpp.o CMakeFiles/GameEngine.dir/src/physics/rigidbody.cpp.o CMakeFiles/GameEngine.dir/src/physics/rigidbodyManager.cpp.o CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/MSAARenderTarget.cpp.o CMakeFiles/GameEngine.dir/src/rendering/FrameBuffers/ShadowRenderTarget.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Light/DirLight.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Mesh.cpp.o CMakeFiles/GameEngine.dir/src/rendering/MeshRenderer.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Model.cpp.o CMakeFiles/GameEngine.dir/src/rendering/Shader.cpp.o | external/assimp/lib/libassimp.a external/assimp/contrib/zlib/libzlibstatic.a || external/assimp/contrib/zlib/libzlibstatic.a external/assimp/lib/libassimp.a
+  LINK_FLAGS = -sUSE_GLFW=3 -sFULL_ES3=1 -sWASM=1 -sALLOW_MEMORY_GROWTH=1 -sUSE_WEBGL2=1 -sMIN_WEBGL_VERSION=2 -sMAX_WEBGL_VERSION=2 --preload-file C:/Github/GameEngine/GameEngine/GameEngine/Assets@Assets
   LINK_LIBRARIES = external/assimp/lib/libassimp.a  external/assimp/contrib/zlib/libzlibstatic.a
   OBJECT_DIR = CMakeFiles\GameEngine.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Github\GameEngine\GameEngine\GameEngine\build-web && "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/Github/GameEngine/GameEngine/GameEngine/Assets C:/Github/GameEngine/GameEngine/GameEngine/build-web/Assets"

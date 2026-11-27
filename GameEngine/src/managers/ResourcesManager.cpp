@@ -56,8 +56,8 @@ Texture ResourcesManager::loadTexture(const char* path,TEXTURE_TYPE type)
         
         if(type == TEXTURE_TYPE::DIFFUSE)
         {
-            if(nrChannels == 3) internalFormat = GL_SRGB;
-            else if(nrChannels == 4) internalFormat = GL_SRGB_ALPHA;
+            if(nrChannels == 3 || nrChannels == 4) internalFormat = GL_SRGB;
+            //else if(nrChannels == 4) internalFormat = GL_SRGB_ALPHA;
         }
 
 		glGenTextures(1, &texture.id);
@@ -143,8 +143,8 @@ Texture ResourcesManager::loadTextureFromMemory(const std::string &directory, co
         
         if(type == TEXTURE_TYPE::DIFFUSE)
         {
-            if(nrChannels == 3) internalFormat = GL_SRGB;
-            else if(nrChannels == 4) internalFormat = GL_SRGB_ALPHA;
+            if (nrChannels == 3 || nrChannels == 4) internalFormat = GL_SRGB;
+            //else if(nrChannels == 4) internalFormat = GL_SRGB_ALPHA;
         }
 
         else if(type == TEXTURE_TYPE::SPECULAR)

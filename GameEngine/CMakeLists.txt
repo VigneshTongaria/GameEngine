@@ -11,7 +11,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB_RECURSE ENGINE_SRC
     src/*.cpp
-    lib/glad.c
     lib/stb.cpp
 
     Linking/include/imgui/imgui.cpp
@@ -22,6 +21,10 @@ file(GLOB_RECURSE ENGINE_SRC
     Linking/include/imgui/imgui_impl_glfw.cpp
     Linking/include/imgui/imgui_impl_opengl3.cpp
 )
+
+if(NOT EMSCRIPTEN)
+    list(APPEND ENGINE_SRC lib/glad.c)
+endif()
 
 add_executable(GameEngine ${ENGINE_SRC})
 
@@ -81,6 +84,9 @@ endif()
 # --------------------------------------------
 
 if(EMSCRIPTEN)
+
+    target_compile_options(GameEngine PRIVATE -fexceptions)
+    
     target_link_options(GameEngine PRIVATE
 
         "-sUSE_GLFW=3"
@@ -98,7 +104,7 @@ if(EMSCRIPTEN)
 
         "--preload-file"
         "${CMAKE_SOURCE_DIR}/Assets@Assets"
-        "${CMAKE_SOURCE_DIR}/src"
+
     )
 
     set_target_properties(GameEngine PROPERTIES

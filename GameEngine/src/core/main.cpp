@@ -134,15 +134,15 @@ int main()
 
 	//Model cityModel = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/Girl/a_contortionist_dancer.glb");
 
-	//Model cityModel = Model("C:/Github/GameEngine/GameEngine/GameEngine/Assets/resources/the-armoury/source/armory/model.obj");
+	Model cityModel = Model("Assets/resources/the-armoury/source/armory/model.obj");
 
-	//cityModel.addModelToScene(&scene);
+	cityModel.addModelToScene(&scene);
 
 	MainCamera.SetCameraPos(glm::vec3(0.0f));
 
-	Model underWearGirl = Model("Assets/resources/Girl/in_underwear.glb");
+	//Model underWearGirl = Model("Assets/resources/Girl/in_underwear.glb");
 
-	underWearGirl.addModelToScene(&scene);
+	//underWearGirl.addModelToScene(&scene);
 
 	// Start
 	scene.start();

@@ -43,15 +43,16 @@ Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath,const
 		std::cout << FragmentShaderPath << " Error with fragment shader complilaton for"<< Infolog;
 	}
 
-    // Geometry shader (optional)
 
-	if(GeometryShaderPath != NULL)
+    // Geometry shader (optional)
+#ifndef __EMSCRIPTEN__
+	if (GeometryShaderPath != NULL)
 	{
 		unsigned int geometry_shader;
 		geometry_shader = glCreateShader(GL_GEOMETRY_SHADER);
 
 		std::string geometry_shader_SRC = loadShaderSRC(GeometryShaderPath);
-		const GLchar *geometryShaderChar = geometry_shader_SRC.c_str();
+		const GLchar* geometryShaderChar = geometry_shader_SRC.c_str();
 		glShaderSource(geometry_shader, 1, &geometryShaderChar, NULL);
 
 		glCompileShader(geometry_shader);
@@ -94,6 +95,20 @@ Shader::Shader(const char* VertexShaderPath,const char* FragmentShaderPath,const
 			std::cout << "Error with shader program complilaton " << Infolog;
 		}
 	}
+#else
+	m_ID = glCreateProgram();
+
+	glAttachShader(m_ID, vertexShader);
+	glAttachShader(m_ID, fragment_shader);
+	glLinkProgram(m_ID);
+
+	glGetProgramiv(m_ID, GL_LINK_STATUS, &success);
+	if (!success)
+	{
+		glGetProgramInfoLog(m_ID, 512, NULL, Infolog);
+		std::cout << "Error with shader program complilaton " << Infolog;
+	}
+#endif
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragment_shader);
@@ -108,11 +123,28 @@ void Shader::setInt(const std::string &name, int value) const
 }
 void Shader::setFloat(const std::string &name, float value) const
 {
-    glUniform1f(glGetUniformLocation(m_ID,name.c_str()), value);
+	GLint location = glGetUniformLocation(m_ID, name.c_str());
+
+	if (location == -1)
+	{
+		std::cout << "Uniform not found: " << name
+			<< " | Shader ID: " << m_ID << std::endl;
+		return;
+	}
+    glUniform1f(location, value);
 }
 void Shader::setVec3(const std::string &name, glm::vec3 value) const
 {
-    glUniform3f(glGetUniformLocation(m_ID,name.c_str()),value.x,value.y,value.z);
+    GLint location = glGetUniformLocation(m_ID, name.c_str());
+
+    if (location == -1)
+    {
+        std::cout << "Uniform not found: " << name
+                  << " | Shader ID: " << m_ID << std::endl;
+        return;
+    }
+
+    glUniform3f(location, value.x, value.y, value.z);
 }
 void Shader::setTransformation(const std::string &name, glm::mat4 Trans) const
 {
