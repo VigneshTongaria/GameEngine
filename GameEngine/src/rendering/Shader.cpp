@@ -127,8 +127,8 @@ void Shader::setFloat(const std::string &name, float value) const
 
 	if (location == -1)
 	{
-		std::cout << "Uniform not found: " << name
-			<< " | Shader ID: " << m_ID << std::endl;
+		//std::cout << "Uniform not found: " << name
+		//	<< " | Shader ID: " << m_ID << std::endl;
 		return;
 	}
     glUniform1f(location, value);
@@ -139,8 +139,8 @@ void Shader::setVec3(const std::string &name, glm::vec3 value) const
 
     if (location == -1)
     {
-        std::cout << "Uniform not found: " << name
-                  << " | Shader ID: " << m_ID << std::endl;
+        //std::cout << "Uniform not found: " << name
+        //          << " | Shader ID: " << m_ID << std::endl;
         return;
     }
 

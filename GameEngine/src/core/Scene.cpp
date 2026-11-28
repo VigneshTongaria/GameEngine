@@ -311,7 +311,12 @@ void Scene::render()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_STENCIL_TEST);
 	glEnable(GL_BLEND);
+
+#ifndef __EMSCRIPTEN__
 	glEnable(GL_FRAMEBUFFER_SRGB);
+#else
+	glEnable(GL_FRAMEBUFFER);
+#endif
 	glEnable(GL_CULL_FACE);
 
 	glDepthFunc(GL_LEQUAL);

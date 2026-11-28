@@ -11,7 +11,11 @@ MSAARenderTarget::MSAARenderTarget(int width,int height,int samples)
 void MSAARenderTarget::init()
 {
     glGenFramebuffers(1, &m_msaa_fbo);
+#ifdef __EMSCRIPTEN__
+    glGenRenderbuffers(1, &m_msaa_m);
+#else
     glGenTextures(1, &m_msaa_m);
+#endif
     glGenRenderbuffers(1,&m_mssa_rbo);
 }
 void MSAARenderTarget::bindFrameBuffer() const
@@ -32,67 +36,84 @@ void MSAARenderTarget::unbindTexture() const
 }
 void MSAARenderTarget::resize(int newWidth, int newHeight, int samples)
 {
-    if (newWidth <= 0 || newHeight <= 0)
+    if (newWidth <= 0 || newHeight <= 0 || samples <= 0)
         return;
+
+    GLint maxSamples = 0;
+    glGetIntegerv(GL_MAX_SAMPLES, &maxSamples);
+    samples = std::min(samples, maxSamples);
 
     glBindFramebuffer(GL_FRAMEBUFFER, m_msaa_fbo);
 
 #ifdef __EMSCRIPTEN__
 
-    glGenRenderbuffers(1, &m_msaa_m);
-
     glBindRenderbuffer(GL_RENDERBUFFER, m_msaa_m);
 
     glRenderbufferStorageMultisample(
-        GL_RENDERBUFFER, samples,
-        GL_SRGB8_ALPHA8,
-        newWidth, newHeight
+        GL_RENDERBUFFER,
+        samples,
+        GL_RGBA8,
+        newWidth,
+        newHeight
     );
 
     glFramebufferRenderbuffer(
-        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-        GL_RENDERBUFFER, m_msaa_m
+        GL_FRAMEBUFFER,
+        GL_COLOR_ATTACHMENT0,
+        GL_RENDERBUFFER,
+        m_msaa_m
     );
+
 #else
-    // Desktop: multisampled color texture
+
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, m_msaa_m);
 
     glTexImage2DMultisample(
-        GL_TEXTURE_2D_MULTISAMPLE, samples,
-        GL_SRGB8_ALPHA8,
-        newWidth, newHeight, GL_TRUE
+        GL_TEXTURE_2D_MULTISAMPLE,
+        samples,
+        GL_RGBA8,
+        newWidth,
+        newHeight,
+        GL_TRUE
     );
 
     glFramebufferTexture2D(
-        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-        GL_TEXTURE_2D_MULTISAMPLE, m_msaa_m, 0
+        GL_FRAMEBUFFER,
+        GL_COLOR_ATTACHMENT0,
+        GL_TEXTURE_2D_MULTISAMPLE,
+        m_msaa_m,
+        0
     );
 
     glBindTexture(GL_TEXTURE_2D_MULTISAMPLE, 0);
+
 #endif
 
-    // Depth/stencil renderbuffer (both platforms)
-    if (m_mssa_rbo == 0)
-        glGenRenderbuffers(1, &m_mssa_rbo);
-
+    // Depth/stencil attachment
     glBindRenderbuffer(GL_RENDERBUFFER, m_mssa_rbo);
 
     glRenderbufferStorageMultisample(
-        GL_RENDERBUFFER, samples,
+        GL_RENDERBUFFER,
+        samples,
         GL_DEPTH24_STENCIL8,
-        newWidth, newHeight
+        newWidth,
+        newHeight
     );
 
     glFramebufferRenderbuffer(
-        GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT,
-        GL_RENDERBUFFER, m_mssa_rbo
+        GL_FRAMEBUFFER,
+        GL_DEPTH_STENCIL_ATTACHMENT,
+        GL_RENDERBUFFER,
+        m_mssa_rbo
     );
 
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 
     if (status != GL_FRAMEBUFFER_COMPLETE)
+    {
         std::cout << "MSAA framebuffer incomplete: 0x"
-        << std::hex << status << std::dec << std::endl;
+            << std::hex << status << std::dec << std::endl;
+    }
 
     glBindRenderbuffer(GL_RENDERBUFFER, 0);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
